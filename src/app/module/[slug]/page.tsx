@@ -23,18 +23,18 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: ModulePageProps) {
   const { slug } = await params;
   const modules = await getModules();
-  const modulee = modules.find((m) => m.slug === slug);
+  const module = modules.find((m) => m.slug === slug);
 
-  if (!modulee) {
+  if (!module) {
     return {
       title: 'Module Not Found',
     };
   }
 
   return generateSocialMetadata({
-    title: `${modulee.title} | Fast Struct`,
-    description: modulee.summary,
-    image: modulee.mainImage,
+    title: `${module.title} | Fast Struct`,
+    description: module.summary,
+    image: module.mainImage,
     url: `/module/${slug}`,
   });
 }

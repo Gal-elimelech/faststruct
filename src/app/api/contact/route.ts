@@ -3,12 +3,26 @@ import { contactFormSchema } from '@/schemas/contact';
 import { Resend } from 'resend';
 import ContactEmail from '@/components/emails/ContactEmail';
 import ContactConfirmationEmail from '@/components/emails/ContactConfirmationEmail';
-import { env } from '@/lib/env';
+import { getValidatedContactEnv } from '@/lib/env';
 import { addToGoogleSheets } from '@/lib/google-sheets';
+import { checkRateLimit } from '@/lib/rate-limit';
 
-const resend = new Resend(env.resendApiKey);
 
 export async function POST(request: NextRequest) {
+  const rateLimitResult = checkRateLimit(request);
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(rateLimitResult.retryAfterSeconds ?? 60),
+          'X-RateLimit-Remaining': '0',
+        },
+      }
+    );
+  }
+
   let body;
   try {
     body = await request.json();
@@ -31,11 +45,13 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const validatedEnv = getValidatedContactEnv();
+    const resend = new Resend(validatedEnv.resendApiKey);
     const { name, email, phone, address, message } = result.data;
 
     const emailResult = await resend.emails.send({
-      from: env.fromEmail,
-      to: [env.contactEmail],
+      from: validatedEnv.fromEmail,
+      to: [validatedEnv.contactEmail],
       subject: `New Contact Form Submission from ${name}`,
       react: ContactEmail({
         name,
@@ -82,13 +98,13 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to user
     try {
       const confirmationResult = await resend.emails.send({
-        from: env.fromEmail,
+        from: validatedEnv.fromEmail,
         to: [email],
         subject: 'Thank you for contacting Fast Struct',
         react: ContactConfirmationEmail({
           name,
         }),
-        replyTo: env.fromEmail,
+        replyTo: validatedEnv.fromEmail,
       });
 
       if (confirmationResult.error) {
@@ -122,8 +138,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-}
-
-export async function GET(request: NextRequest) {
-  return NextResponse.json({ message: 'Hello, world!' }, { status: 200 });
 }
