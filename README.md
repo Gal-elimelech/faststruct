@@ -1,4 +1,4 @@
-# Fast sruct - Business Website
+# Fast Struct - Business Website
 
 This is the official business website for Fast sruct, a modern construction company specializing in modular and panelized building methods.
 
