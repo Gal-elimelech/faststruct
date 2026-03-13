@@ -1,0 +1,25 @@
+{
+  "title": "Our Process",
+  "steps": [
+    {
+      "title": "Discovery",
+      "text": "We analyze your needs, budget, and site conditions to recommend the perfect method."
+    },
+    {
+      "title": "Design & Permit",
+      "text": "Our team tailors the plan and navigates the local zoning and coding maze for you."
+    },
+    {
+      "title": "Fabrication",
+      "text": "While the foundation is poured on-site, your home is precision-manufactured in our facility."
+    },
+    {
+      "title": "Assembly",
+      "text": "Whether module or panel, installation is rapid, clean, and quiet."
+    },
+    {
+      "title": "Handover",
+      "text": "Walk into a fully finished home, built to a tolerance traditional construction can't match."
+    }
+  ]
+}

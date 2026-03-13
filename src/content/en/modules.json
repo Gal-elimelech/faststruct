@@ -1,0 +1,123 @@
+[
+  {
+    "slug": "smart-compact-living",
+    "title": "Smart Compact Living",
+    "summary": "A compact and elegant prefabricated ADU ideal for guest homes, backyard units, or urban lots in California.",
+    "marketingDescription": "Smart Compact Living offers a **refined minimalist layout** with a focus on **natural light and space efficiency**. This prefabricated ADU features modern finishes and clean geometry, making it perfect for singles, couples, or as a rental unit. Experience the perfect balance of comfort and functionality in a beautifully designed space that **maximizes every square foot**.",
+    "specs": {
+      "areaSqft": 460,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "modulesCount": 1
+    },
+    "mainImage": "/assets/modules-images/module-1/out-3.jpg",
+    "images": [
+      "/assets/modules-images/module-1/out-1.jpg",
+      "/assets/modules-images/module-1/out-3.jpg",
+      "/assets/modules-images/module-1/out-4.jpg",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.jpg",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.jpg",
+      "/assets/modules-images/all-modules-in-6.jpg"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-1/floor-plan-1.jpg"]
+  },
+  {
+    "slug": "family-smart-unit",
+    "title": "Family Smart Unit",
+    "summary": "A balanced custom modular home designed for young families and flexible use.",
+    "marketingDescription": "Designed with **growing families** in mind, the Family Smart Unit combines thoughtful space planning with modern amenities and **energy-efficient design**. **Open-plan living areas** create a sense of spaciousness, while **smart storage solutions** keep everything organized. This custom modular home is where memories are made, where life happens comfortably and efficiently.",
+    "specs": {
+      "areaSqft": 520,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "modulesCount": 1
+    },
+    "mainImage": "/assets/modules-images/module-2/out-2.jpg",
+    "images": [
+      "/assets/modules-images/module-2/out-1.jpg",
+      "/assets/modules-images/module-2/out-2.jpg",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.jpg",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.jpg",
+      "/assets/modules-images/all-modules-in-6.jpg"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-2/floor-plan-2.jpg"]
+  },
+  {
+    "slug": "live-and-work-hybrid",
+    "title": "Live & Work Hybrid",
+    "summary": "Blends residential comfort with workspace functionality - perfect for professionals or home-based studios in California.",
+    "marketingDescription": "The ultimate solution for modern professionals in California who demand both **comfort and productivity**. The Live & Work Hybrid seamlessly integrates a **dedicated home office workspace** with residential living, featuring **acoustic considerations** and flexible layouts. Work from home without compromising on style or functionality in this custom-designed modular home.",
+    "specs": {
+      "areaSqft": 1200,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "modulesCount": 1
+    },
+    "mainImage": "/assets/modules-images/module-3/out-2.jpg",
+    "images": [
+      "/assets/modules-images/module-3/out-1.jpg",
+      "/assets/modules-images/module-3/out-2.jpg",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.jpg",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.jpg",
+      "/assets/modules-images/all-modules-in-6.jpg"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-3/floor-plan-3.jpg"]
+  },
+  {
+    "slug": "executive-comfort",
+    "title": "Executive Comfort",
+    "summary": "A luxury custom modular home designed for premium comfort and entertaining.",
+    "marketingDescription": "Elevate your lifestyle with Executive Comfort, where **luxury meets practicality**. This custom modular home features premium finishes, spacious open-plan living, and a **primary suite with ensuite** that create an environment designed for both **relaxation and entertaining**. This is more than a home-it's a statement of refined living.",
+    "specs": {
+      "areaSqft": 660,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "modulesCount": 1
+    },
+    "mainImage": "/assets/modules-images/module-4/out-2.jpg",
+    "images": [
+      "/assets/modules-images/module-4/out-1.jpg",
+      "/assets/modules-images/module-4/out-2.jpg",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.jpg",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.jpg",
+      "/assets/modules-images/all-modules-in-6.jpg"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-4/floor-plan-4.jpg"]
+  },
+  {
+    "slug": "ultra-compact-retreat",
+    "title": "Ultra Compact Retreat",
+    "summary": "An ultra-compact single-bedroom unit perfect for minimalists, students, or as a cozy retreat in California.",
+    "marketingDescription": "Embrace minimalist living without sacrificing comfort. The Ultra Compact Retreat proves that less truly is more, with **intelligent design that maximizes every inch**. This affordable prefabricated ADU is perfect for those seeking a **low-maintenance lifestyle** or a peaceful backyard retreat in California. Simple, elegant, and perfectly proportioned.",
+    "specs": {
+      "areaSqft": 435,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "modulesCount": 1
+    },
+    "mainImage": "/assets/modules-images/module-5/out-1.jpg",
+    "images": [
+      "/assets/modules-images/module-5/out-1.jpg",
+      "/assets/modules-images/module-5/out-2.jpg",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.jpg",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.jpg",
+      "/assets/modules-images/all-modules-in-6.jpg"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-5/floor-plan-5.jpg"]
+  }
+]

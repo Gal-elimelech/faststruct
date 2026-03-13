@@ -1,0 +1,135 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@theme {
+  /* Custom Colors */
+  /* when updating a color update src/lib/css-constants.ts as well */
+  --color-light: #e5e0d2;
+  --color-accent: #a88e6b;
+  --color-dark: #171717;
+
+  /* Custom Fonts - creates font-bebas, font-poppins utilities */
+  --font-bebas: var(--font-bebas);
+  --font-poppins: var(--font-poppins);
+  --font-sans: var(--font-poppins);
+
+  /* Typographic Scale - Based on 90px (5.625rem) H1 desktop */
+  /* Scale ratio: 1.25 (Major Third) with fluid responsive sizing */
+
+  --text-h1: clamp(3rem, 1rem + 5vw, 5.625rem);
+  --text-h1--line-height: 1.1;
+
+  --text-h2: clamp(2.5rem, 0.875rem + 3.5vw, 4rem);
+  --text-h2--line-height: 1.15;
+
+  --text-h3: clamp(2rem, 0.75rem + 2.5vw, 3rem);
+  --text-h3--line-height: 1.2;
+
+  --text-h4: clamp(1.75rem, 0.625rem + 2vw, 2.25rem);
+  --text-h4--line-height: 1.25;
+
+  --text-h5: clamp(1.5rem, 0.5625rem + 1.5vw, 1.75rem);
+  --text-h5--line-height: 1.3;
+
+  --text-h6: clamp(1.25rem, 0.5rem + 1.25vw, 1.5rem);
+  --text-h6--line-height: 1.35;
+
+  /* Custom Letter Spacing - creates tracking-tightish, tracking-tighter2 utilities */
+  --tracking-tightish: -0.01em;
+  --tracking-tighter2: -0.02em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  input[type='text'],
+  input[type='email'],
+  textarea {
+    @apply border-accent/50 bg-light/10 text-accent placeholder-accent/70 focus:border-accent focus:ring-accent/50 block w-full rounded-lg p-3 transition-all duration-200 ease-in-out focus:ring-2;
+  }
+}
+
+@layer utilities {
+  /* Responsive Padding Utilities */
+  .section-padding-top {
+    @apply pt-18 md:pt-26 lg:pt-34;
+  }
+
+  .section-padding-bottom {
+    @apply pb-18 md:pb-26 lg:pb-34;
+  }
+
+  .section-padding-y {
+    @apply py-18 md:py-26 lg:py-34;
+  }
+
+  .section-padding {
+    @apply px-4 py-18 md:px-8 md:py-26 lg:px-16 lg:py-34;
+  }
+
+  .container-padding {
+    @apply px-4 md:px-8 lg:px-16;
+  }
+
+  .content-spacing {
+    @apply my-8 md:my-12 lg:my-16;
+  }
+}
+
+@layer components {
+  /* Base Button Styles */
+  .btn {
+    @apply font-poppins focus:ring-accent/50 inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-200 ease-in-out focus:ring-2 focus:ring-offset-2 focus:outline-none;
+  }
+
+  /* Button Sizes */
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .btn-md {
+    @apply px-5 py-2.5 text-base;
+  }
+
+  .btn-lg {
+    @apply px-8 py-3.5 text-lg;
+  }
+
+  /* Button Variants */
+  .btn-primary {
+    @apply bg-accent text-dark hover:bg-accent/90 active:bg-accent/80 focus:ring-accent/50;
+  }
+
+  .btn-secondary {
+    @apply bg-dark text-light hover:bg-dark/90 active:bg-dark/80 focus:ring-dark/50;
+  }
+
+  .btn-outline {
+    @apply border-dark text-dark hover:bg-dark/10 active:bg-dark/20 focus:ring-dark/50 border-2 bg-transparent;
+  }
+
+  /* Button with Icon */
+  .btn-icon {
+    @apply inline-flex items-center gap-2;
+  }
+
+  /* Button Hover Effects */
+  .btn-hover-lift {
+    @apply transform hover:-translate-y-0.5;
+  }
+
+  .btn-hover-scale {
+    @apply transform hover:scale-105;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.animate-blink {
+  animation: blink 0.7s step-end infinite;
+}

@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "title": "Our Mission: Precision. Speed. Trust.",
+    "subtitle": "We're revolutionizing construction in California through precision engineering and innovative modular solutions for homes and ADUs.",
+    "backgroundImage": "/assets/intro-image.jpg",
+    "bigTextLine1": "Where Innovation"
+  },
+  "about": {
+    "bigTextLine2": "Meets Home",
+    "paragraph": "Fast Struct began with a simple idea - to remove the friction from building your dream home in California. Traditional construction is slow, unpredictable, and overwhelming. We created a smarter way with modular and panelized construction - one that puts speed, quality, and clarity first."
+  },
+  "imageText": {
+    "image": "/assets/modules-images/module-5/out-1.jpg",
+    "paragraph": "By combining modular and panelized construction in California, we bring together speed, flexibility, and quality. As a licensed contractor with a state-approved manufacturing facility, we provide complete A-Z solutions for modular homes, ADUs, and panelized structures. Every client gets a dedicated project manager, and our team handles everything from permits to final delivery."
+  },
+  "featuresGrid": {
+    "items": [
+      {
+        "title": "Speed without Compromise",
+        "text": "Faster delivery, no corners cut.",
+        "imageUrl": "/assets/features-image-1.jpg"
+      },
+      {
+        "title": "Simplicity in Every Step",
+        "text": "Clear guided process.",
+        "imageUrl": "/assets/features-image-2.jpg"
+      },
+      {
+        "title": "Enduring Quality",
+        "text": "Premium materials, modular engineering.",
+        "imageUrl": "/assets/features-image-3.jpg"
+      },
+      {
+        "title": "Personal Support",
+        "text": "Team guidance every step.",
+        "imageUrl": "/assets/features-image-4.jpg"
+      }
+    ]
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "members": [
+      {
+        "name": "Sarah Johnson",
+        "role": "CEO & Founder",
+        "bio": "With over 15 years in construction and modular building, Sarah leads Fast Struct with a vision to revolutionize home building.",
+        "imageUrl": "/assets/team-member-1.jpg"
+      },
+      {
+        "name": "Michael Chen",
+        "role": "Head of Engineering",
+        "bio": "Michael brings innovative engineering solutions to every project, ensuring quality and efficiency in our modular systems.",
+        "imageUrl": "/assets/team-member-2.jpg"
+      },
+      {
+        "name": "Emily Rodriguez",
+        "role": "Project Director",
+        "bio": "Emily oversees project delivery, ensuring every client receives personalized attention and seamless execution from start to finish.",
+        "imageUrl": "/assets/team-member-3.jpg"
+      },
+      {
+        "name": "David Thompson",
+        "role": "Design Lead",
+        "bio": "David combines architectural excellence with practical design, creating homes that are both beautiful and functional.",
+        "imageUrl": "/assets/team-member-4.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "hero": {
+    "title": "EXPLORE OUR MODULES",
+    "subtitle": "Discover modular homes in California designed for your lifestyle, from compact ADUs to spacious family units."
+  },
+  "filters": {
+    "bedrooms": {
+      "label": "Bedrooms",
+      "options": ["All", "1", "2", "3+"]
+    },
+    "bathrooms": {
+      "label": "Bathrooms",
+      "options": ["All", "1", "2+"]
+    },
+    "size": {
+      "label": "Size",
+      "ranges": [
+        {
+          "label": "All",
+          "min": 0,
+          "max": 9999
+        },
+        {
+          "label": "Under 500 sqft",
+          "min": 0,
+          "max": 500
+        },
+        {
+          "label": "500-600 sqft",
+          "min": 500,
+          "max": 600
+        },
+        {
+          "label": "600+ sqft",
+          "min": 600,
+          "max": 9999
+        }
+      ]
+    }
+  },
+  "sort": {
+    "label": "Sort by",
+    "options": [
+      {
+        "value": "default",
+        "label": "Default"
+      },
+      {
+        "value": "size-asc",
+        "label": "Size (Smallest)"
+      },
+      {
+        "value": "size-desc",
+        "label": "Size (Largest)"
+      },
+      {
+        "value": "bedrooms-asc",
+        "label": "Bedrooms (Fewest)"
+      },
+      {
+        "value": "bedrooms-desc",
+        "label": "Bedrooms (Most)"
+      }
+    ]
+  },
+  "emptyState": {
+    "title": "No modules match your filters",
+    "message": "Try adjusting your search criteria to see more results."
+  },
+  "search": {
+    "placeholder": "Search modules by name or description...",
+    "label": "Search modules",
+    "ariaDescription": "Search through available module models by name or description"
+  },
+  "results": {
+    "showing": "Showing",
+    "of": "of",
+    "modules": "modules"
+  },
+  "clearFilters": {
+    "label": "Clear all filters",
+    "ariaLabel": "Clear all active filters"
+  },
+  "metadataImage": "/assets/features-image-1.jpg"
+}

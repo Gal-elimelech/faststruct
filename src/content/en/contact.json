@@ -1,0 +1,51 @@
+{
+  "hero": {
+    "title": "Let's Build Together",
+    "subtitle": "Ready to start your modular construction project? Get in touch with our team and let's discuss how we can bring your vision to life."
+  },
+  "form": {
+    "title": "Get in Touch",
+    "description": "Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your.email@example.com"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "(123) 456-7890"
+      },
+      "address": {
+        "label": "Address",
+        "placeholder": "Your address"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell us about your project..."
+      }
+    },
+    "submitButton": "Send Message",
+    "submittingButton": "Sending..."
+  },
+  "info": {
+    "address": {
+      "street": "3395 Edward Ave",
+      "city": "Santa Clara, CA 95054"
+    },
+    "email": "Info@faststruct.com",
+    "phone": {
+      "display": "(408) 702-9012",
+      "link": "+14087029012"
+    },
+    "license": ["CSLB #1147858", "CA HCD 1632336"]
+  },
+  "social": {
+    "title": "Follow Us",
+    "links": []
+  },
+  "metadataImage": "/assets/hero-image.png"
+}

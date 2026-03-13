@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "title": "Build Smarter. Live Better",
+    "subtitle": "We've decoded the construction process in California. By moving production off-site and into the lab, Fast Struct delivers precision-engineered modular and panelized homes without the chaos of traditional building",
+    "backgroundImageDesktop": "/assets/system-hero-image.jpg",
+    "backgroundImageMobile": "/assets/system-hero-image-mobile.jpg"
+  },
+  "twoPaths": {
+    "title": "Two Paths. One Standard of Excellence",
+    "subtitle": "We don't force you into a box. We choose the construction method that fits your site, your design, and your timeline",
+    "modular": {
+      "title": "The Modular Route",
+      "description": "Ideal for rapid deployment. We manufacture fully finished 3D volumes-including structure, electricity, and finishes-in our factory. They arrive on your site ready to connect",
+      "imageUrl": "/assets/system-modular.jpg",
+      "bulletPoints": [
+        "Instant delivery & quick turnaround",
+        "Maximum noise reduction on-site",
+        "Projects requiring absolute predictability"
+      ]
+    },
+    "panelized": {
+      "title": "The Panelized Route",
+      "description": "Ideal for design freedom. We manufacture precision-engineered 'Smart Walls' that pack flat and assemble rapidly on-site. This allows for wider spaces and access to difficult lots",
+      "imageUrl": "/assets/system-panelized.jpg",
+      "bulletPoints": [
+        "Complex architectural designs & open layouts",
+        "Sites with limited access (narrow roads/cranes)",
+        "Clients seeking a custom footprint"
+      ]
+    }
+  },
+  "nineCoreSystem": {
+    "title": "The 9-Core System: Infinite Possibilities",
+    "subtitle": "Innovation lies in simplicity. Fast Struct has engineered 9 proprietary smart-panel types. These serve as the 'LEGO blocks' of our architecture"
+  },
+  "scalableSolutions": {
+    "title": "Scalable Solutions for Every Need",
+    "subtitle": "From a single backyard unit to a full-scale development, our technology adapts to your vision",
+    "solutions": [
+      {
+        "icon": "box-arrow-up",
+        "subtitle": "Speed & Minimal Disruption",
+        "title": "Instant Space",
+        "description": "Add a premium living space to your California property without the headache of a long construction site. Our modular ADUs arrive 95% complete and are craned into place in a single day-keeping your backyard clean, quiet, and instantly usable"
+      },
+      {
+        "icon": "house",
+        "subtitle": "Architectural Freedom & Performance",
+        "title": "Uncompromised Living",
+        "description": "We bridge the gap between custom architecture and industrial precision in California. By using our Hybrid System (Panels + Modules), you get the design freedom of a traditional architect with the speed and superior insulation of factory-built modular and panelized homes"
+      },
+      {
+        "icon": "stack-boxes",
+        "subtitle": "Faster ROI & Consistent Quality",
+        "title": "Precision at Scale",
+        "description": "For developers, time is ROI. Fast Struct streamlines the path from permit to occupancy. As a licensed contractor with complete A-Z solutions, we replicate high-quality units with millimeter accuracy, significantly shortening project timelines and reducing on-site management overhead"
+      }
+    ]
+  },
+  "customization": {
+    "title": "You Are the Architect of Your Experience",
+    "subtitle": "You aren't buying a fixed product; you are partnering with us to shape your home",
+    "options": [
+      {
+        "title": "Spatial Flow",
+        "description": "Adjust room sizes, wall placements, and layouts",
+        "imageUrl": "/assets/system-custom-top-view.jpg"
+      },
+      {
+        "title": "The Envelope",
+        "description": "Select roof styles, cladding textures, and window profiles",
+        "imageUrl": "/assets/system-custom-closeup.jpg"
+      },
+      {
+        "title": "The Infrastructure",
+        "description": "Tailored electrical and HVAC plans to suit your lifestyle",
+        "imageUrl": "/assets/system-custom-smart_home.jpg"
+      },
+      {
+        "title": "The Interior",
+        "description": "Choose flooring, lighting, and finishes that reflect your taste",
+        "imageUrl": "/assets/system-custom-metirials.jpg"
+      }
+    ]
+  }
+}

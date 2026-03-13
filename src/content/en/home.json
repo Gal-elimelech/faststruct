@@ -1,0 +1,136 @@
+{
+  "heroSection": {
+    "title": "BUILD",
+    "animatedWords": ["Faster", "Smarter", "For Life"],
+    "subtitle": "Fast Struct is a technology-driven factory in Silicon Valley, delivering precision-engineered, panelized, and modular steel homes using advanced manufacturing methods.",
+    "heroImage": "/assets/hero-image.png"
+  },
+  "intro": {
+    "text": "Fast Struct is redefining how homes and spaces are built in California. By combining modular and panelized construction, we deliver faster timelines, higher quality, and a smoother experience from start to finish. Whether you're building an ADU, a custom modular home, or a panelized structure, we've got you covered.",
+    "introImage": "/assets/intro-image.jpg"
+  },
+  "features": [
+    {
+      "iconClass": "fas fa-bolt",
+      "title": "Speed",
+      "text": "3-5 months from permit approval to completion.",
+      "imageUrl": "/assets/features-image-1.jpg"
+    },
+    {
+      "iconClass": "fas fa-award",
+      "title": "Quality",
+      "text": "Premium materials, rigorous inspections.",
+      "imageUrl": "/assets/features-image-2.jpg"
+    },
+    {
+      "iconClass": "fas fa-infinity",
+      "title": "End-to-End",
+      "text": "Complete A-Z solutions: Permits, design, construction, and handover.",
+      "imageUrl": "/assets/features-image-3.jpg"
+    },
+    {
+      "iconClass": "fas fa-palette",
+      "title": "Customization",
+      "text": "Tailored to your lifestyle, taste, and budget.",
+      "imageUrl": "/assets/features-image-4.jpg"
+    }
+  ],
+  "experienceMetrics": [
+    {
+      "title": "50%",
+      "text": "Faster build time vs. traditional construction"
+    },
+    {
+      "title": "14",
+      "text": "Years experience building prefab, modular, and panelized homes in California"
+    },
+    {
+      "title": "3-5",
+      "text": "Months from permits to move-in ready on average"
+    },
+    {
+      "title": "1",
+      "text": "Team from start to finish - design, permits, foundation, utilities, and interiors"
+    }
+  ],
+  "whyModularPanelized": {
+    "modular": {
+      "title": "Modular",
+      "items": [
+        "Factory-built precision modules for modular homes and ADUs",
+        "Faster timelines (up to 50% quicker)",
+        "Consistent quality control in a controlled environment",
+        "Minimal disruption on-site"
+      ],
+      "image": "/assets/why-image-1.png"
+    },
+    "panelized": {
+      "title": "Panelized",
+      "items": [
+        "Pre-engineered wall and roof panels",
+        "Flexible for complex or hard-to-reach sites",
+        "Easier permitting in many regions",
+        "Scalable for a variety of project sizes"
+      ],
+      "image": "/assets/why-image-2.png"
+    },
+    "combinedApproach": {
+      "title": "Combined Approach",
+      "items": [
+        "Best of both worlds",
+        "Tailored to project needs and client vision",
+        "Maximum flexibility and efficiency"
+      ],
+      "image": "/assets/why-image-3.png"
+    }
+  },
+  "cta": {
+    "title": "Ready to Build Your Dream Home?",
+    "subtitle": "Get a free consultation and see how we can bring your vision to life in 3-5 months."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "Is modular or panelized construction in California more expensive than traditional building?",
+        "answer": "Not necessarily. Our modular and panelized construction methods in California offer faster timelines and efficient processes that often lower overall costs with complete transparency from the start."
+      },
+      {
+        "question": "Will my home look like a “prefab box”?",
+        "answer": "No - every project is fully customizable in layout and finishes."
+      },
+      {
+        "question": "How long does it take to build?",
+        "answer": "Typically 3-5 months from permit approval to completion."
+      },
+      {
+        "question": "Do you handle permits and approvals?",
+        "answer": "Yes - our team manages the entire process."
+      },
+      {
+        "question": "Is modular/panelized construction durable?",
+        "answer": "Absolutely - built with light-gauge steel and high-performance materials for strength and longevity."
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "author": "Daniel Cooper",
+      "quote": "Fast Struct made the entire building process incredibly smooth. The modular installation was fast, clean, and exactly on schedule. The final result feels solid, modern, and far higher quality than traditional builds I've seen."
+    },
+    {
+      "author": "Victoria Lane",
+      "quote": "The precision is unbelievable. Every detail of our home feels intentional and well-crafted. Communication was consistent and clear throughout the project. Truly a premium building experience."
+    },
+    {
+      "author": "Michael Adams",
+      "quote": "Our project was completed months earlier than expected. The factory-built components made the timeline reliable and stress-free. The team was professional, and the result exceeded every expectation we had."
+    },
+    {
+      "author": "Sarah Mitchell",
+      "quote": "Finally, a modern way to build. Fast Struct guided us through a simple, organized process and delivered a home that looks amazing and feels incredibly sturdy. The entire experience was efficient and surprisingly enjoyable."
+    }
+  ],
+  "testimonialsBackgroundImage": "/assets/testimonials.png",
+  "metadataImage": "/assets/intro-image.jpg"
+}
