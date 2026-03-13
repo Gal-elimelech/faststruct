@@ -1,3 +1,9 @@
+const REQUIRED_CONTACT_ENV = [
+  'RESEND_API_KEY',
+  'CONTACT_EMAIL',
+  'NEXT_PUBLIC_SITE_URL',
+] as const;
+
 export const env = {
   resendApiKey: process.env.RESEND_API_KEY ?? '',
   fromEmail: process.env.FROM_EMAIL ?? 'onboarding@resend.dev',
@@ -9,3 +15,28 @@ export const env = {
 } as const;
 
 export type Env = typeof env;
+
+/**
+ * Validates that required env vars for the contact API are set.
+ * Call at runtime when handling contact form submissions.
+ * @throws Error with missing var names if any required var is empty
+ */
+export function validateContactEnv(): void {
+  const missing = REQUIRED_CONTACT_ENV.filter(
+    (key) => !process.env[key]?.trim()
+  );
+  if (missing.length > 0) {
+    throw new Error(
+      `Missing required environment variables: ${missing.join(', ')}`
+    );
+  }
+}
+
+/**
+ * Returns env object after validating required contact vars.
+ * Use in contact API route before sending emails.
+ */
+export function getValidatedContactEnv(): typeof env {
+  validateContactEnv();
+  return env;
+}
