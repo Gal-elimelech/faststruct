@@ -119,5 +119,31 @@
       "/assets/modules-images/all-modules-in-6.jpg"
     ],
     "sketchPlans": ["/assets/modules-images/module-5/floor-plan-5.jpg"]
+  },
+  {
+    "slug": "grand-two-bedroom",
+    "title": "Grand Two-Bedroom",
+    "summary": "A 1,080 sq.ft. two-bedroom, two-bathroom model with generous living space for families, roommates, or California homeowners who want room to grow.",
+    "marketingDescription": "The Grand Two-Bedroom delivers **full-size comfort** in a thoughtfully planned layout. Two bedrooms and **two full bathrooms** support everyday routines and guests alike, while open living areas and quality finishes keep the home bright and welcoming. It is an ideal choice when you want **serious square footage** without compromising on style or efficiency.",
+    "specs": {
+      "areaSqft": 1080,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "modulesCount": 1
+    },
+    "mainImage": "/assets/modules-images/module-6/out-2.png",
+    "images": [
+      "/assets/modules-images/module-6/out-1.png",
+      "/assets/modules-images/module-6/out-2.png",
+      "/assets/modules-images/module-6/in-1.png",
+      "/assets/modules-images/module-6/in-2.png",
+      "/assets/modules-images/module-6/in-3.png",
+      "/assets/modules-images/module-6/in-4.png",
+      "/assets/modules-images/module-6/in-5.png",
+      "/assets/modules-images/module-6/in-6.png",
+      "/assets/modules-images/module-6/in-7.png",
+      "/assets/modules-images/module-6/in-8.png"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-6/floor-plan-6.jpg"]
   }
 ]
