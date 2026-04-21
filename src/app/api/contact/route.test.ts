@@ -10,6 +10,17 @@ const validPayload = {
   phone: '1234567890',
   address: '123 Main St, City',
   message: 'This is a test message with enough characters.',
+  source: 'contact' as const,
+};
+
+const validLeadPayload = {
+  name: 'Jane Lead',
+  email: 'jane@example.com',
+  phone: '1234567890',
+  address: '',
+  message: 'This is a test message with enough characters.',
+  serviceType: 'ADU Construction' as const,
+  source: 'landing' as const,
 };
 
 function createRequest(
@@ -80,6 +91,7 @@ describe('POST /api/contact', () => {
       phone: '12',
       address: 'x',
       message: 'short',
+      source: 'contact',
     });
     const response = await POST(request);
     expect(response.status).toBe(422);
@@ -96,6 +108,49 @@ describe('POST /api/contact', () => {
     const data = await response.json();
     expect(data.success).toBe(true);
     expect(data.message).toContain('successfully');
+  });
+
+  it('returns 200 for valid landing lead payload (serviceType, empty address)', async () => {
+    const request = createRequest(validLeadPayload);
+    const response = await POST(request);
+    expect(response.status).toBe(200);
+    const data = await response.json();
+    expect(data.success).toBe(true);
+  });
+
+  it('returns 422 when source is landing but serviceType is missing', async () => {
+    const request = createRequest({
+      name: 'Jane Lead',
+      email: 'jane@example.com',
+      phone: '1234567890',
+      address: '',
+      message: 'This is a test message with enough characters.',
+      source: 'landing',
+    });
+    const response = await POST(request);
+    expect(response.status).toBe(422);
+  });
+
+  it('returns 422 when source is contact but address is too short', async () => {
+    const request = createRequest({
+      name: 'John Doe',
+      email: 'john@example.com',
+      phone: '1234567890',
+      address: '1234',
+      message: 'This is a test message with enough characters.',
+      source: 'contact',
+    });
+    const response = await POST(request);
+    expect(response.status).toBe(422);
+  });
+
+  it('returns 422 when source is missing', async () => {
+    const request = createRequest({
+      ...validPayload,
+      source: undefined,
+    });
+    const response = await POST(request);
+    expect(response.status).toBe(422);
   });
 
   it('returns 429 when rate limited', async () => {

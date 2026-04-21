@@ -12,6 +12,7 @@
     "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@react-email/components": "^1.0.2",
     "@vercel/functions": "^3.4.3",
@@ -24,6 +25,7 @@
     "next": "16.2.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "react-hook-form": "^7.73.1",
     "resend": "^6.6.0",
     "zod": "^4.2.1"
   },

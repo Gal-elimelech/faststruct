@@ -1,23 +1,41 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Section } from '@/components/Section';
 import { IFormConfig } from '@/types/landing';
 import { Button } from '@/components/Button';
 import FormField from '@/sections/contact/components/FormField';
 import SelectField from '@/sections/contact/components/SelectField';
 import FormMessage from '@/sections/contact/components/FormMessage';
+import {
+  LEAD_SERVICE_TYPES,
+  leadCaptureFormSchema,
+  type LeadCaptureFormInput,
+} from '@/schemas/contact';
 
-const LeadCaptureSection = ({ title, subtitle, fields, buttonText }: IFormConfig) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    serviceType: 'ADU Construction',
-    message: '',
-  });
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+const defaultValues: LeadCaptureFormInput = {
+  name: '',
+  phone: '',
+  email: '',
+  address: '',
+  serviceType: 'ADU Construction',
+  message: '',
+  source: 'landing',
+};
+
+const serviceOptions = LEAD_SERVICE_TYPES.map((value) => ({
+  label: value,
+  value,
+}));
+
+const LeadCaptureSection = ({
+  title,
+  subtitle,
+  fields,
+  buttonText,
+}: IFormConfig) => {
   const [submitMessage, setSubmitMessage] = useState<{
     type: 'success' | 'error' | null;
     text: string;
@@ -25,29 +43,19 @@ const LeadCaptureSection = ({ title, subtitle, fields, buttonText }: IFormConfig
 
   const sectionRef = useRef<HTMLElement>(null);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const fieldName = e.target.name;
-    const fieldValue = e.target.value;
+  const {
+    register,
+    control,
+    handleSubmit,
+    setError,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<LeadCaptureFormInput>({
+    resolver: zodResolver(leadCaptureFormSchema),
+    defaultValues,
+  });
 
-    setFormData({
-      ...formData,
-      [fieldName]: fieldValue,
-    });
-
-    if (fieldErrors[fieldName]) {
-      setFieldErrors((prev) => {
-        const newErrors = { ...prev };
-        delete newErrors[fieldName];
-        return newErrors;
-      });
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const onSubmit = handleSubmit(async (values) => {
     setSubmitMessage({ type: null, text: '' });
 
     try {
@@ -56,15 +64,24 @@ const LeadCaptureSection = ({ title, subtitle, fields, buttonText }: IFormConfig
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...formData,
-          address: `Service Type: ${formData.serviceType}`,
-        }),
+        body: JSON.stringify(values),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
+        if (data.details && Array.isArray(data.details)) {
+          for (const detail of data.details as {
+            field: string;
+            message: string;
+          }[]) {
+            const key = detail.field as keyof LeadCaptureFormInput;
+            if (key in defaultValues) {
+              setError(key, { message: detail.message });
+            }
+          }
+        }
+
         setSubmitMessage({
           type: 'error',
           text: data.error || 'Failed to send message',
@@ -77,37 +94,22 @@ const LeadCaptureSection = ({ title, subtitle, fields, buttonText }: IFormConfig
         text: 'Estimate request sent successfully!',
       });
 
-      setFormData({ name: '', email: '', phone: '', serviceType: 'ADU Construction', message: '' });
-      setFieldErrors({});
+      reset(defaultValues);
     } catch {
       setSubmitMessage({
         type: 'error',
         text: 'Network error. Please try again.',
       });
-    } finally {
-      setIsSubmitting(false);
     }
-  };
-
-  const serviceOptions = [
-    { label: 'ADU Construction', value: 'ADU Construction' },
-    { label: 'Modular Homes', value: 'Modular Homes' },
-    { label: 'New Home Construction', value: 'New Home Construction' },
-    { label: 'Panelized Construction', value: 'Panelized Construction' },
-  ];
-
-  // Map field config to state keys
-  const fieldKeys = ['name', 'phone', 'email', 'serviceType', 'message'];
+  });
 
   return (
     <Section
-      id="lead-capture"
+      id='lead-capture'
       ref={sectionRef}
       bgColor='dark'
       textColor='light'
-      className='py-32 relative overflow-hidden'
-    >
-      {/* Background Accent */}
+      className='py-32 relative overflow-hidden'>
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 blur-[150px] pointer-events-none' />
 
       <div className='max-w-5xl mx-auto relative z-10'>
@@ -120,38 +122,49 @@ const LeadCaptureSection = ({ title, subtitle, fields, buttonText }: IFormConfig
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 bg-white/[0.03] p-8 md:p-20 border border-white/5 rounded-sm backdrop-blur-xl relative overflow-hidden'>
-          {/* Subtle Industrial Lines */}
+        <form
+          onSubmit={onSubmit}
+          className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 bg-white/[0.03] p-8 md:p-20 border border-white/5 rounded-sm backdrop-blur-xl relative overflow-hidden'>
+          <input type='hidden' {...register('source')} />
+          <input type='hidden' {...register('address')} />
           <div className='absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent' />
 
-          {fields.map((field, idx) => {
-            const key = fieldKeys[idx] as keyof typeof formData;
+          {fields.map((field) => {
+            const key = field.fieldKey;
 
             if (key === 'serviceType') {
               return (
-                <SelectField
+                <Controller
                   key={key}
-                  id={key}
-                  name={key}
-                  label={field.label}
-                  value={formData[key]}
-                  onChange={handleChange}
-                  options={serviceOptions}
+                  name='serviceType'
+                  control={control}
+                  render={({ field: controllerField }) => (
+                    <SelectField
+                      id={key}
+                      name={key}
+                      label={field.label}
+                      registration={controllerField}
+                      options={serviceOptions}
+                      error={errors.serviceType?.message}
+                      required
+                    />
+                  )}
                 />
               );
             }
 
             return (
-              <div key={key} className={key === 'message' ? 'md:col-span-2' : ''}>
+              <div
+                key={key}
+                className={key === 'message' ? 'md:col-span-2' : ''}>
                 <FormField
                   id={key}
                   name={key}
                   label={field.label}
-                  type={field.type as any}
-                  value={formData[key]}
-                  onChange={handleChange}
+                  type={field.type as 'text' | 'email' | 'tel' | 'textarea'}
+                  registration={register(key)}
                   placeholder={field.placeholder}
-                  error={fieldErrors[key]}
+                  error={errors[key]?.message}
                   required
                   rows={key === 'message' ? 4 : undefined}
                 />
@@ -166,8 +179,7 @@ const LeadCaptureSection = ({ title, subtitle, fields, buttonText }: IFormConfig
               size='lg'
               disabled={isSubmitting}
               hoverTransition='lift'
-              className='w-full md:w-80'
-            >
+              className='w-full md:w-80'>
               {isSubmitting ? 'Sending...' : buttonText}
             </Button>
 

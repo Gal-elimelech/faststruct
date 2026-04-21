@@ -27,7 +27,11 @@ export interface IValueProp {
   };
 }
 
+import type { LeadCaptureFormFieldKey } from '@/schemas/contact';
+
 export interface IFormFieldConfig {
+  /** Binds this CMS row to the Zod/RHF field name (not inferred from array order). */
+  fieldKey: LeadCaptureFormFieldKey;
   label: string;
   placeholder: string;
   type: string;
