@@ -56,6 +56,8 @@ const LeadCaptureSection = ({
   });
 
   const onSubmit = handleSubmit(async (values) => {
+    // TODO: remove this when implementing WhatConvert form submission
+    return;
     setSubmitMessage({ type: null, text: '' });
 
     try {
