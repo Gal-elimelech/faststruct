@@ -3,6 +3,7 @@ import AnimatedHeading from '@/components/text-animation/AnimatedHeading';
 import FadeInParagraph from '@/components/text-animation/FadeInParagraph';
 import ContactInfoItem from './ContactInfoItem';
 import { IContactForm, IContactInfo } from '@/types/contact';
+import GoogleMapEmbed from '@/components/GoogleMapEmbed';
 
 interface ContactInfoSectionProps {
   form: IContactForm;
@@ -74,19 +75,7 @@ const ContactInfoSection = ({
       <div className='mt-6'>
         <h4 className='text-h5 font-bebas text-light mb-4'>Location</h4>
         <div className='border-accent/20 h-[300px] w-full overflow-hidden rounded-lg border'>
-          <iframe
-            src={`https://www.google.com/maps?q=${encodeURIComponent(
-              `${info.address.street}, ${info.address.city}`
-            )}&output=embed`}
-            width='100%'
-            height='100%'
-            style={{ border: 0 }}
-            allowFullScreen
-            loading='lazy'
-            referrerPolicy='no-referrer-when-downgrade'
-            className='h-full w-full'
-            title='Fast Struct Location'
-          />
+          <GoogleMapEmbed address={info.address.street} city={info.address.city} />
         </div>
       </div>
     </motion.div>
@@ -94,3 +83,4 @@ const ContactInfoSection = ({
 };
 
 export default ContactInfoSection;
+

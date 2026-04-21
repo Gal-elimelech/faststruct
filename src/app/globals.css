@@ -106,7 +106,7 @@
   }
 
   .btn-outline {
-    @apply border-dark text-dark hover:bg-dark/10 active:bg-dark/20 focus:ring-dark/50 border-2 bg-transparent;
+    @apply text-dark hover:bg-dark/10 active:bg-dark/20 focus:ring-dark/50 bg-transparent outline-2 outline-solid outline-dark;
   }
 
   /* Button with Icon */

@@ -11,6 +11,12 @@ import {
 } from '@react-email/components';
 import CSSConstants from '@/lib/css-constants';
 import { env } from '@/lib/env';
+import type { ContactFormSource } from '@/schemas/contact';
+
+const SOURCE_LABEL: Record<ContactFormSource, string> = {
+  contact: 'Contact page',
+  landing: 'Landing page',
+};
 
 interface ContactEmailProps {
   name: string;
@@ -18,6 +24,8 @@ interface ContactEmailProps {
   phone: string;
   address: string;
   message: string;
+  serviceType?: string;
+  source: ContactFormSource;
 }
 
 export default function ContactEmail({
@@ -26,6 +34,8 @@ export default function ContactEmail({
   phone,
   address,
   message,
+  serviceType,
+  source,
 }: ContactEmailProps) {
   return (
     <Html>
@@ -53,6 +63,11 @@ export default function ContactEmail({
           <Hr style={hr} />
 
           <Section style={section}>
+            <Text style={label}>Submitted from:</Text>
+            <Text style={value}>{SOURCE_LABEL[source]}</Text>
+          </Section>
+
+          <Section style={section}>
             <Text style={label}>Name:</Text>
             <Text style={value}>{name}</Text>
           </Section>
@@ -75,10 +90,19 @@ export default function ContactEmail({
             </Text>
           </Section>
 
-          <Section style={section}>
-            <Text style={label}>Address:</Text>
-            <Text style={value}>{address}</Text>
-          </Section>
+          {serviceType ? (
+            <Section style={section}>
+              <Text style={label}>Service type:</Text>
+              <Text style={value}>{serviceType}</Text>
+            </Section>
+          ) : null}
+
+          {address.trim() ? (
+            <Section style={section}>
+              <Text style={label}>Address:</Text>
+              <Text style={value}>{address}</Text>
+            </Section>
+          ) : null}
 
           <Section style={section}>
             <Text style={label}>Message:</Text>

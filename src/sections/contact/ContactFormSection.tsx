@@ -1,27 +1,35 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useInView } from 'motion/react';
 import { Section } from '@/components/Section';
 import ContactInfoSection from './components/ContactInfoSection';
 import ContactForm from './components/ContactForm';
 import { IContactForm, IContactInfo } from '@/types/contact';
+import {
+  contactFormSchema,
+  type ContactFormData,
+  type ContactFormInput,
+} from '@/schemas/contact';
 
 interface ContactFormSectionProps {
   form: IContactForm;
   info: IContactInfo;
 }
 
+const defaultValues: ContactFormInput = {
+  name: '',
+  email: '',
+  phone: '',
+  address: '',
+  message: '',
+  serviceType: undefined,
+  source: 'contact',
+};
+
 const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    message: '',
-  });
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<{
     type: 'success' | 'error' | null;
     text: string;
@@ -29,29 +37,18 @@ const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
   const sectionRef = useRef<HTMLFormElement>(null);
   const isFormInView = useInView(sectionRef, { once: true });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const fieldName = e.target.name;
-    const fieldValue = e.target.value;
+  const { register, handleSubmit, reset, setError, formState } = useForm<
+    ContactFormInput,
+    undefined,
+    ContactFormData
+  >({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues,
+  });
 
-    setFormData({
-      ...formData,
-      [fieldName]: fieldValue,
-    });
+  const { errors, isSubmitting } = formState;
 
-    if (fieldErrors[fieldName]) {
-      setFieldErrors((prev) => {
-        const newErrors = { ...prev };
-        delete newErrors[fieldName];
-        return newErrors;
-      });
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const onValid: SubmitHandler<ContactFormData> = async (payload) => {
     setSubmitMessage({ type: null, text: '' });
 
     try {
@@ -60,62 +57,58 @@ const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
+      const result = await response.json();
 
       if (!response.ok) {
-        if (data.details && Array.isArray(data.details)) {
-          const errors: Record<string, string> = {};
-          data.details.forEach((detail: { field: string; message: string }) => {
-            errors[detail.field] = detail.message;
-          });
-          setFieldErrors(errors);
+        if (result.details && Array.isArray(result.details)) {
+          for (const detail of result.details as {
+            field: string;
+            message: string;
+          }[]) {
+            const key = detail.field as keyof ContactFormInput;
+            if (key in defaultValues) {
+              setError(key, { message: detail.message });
+            }
+          }
         }
 
         setSubmitMessage({
           type: 'error',
-          text: data.error || 'Failed to send message',
+          text: result.error || 'Failed to send message',
         });
         return;
       }
 
       setSubmitMessage({
         type: 'success',
-        text: data.message || 'Message sent successfully!',
+        text: result.message || 'Message sent successfully!',
       });
 
-      setFormData({ name: '', email: '', phone: '', address: '', message: '' });
-      setFieldErrors({});
+      reset(defaultValues);
     } catch {
       setSubmitMessage({
         type: 'error',
         text: 'Network error. Please try again.',
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   return (
-    <Section
-      ref={sectionRef}
-      bgColor='dark'
-      textColor='light'
-      className='-my-10'>
+    <Section ref={sectionRef} bgColor='dark' textColor='light' className='-my-10'>
       <div className='container mx-auto'>
         <div className='grid gap-12 md:grid-cols-2 md:gap-16'>
           <ContactInfoSection form={form} info={info} isInView={isFormInView} />
           <ContactForm
             form={form}
-            formData={formData}
-            fieldErrors={fieldErrors}
+            register={register}
+            errors={errors}
             isSubmitting={isSubmitting}
             submitMessage={submitMessage}
             isInView={isFormInView}
-            onChange={handleChange}
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onValid)}
           />
         </div>
       </div>

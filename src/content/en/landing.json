@@ -1,0 +1,333 @@
+{
+  "metadataImage": "/assets/modules-images/module-1/out-1.jpg",
+  "heroSection": {
+    "title": "Custom ADUs Built in the Bay Area. As Fast As 90 Days.",
+    "subtitle": "Steel construction, premium finishes, factory precision, and a backyard unit you can actually count on.",
+    "licenses": [
+      { "label": "CSLB", "number": "1147858" },
+      { "label": "CA HCD", "number": "1632336" }
+    ],
+    "cta": {
+      "text": "Design Your ADU",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 665-3839",
+      "link": "tel:+14086653839"
+    },
+    "googleReviewBadge": "/assets/logo/google-review-badge.png",
+    "backgroundImage": "/assets/testimonials.png"
+  },
+  "valueProp": {
+    "title": "Your ADU. Your Design. Built Smarter.",
+    "texts": [
+      "At Fast Struct, we don't hand you a catalog and ask you to pick a box. We hand you a blank canvas.",
+      "Whether you're envisioning a private backyard retreat, a rental income unit, or a spacious live-work studio - our team designs your ADU around your property, your lifestyle, and your budget. Every layout, room size, finish, and configuration is tailored from the ground up.",
+      "What does your perfect ADU look like? We'll build it."
+    ],
+    "features": {
+      "title": "Feature Callouts",
+      "items": [
+        {
+          "title": "Any Layout, Any Size",
+          "text": "From ultra-compact studios to spacious two-bedroom units."
+        },
+        {
+          "title": "Fully Custom Finishes",
+          "text": "Flooring, cladding, rooflines, HVAC, electrical - all your choices."
+        },
+        {
+          "title": "Designed For Your Lot",
+          "text": "We work around narrow driveways, tricky access, and tight lot lines."
+        },
+        {
+          "title": "Steel-Framed Precision",
+          "text": "Every ADU built to millimeter tolerances in our Santa Clara facility."
+        }
+      ]
+    }
+  },
+  "leadCapture": {
+    "title": "Get Your Free Estimate",
+    "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
+    "fields": [
+      {
+        "fieldKey": "name",
+        "label": "Full Name",
+        "placeholder": "Your name",
+        "type": "text"
+      },
+      {
+        "fieldKey": "phone",
+        "label": "Phone Number",
+        "placeholder": "(123) 456-7890",
+        "type": "text"
+      },
+      {
+        "fieldKey": "email",
+        "label": "Email Address",
+        "placeholder": "your.email@example.com",
+        "type": "email"
+      },
+      {
+        "fieldKey": "serviceType",
+        "label": "Service Type",
+        "placeholder": "ADU",
+        "type": "text"
+      },
+      {
+        "fieldKey": "message",
+        "label": "Message",
+        "placeholder": "Tell us about your project...",
+        "type": "textarea"
+      }
+    ],
+    "buttonText": "Submit Request"
+  },
+  "companyOverview": {
+    "title": "Fast Struct: California's Premier ADU Builder",
+    "texts": [
+      "Adding an ADU to your California property shouldn't mean months of noise, disruption, and uncertainty. Fast Struct built a smarter way.",
+      "As a licensed California contractor with a state-approved manufacturing facility in Santa Clara, we specialize in factory-built ADUs that arrive 95% complete and are craned into place in a single day. Your backyard stays clean, your neighbors stay happy, and you get a premium living space faster than any traditional builder can promise.",
+      "From permits to final delivery, your dedicated project manager handles every step. We're not just ADU contractors near you. We're your partner from day one."
+    ],
+    "items": [
+      {
+        "icon": "fas fa-certificate",
+        "title": "Licensed CA Contractor"
+      },
+      {
+        "icon": "fas fa-award",
+        "title": "State-Approved Manufacturing Facility"
+      },
+      {
+        "icon": "fas fa-project-diagram",
+        "title": "Complete A-Z Project Management"
+      },
+      {
+        "icon": "fas fa-building",
+        "title": "Steel Construction — Built to Last"
+      }
+    ],
+    "cta": {
+      "text": "(408) 665-3839",
+      "link": "tel:+14086653839"
+    }
+  },
+  "servicesOverview": {
+    "title": "What We Build",
+    "subtitle": "From compact backyard studios to spacious two-bedroom units, every Fast Struct ADU is engineered to your site, your design, and your timeline.",
+    "items": [
+      {
+        "title": "Detached ADUs",
+        "description": "Fully custom standalone steel-framed units built in our factory and delivered to your property."
+      },
+      {
+        "title": "Junior ADUs (JADUs)",
+        "description": "Smaller attached units that maximize your existing footprint within a residence."
+      },
+      {
+        "title": "Modular ADUs",
+        "description": "95% factory-built for maximum speed and quality, craned into place in a single day."
+      },
+      {
+        "title": "Panelized ADUs",
+        "description": "Precision steel Smart Walls for design freedom and properties with difficult lot access."
+      },
+      {
+        "title": "Multi-Unit ADU Developments",
+        "description": "Scalable solutions for property developers and investors looking for rapid deployment."
+      },
+      {
+        "title": "Permits, Site Prep & Delivery",
+        "description": "Full process handling from zoning and state-route permitting to final site handover."
+      }
+    ],
+    "cta": {
+      "text": "Learn More",
+      "link": "#leadCapture"
+    }
+  },
+  "constructionMethods": {
+    "title": "Two Paths. One Standard of Excellence.",
+    "subtitle": "We don't force you into a box. Fast Struct recommends the construction method that fits your site, your design, and your timeline. No upsells, no guesswork.",
+    "paths": [
+      {
+        "title": "The Modular Route — Ideal for Rapid Deployment",
+        "description": "Your ADU is fully finished in our factory — including structure, electrical, and finishes — then craned onto your property ready to connect.",
+        "bulletPoints": [
+          "Arrives 95% complete",
+          "Craned into place in a single day",
+          "Minimum disruption to your property and neighbors"
+        ]
+      },
+      {
+        "title": "The Panelized Route — Ideal for Design Freedom",
+        "description": "Precision-engineered steel Smart Walls that pack flat and assemble rapidly on-site. Ideal for properties with limited access or wider, open layouts.",
+        "bulletPoints": [
+          "Works on narrow driveways and difficult lots",
+          "Supports wider, more open floor plans",
+          "Maximum design freedom"
+        ]
+      }
+    ],
+    "cta": {
+      "text": "Call: (408) 665-3839",
+      "link": "tel:+14086653839"
+    }
+  },
+  "processTimeline": {
+    "title": "Your ADU, Built Smarter.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Discovery",
+        "description": "We assess your property, budget, and goals to recommend the right ADU type and construction method for your lot."
+      },
+      {
+        "step": "02",
+        "title": "Design & Permit",
+        "description": "Our team customizes your floor plan and navigates the local zoning and permitting process on your behalf. Because we're a state-approved modular factory, plans submitted through the state route are approved in days — not the months it takes traditional builders. You stay informed without the headache."
+      },
+      {
+        "step": "03",
+        "title": "Fabrication",
+        "description": "While your foundation is prepared on-site, your ADU is simultaneously precision-manufactured in our Santa Clara, California facility. This parallel process — steel-framed, factory-controlled, and built to tolerance — is exactly how we move so fast."
+      },
+      {
+        "step": "04",
+        "title": "Assembly",
+        "description": "Your unit arrives and is craned into place. Installation is rapid, clean, and quiet."
+      },
+      {
+        "step": "05",
+        "title": "Handover",
+        "description": "Walk into a fully finished ADU ready for occupancy. Keys in hand, no punchlist."
+      }
+    ]
+  },
+  "differentiators": {
+    "title": "Why Bay Area Homeowners Choose Fast Struct for Their ADU",
+    "items": [
+      {
+        "title": "As Fast As 90 Days",
+        "text": " Our parallel factory and on-site process means your ADU is ready faster than any traditional ADU contractor near you can promise."
+      },
+      {
+        "title": "Steel Construction — Not Wood",
+        "text": " Every Fast Struct ADU is built with a steel frame, not wood. Steel is non-combustible, doesn't rot, and holds to millimeter-level tolerances. It's a fundamentally better building material — and one that 90% of our competitors simply can't offer."
+      },
+      {
+        "title": "State-Approved Facility = Faster Permits",
+        "text": "As a state-certified modular factory, our plans go through the state approval route — meaning permits in days, not months. No other local ADU builder can say that."
+      },
+      {
+        "title": "Complete A-Z Solutions",
+        "text": "Permits, design, fabrication, and delivery all handled by one team. One point of contact, zero coordination stress. "
+      },
+      {
+        "title": "Arrives 95% Complete",
+        "text": "Your ADU is craned onto your property nearly finished. Installation takes a single day, not months."
+      },
+      {
+        "title": "Factory Precision, Premium Finishes",
+        "text": " Premium materials and finishes built to tolerances that traditional ADU builders simply cannot match."
+      },
+      {
+        "title": "Dedicated Project Manager",
+        "text": "One person guides you personally from the first call to the day you hand over the keys to your tenant or family member."
+      },
+      {
+        "title": "Licensed CA Contractor + State-Approved Facility",
+        "text": "Fully licensed, bonded, and compliant. Every build is warrantied and certified."
+      }
+    ],
+    "cta": {
+      "text": "Call: (408) 665-3839",
+      "link": "tel:+14086653839"
+    }
+  },
+  "testimonials": [
+    {
+      "quote": "Fast Struct delivered our dream home in under 90 days. The quality is unreal. The steel construction feels so much more solid than wood.",
+      "author": "Sarah M.",
+      "location": "Los Angeles, CA",
+      "rating": 5
+    },
+    {
+      "quote": "The whole process was seamless. One project manager, clear steps, no surprises. They handled our tight driveway with their panelized system.",
+      "author": "Jason T.",
+      "location": "Sacramento, CA",
+      "rating": 5
+    },
+    {
+      "quote": "Our ADU was craned into place in a single day. The neighbors couldn't believe it. Highly professional and efficient team.",
+      "author": "Linda R.",
+      "location": "San Diego, CA",
+      "rating": 5
+    }
+  ],
+  "gallery": [
+    {
+      "url": "/assets/modules-images/module-1/out-1.jpg",
+      "alt": "Modern Module 1 Exterior"
+    },
+    {
+      "url": "/assets/modules-images/all-modules-in-1.jpg",
+      "alt": "Modern Module Interior"
+    },
+    {
+      "url": "/assets/modules-images/all-modules-in-2.jpg",
+      "alt": "Modern Module Interior"
+    },
+    {
+      "url": "/assets/modules-images/module-4/out-1.jpg",
+      "alt": "Modern Module 4 Exterior"
+    },
+    {
+      "url": "/assets/modules-images/module-5/out-2.jpg",
+      "alt": "Modern Module 4 Interior"
+    }
+  ],
+  "location": {
+    "title": "Locally Built. Serving the Bay Area and Beyond.",
+    "mainAddress": {
+      "label": "Headquarters",
+      "street": "3395 Edward Ave",
+      "cityStateZip": "Santa Clara, CA 95054",
+      "mapQuery": "3395 Edward Ave, Santa Clara, CA 95054"
+    },
+    "phone": {
+      "display": "(408) 702-9012",
+      "tel": "+14087029012"
+    },
+    "serviceAreas": [
+      "Santa Clara County",
+      "San Mateo County",
+      "Alameda County",
+      "Contra Costa County",
+      "Santa Cruz County"
+    ],
+    "cta": {
+      "text": "Call: (408) 665-3839",
+      "link": "tel:+14086653839"
+    }
+  },
+  "footer": {
+    "title": "Get Your Free Estimate",
+    "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
+    "licenses": [
+      { "label": "CSLB", "number": "1147858" },
+      { "label": "CA HCD", "number": "1632336" }
+    ],
+    "cta": {
+      "text": "Design Your ADU",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    },
+    "address": "3395 Edward Ave Santa Clara, CA 95054"
+  }
+}

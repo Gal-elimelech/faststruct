@@ -7,6 +7,7 @@ import type { IModulesPageContent } from '@/types/modulesPage';
 import type { IProcess } from '@/types/process';
 import type { ITheSystemContent } from '@/types/theSystem';
 import type { IProductContent } from '@/types/product';
+import type { ILandingContent } from '@/types/landing';
 
 // Static imports of all content JSON files
 import homeContentEn from '@/content/en/home.json';
@@ -16,6 +17,7 @@ import contactContentEn from '@/content/en/contact.json';
 import modulesPageContentEn from '@/content/en/modulesPage.json';
 import processContentEn from '@/content/en/process.json';
 import theSystemContentEn from '@/content/en/theSystem.json';
+import landingContentEn from '@/content/en/landing.json';
 
 // Content map: maps [language][page] to content
 // Note: 'product' is included in IContentMap but not used in the codebase.
@@ -30,6 +32,7 @@ const contentMap: Record<Language, IContentMap> = {
     modulesPage: modulesPageContentEn as IModulesPageContent,
     process: processContentEn as IProcess,
     theSystem: theSystemContentEn as ITheSystemContent,
+    landing: landingContentEn as ILandingContent,
   },
 };
 
