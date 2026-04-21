@@ -58,6 +58,7 @@ const ModulePage = async ({ params }: ModulePageProps) => {
     title: currentModule.title,
     subtitle: currentModule.summary,
     backgroundImage: currentModule.mainImage,
+    mobileBackgroundImage: currentModule.mobileImage,
   };
 
   const specificationsData = {

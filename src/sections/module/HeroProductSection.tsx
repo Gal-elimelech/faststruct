@@ -6,12 +6,17 @@ import FadeInParagraph from '@/components/text-animation/FadeInParagraph';
 import Parallax from '@/components/Parallax';
 import { IHeroProduct } from '@/types/product';
 import { Section } from '@/components/Section';
+import { useIsTablet } from '@/hooks/useIsTablet';
 
 const HeroProductSection = ({
   title,
   subtitle,
   backgroundImage,
+  mobileBackgroundImage,
 }: IHeroProduct) => {
+  const isTabletOrSmaller = useIsTablet();
+  const currentImage = isTabletOrSmaller ? mobileBackgroundImage : backgroundImage;
+
   return (
     <Section
       bgColor='dark'
@@ -26,7 +31,7 @@ const HeroProductSection = ({
         offset={['start start', 'end end']}>
         <div className='relative h-full w-full'>
           <Image
-            src={backgroundImage}
+            src={currentImage}
             alt='Product hero background'
             fill
             sizes='100vw'
