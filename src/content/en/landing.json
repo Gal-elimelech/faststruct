@@ -52,26 +52,31 @@
     "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
     "fields": [
       {
+        "fieldKey": "name",
         "label": "Full Name",
         "placeholder": "Your name",
         "type": "text"
       },
       {
+        "fieldKey": "phone",
         "label": "Phone Number",
         "placeholder": "(123) 456-7890",
         "type": "text"
       },
       {
+        "fieldKey": "email",
         "label": "Email Address",
         "placeholder": "your.email@example.com",
         "type": "email"
       },
       {
+        "fieldKey": "serviceType",
         "label": "Service Type",
         "placeholder": "ADU",
         "type": "text"
       },
       {
+        "fieldKey": "message",
         "label": "Message",
         "placeholder": "Tell us about your project...",
         "type": "textarea"

@@ -47,7 +47,8 @@ export async function POST(request: NextRequest) {
   try {
     const validatedEnv = getValidatedContactEnv();
     const resend = new Resend(validatedEnv.resendApiKey);
-    const { name, email, phone, address, message } = result.data;
+    const { name, email, phone, address, message, serviceType, source } =
+      result.data;
 
     const emailResult = await resend.emails.send({
       from: validatedEnv.fromEmail,
@@ -59,6 +60,8 @@ export async function POST(request: NextRequest) {
         phone,
         address,
         message,
+        serviceType,
+        source,
       }),
       replyTo: email,
     });
@@ -79,11 +82,7 @@ export async function POST(request: NextRequest) {
     // Add to Google Sheets (non-blocking - don't fail if this fails)
     try {
       await addToGoogleSheets({
-        name,
-        email,
-        phone,
-        address,
-        message,
+        ...result.data,
         status: 'Pending',
       });
       console.log('[Contact API] Successfully added to Google Sheets');

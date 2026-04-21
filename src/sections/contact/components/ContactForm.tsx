@@ -1,41 +1,33 @@
 'use client';
 
 import { motion } from 'motion/react';
+import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { Button } from '@/components/Button';
 import FormField from './FormField';
 import FormMessage from './FormMessage';
 import { IContactForm } from '@/types/contact';
+import type { ContactFormInput } from '@/schemas/contact';
 
 interface ContactFormProps {
   form: IContactForm;
-  formData: {
-    name: string;
-    email: string;
-    phone: string;
-    address: string;
-    message: string;
-  };
-  fieldErrors: Record<string, string>;
+  register: UseFormRegister<ContactFormInput>;
+  errors: FieldErrors<ContactFormInput>;
   isSubmitting: boolean;
   submitMessage: {
     type: 'success' | 'error' | null;
     text: string;
   };
   isInView: boolean;
-  onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-  onSubmit: (e: React.FormEvent) => void;
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
 }
 
 const ContactForm = ({
   form,
-  formData,
-  fieldErrors,
+  register,
+  errors,
   isSubmitting,
   submitMessage,
   isInView,
-  onChange,
   onSubmit,
 }: ContactFormProps) => {
   return (
@@ -46,16 +38,16 @@ const ContactForm = ({
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className='flex flex-col gap-6'>
+        <input type='hidden' {...register('source')} />
         <div className='flex flex-col gap-4'>
           <FormField
             id='name'
             name='name'
             label={form.fields.name.label}
             type='text'
-            value={formData.name}
-            onChange={onChange}
+            registration={register('name')}
             placeholder={form.fields.name.placeholder}
-            error={fieldErrors.name}
+            error={errors.name?.message}
             required
             autoComplete='name'
           />
@@ -65,10 +57,9 @@ const ContactForm = ({
             name='email'
             label={form.fields.email.label}
             type='email'
-            value={formData.email}
-            onChange={onChange}
+            registration={register('email')}
             placeholder={form.fields.email.placeholder}
-            error={fieldErrors.email}
+            error={errors.email?.message}
             required
             autoComplete='email'
           />
@@ -78,10 +69,9 @@ const ContactForm = ({
             name='phone'
             label={form.fields.phone.label}
             type='tel'
-            value={formData.phone}
-            onChange={onChange}
+            registration={register('phone')}
             placeholder={form.fields.phone.placeholder}
-            error={fieldErrors.phone}
+            error={errors.phone?.message}
             required
             autoComplete='tel'
           />
@@ -91,10 +81,9 @@ const ContactForm = ({
             name='address'
             label={form.fields.address.label}
             type='text'
-            value={formData.address}
-            onChange={onChange}
+            registration={register('address')}
             placeholder={form.fields.address.placeholder}
-            error={fieldErrors.address}
+            error={errors.address?.message}
             required
             autoComplete='street-address'
           />
@@ -104,10 +93,9 @@ const ContactForm = ({
             name='message'
             label={form.fields.message.label}
             type='textarea'
-            value={formData.message}
-            onChange={onChange}
+            registration={register('message')}
             placeholder={form.fields.message.placeholder}
-            error={fieldErrors.message}
+            error={errors.message?.message}
             required
             rows={6}
           />
