@@ -1,0 +1,146 @@
+export interface ICTA {
+  text: string;
+  link: string;
+}
+
+export interface ILandingHero {
+  title: string;
+  subtitle: string;
+  licenses: { label: string; number: string }[];
+  cta: ICTA;
+  phoneCta: ICTA;
+  googleReviewBadge: string;
+  backgroundImage: string;
+}
+
+export interface IValuePropItem {
+  title: string;
+  text: string;
+}
+
+export interface IValueProp {
+  title: string;
+  texts: string[];
+  features: {
+    title: string;
+    items: IValuePropItem[];
+  };
+}
+
+export interface IFormFieldConfig {
+  label: string;
+  placeholder: string;
+  type: string;
+}
+
+export interface IFormConfig {
+  title: string;
+  subtitle: string;
+  fields: IFormFieldConfig[];
+  buttonText: string;
+}
+
+export interface ICompanyOverviewItem {
+  icon: string;
+  title: string;
+}
+
+export interface ICompanyOverview {
+  title: string;
+  texts: string[];
+  items: ICompanyOverviewItem[];
+  cta: ICTA;
+}
+
+export interface IServiceItem {
+  title: string;
+  description: string;
+}
+
+export interface IServicesOverview {
+  title: string;
+  subtitle: string;
+  items: IServiceItem[];
+  cta: ICTA;
+}
+
+export interface IConstructionPath {
+  title: string;
+  description: string;
+  bulletPoints: string[];
+}
+
+export interface IConstructionMethods {
+  title: string;
+  subtitle: string;
+  paths: IConstructionPath[];
+  cta: ICTA;
+}
+
+export interface IProcessStep {
+  step: string;
+  title: string;
+  description: string;
+}
+
+export interface IProcessTimeline {
+  title: string;
+  steps: IProcessStep[];
+}
+
+export interface IDifferentiator {
+  title: string;
+  text: string;
+}
+
+export interface IDifferentiators {
+  title: string;
+  items: IDifferentiator[];
+  cta: ICTA;
+}
+
+export interface IGalleryItem {
+  url: string;
+  alt: string;
+}
+
+export interface ILocationItem {
+  icon: string;
+  title: string;
+}
+
+export interface ILocation {
+  title: string;
+  items: ILocationItem[];
+  cta: ICTA;
+}
+
+export interface IFooter {
+  title: string;
+  subtitle: string;
+  licenses: { label: string; number: string }[];
+  cta: ICTA;
+  phoneCta: ICTA;
+  address: string;
+}
+
+export interface ILandingContent {
+  metadataImage: string;
+  heroSection: ILandingHero;
+  valueProp: IValueProp;
+  leadCapture: IFormConfig;
+  companyOverview: ICompanyOverview;
+  servicesOverview: IServicesOverview;
+  constructionMethods: IConstructionMethods;
+  processTimeline: IProcessTimeline;
+  differentiators: IDifferentiators;
+  testimonials: {
+    quote: string;
+    author: string;
+    location: string;
+    rating: number;
+  }[];
+  gallery: IGalleryItem[];
+  loction: ILocation;
+  footer: IFooter;
+}

@@ -2,6 +2,7 @@ export interface IHeroProduct {
   title: string;
   subtitle: string;
   backgroundImage: string;
+  mobileBackgroundImage: string;
 }
 
 export interface ISpecification {

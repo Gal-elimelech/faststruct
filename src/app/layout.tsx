@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/navigation/Navbar';
-import Footer from '@/components/footer/Footer';
 import { Poppins, Bebas_Neue } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
-import WebsiteLoader from '@/components/website-loader/WebsiteLoader';
 import { ReactLenis } from 'lenis/react';
-import { getContent } from '@/lib/content';
 import AppNavigationProvider from '@/contexts/AppNavigationProvider';
 import { generateSocialMetadata } from '@/lib/metadata';
 import { env } from '@/lib/env';
@@ -38,8 +34,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const contactContent = await getContent('contact', 'en');
-
   return (
     <html lang='en'>
       <body className={`${fontPoppins.variable} ${fontBebasNeue.variable}`}>
@@ -56,14 +50,7 @@ export default async function RootLayout({
             wheelMultiplier: 1,
           }}>
           <AppNavigationProvider>
-            <WebsiteLoader>
-              <Navbar />
-              <main className='relative z-0'>{children}</main>
-              <Footer
-                contactInfo={contactContent.info}
-                contactSocial={contactContent.social}
-              />
-            </WebsiteLoader>
+            {children}
           </AppNavigationProvider>
         </ReactLenis>
       </body>

@@ -17,6 +17,7 @@ export interface IModule {
   marketingDescription: string;
   specs: ISpecs;
   mainImage: string;
+  mobileImage: string;
   images: string[];
   sketchPlans: string[];
 }

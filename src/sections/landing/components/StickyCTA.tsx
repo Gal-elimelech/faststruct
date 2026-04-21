@@ -1,0 +1,71 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import Link from 'next/link';
+import { Button } from '@/components/Button';
+import { useIsMobile } from '@/hooks/useIsMobile';
+
+interface StickyCTAProps {
+  phone: string;
+}
+
+const StickyCTA = ({ phone }: StickyCTAProps) => {
+  const isMobile = useIsMobile();
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show after scrolling 500px
+      if (window.scrollY > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          exit={{ y: 100 }}
+          className='fixed bottom-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-md border-t border-white/10 shadow-2xl p-4 md:px-12 flex justify-between items-center'
+        >
+          <div className='hidden md:block'>
+            <p className='font-bebas text-2xl text-light uppercase tracking-widest'>
+              Ready to build? <span className='text-accent'>Get started today.</span>
+            </p>
+          </div>
+
+          <div className='flex gap-4 w-full md:w-auto'>
+            <Link
+              href='#lead-capture'
+              className='flex-1 md:flex-none'
+            >
+              <Button variant='primary' size={isMobile ? 'sm' : 'md'} hoverTransition='lift' className='w-full'>
+                Get Free Estimate
+              </Button>
+            </Link>
+            <Link
+              href={`tel:${phone.replace(/\D/g, '')}`}
+              className='flex-1 md:flex-none'
+            >
+              <Button variant='outline' size={isMobile ? 'sm' : 'md'} hoverTransition='lift' className='w-full outline-accent! text-accent!'>
+                Call {phone}
+              </Button>
+            </Link>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export default StickyCTA;

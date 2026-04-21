@@ -11,6 +11,7 @@
       "modulesCount": 1
     },
     "mainImage": "/assets/modules-images/module-1/out-3.jpg",
+    "mobileImage": "/assets/modules-images/module-1/mobile-hero.png",
     "images": [
       "/assets/modules-images/module-1/out-1.jpg",
       "/assets/modules-images/module-1/out-3.jpg",
@@ -36,6 +37,7 @@
       "modulesCount": 1
     },
     "mainImage": "/assets/modules-images/module-2/out-2.jpg",
+    "mobileImage": "/assets/modules-images/module-2/mobile-hero.png",
     "images": [
       "/assets/modules-images/module-2/out-1.jpg",
       "/assets/modules-images/module-2/out-2.jpg",
@@ -60,6 +62,7 @@
       "modulesCount": 1
     },
     "mainImage": "/assets/modules-images/module-3/out-2.jpg",
+    "mobileImage": "/assets/modules-images/module-3/mobile-hero.png",
     "images": [
       "/assets/modules-images/module-3/out-1.jpg",
       "/assets/modules-images/module-3/out-2.jpg",
@@ -84,6 +87,7 @@
       "modulesCount": 1
     },
     "mainImage": "/assets/modules-images/module-4/out-2.jpg",
+    "mobileImage": "/assets/modules-images/module-4/mobile-hero.png",
     "images": [
       "/assets/modules-images/module-4/out-1.jpg",
       "/assets/modules-images/module-4/out-2.jpg",
@@ -108,6 +112,7 @@
       "modulesCount": 1
     },
     "mainImage": "/assets/modules-images/module-5/out-1.jpg",
+    "mobileImage": "/assets/modules-images/module-5/mobile-hero.png",
     "images": [
       "/assets/modules-images/module-5/out-1.jpg",
       "/assets/modules-images/module-5/out-2.jpg",
@@ -132,6 +137,7 @@
       "modulesCount": 1
     },
     "mainImage": "/assets/modules-images/module-6/out-2.png",
+    "mobileImage": "/assets/modules-images/module-6/mobile-hero.png",
     "images": [
       "/assets/modules-images/module-6/out-1.png",
       "/assets/modules-images/module-6/out-2.png",

@@ -6,6 +6,7 @@ import { IContactContent } from './contact';
 import { IModulesPageContent } from './modulesPage';
 import { IProcess } from './process';
 import { ITheSystemContent } from './theSystem';
+import { ILandingContent } from './landing';
 
 export interface IContentMap {
   home: IHomeContent;
@@ -16,6 +17,7 @@ export interface IContentMap {
   modulesPage: IModulesPageContent;
   process: IProcess;
   theSystem: ITheSystemContent;
+  landing: ILandingContent;
 }
 
 export type ContentKey = keyof IContentMap;
