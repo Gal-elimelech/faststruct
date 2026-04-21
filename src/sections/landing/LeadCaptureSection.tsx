@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { useInView } from 'motion/react';
 import { Section } from '@/components/Section';
 import { IFormConfig } from '@/types/landing';
 import { Button } from '@/components/Button';
@@ -23,9 +22,8 @@ const LeadCaptureSection = ({ title, subtitle, fields, buttonText }: IFormConfig
     type: 'success' | 'error' | null;
     text: string;
   }>({ type: null, text: '' });
-  
+
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -125,10 +123,10 @@ const LeadCaptureSection = ({ title, subtitle, fields, buttonText }: IFormConfig
         <form onSubmit={handleSubmit} className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 bg-white/[0.03] p-8 md:p-20 border border-white/5 rounded-sm backdrop-blur-xl relative overflow-hidden'>
           {/* Subtle Industrial Lines */}
           <div className='absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent' />
-          
+
           {fields.map((field, idx) => {
             const key = fieldKeys[idx] as keyof typeof formData;
-            
+
             if (key === 'serviceType') {
               return (
                 <SelectField

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { Section } from '@/components/Section';
 import { IGalleryItem } from '@/types/landing';
 import { useLandingGalleryCarousel } from '@/hooks/useLandingGalleryCarousel';
@@ -13,6 +14,9 @@ interface LandingGallerySectionProps {
 const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
   gallery,
 }) => {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [itemSpanPx, setItemSpanPx] = useState(0);
+
   const {
     trackItems,
     visibleCount,
@@ -26,6 +30,37 @@ const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
     handleTouchEnd,
     handleTouchCancel,
   } = useLandingGalleryCarousel({ gallery, visibleCount: 3, autoPlayInterval: 3500 });
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const measure = () => {
+      const firstItem = track.querySelector<HTMLElement>('[data-gallery-item="true"]');
+      if (!firstItem) return;
+
+      const styles = getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0');
+      const width = firstItem.getBoundingClientRect().width;
+      setItemSpanPx(width + gap);
+    };
+
+    measure();
+
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(track);
+    const firstItem = track.querySelector<HTMLElement>('[data-gallery-item="true"]');
+    if (firstItem) {
+      resizeObserver.observe(firstItem);
+    }
+
+    window.addEventListener('resize', measure);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, [trackItems.length]);
 
   return (
     <Section bgColor='dark' textColor='light' className='py-32 border-y border-white/5'>
@@ -54,13 +89,18 @@ const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
 
           <div className='overflow-hidden'>
             <div
+              ref={trackRef}
               className='flex gap-8'
               style={{
-                transform: `translateX(calc(-${currentPosition * (100 / visibleCount)}% - ${(currentPosition * 2)}rem))`,
+                transform:
+                  itemSpanPx > 0
+                    ? `translateX(${-currentPosition * itemSpanPx}px)`
+                    : `translateX(calc(-${currentPosition * (100 / visibleCount)}% - ${(currentPosition * 2)}rem))`,
               }}>
               {trackItems.map((item, idx) => (
                 <div
                   key={`${item.url}-${idx}`}
+                  data-gallery-item='true'
                   className='shrink-0 basis-[clamp(300px,30%,500px)]'>
                   <LandingGalleryCard item={item} index={idx} />
                 </div>
