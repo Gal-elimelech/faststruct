@@ -280,38 +280,28 @@
       "alt": "Modern Module 4 Exterior"
     },
     {
-      "url": "/assets/modules-images/module-4/out-2.jpg",
+      "url": "/assets/modules-images/module-5/out-2.jpg",
       "alt": "Modern Module 4 Interior"
     }
   ],
-  "loction": {
+  "location": {
     "title": "Locally Built. Serving the Bay Area and Beyond.",
-    "items": [
-      {
-        "icon": "fas fa-location-dot",
-        "title": "3395 Edward Ave Santa Clara, CA 95054"
-      },
-      { "icon": "fas fa-phone", "title": "(408) 702-9012" },
-      {
-        "icon": "fas fa-map-marker-alt",
-        "title": "Santa Clara County"
-      },
-      {
-        "icon": "fas fa-map-marker-alt",
-        "title": "San Mateo County"
-      },
-      {
-        "icon": "fas fa-map-marker-alt",
-        "title": "Alameda County"
-      },
-      {
-        "icon": "fas fa-map-marker-alt",
-        "title": "Contra Costa County"
-      },
-      {
-        "icon": "fas fa-map-marker-alt",
-        "title": "Santa Cruz County"
-      }
+    "mainAddress": {
+      "label": "Headquarters",
+      "street": "3395 Edward Ave",
+      "cityStateZip": "Santa Clara, CA 95054",
+      "mapQuery": "3395 Edward Ave, Santa Clara, CA 95054"
+    },
+    "phone": {
+      "display": "(408) 702-9012",
+      "tel": "+14087029012"
+    },
+    "serviceAreas": [
+      "Santa Clara County",
+      "San Mateo County",
+      "Alameda County",
+      "Contra Costa County",
+      "Santa Cruz County"
     ],
     "cta": {
       "text": "Call: (408) 665-3839",

@@ -79,8 +79,8 @@ const LandingPage = async () => {
         <LandingGallerySection gallery={content.gallery} />
       </section>
 
-      <section id="loction">
-        <LandingLocationSection {...content.loction} />
+      <section id="location">
+        <LandingLocationSection {...content.location} />
       </section>
 
       <LeadCaptureSection
