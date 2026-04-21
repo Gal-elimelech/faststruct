@@ -16,11 +16,10 @@ const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
   const {
     trackItems,
     visibleCount,
-    currentIndex,
-    isTransitionEnabled,
+    currentPosition,
+    shouldCarousel,
     goToNext,
     goToPrevious,
-    handleTrackTransitionEnd,
     handleMouseEnter,
     handleMouseLeave,
     handleTouchStart,
@@ -50,21 +49,19 @@ const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
           <LandingGalleryArrows
             onPrevious={goToPrevious}
             onNext={goToNext}
-            isVisible={gallery.length > visibleCount}
+            isVisible={shouldCarousel}
           />
 
           <div className='overflow-hidden'>
             <div
               className='flex gap-8'
               style={{
-                transform: `translateX(calc(-${currentIndex * (100 / visibleCount)}% - ${(currentIndex * 2)}rem))`,
-                transition: isTransitionEnabled ? 'transform 700ms ease' : 'none',
-              }}
-              onTransitionEnd={handleTrackTransitionEnd}>
+                transform: `translateX(calc(-${currentPosition * (100 / visibleCount)}% - ${(currentPosition * 2)}rem))`,
+              }}>
               {trackItems.map((item, idx) => (
                 <div
                   key={`${item.url}-${idx}`}
-                  className='shrink-0 basis-[calc((100%-4rem)/3)]'>
+                  className='shrink-0 basis-[clamp(300px,30%,500px)]'>
                   <LandingGalleryCard item={item} index={idx} />
                 </div>
               ))}

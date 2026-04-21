@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { IGalleryItem } from '@/types/landing';
 import { useIsMobile } from './useIsMobile';
 
@@ -13,11 +13,10 @@ interface IUseLandingGalleryCarouselParams {
 interface IUseLandingGalleryCarouselReturn {
   trackItems: IGalleryItem[];
   visibleCount: number;
-  currentIndex: number;
-  isTransitionEnabled: boolean;
+  currentPosition: number;
+  shouldCarousel: boolean;
   goToNext: () => void;
   goToPrevious: () => void;
-  handleTrackTransitionEnd: () => void;
   handleMouseEnter: () => void;
   handleMouseLeave: () => void;
   handleTouchStart: () => void;
@@ -40,58 +39,79 @@ export function useLandingGalleryCarousel({
   );
 
   const middleStartIndex = galleryLength;
-  const [currentIndex, setCurrentIndex] = useState(middleStartIndex);
-  const [isTransitionEnabled, setIsTransitionEnabled] = useState(true);
+  const [currentPosition, setCurrentPosition] = useState(middleStartIndex);
   const [isPaused, setIsPaused] = useState(false);
+  const currentPositionRef = useRef(middleStartIndex);
+  const lastFrameTimeRef = useRef<number | null>(null);
+
+  const normalizePosition = useCallback(
+    (position: number): number => {
+      if (!shouldCarousel) return middleStartIndex;
+
+      if (position >= galleryLength * 2) {
+        return position - galleryLength;
+      }
+
+      if (position < galleryLength) {
+        return position + galleryLength;
+      }
+
+      return position;
+    },
+    [galleryLength, middleStartIndex, shouldCarousel]
+  );
 
   useEffect(() => {
-    setCurrentIndex(middleStartIndex);
-    setIsTransitionEnabled(true);
-  }, [middleStartIndex]);
+    setCurrentPosition(middleStartIndex);
+    currentPositionRef.current = middleStartIndex;
+    lastFrameTimeRef.current = null;
+  }, [middleStartIndex, galleryLength]);
 
   const goToNext = useCallback(() => {
     if (!shouldCarousel) return;
-    setIsTransitionEnabled(true);
-    setCurrentIndex((prev) => prev + 1);
-  }, [shouldCarousel]);
+    const nextPosition = normalizePosition(currentPositionRef.current + 1);
+    currentPositionRef.current = nextPosition;
+    setCurrentPosition(nextPosition);
+  }, [normalizePosition, shouldCarousel]);
 
   const goToPrevious = useCallback(() => {
     if (!shouldCarousel) return;
-    setIsTransitionEnabled(true);
-    setCurrentIndex((prev) => prev - 1);
-  }, [shouldCarousel]);
-
-  const handleTrackTransitionEnd = useCallback(() => {
-    if (!shouldCarousel) return;
-
-    if (currentIndex >= galleryLength * 2) {
-      setIsTransitionEnabled(false);
-      setCurrentIndex(galleryLength);
-      return;
-    }
-
-    if (currentIndex < galleryLength) {
-      setIsTransitionEnabled(false);
-      setCurrentIndex(galleryLength * 2 - 1);
-    }
-  }, [currentIndex, galleryLength, shouldCarousel]);
-
-  useEffect(() => {
-    if (isTransitionEnabled) return;
-
-    const timer = setTimeout(() => {
-      setIsTransitionEnabled(true);
-    }, 50);
-
-    return () => clearTimeout(timer);
-  }, [isTransitionEnabled]);
+    const nextPosition = normalizePosition(currentPositionRef.current - 1);
+    currentPositionRef.current = nextPosition;
+    setCurrentPosition(nextPosition);
+  }, [normalizePosition, shouldCarousel]);
 
   useEffect(() => {
     if (!shouldCarousel || isPaused || autoPlayInterval <= 0) return;
 
-    const interval = setInterval(goToNext, autoPlayInterval);
-    return () => clearInterval(interval);
-  }, [autoPlayInterval, goToNext, isPaused, shouldCarousel]);
+    let animationFrameId = 0;
+    const itemsPerMs = 1 / autoPlayInterval;
+
+    const animate = (timestamp: number) => {
+      if (lastFrameTimeRef.current === null) {
+        lastFrameTimeRef.current = timestamp;
+      }
+
+      const elapsed = timestamp - lastFrameTimeRef.current;
+      lastFrameTimeRef.current = timestamp;
+
+      const nextPosition = normalizePosition(
+        currentPositionRef.current + elapsed * itemsPerMs
+      );
+
+      currentPositionRef.current = nextPosition;
+      setCurrentPosition(nextPosition);
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      lastFrameTimeRef.current = null;
+    };
+  }, [autoPlayInterval, isPaused, normalizePosition, shouldCarousel]);
 
   const handleMouseEnter = useCallback(() => {
     if (!isMobile) {
@@ -126,11 +146,10 @@ export function useLandingGalleryCarousel({
   return {
     trackItems,
     visibleCount,
-    currentIndex,
-    isTransitionEnabled,
+    currentPosition,
+    shouldCarousel,
     goToNext,
     goToPrevious,
-    handleTrackTransitionEnd,
     handleMouseEnter,
     handleMouseLeave,
     handleTouchStart,

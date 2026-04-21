@@ -1,31 +1,46 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes } from 'react';
+import { clsx } from 'clsx';
 
-interface GoogleMapEmbedProps extends HTMLAttributes<HTMLIFrameElement> {
-    address: string;
-    city: string;
+export interface GoogleMapEmbedProps
+  extends Omit<HTMLAttributes<HTMLIFrameElement>, 'src'> {
+  /** Full place string for the embed (e.g. landing headquarters). */
+  mapQuery?: string;
+  /** Used with `city` when `mapQuery` is omitted (e.g. contact page). */
+  address?: string;
+  city?: string;
 }
 
-
-const GoogleMapEmbed = async ({
-    address,
-    city,
-    ...props
+const GoogleMapEmbed = ({
+  mapQuery,
+  address,
+  city,
+  className,
+  title = 'Fast Struct Location',
+  ...props
 }: GoogleMapEmbedProps) => {
-    return (
-        <iframe
-            src={`https://www.google.com/maps?q=${encodeURIComponent(
-                `${address}, ${city}`
-            )}&output=embed`}
-            width='100%'
-            height='100%'
-            style={{ border: 0 }}
-            allowFullScreen
-            loading='lazy'
-            referrerPolicy='no-referrer-when-downgrade'
-            className='h-full w-full'
-            title='Fast Struct Location'
-        />
-    )
-}
+  const query =
+    mapQuery ??
+    (address != null && city != null ? `${address}, ${city}` : null);
+  if (query == null) {
+    throw new Error('GoogleMapEmbed: pass mapQuery or both address and city');
+  }
 
-export default GoogleMapEmbed
+  return (
+    <iframe
+      src={`https://www.google.com/maps?q=${encodeURIComponent(
+        query
+      )}&output=embed`}
+      width='100%'
+      height='100%'
+      style={{ border: 0 }}
+      allowFullScreen
+      loading='lazy'
+      referrerPolicy='no-referrer-when-downgrade'
+      className={clsx('h-full w-full', className)}
+      title={title}
+      {...props}
+    />
+  );
+};
+
+export default GoogleMapEmbed;

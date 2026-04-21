@@ -104,14 +104,23 @@ export interface IGalleryItem {
   alt: string;
 }
 
-export interface ILocationItem {
-  icon: string;
-  title: string;
+export interface ILocationMainAddress {
+  label: string;
+  street: string;
+  cityStateZip: string;
+  mapQuery: string;
+}
+
+export interface ILocationPhone {
+  display: string;
+  tel: string;
 }
 
 export interface ILocation {
   title: string;
-  items: ILocationItem[];
+  mainAddress: ILocationMainAddress;
+  phone: ILocationPhone;
+  serviceAreas: string[];
   cta: ICTA;
 }
 
@@ -141,6 +150,6 @@ export interface ILandingContent {
     rating: number;
   }[];
   gallery: IGalleryItem[];
-  loction: ILocation;
+  location: ILocation;
   footer: IFooter;
 }
