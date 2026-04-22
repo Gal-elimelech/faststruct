@@ -3,8 +3,7 @@
 import { Section } from '@/components/Section';
 import { IDifferentiators } from '@/types/landing';
 import { motion } from 'motion/react';
-import Link from 'next/link';
-import { Button } from '@/components/Button';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const DifferentiatorsSection: React.FC<IDifferentiators> = ({ title, items, cta }) => {
   return (
@@ -17,11 +16,9 @@ const DifferentiatorsSection: React.FC<IDifferentiators> = ({ title, items, cta 
             </h2>
           </div>
           
-          <Link href={cta.link} className='mb-2'>
-            <Button variant='primary' size='lg' hoverTransition='lift'>
-              {cta.text}
-            </Button>
-          </Link>
+          <LandingCtaLink href={cta.link} linkClassName='mb-2 shrink-0'>
+            {cta.text}
+          </LandingCtaLink>
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 overflow-hidden'>

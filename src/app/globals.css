@@ -109,6 +109,16 @@
     @apply text-dark hover:bg-dark/10 active:bg-dark/20 focus:ring-dark/50 bg-transparent outline-2 outline-solid outline-dark;
   }
 
+  /* Outline call-to-action on dark page backgrounds (accent ring) */
+  .btn-outline-call-dark {
+    @apply bg-transparent text-accent outline-2 outline-solid outline-accent hover:bg-accent/10 active:bg-accent/20 focus:ring-accent/50;
+  }
+
+  /* Outline call-to-action on hero glass card (white ring) */
+  .btn-outline-call-hero {
+    @apply bg-transparent text-white outline-2 outline-solid outline-white hover:bg-white/10 active:bg-white/15 focus:ring-white/50;
+  }
+
   /* Button with Icon */
   .btn-icon {
     @apply inline-flex items-center gap-2;
