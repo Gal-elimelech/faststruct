@@ -1,11 +1,10 @@
 'use client';
 
 import { Section } from '@/components/Section';
-import { Button } from '@/components/Button';
 import GoogleMapEmbed from '@/components/GoogleMapEmbed';
 import { ILocation } from '@/types/landing';
 import { motion } from 'motion/react';
-import Link from 'next/link';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const LandingLocationSection: React.FC<ILocation> = ({
   title,
@@ -29,11 +28,9 @@ const LandingLocationSection: React.FC<ILocation> = ({
             </h2>
           </div>
 
-          <Link href={cta.link} className='mb-2 shrink-0'>
-            <Button variant='primary' size='lg' hoverTransition='lift'>
-              {cta.text}
-            </Button>
-          </Link>
+          <LandingCtaLink href={cta.link} linkClassName='mb-2 shrink-0'>
+            {cta.text}
+          </LandingCtaLink>
         </div>
 
         <div className='grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-12'>

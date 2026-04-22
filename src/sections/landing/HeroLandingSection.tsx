@@ -1,10 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { ILandingHero } from '@/types/landing';
 import { motion } from 'motion/react';
-import { Button } from '@/components/Button';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const HeroLandingSection: React.FC<ILandingHero> = ({
   title,
@@ -16,7 +15,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
   backgroundImage,
 }) => {
   return (
-    <section className='relative w-full h-screen bg-dark overflow-hidden flex items-center justify-center'>
+    <section className='relative w-full min-h-[110vh] bg-dark flex items-center justify-center'>
       {/* Background Image */}
       <div className='absolute inset-0 z-0'>
         <Image
@@ -27,23 +26,6 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
           className='object-cover'
         />
       </div>
-
-      {/* Floating Google Review Badge */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className='absolute top-auto bottom-10 left-10 right-auto z-20'
-      >
-        <div className='relative size-52'>
-          <Image
-            src={googleReviewBadge}
-            alt='Google Reviews'
-            fill
-            className='object-contain overflow-hidden'
-          />
-        </div>
-      </motion.div>
 
       {/* Centered Content Card */}
       <div className='container-padding relative z-10 w-full flex justify-center'>
@@ -76,19 +58,45 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
           </div>
 
           {/* CTA Buttons */}
-          <div className='flex flex-col sm:flex-row gap-2 w-full justify-center'>
-            <Link href={cta.link} className='w-full sm:w-auto'>
-              <Button variant='primary' size='md' hoverTransition='lift' className='w-full px-12'>
-                {cta.text}
-              </Button>
-            </Link>
-            <Link href={phoneCta.link} className='w-full sm:w-auto'>
-              <Button variant='outline' size='md' hoverTransition='lift' className='w-full px-12 outline-white text-white'>
-                {phoneCta.text}
-              </Button>
-            </Link>
+          <div className='flex flex-col sm:flex-row gap-3 w-full max-w-xl mx-auto justify-stretch sm:justify-center'>
+            <LandingCtaLink
+              href={cta.link}
+              surface='hero'
+              size='lg'
+              linkClassName='w-full sm:w-auto min-w-0 sm:min-w-[12rem]'
+            >
+              {cta.text}
+            </LandingCtaLink>
+            <LandingCtaLink
+              href={phoneCta.link}
+              surface='hero'
+              size='lg'
+              linkClassName='w-full sm:w-auto min-w-0 sm:min-w-[12rem]'
+            >
+              {phoneCta.text}
+            </LandingCtaLink>
           </div>
+
+
+          {/* Floating Google Review Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className='absolute z-10 lg:-bottom-32 -bottom-40 -left-5'
+          >
+            <div className='relative size-52'>
+              <Image
+                src={googleReviewBadge}
+                alt='Google Reviews'
+                fill
+                className='object-contain'
+              />
+            </div>
+          </motion.div>
         </motion.div>
+
+
       </div>
 
       {/* Technical Spec Indicator (Bottom Right) */}
