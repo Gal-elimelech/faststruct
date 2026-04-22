@@ -3,9 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import FastructLogo from '../FastructLogo';
-import { Button } from '../Button';
 import { motion } from 'motion/react';
-import { useIsMobile } from '@/hooks/useIsMobile';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 interface LandingHeaderProps {
   phone: string;
@@ -14,7 +13,6 @@ interface LandingHeaderProps {
 
 export default function LandingHeader({ phone, ctaLink }: LandingHeaderProps) {
   const [showNavbar, setShowNavbar] = useState(true);
-  const isMobile = useIsMobile();
   const previousScrollY = useRef(0);
 
   useEffect(() => {
@@ -39,7 +37,7 @@ export default function LandingHeader({ phone, ctaLink }: LandingHeaderProps) {
       initial={{ y: 0 }}
       animate={{ y: showNavbar ? 0 : -100 }}
       transition={{ duration: 0.3 }}
-      className='fixed top-0 z-50 w-full bg-dark/90 backdrop-blur-md border-b border-white/10'
+      className='fixed top-0 z-50 w-full bg-dark'
     >
       <div className='container-padding max-w-[1400px] mx-auto py-3 md:py-4 flex items-center justify-between gap-4'>
         <Link href='/'>
@@ -50,25 +48,19 @@ export default function LandingHeader({ phone, ctaLink }: LandingHeaderProps) {
         </Link>
 
         <div className='flex items-center gap-2'>
-          <Link
+          <LandingCtaLink
             href={`tel:${phone.replace(/\D/g, '')}`}
+            size='md'
+            linkClassName='inline-flex shrink-0'
+            buttonClassName='inline-flex items-center justify-center gap-2'
           >
-            <Button variant='secondary' size={isMobile ? 'sm' : 'md'} hoverTransition='lift' className='flex items-center gap-2'>
-              <i className='fas fa-phone-alt '></i>
-              <span>Call: {phone}</span>
-            </Button>
+            <i className='fas fa-phone-alt' aria-hidden />
+            <span className='hidden md:inline'>Call: {phone}</span>
+          </LandingCtaLink>
 
-          </Link>
-
-          <Link href={ctaLink}>
-            <Button
-              variant='primary'
-              size={isMobile ? 'sm' : 'md'}
-              hoverTransition='lift'
-            >
-              Free Estimate
-            </Button>
-          </Link>
+          <LandingCtaLink href={ctaLink} size='md' linkClassName='inline-flex shrink-0'>
+            Free Estimate
+          </LandingCtaLink>
         </div>
       </div>
     </motion.header>

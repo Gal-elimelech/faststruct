@@ -4,8 +4,7 @@ import { Section } from '@/components/Section';
 import { IConstructionMethods } from '@/types/landing';
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import Link from 'next/link';
-import { Button } from '@/components/Button';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, subtitle, paths, cta }) => {
   return (
@@ -24,11 +23,9 @@ const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, sub
             </p>
           </div>
           
-          <Link href={cta.link} className='mb-2'>
-            <Button variant='primary' size='lg' hoverTransition='lift'>
-              {cta.text}
-            </Button>
-          </Link>
+          <LandingCtaLink href={cta.link} linkClassName='mb-2 shrink-0'>
+            {cta.text}
+          </LandingCtaLink>
         </div>
 
         <div className='flex flex-col gap-32 md:gap-48'>
@@ -79,11 +76,9 @@ const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, sub
                     </li>
                   ))}
                 </ul>
-                <Link href="#lead-capture">
-                  <Button variant='outline' size='md' hoverTransition='lift' className='outline-accent! text-accent!'>
-                    Learn More About This Route
-                  </Button>
-                </Link>
+                <LandingCtaLink href='#lead-capture'>
+                  Learn More About This Route
+                </LandingCtaLink>
               </div>
             </motion.div>
           ))}

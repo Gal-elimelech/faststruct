@@ -2,17 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import Link from 'next/link';
-import { Button } from '@/components/Button';
-import { useIsMobile } from '@/hooks/useIsMobile';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 interface StickyCTAProps {
   phone: string;
 }
 
 const StickyCTA = ({ phone }: StickyCTAProps) => {
-  const isMobile = useIsMobile();
-
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -45,22 +41,22 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
           </div>
 
           <div className='flex gap-4 w-full md:w-auto'>
-            <Link
+            <LandingCtaLink
               href='#lead-capture'
-              className='flex-1 md:flex-none'
+              size='lg'
+              fullWidth
+              linkClassName='flex-1 md:flex-none min-w-0'
             >
-              <Button variant='primary' size={isMobile ? 'sm' : 'md'} hoverTransition='lift' className='w-full'>
-                Get Free Estimate
-              </Button>
-            </Link>
-            <Link
+              Get Free Estimate
+            </LandingCtaLink>
+            <LandingCtaLink
               href={`tel:${phone.replace(/\D/g, '')}`}
-              className='flex-1 md:flex-none'
+              size='lg'
+              fullWidth
+              linkClassName='flex-1 md:flex-none min-w-0'
             >
-              <Button variant='outline' size={isMobile ? 'sm' : 'md'} hoverTransition='lift' className='w-full outline-accent! text-accent!'>
-                Call {phone}
-              </Button>
-            </Link>
+              Call {phone}
+            </LandingCtaLink>
           </div>
         </motion.div>
       )}

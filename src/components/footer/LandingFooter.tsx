@@ -3,7 +3,7 @@
 import { IFooter } from '@/types/landing';
 import FastructLogo from '../FastructLogo';
 import Link from 'next/link';
-import { Button } from '@/components/Button';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phoneCta, address }) => {
   const currentYear = new Date().getFullYear();
@@ -21,17 +21,13 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
               </p>
             </div>
 
-            <div className='flex flex-col sm:flex-row gap-2'>
-              <Link href={cta.link} className='w-full sm:w-auto'>
-                <Button variant='primary' size='md' hoverTransition='lift' className='w-full'>
-                  {cta.text}
-                </Button>
-              </Link>
-              <Link href={phoneCta.link} className='w-full sm:w-auto'>
-                <Button variant='outline' size='md' hoverTransition='lift' className='w-full outline-accent! text-accent!'>
-                  Call: {phoneCta.text}
-                </Button>
-              </Link>
+            <div className='flex flex-col sm:flex-row gap-3'>
+              <LandingCtaLink href={cta.link} linkClassName='w-full sm:w-auto'>
+                {cta.text}
+              </LandingCtaLink>
+              <LandingCtaLink href={phoneCta.link} linkClassName='w-full sm:w-auto'>
+                Call: {phoneCta.text}
+              </LandingCtaLink>
             </div>
           </div>
 

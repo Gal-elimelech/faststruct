@@ -36,15 +36,15 @@ const LandingPage = async () => {
 
   return (
     <Page className='bg-dark text-cream relative'>
-      <section id="heroSection">
+      <section id="heroSection" className='z-20'>
         <HeroLandingSection {...content.heroSection} />
       </section>
 
-      <section id="valueProp">
+      <section id="valueProp" className='z-10'>
         <ValuePropSection {...content.valueProp} />
       </section>
 
-      <section id="leadCapture">
+      <section>
         <LeadCaptureSection {...content.leadCapture} />
       </section>
 

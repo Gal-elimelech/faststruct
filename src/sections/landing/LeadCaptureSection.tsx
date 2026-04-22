@@ -181,7 +181,7 @@ const LeadCaptureSection = ({
               size='lg'
               disabled={isSubmitting}
               hoverTransition='lift'
-              className='w-full md:w-80'>
+              className='w-full max-w-md mx-auto sm:max-w-lg'>
               {isSubmitting ? 'Sending...' : buttonText}
             </Button>
 

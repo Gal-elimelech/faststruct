@@ -3,8 +3,7 @@
 import { Section } from '@/components/Section';
 import { ICompanyOverview } from '@/types/landing';
 import { motion } from 'motion/react';
-import Link from 'next/link';
-import { Button } from '@/components/Button';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const CompanyOverviewSection: React.FC<ICompanyOverview> = ({ title, texts, items, cta }) => {
   return (
@@ -24,11 +23,9 @@ const CompanyOverviewSection: React.FC<ICompanyOverview> = ({ title, texts, item
             </div>
           </div>
           
-          <Link href={cta.link}>
-            <Button variant='primary' size='lg' hoverTransition='lift' className='w-full sm:w-auto'>
-              Call: {cta.text}
-            </Button>
-          </Link>
+          <LandingCtaLink href={cta.link} linkClassName='inline-block w-full sm:w-auto'>
+            Call: {cta.text}
+          </LandingCtaLink>
         </div>
 
         <div className='lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10 w-full pt-4'>
