@@ -45,8 +45,9 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
             <LandingCtaLink
               href={`tel:${phone.replace(/\D/g, '')}`}
               size='md'
-              linkClassName='grow basis-1/2 '
-              buttonClassName='inline-flex items-center justify-center gap-2 h-full'
+              linkClassName='grow basis-1/2'
+              buttonClassName='inline-flex items-center justify-center gap-2 size-full'
+              fullWidth
             >
               <i className='fa-solid fa-phone' aria-hidden />
               <span>Call</span>
@@ -54,7 +55,10 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
 
             <LandingCtaLink
               href='#lead-capture'
-              size='md' linkClassName='grow basis-1/2'>
+              size='md' linkClassName='grow basis-1/2'
+              buttonClassName='text-nowrap'
+              fullWidth
+            >
               Free Estimate
             </LandingCtaLink>
           </div>
