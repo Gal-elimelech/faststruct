@@ -9,13 +9,13 @@ const ValuePropSection: React.FC<IValueProp> = ({ title, texts, features }) => {
   return (
     <Section bgColor='dark' textColor='light'>
       <div className='flex flex-col gap-12'>
-        <div className='max-w-4xl flex flex-col gap-6'>
+        <div className='max-w-4xl flex flex-col gap-4'>
           <AnimatedHeading
             text={title}
             className='text-h2 font-bebas text-light uppercase leading-[0.9]'
             revealColor='dark'
           />
-          <div className='flex flex-col gap-4'>
+          <div className='flex flex-col gap-3'>
             {texts.map((t, i) => (
               <p key={i} className='text-light/80 font-poppins leading-relaxed max-w-3xl'>
                 {t}
@@ -28,14 +28,18 @@ const ValuePropSection: React.FC<IValueProp> = ({ title, texts, features }) => {
           {features.items.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{
+                delay: idx * 0.07,
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               viewport={{ once: true }}
-              className='flex flex-col gap-8 bg-white/[0.02] border border-white/5 p-10 rounded-sm hover:border-accent/30 hover:bg-white/[0.04] transition-all duration-500 group relative overflow-hidden'
+              className='flex flex-col gap-8 bg-white/2 border border-white/5 p-10 rounded-sm hover:border-accent/30 hover:bg-white/4 group relative overflow-hidden'
             >
               {/* Index Number */}
-              <span className='font-bebas text-5xl text-white/[0.03] absolute top-4 right-6 group-hover:text-accent/10 transition-colors'>
+              <span className='font-bebas text-5xl text-white/3 absolute top-4 right-6 group-hover:text-accent/10 transition-colors'>
                 0{idx + 1}
               </span>
 

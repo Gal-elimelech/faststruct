@@ -6,41 +6,44 @@ import { motion } from 'motion/react';
 
 const LandingProcessSection: React.FC<IProcessTimeline> = ({ title, steps }) => {
   return (
-    <Section bgColor='light' textColor='dark' className='relative overflow-hidden'>
-      {/* Background Graphic */}
-      <div className='absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/20 to-transparent' />
-      
-      <div className='flex flex-col gap-16 md:gap-20 relative z-10'>
-        <div className='max-w-4xl'>
+    <Section bgColor='white' textColor='dark' className='relative overflow-hidden'>
+      <div className='pointer-events-none absolute -top-16 right-0 h-56 w-56 rounded-full bg-accent/10 blur-3xl' />
+
+      <div className='relative z-10 flex flex-col gap-10'>
+        <div className='max-w-4xl flex flex-col gap-4'>
           <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85]'>
             {title}
           </h2>
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8'>
+        <div className='grid grid-cols-1 gap-px border border-dark/10 bg-accent md:grid-cols-2 lg:grid-cols-5'>
           {steps.map((step, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1, duration: 0.8 }}
+              transition={{ delay: idx * 0.08, duration: 0.55 }}
               viewport={{ once: true }}
-              className='flex flex-col gap-8 group'
+              className='group relative flex flex-col gap-8 overflow-hidden bg-white p-10 md:p-12'
             >
               <div className='flex items-center gap-4'>
-                <span className='font-bebas text-5xl text-accent/20 group-hover:text-accent transition-colors duration-500'>
+                <span className='font-bebas text-5xl text-accent/25 group-hover:text-accent transition-colors duration-500'>
                   {step.step}
                 </span>
-                <div className='h-[1px] flex-grow bg-dark/10 group-hover:bg-accent/30 transition-colors duration-500' />
+                <div className='h-px grow bg-dark/10 group-hover:bg-accent/30 transition-colors duration-500' />
               </div>
-              
-              <div className='flex flex-col gap-4'>
+
+              <div className='flex flex-col gap-3'>
                 <h3 className='text-h4 font-bebas text-dark uppercase tracking-widest group-hover:text-accent transition-colors'>
                   {step.title}
                 </h3>
-                <p className='text-dark/70 font-poppins text-sm leading-relaxed'>
+                <p className='text-base text-dark/70 font-poppins leading-relaxed'>
                   {step.description}
                 </p>
+              </div>
+
+              <div className='mt-auto'>
+                <div className='h-px w-12 bg-accent/30 transition-all duration-500 group-hover:w-full' />
               </div>
             </motion.div>
           ))}

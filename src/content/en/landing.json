@@ -142,11 +142,7 @@
         "title": "Permits, Site Prep & Delivery",
         "description": "Full process handling from zoning and state-route permitting to final site handover."
       }
-    ],
-    "cta": {
-      "text": "Get Your Free Estimate",
-      "link": "#lead-capture"
-    }
+    ]
   },
   "constructionMethods": {
     "title": "Two Paths. One Standard of Excellence.",
@@ -307,11 +303,7 @@
       "Alameda County",
       "Contra Costa County",
       "Santa Cruz County"
-    ],
-    "cta": {
-      "text": "Call: (408) 665-3839",
-      "link": "tel:+14086653839"
-    }
+    ]
   },
   "footer": {
     "title": "Get Your Free Estimate",
