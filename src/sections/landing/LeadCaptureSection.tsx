@@ -6,8 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Section } from '@/components/Section';
 import { IFormConfig } from '@/types/landing';
 import { Button } from '@/components/Button';
-import FormField from '@/sections/contact/components/FormField';
-import SelectField from '@/sections/contact/components/SelectField';
+import { Input, Select, Textarea } from '@/components/form';
 import FormMessage from '@/sections/contact/components/FormMessage';
 import {
   LEAD_SERVICE_TYPES,
@@ -116,17 +115,17 @@ const LeadCaptureSection = ({
 
       <div className='max-w-5xl mx-auto relative z-10'>
         <div className='text-center mb-20 max-w-3xl mx-auto'>
-          <h2 className='text-h2 md:text-[4.5rem] font-bebas text-light uppercase leading-[0.85] mb-8'>
+          <h2 className='text-h2 font-bebas text-light uppercase'>
             {title}
           </h2>
-          <p className='text-lg md:text-xl text-cream/70 font-poppins leading-relaxed'>
+          <p className='text-white font-poppins'>
             {subtitle}
           </p>
         </div>
 
         <form
           onSubmit={onSubmit}
-          className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 bg-white/[0.03] p-8 md:p-20 border border-white/5 rounded-sm backdrop-blur-xl relative overflow-hidden'>
+          className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8 bg-white/[0.03] p-8 md:p-20 border border-white/5 rounded-sm backdrop-blur-xl relative overflow-hidden'>
           <input type='hidden' {...register('source')} />
           <input type='hidden' {...register('address')} />
           <div className='absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent' />
@@ -141,7 +140,7 @@ const LeadCaptureSection = ({
                   name='serviceType'
                   control={control}
                   render={({ field: controllerField }) => (
-                    <SelectField
+                    <Select
                       id={key}
                       name={key}
                       label={field.label}
@@ -159,17 +158,29 @@ const LeadCaptureSection = ({
               <div
                 key={key}
                 className={key === 'message' ? 'md:col-span-2' : ''}>
-                <FormField
-                  id={key}
-                  name={key}
-                  label={field.label}
-                  type={field.type as 'text' | 'email' | 'tel' | 'textarea'}
-                  registration={register(key)}
-                  placeholder={field.placeholder}
-                  error={errors[key]?.message}
-                  required
-                  rows={key === 'message' ? 4 : undefined}
-                />
+                {key === 'message' ? (
+                  <Textarea
+                    id={key}
+                    name={key}
+                    label={field.label}
+                    registration={register(key)}
+                    placeholder={field.placeholder}
+                    error={errors[key]?.message}
+                    required
+                    rows={4}
+                  />
+                ) : (
+                  <Input
+                    id={key}
+                    name={key}
+                    label={field.label}
+                    type={field.type as 'text' | 'email' | 'tel'}
+                    registration={register(key)}
+                    placeholder={field.placeholder}
+                    error={errors[key]?.message}
+                    required
+                  />
+                )}
               </div>
             );
           })}

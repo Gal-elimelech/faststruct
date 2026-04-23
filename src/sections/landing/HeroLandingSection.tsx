@@ -15,7 +15,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
   backgroundImage,
 }) => {
   return (
-    <section className='relative w-full min-h-[110vh] bg-dark flex items-center justify-center'>
+    <section className='relative w-full min-h-[110vh] bg-dark flex items-center justify-center py-20'>
       {/* Background Image */}
       <div className='absolute inset-0 z-0'>
         <Image
@@ -33,20 +33,20 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className='max-w-4xl w-full bg-dark/60 backdrop-blur-xl border border-white/10 p-8 md:p-16 rounded-sm text-center flex flex-col items-center gap-10'
+          className='max-w-4xl w-full bg-dark/60 backdrop-blur-xl border border-white/10 p-8 md:p-16 rounded-sm text-center flex flex-col items-center gap-6'
         >
-          <div className='flex flex-col gap-6'>
-            <h1 className='text-h3 md:text-h2 lg:text-[5rem] font-bebas text-white uppercase leading-[0.85] tracking-normal'>
+          <div className='flex flex-col gap-4'>
+            <h1 className='text-h1 md:text-h2 lg:text-[5rem] font-bebas text-white uppercase leading-[0.85] tracking-normal'>
               {title}
             </h1>
 
-            <p className='text-lg md:text-xl font-poppins text-white max-w-2xl mx-auto leading-tight'>
+            <p className='text-h6 font-poppins text-white max-w-2xl mx-auto leading-tight'>
               {subtitle}
             </p>
           </div>
-
           {/* Licenses */}
           <div className='flex flex-wrap items-center justify-center gap-8 py-4 border-y border-white/10 w-full max-w-lg'>
+            <h3 className='text-h6 font-bebas text-white uppercase tracking-widest leading-none'>Licenses:</h3>
             {licenses.map((license, idx) => (
               <div key={idx} className='flex flex-col items-center'>
                 <span className='text-[10px] text-accent font-bold tracking-[0.2em] uppercase mb-1'>{license.label}</span>
@@ -62,7 +62,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
             <LandingCtaLink
               href={cta.link}
               surface='hero'
-              size='lg'
+              size='md'
               linkClassName='w-full sm:w-auto min-w-0 sm:min-w-[12rem]'
             >
               {cta.text}
@@ -70,7 +70,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
             <LandingCtaLink
               href={phoneCta.link}
               surface='hero'
-              size='lg'
+              size='md'
               linkClassName='w-full sm:w-auto min-w-0 sm:min-w-[12rem]'
             >
               {phoneCta.text}
@@ -83,29 +83,27 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className='absolute z-10 lg:-bottom-32 -bottom-40 -left-5'
           >
-            <div className='relative size-52'>
+            <div className='relative w-full'>
               <Image
                 src={googleReviewBadge}
                 alt='Google Reviews'
-                fill
+                width={52 * 5}
+                height={52 * 5}
                 className='object-contain'
               />
             </div>
           </motion.div>
         </motion.div>
-
-
       </div>
 
       {/* Technical Spec Indicator (Bottom Right) */}
-      <div className='absolute bottom-10 right-10 hidden lg:flex flex-col gap-4 items-end z-20'>
+      {/* <div className='absolute bottom-10 right-10 hidden lg:flex flex-col gap-4 items-end z-20'>
         <div className='bg-dark/40 backdrop-blur-sm border border-white/10 p-3 rounded-sm flex items-center gap-3'>
           <div className='w-2 h-2 rounded-full bg-accent animate-pulse' />
           <span className='text-[10px] font-bebas text-white uppercase tracking-[0.3em]'>System-9 Tech Enabled</span>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

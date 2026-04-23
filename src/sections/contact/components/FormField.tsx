@@ -1,4 +1,5 @@
 import type { UseFormRegisterReturn } from 'react-hook-form';
+import { Input, Textarea } from '@/components/form';
 
 type BaseFormFieldProps = {
   id: string;
@@ -38,61 +39,75 @@ const FormField = (props: FormFieldProps) => {
     required = false,
     autoComplete,
     rows = 6,
-    className = '',
+    className,
   } = props;
 
-  const baseInputClasses =
-    'border-accent/50 bg-light/10 text-light placeholder-accent/70 focus:border-accent focus:ring-accent/50 w-full rounded-lg border p-4 focus:ring-2';
-  const errorClasses = error ? 'border-red-500/50' : '';
-  const inputClasses = `${baseInputClasses} ${errorClasses} ${className}`;
+  if (type === 'textarea') {
+    if ('registration' in props && props.registration !== undefined) {
+      return (
+        <Textarea
+          id={id}
+          name={name}
+          label={label}
+          placeholder={placeholder}
+          error={error}
+          required={required}
+          autoComplete={autoComplete}
+          rows={rows}
+          className={className}
+          registration={props.registration}
+        />
+      );
+    }
 
-  const registered =
-    'registration' in props && props.registration !== undefined;
+    return (
+      <Textarea
+        id={id}
+        name={name}
+        label={label}
+        placeholder={placeholder}
+        error={error}
+        required={required}
+        autoComplete={autoComplete}
+        rows={rows}
+        className={className}
+        value={props.value}
+        onChange={props.onChange}
+      />
+    );
+  }
 
-  const inputRegistration = registered
-    ? { ...props.registration, name }
-    : null;
+  if ('registration' in props && props.registration !== undefined) {
+    return (
+      <Input
+        id={id}
+        name={name}
+        label={label}
+        type={type}
+        placeholder={placeholder}
+        error={error}
+        required={required}
+        autoComplete={autoComplete}
+        className={className}
+        registration={props.registration}
+      />
+    );
+  }
 
   return (
-    <div className={type === 'textarea' ? '' : 'relative'}>
-      <label htmlFor={id} className='text-h6 text-light mb-2 block font-medium'>
-        {label}
-      </label>
-      {type === 'textarea' ? (
-        <textarea
-          id={id}
-          required={required}
-          rows={rows}
-          autoComplete={autoComplete}
-          className={`${inputClasses} resize-none`}
-          placeholder={placeholder}
-          {...(registered && inputRegistration
-            ? inputRegistration
-            : {
-                name,
-                value: props.value,
-                onChange: props.onChange,
-              })}
-        />
-      ) : (
-        <input
-          type={type}
-          id={id}
-          required={required}
-          autoComplete={autoComplete}
-          className={inputClasses}
-          placeholder={placeholder}
-          {...(registered && inputRegistration
-            ? inputRegistration
-            : {
-                name,
-                value: props.value,
-                onChange: props.onChange,
-              })}
-        />
-      )}
-      {error && <p className='mt-1 text-sm text-red-400'>{error}</p>}
-    </div>
+    <Input
+      id={id}
+      name={name}
+      label={label}
+      type={type}
+      placeholder={placeholder}
+      error={error}
+      required={required}
+      autoComplete={autoComplete}
+      className={className}
+      value={props.value}
+      onChange={props.onChange}
+    />
   );
 };
 

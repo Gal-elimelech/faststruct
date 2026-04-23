@@ -3,7 +3,7 @@
 import { motion } from 'motion/react';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { Button } from '@/components/Button';
-import FormField from './FormField';
+import { Input, Textarea } from '@/components/form';
 import FormMessage from './FormMessage';
 import { IContactForm } from '@/types/contact';
 import type { ContactFormInput } from '@/schemas/contact';
@@ -40,7 +40,7 @@ const ContactForm = ({
         className='flex flex-col gap-6'>
         <input type='hidden' {...register('source')} />
         <div className='flex flex-col gap-4'>
-          <FormField
+          <Input
             id='name'
             name='name'
             label={form.fields.name.label}
@@ -52,7 +52,7 @@ const ContactForm = ({
             autoComplete='name'
           />
 
-          <FormField
+          <Input
             id='email'
             name='email'
             label={form.fields.email.label}
@@ -64,7 +64,7 @@ const ContactForm = ({
             autoComplete='email'
           />
 
-          <FormField
+          <Input
             id='phone'
             name='phone'
             label={form.fields.phone.label}
@@ -76,7 +76,7 @@ const ContactForm = ({
             autoComplete='tel'
           />
 
-          <FormField
+          <Input
             id='address'
             name='address'
             label={form.fields.address.label}
@@ -88,11 +88,10 @@ const ContactForm = ({
             autoComplete='street-address'
           />
 
-          <FormField
+          <Textarea
             id='message'
             name='message'
             label={form.fields.message.label}
-            type='textarea'
             registration={register('message')}
             placeholder={form.fields.message.placeholder}
             error={errors.message?.message}
