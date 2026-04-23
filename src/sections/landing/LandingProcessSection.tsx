@@ -22,7 +22,7 @@ const LandingProcessSection: React.FC<IProcessTimeline> = ({ title, steps }) => 
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.08, duration: 0.55 }}
+              transition={{ delay: 0.08, duration: 0.55 }}
               viewport={{ once: true }}
               className='group relative flex min-h-[280px] w-full flex-col gap-8 overflow-hidden bg-white p-10 md:w-[calc(50%-0.5px)] md:p-12 lg:w-[calc(50%-0.8px)] xl:w-[calc(20%-0.8px)] border border-dark/10'
             >
