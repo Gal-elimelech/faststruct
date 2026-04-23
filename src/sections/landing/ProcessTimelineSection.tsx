@@ -39,7 +39,7 @@ const ProcessTimelineSection: React.FC<IProcessTimeline> = ({ title, steps }) =>
                   <h3 className='text-h3 font-bebas text-accent uppercase leading-none'>
                     {step.title}
                   </h3>
-                  <p className='text-xl text-cream/70 font-poppins leading-relaxed'>
+                  <p className='text-xl text-light/70 font-poppins leading-relaxed'>
                     {step.description}
                   </p>
                 </div>

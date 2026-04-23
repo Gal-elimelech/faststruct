@@ -35,7 +35,7 @@ const LandingPage = async () => {
   const content = await getContent('landing', 'en');
 
   return (
-    <Page className='bg-dark text-cream relative'>
+    <Page className='bg-dark text-light relative'>
       <section id="heroSection" className='z-20'>
         <HeroLandingSection {...content.heroSection} />
       </section>
@@ -71,7 +71,7 @@ const LandingPage = async () => {
       <section id="testimonials">
         <TestimonialsSection
           testimonials={content.testimonials}
-          backgroundImage={content.heroSection.backgroundImage}
+          backgroundImage='/assets/testimonials.png'
         />
       </section>
 

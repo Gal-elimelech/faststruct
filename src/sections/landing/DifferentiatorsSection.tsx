@@ -7,11 +7,11 @@ import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const DifferentiatorsSection: React.FC<IDifferentiators> = ({ title, items, cta }) => {
   return (
-    <Section bgColor='dark' textColor='light' className='py-32 relative'>
-      <div className='flex flex-col gap-24'>
+    <Section bgColor='dark' textColor='light' className='relative'>
+      <div className='flex flex-col gap-16 md:gap-20'>
         <div className='flex flex-col md:flex-row justify-between items-end gap-10'>
           <div className='max-w-4xl'>
-            <h2 className='text-h2 md:text-[4.5rem] font-bebas text-light uppercase leading-[0.85]'>
+            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.85]'>
               {title}
             </h2>
           </div>
@@ -34,7 +34,7 @@ const DifferentiatorsSection: React.FC<IDifferentiators> = ({ title, items, cta 
               <div className='flex justify-between items-start'>
                 <span className='font-bebas text-accent text-3xl tracking-widest'>0{idx + 1}</span>
                 <div className='w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/5 transition-all duration-500'>
-                  <i className='fas fa-plus text-[10px] text-white/20 group-hover:text-accent transition-colors'></i>
+                  <i className='fa-solid fa-plus text-[10px] text-white/20 group-hover:text-accent transition-colors'></i>
                 </div>
               </div>
               
@@ -42,7 +42,7 @@ const DifferentiatorsSection: React.FC<IDifferentiators> = ({ title, items, cta 
                 <h3 className='text-h4 font-bebas text-light uppercase tracking-widest leading-tight group-hover:text-accent transition-colors'>
                   {item.title}
                 </h3>
-                <p className='text-cream/60 font-poppins text-base leading-relaxed'>
+                <p className='text-light/60 font-poppins text-base leading-relaxed'>
                   {item.text}
                 </p>
               </div>

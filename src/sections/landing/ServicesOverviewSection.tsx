@@ -7,11 +7,11 @@ import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const ServicesOverviewSection: React.FC<IServicesOverview> = ({ title, subtitle, items, cta }) => {
   return (
-    <Section bgColor='light' textColor='dark' className='py-32 relative'>
-      <div className='flex flex-col gap-24'>
+    <Section bgColor='light' textColor='dark' className='relative'>
+      <div className='flex flex-col gap-16 md:gap-20'>
         <div className='flex flex-col md:flex-row justify-between items-end gap-10'>
           <div className='max-w-4xl flex flex-col gap-8'>
-            <h2 className='text-h2 md:text-[4.5rem] font-bebas text-dark uppercase leading-[0.85]'>
+            <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85]'>
               {title}
             </h2>
             {subtitle && (
@@ -52,7 +52,7 @@ const ServicesOverviewSection: React.FC<IServicesOverview> = ({ title, subtitle,
 
               {/* Bottom Corner Accent */}
               <div className='absolute bottom-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700'>
-                <i className='fas fa-chevron-right text-accent text-sm'></i>
+                <i className='fa-solid fa-chevron-right text-accent text-sm'></i>
               </div>
             </motion.div>
           ))}
