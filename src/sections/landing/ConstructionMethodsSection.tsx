@@ -8,27 +8,23 @@ import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, subtitle, paths, cta }) => {
   return (
-    <Section bgColor='dark' textColor='light' className='py-32 overflow-hidden relative'>
+    <Section bgColor='dark' textColor='light' className='overflow-hidden relative'>
       {/* Background Graphic */}
       <div className='absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[150px] pointer-events-none' />
 
-      <div className='flex flex-col gap-24 relative z-10'>
+      <div className='flex flex-col gap-16 md:gap-20 relative z-10'>
         <div className='flex flex-col md:flex-row justify-between items-end gap-10'>
-          <div className='max-w-4xl flex flex-col gap-8'>
-            <h2 className='text-h2 md:text-[4.5rem] font-bebas text-light uppercase leading-[0.85]'>
+          <div className='max-w-4xl flex flex-col gap-4'>
+            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.85]'>
               {title}
             </h2>
-            <p className='text-lg md:text-xl text-cream/60 font-poppins max-w-2xl'>
+            <p className='text-h6 text-light/70 font-poppins leading-relaxed max-w-2xl'>
               {subtitle}
             </p>
           </div>
-          
-          <LandingCtaLink href={cta.link} linkClassName='mb-2 shrink-0'>
-            {cta.text}
-          </LandingCtaLink>
         </div>
 
-        <div className='flex flex-col gap-32 md:gap-48'>
+        <div className='flex flex-col gap-20 md:gap-28'>
           {paths.map((path, idx) => (
             <motion.div
               key={idx}
@@ -36,13 +32,12 @@ const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, sub
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className={`flex flex-col gap-12 items-center lg:flex-row ${
-                idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''
-              }`}
+              className={`flex flex-col gap-12 items-center lg:flex-row ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''
+                }`}
             >
               {/* Image Container */}
               <div className='lg:basis-1/2 w-full'>
-                <div className='relative aspect-[16/10] overflow-hidden rounded-sm border border-white/5 group'>
+                <div className='relative aspect-16/10 overflow-hidden rounded-sm border border-white/5 group'>
                   <Image
                     src={idx === 0 ? "/assets/system-modular.jpg" : "/assets/system-panelized.jpg"}
                     alt={path.title}
@@ -50,7 +45,7 @@ const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, sub
                     className='object-cover group-hover:scale-105 transition-transform duration-[1.5s]'
                   />
                   <div className='absolute inset-0 bg-dark/20 mix-blend-overlay group-hover:bg-dark/0 transition-colors duration-700' />
-                  
+
                   {/* Subtle Corner Accents */}
                   <div className='absolute top-0 left-0 w-8 h-8 border-t border-l border-white/20' />
                   <div className='absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/20' />
@@ -61,16 +56,16 @@ const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, sub
               <div className='lg:basis-1/2 flex flex-col gap-8 lg:px-20'>
                 <div className='flex flex-col gap-4'>
                   <span className='text-accent font-bebas text-lg tracking-[0.3em] uppercase'>Path 0{idx + 1}</span>
-                  <h3 className='text-h2 md:text-[3.5rem] font-bebas text-light uppercase leading-[0.9]'>
+                  <h3 className='text-h3 font-bebas text-light uppercase leading-[0.9]'>
                     {path.title}
                   </h3>
                 </div>
-                <p className='text-lg md:text-xl text-cream/70 font-poppins leading-relaxed'>
+                <p className='text-lg md:text-xl text-light/70 font-poppins leading-relaxed'>
                   {path.description}
                 </p>
                 <ul className='flex flex-col gap-4 mb-4'>
                   {path.bulletPoints.map((point, i) => (
-                    <li key={i} className='flex items-center gap-4 text-cream/60 font-poppins'>
+                    <li key={i} className='flex items-center gap-4 text-light/60 font-poppins'>
                       <div className='w-1.5 h-1.5 bg-accent rounded-full' />
                       {point}
                     </li>

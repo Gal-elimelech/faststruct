@@ -4,33 +4,27 @@ import { Section } from '@/components/Section';
 import GoogleMapEmbed from '@/components/GoogleMapEmbed';
 import { ILocation } from '@/types/landing';
 import { motion } from 'motion/react';
-import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const LandingLocationSection: React.FC<ILocation> = ({
   title,
   mainAddress,
   phone,
   serviceAreas,
-  cta,
 }) => {
   return (
     <Section
       bgColor='dark'
       textColor='light'
-      className='relative overflow-hidden border-t border-white/5 py-32'>
+      className='relative overflow-hidden border-t border-white/5'>
       <div className='pointer-events-none absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-accent/5 blur-[120px]' />
 
       <div className='relative z-10 flex flex-col gap-12 lg:gap-16'>
-        <div className='flex flex-col items-end justify-between gap-10 md:flex-row'>
+        <div className='flex flex-col items-end justify-between gap-8 md:flex-row'>
           <div className='max-w-4xl'>
-            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.9] md:text-[4rem]'>
+            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.9]'>
               {title}
             </h2>
           </div>
-
-          <LandingCtaLink href={cta.link} linkClassName='mb-2 shrink-0'>
-            {cta.text}
-          </LandingCtaLink>
         </div>
 
         <div className='grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-12'>
@@ -40,7 +34,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className='flex flex-col gap-8'>
-            <p className='font-poppins text-xs font-semibold tracking-[0.2em] text-cream/50 uppercase'>
+            <p className='font-poppins text-xs font-semibold tracking-[0.2em] text-light/50 uppercase'>
               {mainAddress.label}
             </p>
 
@@ -53,7 +47,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
                   <p className='font-bebas text-3xl leading-[0.95] text-light uppercase sm:text-4xl md:text-5xl'>
                     {mainAddress.street}
                   </p>
-                  <p className='mt-2 font-bebas text-xl tracking-wider text-cream/90 uppercase sm:text-2xl'>
+                  <p className='mt-2 font-bebas text-xl tracking-wider text-light/90 uppercase sm:text-2xl'>
                     {mainAddress.cityStateZip}
                   </p>
                 </div>
@@ -66,20 +60,20 @@ const LandingLocationSection: React.FC<ILocation> = ({
               <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-colors group-hover:bg-accent'>
                 <i className='fa-solid fa-phone text-accent transition-colors group-hover:text-dark' />
               </div>
-              <span className='font-bebas text-lg tracking-wider text-cream/90 uppercase'>
+              <span className='font-bebas text-lg tracking-wider text-light/90 uppercase'>
                 {phone.display}
               </span>
             </a>
 
             <div>
-              <h3 className='font-bebas text-lg tracking-wider text-cream/70 uppercase'>
+              <h3 className='font-bebas text-lg tracking-wider text-light/70 uppercase'>
                 Counties we serve
               </h3>
               <ul className='mt-4 flex flex-wrap gap-2'>
                 {serviceAreas.map((area) => (
                   <li
                     key={area}
-                    className='rounded-full border border-white/10 bg-white/3 px-3 py-1.5 font-poppins text-xs text-cream/85'>
+                    className='rounded-full border border-white/10 bg-white/3 px-3 py-1.5 font-poppins text-xs text-light/85'>
                     {area}
                   </li>
                 ))}

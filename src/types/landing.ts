@@ -65,7 +65,6 @@ export interface IServicesOverview {
   title: string;
   subtitle: string;
   items: IServiceItem[];
-  cta: ICTA;
 }
 
 export interface IConstructionPath {
@@ -125,7 +124,6 @@ export interface ILocation {
   mainAddress: ILocationMainAddress;
   phone: ILocationPhone;
   serviceAreas: string[];
-  cta: ICTA;
 }
 
 export interface IFooter {

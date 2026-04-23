@@ -43,25 +43,9 @@ export default function LandingHeader({ phone, ctaLink }: LandingHeaderProps) {
         <Link href='/'>
           <FastructLogo
             color='light'
-            className='h-[20px] md:h-[35px] lg:h-[40px]'
+            className='h-[35px]'
           />
         </Link>
-
-        <div className='flex items-center gap-2'>
-          <LandingCtaLink
-            href={`tel:${phone.replace(/\D/g, '')}`}
-            size='md'
-            linkClassName='inline-flex shrink-0'
-            buttonClassName='inline-flex items-center justify-center gap-2'
-          >
-            <i className='fas fa-phone-alt' aria-hidden />
-            <span className='hidden md:inline'>Call: {phone}</span>
-          </LandingCtaLink>
-
-          <LandingCtaLink href={ctaLink} size='md' linkClassName='inline-flex shrink-0'>
-            Free Estimate
-          </LandingCtaLink>
-        </div>
       </div>
     </motion.header>
   );

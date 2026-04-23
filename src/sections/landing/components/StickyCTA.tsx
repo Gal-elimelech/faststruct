@@ -14,7 +14,7 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
   useEffect(() => {
     const handleScroll = () => {
       // Show after scrolling 500px
-      if (window.scrollY > 500) {
+      if (window.scrollY > 100) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -32,6 +32,7 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
           initial={{ y: 100 }}
           animate={{ y: 0 }}
           exit={{ y: 100 }}
+          transition={{ ease: 'easeInOut' }}
           className='fixed bottom-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-md border-t border-white/10 shadow-2xl p-4 md:px-12 flex justify-between items-center'
         >
           <div className='hidden md:block'>
@@ -42,20 +43,19 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
 
           <div className='flex gap-4 w-full md:w-auto'>
             <LandingCtaLink
-              href='#lead-capture'
-              size='lg'
-              fullWidth
-              linkClassName='flex-1 md:flex-none min-w-0'
-            >
-              Get Free Estimate
-            </LandingCtaLink>
-            <LandingCtaLink
               href={`tel:${phone.replace(/\D/g, '')}`}
-              size='lg'
-              fullWidth
-              linkClassName='flex-1 md:flex-none min-w-0'
+              size='md'
+              linkClassName='grow basis-1/2 '
+              buttonClassName='inline-flex items-center justify-center gap-2 h-full'
             >
-              Call {phone}
+              <i className='fa-solid fa-phone' aria-hidden />
+              <span>Call</span>
+            </LandingCtaLink>
+
+            <LandingCtaLink
+              href='#lead-capture'
+              size='md' linkClassName='grow basis-1/2'>
+              Free Estimate
             </LandingCtaLink>
           </div>
         </motion.div>
