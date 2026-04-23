@@ -53,12 +53,8 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
           </div>
         </div>
 
-        <div className='mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-light/30 uppercase tracking-[0.2em]'>
+        <div className='mt-20 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-light/30 uppercase tracking-[0.2em]'>
           <p>© {currentYear} Fast Struct Inc. All Rights Reserved.</p>
-          <div className='flex gap-8'>
-            <Link href="#" className='hover:text-accent transition-colors'>Privacy Policy</Link>
-            <Link href="#" className='hover:text-accent transition-colors'>Terms of Service</Link>
-          </div>
         </div>
       </div>
     </footer>
