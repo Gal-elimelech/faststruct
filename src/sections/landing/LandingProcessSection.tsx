@@ -16,7 +16,7 @@ const LandingProcessSection: React.FC<IProcessTimeline> = ({ title, steps }) => 
           </h2>
         </div>
 
-        <div className='grid grid-cols-1 gap-px border border-dark/10 bg-accent md:grid-cols-2 lg:grid-cols-5'>
+        <div className='flex flex-wrap justify-center'>
           {steps.map((step, idx) => (
             <motion.div
               key={idx}
@@ -24,7 +24,7 @@ const LandingProcessSection: React.FC<IProcessTimeline> = ({ title, steps }) => 
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.08, duration: 0.55 }}
               viewport={{ once: true }}
-              className='group relative flex flex-col gap-8 overflow-hidden bg-white p-10 md:p-12'
+              className='group relative flex min-h-[280px] w-full flex-col gap-8 overflow-hidden bg-white p-10 md:w-[calc(50%-0.5px)] md:p-12 lg:w-[calc(50%-0.8px)] xl:w-[calc(20%-0.8px)] border border-dark/10'
             >
               <div className='flex items-center gap-4'>
                 <span className='font-bebas text-5xl text-accent/25 group-hover:text-accent transition-colors duration-500'>
