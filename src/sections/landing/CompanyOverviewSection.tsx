@@ -7,16 +7,16 @@ import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const CompanyOverviewSection: React.FC<ICompanyOverview> = ({ title, texts, items, cta }) => {
   return (
-    <Section bgColor='dark' textColor='light' className='py-32 border-t border-white/5'>
-      <div className='flex flex-col lg:flex-row gap-20 items-start justify-between'>
-        <div className='lg:w-1/2 flex flex-col gap-10'>
+    <Section bgColor='dark' textColor='light' className='border-t border-white/5'>
+      <div className='flex flex-col lg:flex-row gap-16 items-start justify-between'>
+        <div className='lg:w-1/2 flex flex-col gap-8'>
           <div className='flex flex-col gap-6'>
-            <h2 className='text-h2 md:text-[4rem] font-bebas text-light uppercase leading-[0.9]'>
+            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.9]'>
               {title}
             </h2>
             <div className='flex flex-col gap-4'>
               {texts.map((t, i) => (
-                <p key={i} className='text-cream/70 font-poppins text-lg leading-relaxed max-w-xl'>
+                <p key={i} className='text-light/70 font-poppins text-lg leading-relaxed max-w-xl'>
                   {t}
                 </p>
               ))}
@@ -39,9 +39,9 @@ const CompanyOverviewSection: React.FC<ICompanyOverview> = ({ title, texts, item
               className='flex items-start gap-5 group'
             >
               <div className='w-12 h-12 rounded-sm bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-all duration-500'>
-                <i className={`${item.icon} text-accent group-hover:text-dark transition-colors text-lg`}></i>
+                <i className={`fa-solid ${item.icon.replace('fas ', '').replace('fa-solid ', '')} text-accent group-hover:text-dark transition-colors text-lg`}></i>
               </div>
-              <span className='font-bebas text-xl text-cream/90 uppercase tracking-tight pt-2'>{item.title}</span>
+              <span className='font-bebas text-xl text-light/90 uppercase tracking-tight pt-2'>{item.title}</span>
             </motion.div>
           ))}
         </div>

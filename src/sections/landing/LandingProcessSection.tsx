@@ -6,13 +6,13 @@ import { motion } from 'motion/react';
 
 const LandingProcessSection: React.FC<IProcessTimeline> = ({ title, steps }) => {
   return (
-    <Section bgColor='light' textColor='dark' className='py-32 relative overflow-hidden'>
+    <Section bgColor='light' textColor='dark' className='relative overflow-hidden'>
       {/* Background Graphic */}
       <div className='absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/20 to-transparent' />
       
-      <div className='flex flex-col gap-24 relative z-10'>
+      <div className='flex flex-col gap-16 md:gap-20 relative z-10'>
         <div className='max-w-4xl'>
-          <h2 className='text-h2 md:text-[4.5rem] font-bebas text-dark uppercase leading-[0.85]'>
+          <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85]'>
             {title}
           </h2>
         </div>

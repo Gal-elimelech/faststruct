@@ -46,7 +46,7 @@ const SocialProofSection: React.FC<SocialProofSectionProps> = ({ title, testimon
                 ))}
               </div>
               
-              <p className='text-lg text-cream/80 font-poppins italic leading-relaxed flex-grow'>
+              <p className='text-lg text-light/80 font-poppins italic leading-relaxed flex-grow'>
                 "{testimonial.quote}"
               </p>
               
@@ -54,7 +54,7 @@ const SocialProofSection: React.FC<SocialProofSectionProps> = ({ title, testimon
                 <span className='font-bebas text-xl text-accent uppercase'>
                   {testimonial.author}
                 </span>
-                <span className='text-sm text-cream/50 uppercase tracking-widest'>
+                <span className='text-sm text-light/50 uppercase tracking-widest'>
                   {testimonial.location}
                 </span>
               </div>

@@ -47,21 +47,21 @@ export default function LandingHeader({ phone, ctaLink }: LandingHeaderProps) {
           />
         </Link>
 
-        {/* <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2'>
           <LandingCtaLink
             href={`tel:${phone.replace(/\D/g, '')}`}
             size='md'
             linkClassName='inline-flex shrink-0'
             buttonClassName='inline-flex items-center justify-center gap-2'
           >
-            <i className='fas fa-phone-alt' aria-hidden />
+            <i className='fa-solid fa-phone' aria-hidden />
             <span>Call</span>
           </LandingCtaLink>
 
           <LandingCtaLink href={ctaLink} size='md' linkClassName='inline-flex shrink-0'>
             Free Estimate
           </LandingCtaLink>
-        </div> */}
+        </div>
       </div>
     </motion.header>
   );

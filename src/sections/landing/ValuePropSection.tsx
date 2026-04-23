@@ -17,7 +17,7 @@ const ValuePropSection: React.FC<IValueProp> = ({ title, texts, features }) => {
           />
           <div className='flex flex-col gap-4'>
             {texts.map((t, i) => (
-              <p key={i} className='text-cream/80 font-poppins leading-relaxed max-w-3xl'>
+              <p key={i} className='text-light/80 font-poppins leading-relaxed max-w-3xl'>
                 {t}
               </p>
             ))}
@@ -45,7 +45,7 @@ const ValuePropSection: React.FC<IValueProp> = ({ title, texts, features }) => {
                 <h3 className='text-h4 font-bebas text-light uppercase leading-tight group-hover:text-accent transition-colors'>
                   {item.title}
                 </h3>
-                <p className='text-cream/60 font-poppins text-base leading-relaxed'>
+                <p className='text-light/60 font-poppins text-base leading-relaxed'>
                   {item.text}
                 </p>
               </div>
