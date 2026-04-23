@@ -4,14 +4,12 @@ import { Section } from '@/components/Section';
 import GoogleMapEmbed from '@/components/GoogleMapEmbed';
 import { ILocation } from '@/types/landing';
 import { motion } from 'motion/react';
-import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const LandingLocationSection: React.FC<ILocation> = ({
   title,
   mainAddress,
   phone,
   serviceAreas,
-  cta,
 }) => {
   return (
     <Section
@@ -21,16 +19,12 @@ const LandingLocationSection: React.FC<ILocation> = ({
       <div className='pointer-events-none absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-accent/5 blur-[120px]' />
 
       <div className='relative z-10 flex flex-col gap-12 lg:gap-16'>
-        <div className='flex flex-col items-end justify-between gap-10 md:flex-row'>
+        <div className='flex flex-col items-end justify-between gap-8 md:flex-row'>
           <div className='max-w-4xl'>
             <h2 className='text-h2 font-bebas text-light uppercase leading-[0.9]'>
               {title}
             </h2>
           </div>
-
-          <LandingCtaLink href={cta.link} linkClassName='mb-2 shrink-0'>
-            {cta.text}
-          </LandingCtaLink>
         </div>
 
         <div className='grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-12'>
@@ -44,7 +38,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
               {mainAddress.label}
             </p>
 
-            <div className='rounded-sm border border-white/10 bg-white/[0.02] p-6 md:p-8'>
+            <div className='rounded-sm border border-white/10 bg-white/2 p-6 md:p-8'>
               <div className='flex gap-4'>
                 <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10'>
                   <i className='fa-solid fa-location-dot text-xl text-accent' />
@@ -62,7 +56,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
 
             <a
               href={`tel:${phone.tel}`}
-              className='group flex items-center gap-4 rounded-sm border border-white/5 bg-white/[0.02] p-4 transition-colors hover:border-accent/30'>
+              className='group flex items-center gap-4 rounded-sm border border-white/5 bg-white/2 p-4 transition-colors hover:border-accent/30'>
               <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-colors group-hover:bg-accent'>
                 <i className='fa-solid fa-phone text-accent transition-colors group-hover:text-dark' />
               </div>
@@ -79,7 +73,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
                 {serviceAreas.map((area) => (
                   <li
                     key={area}
-                    className='rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-poppins text-xs text-light/85'>
+                    className='rounded-full border border-white/10 bg-white/3 px-3 py-1.5 font-poppins text-xs text-light/85'>
                     {area}
                   </li>
                 ))}

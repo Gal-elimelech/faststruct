@@ -63,13 +63,13 @@ const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
   }, [trackItems.length]);
 
   return (
-    <Section bgColor='light' textColor='dark' className='border-y border-dark/10'>
+    <Section bgColor='white' textColor='dark' className='border-y border-dark/10'>
       <div className='flex flex-col gap-16 md:gap-20'>
         <div className='text-center max-w-4xl mx-auto'>
           <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85]'>
             Completed Projects
           </h2>
-          <p className='text-lg md:text-xl text-dark/70 font-poppins mt-8 max-w-2xl mx-auto'>
+          <p className='text-h6 md:text-xl font-poppins mt-2 max-w-2xl mx-auto'>
             Experience the quality and craftsmanship of our recent custom ADUs.
           </p>
         </div>
