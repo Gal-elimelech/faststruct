@@ -1,13 +1,14 @@
 import { z } from 'zod';
 
-/** Where the submission originated; drives address vs serviceType rules. */
+/** Where the submission originated. */
 export const CONTACT_FORM_SOURCES = ['contact', 'landing'] as const;
 export type ContactFormSource = (typeof CONTACT_FORM_SOURCES)[number];
+export type LandingFormSource = Exclude<ContactFormSource, 'contact'>;
 
-/** Landing requests may omit `address`; contact page sends a real address. */
-const addressField = z.string().trim().default('');
-
-const nameField = z.string().min(2, 'Name must be at least 2 characters').trim();
+const nameField = z
+  .string()
+  .min(2, 'Name must be at least 2 characters')
+  .trim();
 const emailField = z.email('Invalid email address').trim();
 const phoneField = z
   .string()
@@ -27,6 +28,15 @@ const messageField = z
   .string()
   .min(10, 'Message must be at least 10 characters')
   .trim();
+const recaptchaTokenField = z
+  .string()
+  .min(1, 'Please verify you are human')
+  .trim();
+const requiredAddressField = z
+  .string()
+  .trim()
+  .min(5, 'Address must be at least 5 characters');
+const optionalAddressField = z.string().trim().optional().default('');
 
 export const LEAD_SERVICE_TYPES = [
   'ADU Construction',
@@ -35,64 +45,70 @@ export const LEAD_SERVICE_TYPES = [
   'Panelized Construction',
 ] as const;
 
-/** Shared fields for POST /api/contact (before source-specific refinement). */
-const contactBodyBaseSchema = z.object({
+const contactCommonFieldsSchema = z.object({
   name: nameField,
   email: emailField,
   phone: phoneField,
-  address: addressField,
   message: messageField,
-  serviceType: z.enum(LEAD_SERVICE_TYPES).optional(),
-  source: z.enum(CONTACT_FORM_SOURCES),
+  recaptchaToken: recaptchaTokenField,
 });
 
-/**
- * `source: 'contact'` → require `address` (min 5 chars).
- * `source: 'landing'` → require `serviceType`; `address` may be empty.
- */
-export const contactFormSchema = contactBodyBaseSchema.superRefine(
-  (data, ctx) => {
-    if (data.source === 'contact') {
-      if (data.address.length < 5) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: 'Address must be at least 5 characters',
-          path: ['address'],
-        });
-      }
-      return;
-    }
-    if (data.serviceType === undefined) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: 'Please select a service type',
-        path: ['serviceType'],
-      });
-    }
-  }
-);
+/** Contact page form schema (frontend fields only). */
+export const contactPageFormSchema = contactCommonFieldsSchema.extend({
+  address: requiredAddressField,
+});
 
-/** Parsed POST body / sheets row (output after defaults + refine). */
-export type ContactFormData = z.output<typeof contactFormSchema>;
-/** React Hook Form values (input side of the schema). */
-export type ContactFormInput = z.input<typeof contactFormSchema>;
-
-/** Landing lead form: same POST body as API, including `source: 'landing'`. */
-export const leadCaptureFormSchema = z.object({
-  name: nameField,
-  email: emailField,
-  phone: phoneField,
-  message: messageField,
-  address: z.literal(''),
+/** Landing lead form schema (frontend fields only). */
+export const leadCaptureFormSchema = contactCommonFieldsSchema.extend({
   serviceType: z.enum(LEAD_SERVICE_TYPES),
-  source: z.literal('landing'),
 });
 
+export type ContactPageFormInput = z.output<typeof contactPageFormSchema>;
 export type LeadCaptureFormInput = z.output<typeof leadCaptureFormSchema>;
+
+const contactSubmissionSchema = contactCommonFieldsSchema.extend({
+  source: z.literal('contact'),
+  address: requiredAddressField,
+  serviceType: z.undefined().optional(),
+});
+
+const landingSubmissionSchema = contactCommonFieldsSchema.extend({
+  source: z.literal('landing'),
+  address: optionalAddressField,
+  serviceType: z.enum(LEAD_SERVICE_TYPES),
+});
+
+/** API payload schema for POST /api/contact. */
+export const contactSubmissionUnionSchema = z.discriminatedUnion('source', [
+  contactSubmissionSchema,
+  landingSubmissionSchema,
+]);
+
+/** Parsed POST body / sheets row (output after defaults). */
+export type ContactFormData = z.output<typeof contactSubmissionUnionSchema>;
+
+export function toContactSubmission(
+  values: ContactPageFormInput
+): z.input<typeof contactSubmissionUnionSchema> {
+  return {
+    ...values,
+    source: 'contact',
+  };
+}
+
+export function toLandingSubmission(
+  values: LeadCaptureFormInput,
+  source: LandingFormSource = 'landing'
+): z.input<typeof contactSubmissionUnionSchema> {
+  return {
+    ...values,
+    source,
+  };
+}
 
 /**
  * Keys allowed on `leadCapture.fields[].fieldKey` in CMS JSON — the visible
- * inputs only (matches `leadCaptureFormSchema` minus `address` and `source`).
+ * inputs only (matches `leadCaptureFormSchema` minus `recaptchaToken`).
  */
 export const LEAD_CAPTURE_FORM_FIELD_KEYS = [
   'name',
@@ -102,7 +118,7 @@ export const LEAD_CAPTURE_FORM_FIELD_KEYS = [
   'message',
 ] as const satisfies readonly Exclude<
   keyof LeadCaptureFormInput,
-  'address' | 'source'
+  'recaptchaToken'
 >[];
 
 export type LeadCaptureFormFieldKey =
