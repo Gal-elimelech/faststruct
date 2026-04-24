@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { contactFormSchema } from '@/schemas/contact';
+import { contactSubmissionUnionSchema } from '@/schemas/contact';
 import { Resend } from 'resend';
 import ContactEmail from '@/components/emails/ContactEmail';
 import ContactConfirmationEmail from '@/components/emails/ContactConfirmationEmail';
-import { getValidatedContactEnv } from '@/lib/env';
+import { env, getValidatedContactEnv } from '@/lib/env';
 import { addToGoogleSheets } from '@/lib/google-sheets';
 import { checkRateLimit } from '@/lib/rate-limit';
-
+import { createAssessment } from '@/lib/recaptcha';
 
 export async function POST(request: NextRequest) {
   const rateLimitResult = checkRateLimit(request);
@@ -30,7 +30,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
 
-  const result = contactFormSchema.safeParse(body);
+  const result = contactSubmissionUnionSchema.safeParse(body);
+
   if (!result.success) {
     return NextResponse.json(
       {
@@ -46,6 +47,33 @@ export async function POST(request: NextRequest) {
 
   try {
     const validatedEnv = getValidatedContactEnv();
+    const forwardedFor = request.headers.get('x-forwarded-for') ?? '';
+    const userIpAddress = forwardedFor.split(',')[0]?.trim() ?? '';
+    const userAgent = request.headers.get('user-agent') ?? '';
+
+    const recaptchaAssessment = await createAssessment({
+      recaptchaAction: 'contact',
+      siteKey: env.recaptchaSiteKey,
+      token: result.data.recaptchaToken,
+      userAgent,
+      userIpAddress,
+    });
+
+    if (!recaptchaAssessment) {
+      return NextResponse.json(
+        {
+          error: 'reCAPTCHA verification failed',
+          details: [
+            {
+              field: 'recaptchaToken',
+              message: 'Please complete reCAPTCHA verification',
+            },
+          ],
+        },
+        { status: 422 }
+      );
+    }
+
     const resend = new Resend(validatedEnv.resendApiKey);
     const { name, email, phone, address, message, serviceType, source } =
       result.data;
@@ -82,7 +110,13 @@ export async function POST(request: NextRequest) {
     // Add to Google Sheets (non-blocking - don't fail if this fails)
     try {
       await addToGoogleSheets({
-        ...result.data,
+        name,
+        email,
+        phone,
+        address,
+        message,
+        serviceType,
+        source,
         status: 'Pending',
       });
       console.log('[Contact API] Successfully added to Google Sheets');
@@ -94,36 +128,46 @@ export async function POST(request: NextRequest) {
       // Don't fail the request - the email was sent successfully
     }
 
-    // Send confirmation email to user
-    try {
-      const confirmationResult = await resend.emails.send({
-        from: validatedEnv.fromEmail,
-        to: [email],
-        subject: 'Thank you for contacting Fast Struct',
-        react: ContactConfirmationEmail({
-          name,
-        }),
-        replyTo: validatedEnv.fromEmail,
-      });
+    // Send confirmation email to user only if it's not the same inbox
+    // as the business recipient (prevents perceived duplicate delivery).
+    const shouldSendConfirmation =
+      validatedEnv.contactEmail.trim().toLowerCase() !==
+      email.trim().toLowerCase();
+    if (shouldSendConfirmation) {
+      try {
+        const confirmationResult = await resend.emails.send({
+          from: validatedEnv.fromEmail,
+          to: [email],
+          subject: 'Thank you for contacting Fast Struct',
+          react: ContactConfirmationEmail({
+            name,
+          }),
+          replyTo: validatedEnv.fromEmail,
+        });
 
-      if (confirmationResult.error) {
+        if (confirmationResult.error) {
+          console.error(
+            '[Contact API] Confirmation email error:',
+            confirmationResult.error
+          );
+          // Don't fail the request - the main email was sent successfully
+        } else {
+          console.log(
+            '[Contact API] Confirmation email sent successfully:',
+            confirmationResult.data
+          );
+        }
+      } catch (confirmationError) {
         console.error(
-          '[Contact API] Confirmation email error:',
-          confirmationResult.error
+          '[Contact API] Error sending confirmation email:',
+          confirmationError
         );
         // Don't fail the request - the main email was sent successfully
-      } else {
-        console.log(
-          '[Contact API] Confirmation email sent successfully:',
-          confirmationResult.data
-        );
       }
-    } catch (confirmationError) {
-      console.error(
-        '[Contact API] Error sending confirmation email:',
-        confirmationError
+    } else {
+      console.log(
+        '[Contact API] Skipping confirmation email because recipient matches business inbox'
       );
-      // Don't fail the request - the main email was sent successfully
     }
 
     return NextResponse.json(
