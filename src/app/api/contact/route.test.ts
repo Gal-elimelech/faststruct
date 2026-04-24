@@ -3,6 +3,7 @@ import { NextRequest } from 'next/server';
 import { POST } from './route';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { getValidatedContactEnv } from '@/lib/env';
+import { createAssessment } from '@/lib/recaptcha';
 
 const validPayload = {
   name: 'John Doe',
@@ -10,6 +11,7 @@ const validPayload = {
   phone: '1234567890',
   address: '123 Main St, City',
   message: 'This is a test message with enough characters.',
+  recaptchaToken: 'recaptcha-token',
   source: 'contact' as const,
 };
 
@@ -19,6 +21,7 @@ const validLeadPayload = {
   phone: '1234567890',
   address: '',
   message: 'This is a test message with enough characters.',
+  recaptchaToken: 'recaptcha-token',
   serviceType: 'ADU Construction' as const,
   source: 'landing' as const,
 };
@@ -74,6 +77,14 @@ vi.mock('@/lib/rate-limit', () => ({
   }),
 }));
 
+vi.mock('@/lib/recaptcha', () => ({
+  createAssessment: vi.fn().mockResolvedValue({
+    score: 0.9,
+    reasons: [],
+    action: 'contact',
+  }),
+}));
+
 describe('POST /api/contact', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -81,6 +92,11 @@ describe('POST /api/contact', () => {
       success: true,
       remaining: 4,
       resetAt: Date.now() + 60000,
+    });
+    vi.mocked(createAssessment).mockResolvedValue({
+      score: 0.9,
+      reasons: [],
+      action: 'contact',
     });
   });
 
@@ -91,6 +107,7 @@ describe('POST /api/contact', () => {
       phone: '12',
       address: 'x',
       message: 'short',
+      recaptchaToken: '',
       source: 'contact',
     });
     const response = await POST(request);
@@ -125,6 +142,7 @@ describe('POST /api/contact', () => {
       phone: '1234567890',
       address: '',
       message: 'This is a test message with enough characters.',
+      recaptchaToken: 'recaptcha-token',
       source: 'landing',
     });
     const response = await POST(request);
@@ -138,6 +156,7 @@ describe('POST /api/contact', () => {
       phone: '1234567890',
       address: '1234',
       message: 'This is a test message with enough characters.',
+      recaptchaToken: 'recaptcha-token',
       source: 'contact',
     });
     const response = await POST(request);
@@ -167,6 +186,16 @@ describe('POST /api/contact', () => {
     expect(response.headers.get('Retry-After')).toBe('30');
     const data = await response.json();
     expect(data.error).toContain('Too many requests');
+  });
+
+  it('returns 422 when recaptcha verification fails', async () => {
+    vi.mocked(createAssessment).mockResolvedValue(null);
+
+    const request = createRequest(validPayload);
+    const response = await POST(request);
+    expect(response.status).toBe(422);
+    const data = await response.json();
+    expect(data.error).toBe('reCAPTCHA verification failed');
   });
 
   it('returns 500 when env validation fails', async () => {

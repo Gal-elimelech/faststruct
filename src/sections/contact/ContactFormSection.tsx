@@ -9,24 +9,24 @@ import ContactInfoSection from './components/ContactInfoSection';
 import ContactForm from './components/ContactForm';
 import { IContactForm, IContactInfo } from '@/types/contact';
 import {
-  contactFormSchema,
-  type ContactFormData,
-  type ContactFormInput,
+  contactPageFormSchema,
+  type ContactPageFormInput,
+  toContactSubmission,
 } from '@/schemas/contact';
+import { useRecaptchaField } from '@/hooks/useRecaptchaField';
 
 interface ContactFormSectionProps {
   form: IContactForm;
   info: IContactInfo;
 }
 
-const defaultValues: ContactFormInput = {
+const defaultValues: ContactPageFormInput = {
   name: '',
   email: '',
   phone: '',
   address: '',
   message: '',
-  serviceType: undefined,
-  source: 'contact',
+  recaptchaToken: '',
 };
 
 const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
@@ -37,19 +37,27 @@ const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
   const sectionRef = useRef<HTMLFormElement>(null);
   const isFormInView = useInView(sectionRef, { once: true });
 
-  const { register, handleSubmit, reset, setError, formState } = useForm<
-    ContactFormInput,
+  const { register, handleSubmit, reset, setError, clearErrors, setValue, formState } = useForm<
+    ContactPageFormInput,
     undefined,
-    ContactFormData
+    ContactPageFormInput
   >({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(contactPageFormSchema),
     defaultValues,
   });
 
   const { errors, isSubmitting } = formState;
 
-  const onValid: SubmitHandler<ContactFormData> = async (payload) => {
+  const { recaptchaRef, onTokenChange, resetRecaptcha } = useRecaptchaField({
+    fieldName: 'recaptchaToken',
+    setValue,
+    setError,
+    clearErrors,
+  });
+
+  const onValid: SubmitHandler<ContactPageFormInput> = async (values) => {
     setSubmitMessage({ type: null, text: '' });
+    const payload = toContactSubmission(values);
 
     try {
       const response = await fetch('/api/contact', {
@@ -68,7 +76,7 @@ const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
             field: string;
             message: string;
           }[]) {
-            const key = detail.field as keyof ContactFormInput;
+            const key = detail.field as keyof ContactPageFormInput;
             if (key in defaultValues) {
               setError(key, { message: detail.message });
             }
@@ -88,6 +96,7 @@ const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
       });
 
       reset(defaultValues);
+      resetRecaptcha();
     } catch {
       setSubmitMessage({
         type: 'error',
@@ -109,6 +118,8 @@ const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
             submitMessage={submitMessage}
             isInView={isFormInView}
             onSubmit={handleSubmit(onValid)}
+            recaptchaRef={recaptchaRef}
+            onRecaptchaChange={onTokenChange}
           />
         </div>
       </div>

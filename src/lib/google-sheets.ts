@@ -1,7 +1,8 @@
 import { ContactFormData } from '@/schemas/contact';
 import { env } from './env';
 
-export interface GoogleSheetsData extends ContactFormData {
+export interface GoogleSheetsData
+  extends Omit<ContactFormData, 'recaptchaToken'> {
   status: string;
 }
 

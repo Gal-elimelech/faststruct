@@ -6,12 +6,15 @@ import { Button } from '@/components/Button';
 import { Input, Textarea } from '@/components/form';
 import FormMessage from './FormMessage';
 import { IContactForm } from '@/types/contact';
-import type { ContactFormInput } from '@/schemas/contact';
+import type { ContactPageFormInput } from '@/schemas/contact';
+import Recaptcha from 'react-google-recaptcha';
+import { env } from '@/lib/env';
+import type ReCAPTCHA from 'react-google-recaptcha';
 
 interface ContactFormProps {
   form: IContactForm;
-  register: UseFormRegister<ContactFormInput>;
-  errors: FieldErrors<ContactFormInput>;
+  register: UseFormRegister<ContactPageFormInput>;
+  errors: FieldErrors<ContactPageFormInput>;
   isSubmitting: boolean;
   submitMessage: {
     type: 'success' | 'error' | null;
@@ -19,6 +22,8 @@ interface ContactFormProps {
   };
   isInView: boolean;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
+  recaptchaRef: React.RefObject<ReCAPTCHA | null>;
+  onRecaptchaChange: (token: string | null) => void;
 }
 
 const ContactForm = ({
@@ -29,6 +34,8 @@ const ContactForm = ({
   submitMessage,
   isInView,
   onSubmit,
+  recaptchaRef,
+  onRecaptchaChange,
 }: ContactFormProps) => {
   return (
     <div className='sticky top-0 h-min w-full'>
@@ -38,7 +45,6 @@ const ContactForm = ({
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className='flex flex-col gap-6'>
-        <input type='hidden' {...register('source')} />
         <div className='flex flex-col gap-4'>
           <Input
             id='name'
@@ -98,6 +104,18 @@ const ContactForm = ({
             required
             rows={6}
           />
+        </div>
+
+        <div className='flex flex-col gap-2'>
+          <Recaptcha
+            ref={recaptchaRef}
+            sitekey={env.recaptchaSiteKey}
+            onChange={onRecaptchaChange}
+            onExpired={() => onRecaptchaChange(null)}
+          />
+          {errors.recaptchaToken?.message && (
+            <p className='text-sm text-red-500'>{errors.recaptchaToken.message}</p>
+          )}
         </div>
 
         <Button

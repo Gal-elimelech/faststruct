@@ -2,6 +2,10 @@ const REQUIRED_CONTACT_ENV = [
   'RESEND_API_KEY',
   'CONTACT_EMAIL',
   'NEXT_PUBLIC_SITE_URL',
+  'NEXT_PUBLIC_RECAPTCHA_SITE_KEY',
+  'GOOGLE_CLOUD_PROJECT_ID',
+  'GOOGLE_CLOUD_PROJECT_NUMBER',
+  'GOOGLE_CLOUD_API_KEY',
 ] as const;
 
 export const env = {
@@ -12,6 +16,11 @@ export const env = {
   enableComingSoon: process.env.ENABLE_COMING_SOON === 'true',
   googleSheetsUrl: process.env.GOOGLE_SHEETS_URL ?? '',
   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? '',
+  recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY ?? '',
+  recaptchaSiteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? '',
+  googleCloudProjectId: process.env.GOOGLE_CLOUD_PROJECT_ID ?? '',
+  googleCloudProjectNumber: process.env.GOOGLE_CLOUD_PROJECT_NUMBER ?? '',
+  googleCloudApiKey: process.env.GOOGLE_CLOUD_API_KEY ?? '',
 } as const;
 
 export type Env = typeof env;

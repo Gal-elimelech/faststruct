@@ -1,7 +1,11 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import {
+  useForm,
+  Controller,
+  type SubmitHandler,
+} from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Section } from '@/components/Section';
 import { IFormConfig } from '@/types/landing';
@@ -12,16 +16,19 @@ import {
   LEAD_SERVICE_TYPES,
   leadCaptureFormSchema,
   type LeadCaptureFormInput,
+  toLandingSubmission,
 } from '@/schemas/contact';
+import Recaptcha from 'react-google-recaptcha';
+import { env } from '@/lib/env';
+import { useRecaptchaField } from '@/hooks/useRecaptchaField';
 
 const defaultValues: LeadCaptureFormInput = {
   name: '',
   phone: '',
   email: '',
-  address: '',
   serviceType: 'ADU Construction',
   message: '',
-  source: 'landing',
+  recaptchaToken: '',
 };
 
 const serviceOptions = LEAD_SERVICE_TYPES.map((value) => ({
@@ -47,6 +54,8 @@ const LeadCaptureSection = ({
     control,
     handleSubmit,
     setError,
+    clearErrors,
+    setValue,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<LeadCaptureFormInput>({
@@ -54,10 +63,16 @@ const LeadCaptureSection = ({
     defaultValues,
   });
 
-  const onSubmit = handleSubmit(async (values) => {
-    // TODO: remove this when implementing WhatConvert form submission
-    return;
+  const { recaptchaRef, onTokenChange, resetRecaptcha } = useRecaptchaField({
+    fieldName: 'recaptchaToken',
+    setValue,
+    setError,
+    clearErrors,
+  });
+
+  const onValid: SubmitHandler<LeadCaptureFormInput> = async (values) => {
     setSubmitMessage({ type: null, text: '' });
+    const payload = toLandingSubmission(values);
 
     try {
       const response = await fetch('/api/contact', {
@@ -65,7 +80,7 @@ const LeadCaptureSection = ({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
@@ -96,13 +111,14 @@ const LeadCaptureSection = ({
       });
 
       reset(defaultValues);
+      resetRecaptcha();
     } catch {
       setSubmitMessage({
         type: 'error',
         text: 'Network error. Please try again.',
       });
     }
-  });
+  };
 
   return (
     <Section
@@ -124,10 +140,8 @@ const LeadCaptureSection = ({
         </div>
 
         <form
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit(onValid)}
           className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6 md:gap-y-8 bg-white/3 p-8 md:p-16 lg:p-20 border border-white/5 rounded-sm backdrop-blur-xl relative overflow-hidden'>
-          <input type='hidden' {...register('source')} />
-          <input type='hidden' {...register('address')} />
           <div className='absolute top-0 left-0 h-px w-full bg-linear-to-r from-transparent via-white/10 to-transparent' />
 
           {fields.map((field) => {
@@ -179,7 +193,17 @@ const LeadCaptureSection = ({
               </div>
             );
           })}
-
+          <div className='md:col-span-2 flex flex-col items-center gap-2'>
+            <Recaptcha
+              ref={recaptchaRef}
+              sitekey={env.recaptchaSiteKey}
+              onChange={onTokenChange}
+              onExpired={() => onTokenChange(null)}
+            />
+            {errors.recaptchaToken?.message && (
+              <p className='text-sm text-red-300'>{errors.recaptchaToken.message}</p>
+            )}
+          </div>
           <div className='md:col-span-2 flex flex-col items-center gap-6 mt-2 md:mt-4'>
             <Button
               type='submit'
