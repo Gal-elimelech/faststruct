@@ -62,6 +62,7 @@ export function validateContactEnv(): void {
   const missing = REQUIRED_CONTACT_ENV.filter(
     (key) => !process.env[key]?.trim()
   );
+
   if (missing.length > 0) {
     throw new Error(
       `Missing required environment variables: ${missing.join(', ')}`
@@ -80,3 +81,5 @@ export function getValidatedContactEnv(): Env {
     contactEmails: parseContactEmails(env.contactEmail),
   };
 }
+
+export const validatedEnv = getValidatedContactEnv();
