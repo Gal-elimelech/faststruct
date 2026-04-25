@@ -5,7 +5,7 @@ import Script from 'next/script';
 import { ReactLenis } from 'lenis/react';
 import AppNavigationProvider from '@/contexts/AppNavigationProvider';
 import { generateSocialMetadata } from '@/lib/metadata';
-import { env } from '@/lib/env';
+import { validatedEnv } from '@/lib/env';
 
 const fontPoppins = Poppins({
   subsets: ['latin'],
@@ -20,7 +20,7 @@ const fontBebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.siteUrl),
+  metadataBase: new URL(validatedEnv.siteUrl),
   ...generateSocialMetadata({
     title: 'Fast Struct',
     description: 'Modular + Panelized construction, done right.',
