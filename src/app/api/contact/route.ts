@@ -3,7 +3,7 @@ import { contactSubmissionUnionSchema } from '@/schemas/contact';
 import { Resend } from 'resend';
 import ContactEmail from '@/components/emails/ContactEmail';
 import ContactConfirmationEmail from '@/components/emails/ContactConfirmationEmail';
-import { getValidatedContactEnv } from '@/lib/env';
+import { validatedEnv } from '@/lib/env';
 import { addToGoogleSheets } from '@/lib/google-sheets';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { createAssessment } from '@/lib/recaptcha';
@@ -46,7 +46,6 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const validatedEnv = getValidatedContactEnv();
     const websiteContactEmails = validatedEnv.contactEmails;
     const forwardedFor = request.headers.get('x-forwarded-for') ?? '';
     const userIpAddress = forwardedFor.split(',')[0]?.trim() ?? '';
