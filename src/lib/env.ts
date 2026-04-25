@@ -8,7 +8,37 @@ const REQUIRED_CONTACT_ENV = [
   'GOOGLE_CLOUD_API_KEY',
 ] as const;
 
-export const env = {
+export type Env = typeof env & {
+  contactEmails: string[];
+};
+
+const SIMPLE_EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function parseContactEmails(rawValue: string): string[] {
+  const contactEmails = rawValue
+    .split(',')
+    .map((emailAddress) => emailAddress.trim())
+    .filter(Boolean);
+
+  if (contactEmails.length === 0) {
+    throw new Error(
+      'CONTACT_EMAIL must contain at least one valid recipient email, separated by commas'
+    );
+  }
+
+  const invalidEmails = contactEmails.filter(
+    (emailAddress) => !SIMPLE_EMAIL_REGEX.test(emailAddress)
+  );
+  if (invalidEmails.length > 0) {
+    throw new Error(
+      `CONTACT_EMAIL contains invalid email(s): ${invalidEmails.join(', ')}`
+    );
+  }
+
+  return contactEmails;
+}
+
+const env = {
   resendApiKey: process.env.RESEND_API_KEY ?? '',
   fromEmail: process.env.FROM_EMAIL ?? 'onboarding@resend.dev',
   contactEmail: process.env.CONTACT_EMAIL ?? '',
@@ -22,8 +52,6 @@ export const env = {
   googleCloudProjectNumber: process.env.GOOGLE_CLOUD_PROJECT_NUMBER ?? '',
   googleCloudApiKey: process.env.GOOGLE_CLOUD_API_KEY ?? '',
 } as const;
-
-export type Env = typeof env;
 
 /**
  * Validates that required env vars for the contact API are set.
@@ -45,7 +73,10 @@ export function validateContactEnv(): void {
  * Returns env object after validating required contact vars.
  * Use in contact API route before sending emails.
  */
-export function getValidatedContactEnv(): typeof env {
+export function getValidatedContactEnv(): Env {
   validateContactEnv();
-  return env;
+  return {
+    ...env,
+    contactEmails: parseContactEmails(env.contactEmail),
+  };
 }
