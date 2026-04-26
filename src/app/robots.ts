@@ -1,12 +1,12 @@
 import { MetadataRoute } from 'next';
-import { env } from '@/lib/env';
+import { validatedEnv } from '@/lib/env';
 
 /**
  * robots.txt configuration for search engine crawlers (Google, Bing, etc.)
  * Served at /robots.txt - helps crawlers discover and index the site efficiently
  */
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = env.siteUrl;
+  const baseUrl = validatedEnv.siteUrl;
 
   return {
     rules: {
@@ -21,4 +21,3 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
-
