@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getModules } from '@/lib/content';
-import { env } from '@/lib/env';
+import { validatedEnv } from '@/lib/env';
 import {
   getEnabledStaticPages,
   getPageConfig,
@@ -8,7 +8,7 @@ import {
 } from '@/lib/page-config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = env.siteUrl;
+  const baseUrl = validatedEnv.siteUrl;
   const currentDate = new Date();
 
   // Generate static pages from central configuration
