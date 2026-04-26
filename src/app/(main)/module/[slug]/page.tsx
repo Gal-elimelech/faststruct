@@ -140,10 +140,7 @@ const ModulePage = async ({ params }: ModulePageProps) => {
   return (
     <Page className='bg-dark'>
       <JsonLd data={productSchema} />
-<<<<<<< HEAD
       <h1 className='sr-only'>{currentModule.title} Modular Home</h1>
-=======
->>>>>>> 75ba8d0fbe04ae139428a325e85acb16b0cb3f41
       <HeroProductSection {...heroData} />
       <SpecificationsSection {...specificationsData} />
       <ProductDescriptionSection {...descriptionData} />

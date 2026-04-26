@@ -43,10 +43,7 @@ export default async function Contact() {
   return (
     <Page className='bg-dark'>
       <JsonLd data={contactSchema} />
-<<<<<<< HEAD
       <h1 className='sr-only'>Contact Fast Struct</h1>
-=======
->>>>>>> 75ba8d0fbe04ae139428a325e85acb16b0cb3f41
       <HeroContactSection hero={content.hero} />
       <ContactFormSection form={content.form} info={content.info} />
     </Page>
