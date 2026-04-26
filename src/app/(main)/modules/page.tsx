@@ -48,6 +48,7 @@ const ModulesPage = async () => {
   return (
     <Page className='bg-dark text-cream'>
       <JsonLd data={itemListSchema} />
+      <h1 className='sr-only'>Modular Home Models in California</h1>
       <HeroModulesSection hero={content.hero} />
       <ModulesContent modules={modulesData} content={content} />
     </Page>

@@ -5,7 +5,6 @@ import TypingEffect from '@/components/text-animation/TypingEffect';
 import { useRef } from 'react';
 import Parallax from '@/components/Parallax';
 import { UseScrollOptions } from 'motion/react';
-import { useIsMobile } from '@/hooks/useIsMobile';
 import FadeInParagraph from '@/components/text-animation/FadeInParagraph';
 import { IHeroSection } from '@/types/home';
 
@@ -15,12 +14,8 @@ const HeroSection: React.FC<IHeroSection> = ({
   subtitle,
   heroImage,
 }) => {
-  const isMobile = useIsMobile();
   const ref = useRef<HTMLDivElement>(null);
-  const offset: UseScrollOptions['offset'] = [
-    !isMobile ? 'center center' : '50% 30%',
-    'end start',
-  ];
+  const offset: UseScrollOptions['offset'] = ['center center', 'end start'];
   const unitType = 'px';
 
   return (
@@ -39,7 +34,7 @@ const HeroSection: React.FC<IHeroSection> = ({
       </Parallax>
 
       {/* image container */}
-      <div className='relative aspect-[3/1] overflow-hidden md:mb-10'>
+      <div className='relative aspect-3/1 overflow-hidden md:mb-10'>
         <Image
           priority
           fill

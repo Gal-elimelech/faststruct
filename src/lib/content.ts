@@ -67,8 +67,10 @@ export async function getContent<K extends ContentKey>(
  * @param lang - The language (defaults to 'en')
  * @returns Sorted array of modules
  */
-export const getModules = async (lang: Language = 'en'): Promise<IModule[]> => {
+export async function getModules(
+  lang: Language = 'en'
+): Promise<IModule[]> {
   return (await getContent('modules', lang)).sort(
     (a, b) => b.specs.areaSqft - a.specs.areaSqft
   );
-};
+}

@@ -19,6 +19,11 @@ const HeroSystemSection = ({
           className='absolute inset-0 block h-full w-full'
           imgClassName='h-full w-full object-cover object-center'
           priority
+          sizes='100vw'
+          desktopWidth={1600}
+          desktopHeight={900}
+          mobileWidth={828}
+          mobileHeight={1472}
         />
         <div className='from-dark absolute inset-0 bg-linear-to-t to-transparent to-50%' />
       </div>

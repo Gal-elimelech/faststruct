@@ -45,6 +45,7 @@ const AboutPage = async () => {
   return (
     <Page className='bg-dark'>
       <JsonLd data={aboutSchema} />
+      <h1 className='sr-only'>About Fast Struct</h1>
       <HeroAboutSection {...content.hero} />
       <AboutIntroSection {...content.about} />
       <ImageTextSection {...content.imageText} />
