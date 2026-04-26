@@ -50,7 +50,10 @@ const TheSystemPage = async () => {
   return (
     <Page className='bg-dark'>
       <JsonLd data={systemSchema} />
+<<<<<<< HEAD
       <h1 className='sr-only'>How Fast Struct Works</h1>
+=======
+>>>>>>> 75ba8d0fbe04ae139428a325e85acb16b0cb3f41
       <HeroSystemSection {...content.hero} />
       <TwoPathsSection twoPaths={content.twoPaths} />
       {/* <NineCoreSystemSection nineCoreSystem={content.nineCoreSystem} /> */}
