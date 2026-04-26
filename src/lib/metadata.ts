@@ -1,6 +1,24 @@
 import type { Metadata } from 'next';
 
 const SITE_NAME = 'Fast Struct';
+const TITLE_MAX_LENGTH = 60;
+const DESCRIPTION_MAX_LENGTH = 155;
+
+function truncateAtWord(value: string, maxLength: number): string {
+  const normalized = value.replace(/\s+/g, ' ').trim();
+  if (normalized.length <= maxLength) {
+    return normalized;
+  }
+
+  const truncated = normalized.slice(0, maxLength - 1);
+  const lastSpaceIndex = truncated.lastIndexOf(' ');
+
+  if (lastSpaceIndex > Math.floor(maxLength * 0.6)) {
+    return `${truncated.slice(0, lastSpaceIndex)}...`;
+  }
+
+  return `${truncated}...`;
+}
 
 export function generateOpenGraphMetadata({
   title,
@@ -19,6 +37,8 @@ export function generateOpenGraphMetadata({
       ? 'image/jpeg'
       : image.endsWith('.png')
         ? 'image/png'
+        : image.endsWith('.webp')
+          ? 'image/webp'
         : 'image/jpeg';
 
   return {
@@ -67,10 +87,25 @@ export function generateSocialMetadata({
   image: string;
   url: string;
 }): Metadata {
+  const sanitizedTitle = truncateAtWord(title, TITLE_MAX_LENGTH);
+  const sanitizedDescription = truncateAtWord(description, DESCRIPTION_MAX_LENGTH);
+
   return {
-    title,
-    description,
-    openGraph: generateOpenGraphMetadata({ title, description, image, url }),
-    twitter: generateTwitterMetadata({ title, description, image }),
+    title: sanitizedTitle,
+    description: sanitizedDescription,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: generateOpenGraphMetadata({
+      title: sanitizedTitle,
+      description: sanitizedDescription,
+      image,
+      url,
+    }),
+    twitter: generateTwitterMetadata({
+      title: sanitizedTitle,
+      description: sanitizedDescription,
+      image,
+    }),
   };
 }

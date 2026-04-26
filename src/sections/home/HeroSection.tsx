@@ -45,7 +45,7 @@ const HeroSection: React.FC<IHeroSection> = ({
           fill
           sizes='100vw'
           src={heroImage}
-          alt='Modern modular home'
+          alt='Fast Struct modular home exterior'
           className='object-cover object-[50%_10px] md:object-[50%_20px]'
         />
       </div>

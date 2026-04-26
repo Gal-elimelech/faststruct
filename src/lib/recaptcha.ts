@@ -1,9 +1,9 @@
 import { RecaptchaEnterpriseServiceClient } from '@google-cloud/recaptcha-enterprise';
-import { env } from './env';
+import { validatedEnv } from './env';
 import { google } from '@google-cloud/recaptcha-enterprise/build/protos/protos';
 
 const client = new RecaptchaEnterpriseServiceClient({
-  apiKey: env.googleCloudApiKey,
+  apiKey: validatedEnv.googleCloudApiKey,
 });
 
 export interface RecaptchaAssessmentResult {
@@ -25,7 +25,7 @@ export async function createAssessment({
   userAgent: string;
   recaptchaAction?: string;
 }): Promise<RecaptchaAssessmentResult | null> {
-  const projectPath = client.projectPath(env.googleCloudProjectId);
+  const projectPath = client.projectPath(validatedEnv.googleCloudProjectId);
 
   const request: google.cloud.recaptchaenterprise.v1.ICreateAssessmentRequest =
     {

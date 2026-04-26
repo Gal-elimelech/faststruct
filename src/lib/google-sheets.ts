@@ -1,5 +1,5 @@
 import { ContactFormData } from '@/schemas/contact';
-import { env } from './env';
+import { validatedEnv } from './env';
 
 export interface GoogleSheetsData
   extends Omit<ContactFormData, 'recaptchaToken'> {
@@ -9,13 +9,13 @@ export interface GoogleSheetsData
 export async function addToGoogleSheets(
   data: GoogleSheetsData
 ): Promise<boolean> {
-  if (!env.googleSheetsUrl) {
+  if (!validatedEnv.googleSheetsUrl) {
     console.warn('[Google Sheets] Webhook URL not configured, skipping');
     return false;
   }
 
   try {
-    const response = await fetch(env.googleSheetsUrl, {
+    const response = await fetch(validatedEnv.googleSheetsUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

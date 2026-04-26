@@ -1,12 +1,19 @@
 import type { Metadata } from 'next';
 import { generateSocialMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = generateSocialMetadata({
-  title: 'Coming Soon | Fast Struct',
-  description: "We're working on something amazing. Our website will be ready soon!",
-  image: '/assets/hero-image.png',
-  url: '/coming-soon',
-});
+export const metadata: Metadata = {
+  ...generateSocialMetadata({
+    title: 'Fast Struct Updates | Coming Soon',
+    description:
+      'Fast Struct is preparing new updates. Check back soon for additional modular and panelized construction resources.',
+    image: '/assets/hero-image.png',
+    url: '/coming-soon',
+  }),
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function ComingSoonPage() {
   return (
@@ -20,6 +27,8 @@ export default function ComingSoonPage() {
             viewBox='0 0 200 200'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
+            aria-hidden='true'
+            focusable='false'
             className='text-accent'>
             {/* Sun */}
             <circle cx='160' cy='40' r='25' fill='currentColor' opacity='0.3' />

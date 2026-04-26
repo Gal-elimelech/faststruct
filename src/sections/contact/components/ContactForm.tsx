@@ -8,7 +8,7 @@ import FormMessage from './FormMessage';
 import { IContactForm } from '@/types/contact';
 import type { ContactPageFormInput } from '@/schemas/contact';
 import Recaptcha from 'react-google-recaptcha';
-import { env } from '@/lib/env';
+import { publicEnv } from '@/lib/env-public';
 import type ReCAPTCHA from 'react-google-recaptcha';
 
 interface ContactFormProps {
@@ -109,7 +109,7 @@ const ContactForm = ({
         <div className='flex flex-col gap-2'>
           <Recaptcha
             ref={recaptchaRef}
-            sitekey={env.recaptchaSiteKey}
+            sitekey={publicEnv.recaptchaSiteKey}
             onChange={onRecaptchaChange}
             onExpired={() => onRecaptchaChange(null)}
           />
