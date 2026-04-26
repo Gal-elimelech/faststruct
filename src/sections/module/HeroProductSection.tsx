@@ -32,7 +32,7 @@ const HeroProductSection = ({
         <div className='relative h-full w-full'>
           <Image
             src={currentImage}
-            alt='Product hero background'
+            alt={`${title} modular home exterior`}
             fill
             sizes='100vw'
             className='object-cover object-center'

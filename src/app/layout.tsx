@@ -22,8 +22,9 @@ const fontBebasNeue = Bebas_Neue({
 export const metadata: Metadata = {
   metadataBase: new URL(validatedEnv.siteUrl),
   ...generateSocialMetadata({
-    title: 'Fast Struct',
-    description: 'Modular + Panelized construction, done right.',
+    title: 'Fast Struct | Modular & Panelized Homes CA',
+    description:
+      'Fast Struct builds modular and panelized steel homes in California with factory precision and faster timelines.',
     image: '/assets/hero-image.png',
     url: '/',
   }),

@@ -21,7 +21,7 @@ const IntroSectionImage = ({
       <div className='relative h-96 w-full translate-x-10 scale-105 overflow-hidden rounded-lg lg:h-[70vh] lg:scale-110'>
         <Image
           src={imageUrl}
-          alt='Construction site'
+          alt='Factory-built construction site by Fast Struct'
           fill
           sizes='(max-width: 1024px) 100vw, 50vw'
           className='object-cover object-center'

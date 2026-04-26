@@ -8,6 +8,7 @@ import StackedImagesSection from '@/sections/module/StackedImagesSection';
 import ExploreHomesSection from '@/sections/home/ExploreHomesSection';
 import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
+import JsonLd from '@/components/seo/JsonLd';
 
 interface ModulePageProps {
   params: Promise<{ slug: string }>;
@@ -27,12 +28,22 @@ export async function generateMetadata({ params }: ModulePageProps) {
 
   if (!module) {
     return {
-      title: 'Module Not Found',
+      ...generateSocialMetadata({
+        title: 'Module Not Found | Fast Struct',
+        description:
+          'The requested module page is unavailable. Explore our available modular home models in California.',
+        image: '/assets/hero-image.png',
+        url: '/modules',
+      }),
+      robots: {
+        index: false,
+        follow: true,
+      },
     };
   }
 
   return generateSocialMetadata({
-    title: `${module.title} | Fast Struct`,
+    title: `${module.title} Modular Home | Fast Struct`,
     description: module.summary,
     image: module.mainImage,
     url: `/module/${slug}`,
@@ -92,9 +103,42 @@ const ModulePage = async ({ params }: ModulePageProps) => {
   };
 
   const otherModules = modulesList.filter((m) => m.slug !== slug);
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: currentModule.title,
+    sku: currentModule.slug,
+    category: 'Modular Home',
+    description: currentModule.summary,
+    image: currentModule.images.map((image) => `${siteUrl}${image}`),
+    url: `${siteUrl}/module/${currentModule.slug}`,
+    brand: {
+      '@type': 'Brand',
+      name: 'Fast Struct',
+    },
+    additionalProperty: [
+      {
+        '@type': 'PropertyValue',
+        name: 'Area (sqft)',
+        value: currentModule.specs.areaSqft,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Bedrooms',
+        value: currentModule.specs.bedrooms,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Bathrooms',
+        value: currentModule.specs.bathrooms,
+      },
+    ],
+  };
 
   return (
     <Page className='bg-dark'>
+      <JsonLd data={productSchema} />
       <HeroProductSection {...heroData} />
       <SpecificationsSection {...specificationsData} />
       <ProductDescriptionSection {...descriptionData} />

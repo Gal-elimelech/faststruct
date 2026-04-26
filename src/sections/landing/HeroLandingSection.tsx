@@ -23,6 +23,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
           alt={title}
           fill
           priority
+          sizes='100vw'
           className='object-cover'
         />
       </div>
@@ -87,7 +88,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
             <div className='relative w-full'>
               <Image
                 src={googleReviewBadge}
-                alt='Google Reviews'
+                alt='Google review rating badge for Fast Struct'
                 width={52 * 5}
                 height={52 * 5}
                 className='object-contain'

@@ -21,7 +21,7 @@ const ImageTextSection = ({ image, paragraph }: IImageText) => {
           <div className='relative h-96 w-full overflow-hidden rounded-xl lg:h-[70vh]'>
             <Image
               src={image}
-              alt='Construction site'
+              alt='Fast Struct team managing modular construction'
               fill
               sizes='(max-width: 768px) 100vw, 50vw'
               className='object-cover object-center'

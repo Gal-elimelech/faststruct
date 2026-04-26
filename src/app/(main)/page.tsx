@@ -12,12 +12,14 @@ import { getContent, getModules } from '@/lib/content';
 import type { Metadata } from 'next';
 import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
+import JsonLd from '@/components/seo/JsonLd';
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('home', 'en');
   return generateSocialMetadata({
-    title: 'Home | Fast Struct',
-    description: content.heroSection.subtitle,
+    title: 'Modular & Panelized Homes California | Fast Struct',
+    description:
+      'Fast Struct builds modular and panelized steel homes in California with factory precision and streamlined delivery.',
     image: content.metadataImage,
     url: '/',
   });
@@ -27,9 +29,35 @@ const HomePage = async () => {
   const content = await getContent('home', 'en');
   const processContent = await getContent('process', 'en');
   const modulesData = await getModules();
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const organizationId = `${siteUrl}/#organization`;
+
+  const homeSchema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Fast Struct',
+      inLanguage: 'en-US',
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      '@id': organizationId,
+      name: 'Fast Struct',
+      url: siteUrl,
+      image: `${siteUrl}${content.metadataImage}`,
+      description:
+        'Modular and panelized steel home construction services across California.',
+      areaServed: 'California',
+      serviceType: ['Modular Construction', 'Panelized Construction'],
+    },
+  ];
 
   return (
     <Page className='bg-dark text-cream'>
+      <JsonLd data={homeSchema} />
       {/* Hero Section */}
       <HeroSection {...content.heroSection} />
 
