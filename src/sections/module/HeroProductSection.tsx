@@ -1,12 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import AnimatedHeading from '@/components/text-animation/AnimatedHeading';
 import FadeInParagraph from '@/components/text-animation/FadeInParagraph';
 import Parallax from '@/components/Parallax';
 import { IHeroProduct } from '@/types/product';
 import { Section } from '@/components/Section';
-import { useIsTablet } from '@/hooks/useIsTablet';
+import ArtDirectedHeroImage from '@/components/ArtDirectedHeroImage';
 
 const HeroProductSection = ({
   title,
@@ -14,9 +13,6 @@ const HeroProductSection = ({
   backgroundImage,
   mobileBackgroundImage,
 }: IHeroProduct) => {
-  const isTabletOrSmaller = useIsTablet();
-  const currentImage = isTabletOrSmaller ? mobileBackgroundImage : backgroundImage;
-
   return (
     <Section
       bgColor='dark'
@@ -30,12 +26,12 @@ const HeroProductSection = ({
         unitType='%'
         offset={['start start', 'end end']}>
         <div className='relative h-full w-full'>
-          <Image
-            src={currentImage}
+          <ArtDirectedHeroImage
+            desktopSrc={backgroundImage}
+            mobileSrc={mobileBackgroundImage}
             alt={`${title} modular home exterior`}
-            fill
-            sizes='100vw'
-            className='object-cover object-center'
+            className='absolute inset-0 block h-full w-full'
+            imgClassName='h-full w-full object-cover object-center'
             priority
           />
           <div className='from-dark absolute inset-0 bg-linear-to-t to-transparent to-50%' />
