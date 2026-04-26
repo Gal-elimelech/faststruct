@@ -8,6 +8,7 @@ import StackedImagesSection from '@/sections/module/StackedImagesSection';
 import ExploreHomesSection from '@/sections/home/ExploreHomesSection';
 import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
+import { validatedEnv } from '@/lib/env';
 import JsonLd from '@/components/seo/JsonLd';
 
 interface ModulePageProps {
@@ -103,7 +104,7 @@ const ModulePage = async ({ params }: ModulePageProps) => {
   };
 
   const otherModules = modulesList.filter((m) => m.slug !== slug);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const siteUrl = validatedEnv.siteUrl;
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',

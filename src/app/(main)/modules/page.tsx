@@ -6,6 +6,7 @@ import HeroModulesSection from '@/sections/modules/HeroModulesSection';
 import ModulesContent from '@/sections/modules/ModulesContent';
 import LoadingSkeleton from '@/sections/modules/components/LoadingSkeleton';
 import { generateSocialMetadata } from '@/lib/metadata';
+import { validatedEnv } from '@/lib/env';
 import JsonLd from '@/components/seo/JsonLd';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -22,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const ModulesPage = async () => {
   const content = await getContent('modulesPage', 'en');
   const modulesData = await getModules();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const siteUrl = validatedEnv.siteUrl;
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',

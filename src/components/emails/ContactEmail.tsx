@@ -10,7 +10,7 @@ import {
   Img,
 } from '@react-email/components';
 import CSSConstants from '@/lib/css-constants';
-import { env } from '@/lib/env';
+import { validatedEnv } from '@/lib/env';
 import type { ContactFormSource } from '@/schemas/contact';
 
 const SOURCE_LABEL: Record<ContactFormSource, string> = {
@@ -45,7 +45,7 @@ export default function ContactEmail({
           {/* Logo Section */}
           <Section style={logoSection}>
             <Img
-              src={`${env.siteUrl}/assets/logo/logo-full.png`}
+              src={`${validatedEnv.siteUrl}/assets/logo/logo-full.png`}
               alt='Fast Struct Logo'
               width='200'
               height='auto'

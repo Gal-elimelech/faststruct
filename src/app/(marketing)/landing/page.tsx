@@ -17,6 +17,7 @@ import StickyCTA from '@/sections/landing/components/StickyCTA';
 import { isPageEnabled } from '@/lib/page-config';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/seo/JsonLd';
+import { validatedEnv } from '@/lib/env';
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('landing', 'en');
@@ -35,7 +36,7 @@ const LandingPage = async () => {
   }
 
   const content = await getContent('landing', 'en');
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const siteUrl = validatedEnv.siteUrl;
   const landingSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
