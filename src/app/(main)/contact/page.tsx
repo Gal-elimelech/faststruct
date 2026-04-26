@@ -4,6 +4,7 @@ import HeroContactSection from '@/sections/contact/HeroContactSection';
 import ContactFormSection from '@/sections/contact/ContactFormSection';
 import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
+import { validatedEnv } from '@/lib/env';
 import JsonLd from '@/components/seo/JsonLd';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -19,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Contact() {
   const content = await getContent('contact', 'en');
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const siteUrl = validatedEnv.siteUrl;
   const contactSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',

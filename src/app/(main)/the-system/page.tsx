@@ -10,6 +10,7 @@ import ScalableSolutionsSection from '@/sections/the-system/ScalableSolutionsSec
 import CustomizationSection from '@/sections/the-system/CustomizationSection';
 import OurProcessSection from '@/sections/shared/OurProcessSection';
 import { generateSocialMetadata } from '@/lib/metadata';
+import { validatedEnv } from '@/lib/env';
 import JsonLd from '@/components/seo/JsonLd';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,7 +31,7 @@ const TheSystemPage = async () => {
 
   const content = await getContent('theSystem', 'en');
   const processContent = await getContent('process', 'en');
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const siteUrl = validatedEnv.siteUrl;
   const systemSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',

@@ -12,6 +12,7 @@ import { getContent, getModules } from '@/lib/content';
 import type { Metadata } from 'next';
 import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
+import { validatedEnv } from '@/lib/env';
 import JsonLd from '@/components/seo/JsonLd';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,7 +30,7 @@ const HomePage = async () => {
   const content = await getContent('home', 'en');
   const processContent = await getContent('process', 'en');
   const modulesData = await getModules();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const siteUrl = validatedEnv.siteUrl;
   const organizationId = `${siteUrl}/#organization`;
 
   const homeSchema = [

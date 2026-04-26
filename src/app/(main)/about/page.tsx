@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
+import { validatedEnv } from '@/lib/env';
 import JsonLd from '@/components/seo/JsonLd';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,7 +28,7 @@ const AboutPage = async () => {
   }
 
   const content = await getContent('about', 'en');
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const siteUrl = validatedEnv.siteUrl;
   const aboutSchema = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
