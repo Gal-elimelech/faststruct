@@ -36,7 +36,9 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
               <p className='text-accent font-bebas text-xl uppercase tracking-widest'>Office & Factory</p>
               <div className='flex items-start gap-3'>
                 <i className='fa-solid fa-map-marker-alt text-accent mt-1'></i>
-                <span className='text-light/80 text-lg leading-tight'>{address}</span>
+                <address className='text-light/80 not-italic text-lg leading-tight'>
+                  {address}
+                </address>
               </div>
             </div>
 

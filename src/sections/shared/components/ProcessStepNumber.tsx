@@ -11,6 +11,8 @@ type IStepNumberProps = {
 const ProcessStepNumber: React.FC<IStepNumberProps> = ({ number, ref }) => {
   const svgWithClass = cloneElement(numbersSvgs[number - 1], {
     className: 'max-w-full max-h-full',
+    'aria-hidden': true,
+    focusable: 'false',
   });
 
   return (

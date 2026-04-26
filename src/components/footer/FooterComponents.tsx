@@ -78,8 +78,13 @@ const FooterLinksAndContact = ({
 
       <FooterSection title='Contact'>
         <FooterList>
-          <li>{info.address.street}</li>
-          <li>{info.address.city}</li>
+          <li>
+            <address className='not-italic'>
+              <span>{info.address.street}</span>
+              <br />
+              <span>{info.address.city}</span>
+            </address>
+          </li>
           <li>
             <a
               href={`mailto:${info.email}`}

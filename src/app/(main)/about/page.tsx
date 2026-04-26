@@ -8,12 +8,14 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
+import JsonLd from '@/components/seo/JsonLd';
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('about', 'en');
   return generateSocialMetadata({
-    title: 'About Us | Fast Struct',
-    description: content.hero.subtitle,
+    title: 'About Fast Struct | California Modular Experts',
+    description:
+      'Learn how Fast Struct delivers precision modular and panelized construction across California with speed, quality, and trust.',
     image: content.hero.backgroundImage,
     url: '/about',
   });
@@ -25,9 +27,23 @@ const AboutPage = async () => {
   }
 
   const content = await getContent('about', 'en');
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    url: `${siteUrl}/about`,
+    name: 'About Fast Struct',
+    description: content.hero.subtitle,
+    about: {
+      '@type': 'Organization',
+      name: 'Fast Struct',
+      url: siteUrl,
+    },
+  };
 
   return (
     <Page className='bg-dark'>
+      <JsonLd data={aboutSchema} />
       <HeroAboutSection {...content.hero} />
       <AboutIntroSection {...content.about} />
       <ImageTextSection {...content.imageText} />

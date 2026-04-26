@@ -18,6 +18,7 @@ export default function robots(): MetadataRoute.Robots {
         '/_next/', // Next.js build artifacts - no SEO value
       ],
     },
+    host: baseUrl,
     sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

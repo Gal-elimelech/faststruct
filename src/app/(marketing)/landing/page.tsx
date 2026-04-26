@@ -16,12 +16,14 @@ import LandingLocationSection from '@/sections/landing/LandingLocationSection';
 import StickyCTA from '@/sections/landing/components/StickyCTA';
 import { isPageEnabled } from '@/lib/page-config';
 import { notFound } from 'next/navigation';
+import JsonLd from '@/components/seo/JsonLd';
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('landing', 'en');
   return generateSocialMetadata({
-    title: 'Custom ADUs | Fast Struct',
-    description: content.heroSection.subtitle,
+    title: 'Custom ADUs in the Bay Area | Fast Struct',
+    description:
+      'Design and build custom ADUs in the Bay Area with steel construction, factory precision, and faster project timelines.',
     image: content.metadataImage,
     url: '/landing',
   });
@@ -33,9 +35,22 @@ const LandingPage = async () => {
   }
 
   const content = await getContent('landing', 'en');
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const landingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Fast Struct ADU Services',
+    url: `${siteUrl}/landing`,
+    description: content.heroSection.subtitle,
+    image: `${siteUrl}${content.metadataImage}`,
+    areaServed: 'Bay Area, California',
+    serviceType: ['Custom ADUs', 'Modular ADU Construction'],
+    telephone: content.heroSection.phoneCta.text,
+  };
 
   return (
     <Page className='bg-dark text-light relative'>
+      <JsonLd data={landingSchema} />
       <section id="heroSection" className='z-20'>
         <HeroLandingSection {...content.heroSection} />
       </section>

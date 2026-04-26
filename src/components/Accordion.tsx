@@ -62,6 +62,8 @@ const ChevronDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
     strokeWidth='2'
     strokeLinecap='round'
     strokeLinejoin='round'
+    aria-hidden='true'
+    focusable='false'
     {...props}
   >
     <path d='m6 9 6 6 6-6' />

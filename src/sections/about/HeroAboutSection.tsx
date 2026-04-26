@@ -27,7 +27,7 @@ const HeroAboutSection = ({ title, subtitle, backgroundImage }: IHeroAbout) => {
           fill
           priority
           src={backgroundImage}
-          alt='About us'
+          alt='Fast Struct team and modular construction projects'
           sizes='100vw'
           className='object-cover object-center'
         />
