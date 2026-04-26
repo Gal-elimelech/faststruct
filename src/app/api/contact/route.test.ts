@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { NextRequest } from 'next/server';
 import { POST } from './route';
 import { checkRateLimit } from '@/lib/rate-limit';
-import { getValidatedContactEnv } from '@/lib/env';
+import type { Env } from '@/lib/env';
 import { createAssessment } from '@/lib/recaptcha';
 
 const validPayload = {
@@ -41,18 +41,27 @@ function createRequest(
   });
 }
 
+const testEnv: Env = {
+  siteUrl: 'https://example.com',
+  resendApiKey: 're_test',
+  fromEmail: 'test@resend.dev',
+  contactEmail: 'contact@example.com',
+  enableComingSoon: false,
+  googleSheetsUrl: '',
+  googleMapsApiKey: '',
+  recaptchaSecretKey: '',
+  recaptchaSiteKey: 'test-site-key',
+  googleCloudProjectId: 'test-project',
+  googleCloudProjectNumber: '123456789',
+  googleCloudApiKey: 'test-api-key',
+  contactEmails: ['contact@example.com'],
+};
+
 vi.mock('@/lib/env', async (importOriginal) => {
   const actual = await importOriginal<typeof import('@/lib/env')>();
-  const testEnv = {
-    ...actual.env,
-    siteUrl: 'https://example.com',
-    resendApiKey: 're_test',
-    contactEmail: 'contact@example.com',
-    fromEmail: 'test@resend.dev',
-  };
   return {
     ...actual,
-    env: testEnv,
+    validatedEnv: testEnv,
     getValidatedContactEnv: vi.fn(() => testEnv),
   };
 });
@@ -198,10 +207,10 @@ describe('POST /api/contact', () => {
     expect(data.error).toBe('reCAPTCHA verification failed');
   });
 
-  it('returns 500 when env validation fails', async () => {
-    vi.mocked(getValidatedContactEnv).mockImplementation(() => {
-      throw new Error('Missing required environment variables: RESEND_API_KEY');
-    });
+  it('returns 500 when an unexpected error occurs during processing', async () => {
+    vi.mocked(createAssessment).mockRejectedValueOnce(
+      new Error('Temporary reCAPTCHA service error')
+    );
 
     const request = createRequest(validPayload);
     const response = await POST(request);
