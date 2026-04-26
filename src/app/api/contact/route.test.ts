@@ -2,7 +2,6 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { NextRequest } from 'next/server';
 import { POST } from './route';
 import { checkRateLimit } from '@/lib/rate-limit';
-import type { Env } from '@/lib/env';
 import { createAssessment } from '@/lib/recaptcha';
 
 const validPayload = {
@@ -41,30 +40,29 @@ function createRequest(
   });
 }
 
-const testEnv: Env = {
-  siteUrl: 'https://example.com',
-  resendApiKey: 're_test',
-  fromEmail: 'test@resend.dev',
-  contactEmail: 'contact@example.com',
-  enableComingSoon: false,
-  googleSheetsUrl: '',
-  googleMapsApiKey: '',
-  recaptchaSecretKey: '',
-  recaptchaSiteKey: 'test-site-key',
-  googleCloudProjectId: 'test-project',
-  googleCloudProjectNumber: '123456789',
-  googleCloudApiKey: 'test-api-key',
-  contactEmails: ['contact@example.com'],
-};
+const { testEnv } = vi.hoisted(() => ({
+  testEnv: {
+    siteUrl: 'https://example.com',
+    resendApiKey: 're_test',
+    fromEmail: 'test@resend.dev',
+    contactEmail: 'contact@example.com',
+    enableComingSoon: false,
+    googleSheetsUrl: '',
+    googleMapsApiKey: '',
+    recaptchaSecretKey: '',
+    recaptchaSiteKey: 'test-site-key',
+    googleCloudProjectId: 'test-project',
+    googleCloudProjectNumber: '123456789',
+    googleCloudApiKey: 'test-api-key',
+    contactEmails: ['contact@example.com'],
+  },
+}));
 
-vi.mock('@/lib/env', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@/lib/env')>();
-  return {
-    ...actual,
-    validatedEnv: testEnv,
-    getValidatedContactEnv: vi.fn(() => testEnv),
-  };
-});
+vi.mock('@/lib/env', () => ({
+  validatedEnv: testEnv,
+  getValidatedContactEnv: vi.fn(() => testEnv),
+  validateContactEnv: vi.fn(),
+}));
 
 vi.mock('resend', () => ({
   Resend: class MockResend {
