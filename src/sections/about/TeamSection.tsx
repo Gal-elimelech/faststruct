@@ -125,7 +125,6 @@ const TeamMemberCard = ({
               setIsImageLoading(false);
             }}
             onLoad={() => setIsImageLoading(false)}
-            priority={index < 2} // Prioritize first 2 images
           />
 
           {/* Gradient overlay on hover */}
