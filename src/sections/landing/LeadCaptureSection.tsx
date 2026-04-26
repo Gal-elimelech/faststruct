@@ -19,7 +19,7 @@ import {
   toLandingSubmission,
 } from '@/schemas/contact';
 import Recaptcha from 'react-google-recaptcha';
-import { validatedEnv } from '@/lib/env';
+import { publicEnv } from '@/lib/env-public';
 import { useRecaptchaField } from '@/hooks/useRecaptchaField';
 
 const defaultValues: LeadCaptureFormInput = {
@@ -196,7 +196,7 @@ const LeadCaptureSection = ({
           <div className='md:col-span-2 flex flex-col items-center gap-2'>
             <Recaptcha
               ref={recaptchaRef}
-              sitekey={validatedEnv.recaptchaSiteKey}
+              sitekey={publicEnv.recaptchaSiteKey}
               onChange={onTokenChange}
               onExpired={() => onTokenChange(null)}
             />
