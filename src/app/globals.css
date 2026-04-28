@@ -80,7 +80,7 @@
 @layer components {
   /* Base Button Styles */
   .btn {
-    @apply font-poppins focus:ring-accent/50 inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-200 ease-in-out focus:ring-2 focus:ring-offset-2 focus:outline-none;
+    @apply font-poppins focus:ring-accent/50 inline-flex cursor-pointer items-center justify-center rounded-lg font-semibold transition-all duration-200 ease-in-out focus:ring-2 focus:ring-offset-2 focus:outline-none;
   }
 
   /* Button Sizes */
@@ -106,17 +106,17 @@
   }
 
   .btn-outline {
-    @apply text-dark hover:bg-dark/10 active:bg-dark/20 focus:ring-dark/50 bg-transparent outline-2 outline-solid outline-dark;
+    @apply text-dark hover:bg-dark/10 active:bg-dark/20 focus:ring-dark/50 outline-dark bg-transparent outline-2 outline-solid;
   }
 
   /* Outline call-to-action on dark page backgrounds (accent ring) */
   .btn-outline-call-dark {
-    @apply bg-transparent text-accent outline-2 outline-solid outline-accent hover:bg-accent/10 active:bg-accent/20 focus:ring-accent/50;
+    @apply text-accent outline-accent hover:bg-accent/10 active:bg-accent/20 focus:ring-accent/50 bg-transparent outline-2 outline-solid;
   }
 
   /* Outline call-to-action on hero glass card (white ring) */
   .btn-outline-call-hero {
-    @apply bg-transparent text-white outline-2 outline-solid outline-white hover:bg-white/10 active:bg-white/15 focus:ring-white/50;
+    @apply bg-transparent text-white outline-2 outline-white outline-solid hover:bg-white/10 focus:ring-white/50 active:bg-white/15;
   }
 
   /* Button with Icon */
