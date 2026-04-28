@@ -49,7 +49,7 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
               buttonClassName='size-full'
               fullWidth
             >
-              {phone}
+              Call Us
             </LandingCtaLink>
 
             <LandingCtaLink
