@@ -49,11 +49,12 @@ export function useRecaptchaField<TFormValues extends FieldValues>({
   const resetRecaptcha = useCallback(() => {
     recaptchaRef.current?.reset();
     setValue(fieldName, '' as TFormValues[Path<TFormValues>], {
-      shouldDirty: true,
-      shouldTouch: true,
-      shouldValidate: true,
+      shouldDirty: false,
+      shouldTouch: false,
+      shouldValidate: false,
     });
-  }, [fieldName, setValue]);
+    clearErrors(fieldName);
+  }, [clearErrors, fieldName, setValue]);
 
   return {
     recaptchaRef,
