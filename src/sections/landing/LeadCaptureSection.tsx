@@ -75,35 +75,35 @@ const LeadCaptureSection = ({
     const payload = toLandingSubmission(values);
 
     try {
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(payload),
-      // });
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-      // const data = await response.json();
+      const data = await response.json();
 
-      // if (!response.ok) {
-      //   if (data.details && Array.isArray(data.details)) {
-      //     for (const detail of data.details as {
-      //       field: string;
-      //       message: string;
-      //     }[]) {
-      //       const key = detail.field as keyof LeadCaptureFormInput;
-      //       if (key in defaultValues) {
-      //         setError(key, { message: detail.message });
-      //       }
-      //     }
-      //   }
+      if (!response.ok) {
+        if (data.details && Array.isArray(data.details)) {
+          for (const detail of data.details as {
+            field: string;
+            message: string;
+          }[]) {
+            const key = detail.field as keyof LeadCaptureFormInput;
+            if (key in defaultValues) {
+              setError(key, { message: detail.message });
+            }
+          }
+        }
 
-      //   setSubmitMessage({
-      //     type: 'error',
-      //     text: data.error || 'Failed to send message',
-      //   });
-      //   return;
-      // }
+        setSubmitMessage({
+          type: 'error',
+          text: data.error || 'Failed to send message',
+        });
+        return;
+      }
 
       setSubmitMessage({
         type: 'success',
@@ -122,7 +122,7 @@ const LeadCaptureSection = ({
 
   return (
     <Section
-      id='lead-capture'
+
       ref={sectionRef}
       bgColor='dark'
       textColor='light'

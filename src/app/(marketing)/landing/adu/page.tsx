@@ -60,8 +60,10 @@ const LandingPage = async () => {
         <ValuePropSection {...content.valueProp} />
       </section>
 
-      <section>
-        <LeadCaptureSection {...content.leadCapture} />
+      <section id="lead-capture">
+        <LeadCaptureSection
+          {...content.leadCapture}
+        />
       </section>
 
       <section id="companyOverview">
@@ -98,12 +100,6 @@ const LandingPage = async () => {
       <section id="location">
         <LandingLocationSection {...content.location} />
       </section>
-
-      <LeadCaptureSection
-        {...content.leadCapture}
-        title="Ready to Build Your ADU?"
-        subtitle="Get a free estimate and see how we can bring your vision to life in 90 days."
-      />
 
       <StickyCTA phone={content.heroSection.phoneCta.text} />
     </Page>
