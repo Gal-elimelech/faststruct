@@ -75,35 +75,35 @@ const LeadCaptureSection = ({
     const payload = toLandingSubmission(values);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+      // const response = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(payload),
+      // });
 
-      const data = await response.json();
+      // const data = await response.json();
 
-      if (!response.ok) {
-        if (data.details && Array.isArray(data.details)) {
-          for (const detail of data.details as {
-            field: string;
-            message: string;
-          }[]) {
-            const key = detail.field as keyof LeadCaptureFormInput;
-            if (key in defaultValues) {
-              setError(key, { message: detail.message });
-            }
-          }
-        }
+      // if (!response.ok) {
+      //   if (data.details && Array.isArray(data.details)) {
+      //     for (const detail of data.details as {
+      //       field: string;
+      //       message: string;
+      //     }[]) {
+      //       const key = detail.field as keyof LeadCaptureFormInput;
+      //       if (key in defaultValues) {
+      //         setError(key, { message: detail.message });
+      //       }
+      //     }
+      //   }
 
-        setSubmitMessage({
-          type: 'error',
-          text: data.error || 'Failed to send message',
-        });
-        return;
-      }
+      //   setSubmitMessage({
+      //     type: 'error',
+      //     text: data.error || 'Failed to send message',
+      //   });
+      //   return;
+      // }
 
       setSubmitMessage({
         type: 'success',
@@ -140,6 +140,9 @@ const LeadCaptureSection = ({
         </div>
 
         <form
+          id='gform_1'
+          name='gform_1'
+          data-form-type='lead-capture'
           onSubmit={handleSubmit(onValid)}
           className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6 md:gap-y-8 bg-white/3 p-8 md:p-16 lg:p-20 border border-white/5 rounded-sm backdrop-blur-xl relative overflow-hidden'>
           <div className='absolute top-0 left-0 h-px w-full bg-linear-to-r from-transparent via-white/10 to-transparent' />
