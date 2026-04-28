@@ -24,7 +24,7 @@ const CompanyOverviewSection: React.FC<ICompanyOverview> = ({ title, texts, item
           </div>
           
           <LandingCtaLink href={cta.link} linkClassName='inline-block w-full sm:w-auto'>
-            Call: {cta.text}
+            {cta.text}
           </LandingCtaLink>
         </div>
 

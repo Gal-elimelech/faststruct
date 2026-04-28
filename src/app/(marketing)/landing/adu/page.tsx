@@ -60,7 +60,7 @@ const LandingPage = async () => {
         <ValuePropSection {...content.valueProp} />
       </section>
 
-      <section id="lead-capture">
+      <section id="lead-capture" className='scroll-mt-24'>
         <LeadCaptureSection
           {...content.leadCapture}
         />

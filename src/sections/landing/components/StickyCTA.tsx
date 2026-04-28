@@ -46,11 +46,10 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
               href={`tel:${phone.replace(/\D/g, '')}`}
               size='md'
               linkClassName='grow basis-1/2'
-              buttonClassName='inline-flex items-center justify-center gap-2 size-full'
+              buttonClassName='size-full'
               fullWidth
             >
-              <i className='fa-solid fa-phone' aria-hidden />
-              <span>Call</span>
+              {phone}
             </LandingCtaLink>
 
             <LandingCtaLink
