@@ -17,7 +17,13 @@ const LandingGalleryCard = ({ item, index }: LandingGalleryCardProps) => {
       transition={{ duration: 0.8, delay: index * 0.05 }}
       viewport={{ once: true }}
       className='relative aspect-4/3 overflow-hidden border border-dark/10'>
-      <Image src={item.url} alt={item.alt} fill className='object-cover' />
+      <Image
+        src={item.url}
+        alt={item.alt}
+        fill
+        sizes='(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 90vw'
+        className='object-cover'
+      />
     </motion.div>
   );
 };

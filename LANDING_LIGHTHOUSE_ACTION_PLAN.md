@@ -63,10 +63,10 @@
 
 ## Prioritized action list
 
-1. Add proper `sizes` for all landing `Image` components using `fill`
+1. ~~Add proper `sizes` for all landing `Image` components using `fill`~~ ✅ Done (`ConstructionMethodsSection` and `LandingGalleryCard` now provide responsive `sizes`)
 2. Reduce unused JS on landing (defer/lazy-load non-critical client logic)
 3. Review and defer non-essential global script loading where safe
-4. Fix heading order semantics without changing visible copy
+4. ~~Fix heading order semantics without changing visible copy~~ ✅ Done (`h1` → `h2` sequence fixed in hero by changing "Licenses" from `h3` to `h2`)
 5. Resolve contrast failures in the failing nodes only
 6. Investigate and remove bfcache blockers
 7. Re-run mobile Lighthouse after each change and keep only measurable improvements
