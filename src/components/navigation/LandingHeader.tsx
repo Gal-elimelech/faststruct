@@ -39,7 +39,7 @@ export default function LandingHeader({ phone, ctaLink }: LandingHeaderProps) {
       transition={{ duration: 0.3 }}
       className='fixed top-0 z-50 w-full bg-dark'
     >
-      <div className='container-padding max-w-[1400px] mx-auto py-4 flex items-center justify-between gap-4'>
+      <div className='container-padding  mx-auto py-4 flex items-center justify-between gap-4'>
         <Link href='/'>
           <FastructLogo
             color='light'
