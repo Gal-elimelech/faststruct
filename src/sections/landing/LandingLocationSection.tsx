@@ -61,7 +61,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
                 <i className='fa-solid fa-phone text-accent transition-colors group-hover:text-dark' />
               </div>
               <span className='font-bebas text-lg tracking-wider text-light/90 uppercase'>
-                {phone.display}
+                <a href={`tel:${phone.tel}`}>{phone.display}</a>
               </span>
             </a>
 
