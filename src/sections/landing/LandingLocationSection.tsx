@@ -60,9 +60,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
               <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-colors group-hover:bg-accent'>
                 <i className='fa-solid fa-phone text-accent transition-colors group-hover:text-dark' />
               </div>
-              <span className='font-bebas text-lg tracking-wider text-light/90 uppercase'>
-                {phone.display}
-              </span>
+              <span className='font-bebas text-lg tracking-wider text-light/90 uppercase'>{phone.display}</span>
             </a>
 
             <div>

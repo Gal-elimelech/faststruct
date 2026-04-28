@@ -26,7 +26,7 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
                 {cta.text}
               </LandingCtaLink>
               <LandingCtaLink href={phoneCta.link} linkClassName='w-full sm:w-auto'>
-                Call: {phoneCta.text}
+                {phoneCta.text}
               </LandingCtaLink>
             </div>
           </div>
