@@ -47,7 +47,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
           </div>
           {/* Licenses */}
           <div className='flex flex-wrap items-center justify-center gap-8 py-4 border-y border-white/10 w-full max-w-lg'>
-            <h3 className='text-h6 font-bebas text-white uppercase tracking-widest leading-none'>Licenses:</h3>
+            <h2 className='text-h6 font-bebas text-white uppercase tracking-widest leading-none'>Licenses:</h2>
             {licenses.map((license, idx) => (
               <div key={idx} className='flex flex-col items-center'>
                 <span className='text-[10px] text-accent font-bold tracking-[0.2em] uppercase mb-1'>{license.label}</span>

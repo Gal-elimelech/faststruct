@@ -42,6 +42,7 @@ const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, sub
                     src={idx === 0 ? "/assets/system-modular.jpg" : "/assets/system-panelized.jpg"}
                     alt={path.title}
                     fill
+                    sizes='(min-width: 1024px) 50vw, 100vw'
                     className='object-cover group-hover:scale-105 transition-transform duration-[1.5s]'
                   />
                   <div className='absolute inset-0 bg-dark/20 mix-blend-overlay group-hover:bg-dark/0 transition-colors duration-700' />
