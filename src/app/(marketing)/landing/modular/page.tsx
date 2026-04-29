@@ -20,84 +20,82 @@ import JsonLd from '@/components/seo/JsonLd';
 import { validatedEnv } from '@/lib/env';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const content = await getContent('landingAdu', 'en');
+  const content = await getContent('landingModular', 'en');
   return generateSocialMetadata({
-    title: 'Custom ADUs in the Bay Area | Fast Struct',
+    title: 'Custom Modular Homes Built in the Bay Area | Fast Struct',
     description:
-      'Design and build custom ADUs in the Bay Area with steel construction, factory precision, and faster project timelines.',
+      'Design and build custom modular homes in the Bay Area with steel construction, factory precision, and fast project timelines.',
     image: content.metadataImage,
-    url: '/landing',
+    url: '/landing/modular',
   });
 }
 
-const LandingPage = async () => {
-  if (!isPageEnabled('/landing')) {
+const LandingModularPage = async () => {
+  if (!isPageEnabled('/landing/modular')) {
     notFound();
   }
 
-  const content = await getContent('landingAdu', 'en');
+  const content = await getContent('landingModular', 'en');
   const siteUrl = validatedEnv.siteUrl;
   const landingSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Fast Struct ADU Services',
-    url: `${siteUrl}/landing`,
+    name: 'Fast Struct Modular Home Services',
+    url: `${siteUrl}/landing/modular`,
     description: content.heroSection.subtitle,
     image: `${siteUrl}${content.metadataImage}`,
     areaServed: 'Bay Area, California',
-    serviceType: ['Custom ADUs', 'Modular ADU Construction'],
+    serviceType: ['Custom Modular Homes', 'Modular Home Construction'],
     telephone: content.heroSection.phoneCta.text,
   };
 
   return (
     <Page className='bg-dark text-light relative'>
       <JsonLd data={landingSchema} />
-      <section id="heroSection" className='z-20'>
+      <section id='heroSection' className='z-20'>
         <HeroLandingSection {...content.heroSection} />
       </section>
 
-      <section id="valueProp" className='z-10'>
+      <section id='valueProp' className='z-10'>
         <ValuePropSection {...content.valueProp} />
       </section>
 
-      <section id="lead-capture" className='scroll-mt-24'>
-        <LeadCaptureSection
-          {...content.leadCapture}
-        />
+      <section id='lead-capture' className='scroll-mt-24'>
+        <LeadCaptureSection {...content.leadCapture} />
       </section>
 
-      <section id="companyOverview">
+      <section id='companyOverview'>
         <CompanyOverviewSection {...content.companyOverview} />
       </section>
 
-      <section id="servicesOverview">
+      <section id='servicesOverview'>
         <ServicesOverviewSection {...content.servicesOverview} />
       </section>
 
-      <section id="constructionMethods">
+      <section id='constructionMethods'>
         <ConstructionMethodsSection {...content.constructionMethods} />
       </section>
 
-      <section id="processTimeline">
+      <section id='processTimeline'>
         <LandingProcessSection {...content.processTimeline} />
       </section>
 
-      <section id="differentiators">
+      <section id='differentiators'>
         <DifferentiatorsSection {...content.differentiators} />
       </section>
 
-      <section id="testimonials">
+      <section id='testimonials'>
         <TestimonialsSection
           testimonials={content.testimonials}
           backgroundImage='/assets/testimonials.png'
         />
       </section>
 
-      <section id="gallery">
+      <section id='gallery'>
         <LandingGallerySection gallery={content.gallery} />
       </section>
 
-      <section id="location">
+      <section id='location'>
         <LandingLocationSection {...content.location} />
       </section>
 
@@ -106,4 +104,4 @@ const LandingPage = async () => {
   );
 };
 
-export default LandingPage;
+export default LandingModularPage;

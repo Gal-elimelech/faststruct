@@ -1,0 +1,325 @@
+{
+  "metadataImage": "/assets/modules-images/module-1/out-1.jpg",
+  "heroSection": {
+    "title": "Custom Modular Homes Built in the Bay Area | As Fast As 90 Days",
+    "subtitle": "Steel construction, premium finishes, factory precision, and quick move-in dates.",
+    "licenses": [
+      { "label": "CSLB", "number": "1147858" },
+      { "label": "CA HCD", "number": "1632336" }
+    ],
+    "cta": {
+      "text": "Design Your Home",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    },
+    "googleReviewBadge": "/assets/logo/google-review-badge.png",
+    "backgroundImage": "/assets/modules-images/module-5/out-2.jpg"
+  },
+  "valueProp": {
+    "title": "Your Home. Your Design. Built Smarter.",
+    "texts": [
+      "At Fast Struct, we don't hand you a catalog and ask you to pick a box. We hand you a blank canvas.",
+      "Whether you're envisioning an open-concept family home, a modern live-work space, or a compact retreat, our team designs your home around your life, your lot, and your budget. Every layout, room size, finish, and configuration is tailored from the ground up.",
+      "What does your dream home look like? We'll build it."
+    ],
+    "features": {
+      "title": "Feature Callouts",
+      "items": [
+        {
+          "title": "Any Layout, Any Size",
+          "text": "From compact 1-bed units to spacious multi-room family homes."
+        },
+        {
+          "title": "Fully Custom Finishes",
+          "text": "Flooring, cladding, rooflines, HVAC, electrical - all your choices."
+        },
+        {
+          "title": "Designed For Your Lot",
+          "text": "We work around narrow driveways, tricky access, and complex sites."
+        },
+        {
+          "title": "Steel-Framed Precision",
+          "text": "Every home built to millimeter tolerances in our Santa Clara facility."
+        }
+      ]
+    }
+  },
+  "leadCapture": {
+    "title": "Get Your Free Estimate",
+    "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
+    "fields": [
+      {
+        "fieldKey": "name",
+        "label": "Full Name",
+        "placeholder": "Your name",
+        "type": "text"
+      },
+      {
+        "fieldKey": "phone",
+        "label": "Phone Number",
+        "placeholder": "(123) 456-7890",
+        "type": "text"
+      },
+      {
+        "fieldKey": "email",
+        "label": "Email Address",
+        "placeholder": "your.email@example.com",
+        "type": "email"
+      },
+      {
+        "fieldKey": "serviceType",
+        "label": "Which Service?",
+        "placeholder": "Modular Homes",
+        "type": "text"
+      },
+      {
+        "fieldKey": "message",
+        "label": "Message",
+        "placeholder": "Tell us about your project...",
+        "type": "textarea"
+      }
+    ],
+    "buttonText": "Get Your Free Estimate"
+  },
+  "companyOverview": {
+    "title": "Fast Struct: California's Premier Modular Home Builder",
+    "texts": [
+      "Fast Struct began with a simple idea: remove the friction from building your dream home in California. Traditional construction is slow, unpredictable, and overwhelming, so we built a smarter way.",
+      "As a licensed California contractor with a state-approved manufacturing facility in Santa Clara, we deliver complete A-Z solutions for modular homes, ADUs, and panelized structures across the Bay Area and beyond. By moving production off-site and into our facility, we bring together speed, flexibility, and quality that traditional builders simply can't match.",
+      "From your first discovery call to the day we hand you the keys, your dedicated project manager handles everything: permits, design, fabrication, and delivery. We're not just a modular home builder near you. We're your partner in precision."
+    ],
+    "items": [
+      {
+        "icon": "fas fa-certificate",
+        "title": "Licensed CA Contractor"
+      },
+      {
+        "icon": "fas fa-award",
+        "title": "State-Approved Manufacturing Facility"
+      },
+      {
+        "icon": "fas fa-project-diagram",
+        "title": "Complete A-Z Project Management"
+      },
+      {
+        "icon": "fas fa-building",
+        "title": "Steel Construction - Built to Last"
+      }
+    ],
+    "cta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
+  },
+  "servicesOverview": {
+    "title": "What We Build",
+    "subtitle": "From compact ADUs to full custom family homes, every Fast Struct project is engineered to your site, your design, and your timeline.",
+    "items": [
+      {
+        "title": "Custom Modular Homes",
+        "description": "Fully personalized layouts, finishes, and open-concept living spaces, built in steel in our Santa Clara facility."
+      },
+      {
+        "title": "Accessory Dwelling Units (ADUs)",
+        "description": "Arrives 95% complete and craned into place in a single day."
+      },
+      {
+        "title": "Panelized \"Smart Wall\" Homes",
+        "description": "Precision-engineered steel panels for complex designs and difficult lots."
+      },
+      {
+        "title": "Hybrid System Homes",
+        "description": "Panels and modules combined for maximum architectural freedom and performance."
+      },
+      {
+        "title": "Multi-Unit Developments",
+        "description": "Scalable, millimeter-accurate unit replication for developers and investors."
+      },
+      {
+        "title": "Permits, Site Prep & Delivery",
+        "description": "We handle the full process from zoning to final handover."
+      }
+    ]
+  },
+  "constructionMethods": {
+    "title": "Two Paths. One Standard of Excellence.",
+    "subtitle": "We don't force you into a box. Fast Struct recommends the construction method that fits your site, your design, and your timeline. No upsells, no guesswork.",
+    "paths": [
+      {
+        "title": "The Modular Route - Ideal for Rapid Deployment",
+        "description": "We manufacture fully finished 3D volumes, including structure, electrical, and finishes, in our factory. They arrive on your site ready to connect.",
+        "bulletPoints": [
+          "Fastest delivery and quick turnaround",
+          "Maximum noise and disruption reduction on-site",
+          "Best for projects requiring absolute predictability"
+        ]
+      },
+      {
+        "title": "The Panelized Route - Ideal for Design Freedom",
+        "description": "We manufacture precision-engineered steel Smart Walls that pack flat and assemble rapidly on-site. This allows for wider spaces and access to difficult lots.",
+        "bulletPoints": [
+          "Complex architectural designs and open layouts",
+          "Sites with limited access (narrow roads, crane restrictions)",
+          "Clients seeking a fully custom footprint"
+        ]
+      }
+    ],
+    "cta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
+  },
+  "processTimeline": {
+    "title": "Build Smarter. Live Better.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Discovery",
+        "description": "We analyze your needs, budget, and site conditions to recommend the perfect construction method and configuration for your project."
+      },
+      {
+        "step": "02",
+        "title": "Design & Permit",
+        "description": "Our team tailors your floor plan and navigates the local zoning and permitting process on your behalf. Because we're a state-approved modular factory, plans submitted through the state route are approved in days, not the months it takes traditional builders. You stay informed without the headache."
+      },
+      {
+        "step": "03",
+        "title": "Fabrication",
+        "description": "While your foundation is poured on-site, your home is simultaneously precision-manufactured in our Santa Clara, California facility. This parallel process, steel-framed, factory-controlled, and built to tolerance, is exactly how we move so fast."
+      },
+      {
+        "step": "04",
+        "title": "Assembly",
+        "description": "Whether modular or panelized, installation is rapid, clean, and quiet. Neighbors will barely know we were there."
+      },
+      {
+        "step": "05",
+        "title": "Handover",
+        "description": "Walk into a fully finished home, built to a tolerance that traditional construction simply cannot match. You're handed the keys, not a punchlist."
+      }
+    ]
+  },
+  "differentiators": {
+    "title": "Why California Homebuyers Choose Fast Struct",
+    "items": [
+      {
+        "title": "As Quick As 90 Days",
+        "text": "Our off-site factory production runs in parallel with your on-site foundation work, slashing timelines that no traditional builder can compete with."
+      },
+      {
+        "title": "Steel Construction - Not Wood",
+        "text": "Every Fast Struct home is built with a steel frame, not wood. Steel is non-combustible, doesn't rot, and holds to millimeter-level tolerances. It's a fundamentally better building material and one that 90% of our competitors simply can't offer."
+      },
+      {
+        "title": "State-Approved Facility = Faster Permits",
+        "text": "As a state-certified modular factory, our plans go through the state approval route, meaning permits in days, not months. No other local builder can say that."
+      },
+      {
+        "title": "Complete A-Z Solutions",
+        "text": "Permits, design, fabrication, and delivery all under one roof. One team, one point of contact, zero coordination headaches."
+      },
+      {
+        "title": "Factory Precision, Premium Finishes",
+        "text": "Premium materials and finishes built to millimeter tolerances. Your home will exceed the quality of traditionally built homes at the same price point."
+      },
+      {
+        "title": "Dedicated Project Manager",
+        "text": "Every Fast Struct client gets a single, dedicated project manager guiding them personally from discovery call to handover day."
+      },
+      {
+        "title": "Licensed CA Contractor + State-Approved Facility",
+        "text": "Fully licensed, bonded, and operating from a certified California manufacturing facility. Every build is compliant and warrantied."
+      },
+      {
+        "title": "You Are the Architect of Your Experience",
+        "text": "Customize room sizes, wall placements, roof styles, cladding, HVAC, electrical, flooring, and finishes. You shape the home. We build it."
+      }
+    ],
+    "cta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
+  },
+  "testimonials": [
+    {
+      "quote": "Fast Struct delivered our dream home in under 90 days. The quality is unreal - better than homes we toured at twice the price. The whole experience was completely stress-free.",
+      "author": "Sarah M.",
+      "location": "Los Angeles, CA",
+      "rating": 5
+    },
+    {
+      "quote": "The whole process was seamless. One project manager, clear steps, no surprises. I'd never build any other way again.",
+      "author": "Jason T.",
+      "location": "Sacramento, CA",
+      "rating": 5
+    },
+    {
+      "quote": "Our ADU was craned into place in a single day. The neighbors couldn't believe it. Fast Struct is the real deal - I recommend them to everyone.",
+      "author": "Linda R.",
+      "location": "San Diego, CA",
+      "rating": 5
+    }
+  ],
+  "gallery": [
+    {
+      "url": "/assets/modules-images/module-1/out-1.jpg",
+      "alt": "Custom modular home exterior"
+    },
+    {
+      "url": "/assets/modules-images/all-modules-in-1.jpg",
+      "alt": "Modular home interior"
+    },
+    {
+      "url": "/assets/modules-images/all-modules-in-2.jpg",
+      "alt": "Open-concept modular home interior"
+    },
+    {
+      "url": "/assets/modules-images/module-4/out-1.jpg",
+      "alt": "Modern modular facade"
+    },
+    {
+      "url": "/assets/modules-images/module-5/out-2.jpg",
+      "alt": "Premium modular home interior"
+    }
+  ],
+  "location": {
+    "title": "Locally Built. Serving the Bay Area and Beyond.",
+    "mainAddress": {
+      "label": "Headquarters",
+      "street": "3395 Edward Ave",
+      "cityStateZip": "Santa Clara, CA 95054",
+      "mapQuery": "3395 Edward Ave, Santa Clara, CA 95054"
+    },
+    "phone": {
+      "display": "(408) 702-9012",
+      "tel": "+14087029012"
+    },
+    "serviceAreas": [
+      "Santa Clara County",
+      "San Mateo County",
+      "Alameda County",
+      "Contra Costa County",
+      "Santa Cruz County"
+    ]
+  },
+  "footer": {
+    "title": "Get Your Free Estimate",
+    "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
+    "licenses": [
+      { "label": "CSLB", "number": "1147858" },
+      { "label": "CA HCD", "number": "1632336" }
+    ],
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    },
+    "address": "3395 Edward Ave Santa Clara, CA 95054"
+  }
+}

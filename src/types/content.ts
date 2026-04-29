@@ -17,7 +17,8 @@ export interface IContentMap {
   modulesPage: IModulesPageContent;
   process: IProcess;
   theSystem: ITheSystemContent;
-  landing: ILandingContent;
+  landingAdu: ILandingContent;
+  landingModular: ILandingContent;
 }
 
 export type ContentKey = keyof IContentMap;

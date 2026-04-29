@@ -17,7 +17,8 @@ import contactContentEn from '@/content/en/contact.json';
 import modulesPageContentEn from '@/content/en/modulesPage.json';
 import processContentEn from '@/content/en/process.json';
 import theSystemContentEn from '@/content/en/theSystem.json';
-import landingContentEn from '@/content/en/landing.json';
+import landingAduContentEn from '@/content/en/landingAdu.json';
+import landingModularContentEn from '@/content/en/landingModular.json';
 
 // Content map: maps [language][page] to content
 // Note: 'product' is included in IContentMap but not used in the codebase.
@@ -32,7 +33,8 @@ const contentMap: Record<Language, IContentMap> = {
     modulesPage: modulesPageContentEn as IModulesPageContent,
     process: processContentEn as IProcess,
     theSystem: theSystemContentEn as ITheSystemContent,
-    landing: landingContentEn as ILandingContent,
+    landingAdu: landingAduContentEn as ILandingContent,
+    landingModular: landingModularContentEn as ILandingContent,
   },
 };
 
