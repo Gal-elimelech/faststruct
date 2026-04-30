@@ -17,6 +17,7 @@
     },
     "googleReviewBadge": "/assets/logo/google-review-badge.png",
     "backgroundImage": "/assets/modules-images/module-5/out-2.jpg",
+    "mobileBackgroundImage": "/assets/modules-images/module-5/mobile-hero.png",
     "backgroundImageAlt": "Modern custom modular home exterior in a Bay Area residential setting"
   },
   "valueProp": {

@@ -16,6 +16,7 @@ export interface ILandingHero {
   phoneCta: ICTA;
   googleReviewBadge: string;
   backgroundImage: string;
+  mobileBackgroundImage: string;
   backgroundImageAlt: string;
 }
 

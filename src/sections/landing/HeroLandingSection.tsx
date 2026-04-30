@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ILandingHero } from '@/types/landing';
 import { motion } from 'motion/react';
 import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
+import ArtDirectedHeroImage from '@/components/ArtDirectedHeroImage';
 
 const HeroLandingSection: React.FC<ILandingHero> = ({
   title,
@@ -13,19 +14,25 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
   phoneCta,
   googleReviewBadge,
   backgroundImage,
+  mobileBackgroundImage,
   backgroundImageAlt,
 }) => {
   return (
     <section className='relative w-full min-h-[110vh] bg-dark flex items-center justify-center py-20'>
       {/* Background Image */}
       <div className='absolute inset-0 z-0'>
-        <Image
-          src={backgroundImage}
+        <ArtDirectedHeroImage
+          desktopSrc={backgroundImage}
+          mobileSrc={mobileBackgroundImage}
           alt={backgroundImageAlt}
-          fill
           priority
           sizes='100vw'
-          className='object-cover'
+          className='absolute inset-0 block h-full w-full'
+          imgClassName='h-full w-full object-cover object-center'
+          desktopWidth={1600}
+          desktopHeight={900}
+          mobileWidth={828}
+          mobileHeight={1472}
         />
       </div>
 
