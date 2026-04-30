@@ -1,0 +1,22 @@
+import { getContent } from '@/lib/content';
+import LandingHeader from '@/components/navigation/LandingHeader';
+import LandingFooter from '@/components/footer/LandingFooter';
+
+export default async function LandingModularLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const content = await getContent('landingModular', 'en');
+
+  return (
+    <>
+      <LandingHeader
+        phone={content.heroSection.phoneCta.text}
+        ctaLink={content.heroSection.cta.link}
+      />
+      <main className='relative z-0'>{children}</main>
+      <LandingFooter {...content.footer} />
+    </>
+  );
+}

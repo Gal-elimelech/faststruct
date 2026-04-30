@@ -18,7 +18,7 @@ const LandingGalleryCard = ({ item, index }: LandingGalleryCardProps) => {
       viewport={{ once: true }}
       className='relative aspect-4/3 overflow-hidden border border-dark/10'>
       <Image
-        src={item.url}
+        src={item.src}
         alt={item.alt}
         fill
         sizes='(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 90vw'

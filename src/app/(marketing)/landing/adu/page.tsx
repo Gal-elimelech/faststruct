@@ -20,7 +20,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import { validatedEnv } from '@/lib/env';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const content = await getContent('landing', 'en');
+  const content = await getContent('landingAdu', 'en');
   return generateSocialMetadata({
     title: 'Custom ADUs in the Bay Area | Fast Struct',
     description:
@@ -35,7 +35,7 @@ const LandingPage = async () => {
     notFound();
   }
 
-  const content = await getContent('landing', 'en');
+  const content = await getContent('landingAdu', 'en');
   const siteUrl = validatedEnv.siteUrl;
   const landingSchema = {
     '@context': 'https://schema.org',

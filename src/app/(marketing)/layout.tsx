@@ -1,6 +1,3 @@
-import { getContent } from '@/lib/content';
-import LandingHeader from '@/components/navigation/LandingHeader';
-import LandingFooter from '@/components/footer/LandingFooter';
 import Script from 'next/script';
 
 export default async function LandingLayout({
@@ -8,8 +5,6 @@ export default async function LandingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const content = await getContent('landing', 'en');
-
   return (
     <>
       <Script strategy='afterInteractive'>
@@ -19,12 +14,7 @@ export default async function LandingLayout({
         src="//s.ksrndkehqnwntyxlhgto.com/159443.js"
         strategy='afterInteractive'
       />
-      <LandingHeader
-        phone={content.heroSection.phoneCta.text}
-        ctaLink={content.heroSection.cta.link}
-      />
       <main className='relative z-0'>{children}</main>
-      <LandingFooter {...content.footer} />
     </>
   );
 }
