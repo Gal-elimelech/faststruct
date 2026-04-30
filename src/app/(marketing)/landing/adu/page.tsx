@@ -89,7 +89,7 @@ const LandingPage = async () => {
       <section id="testimonials">
         <TestimonialsSection
           testimonials={content.testimonials}
-          backgroundImage='/assets/testimonials.png'
+          backgroundImage='/assets/testimonials.jpg'
         />
       </section>
 

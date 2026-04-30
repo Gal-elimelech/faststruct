@@ -9,6 +9,7 @@ import {
   useTransform,
 } from 'motion/react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface FeatureSlideProps {
   feature: IFeatureItem;
@@ -44,12 +45,18 @@ const FeatureSlide = ({ feature, index, progress }: FeatureSlideProps) => {
     <motion.div
       style={{ transform: translate, zIndex: index }}
       className={`border-accent absolute box-border h-full w-full overflow-hidden border-t-2 shadow-[0px_0px_15px_10px_#00000035]`}>
-      <div
-        className='absolute inset-0 z-0 bg-cover bg-center'
-        style={{ backgroundImage: `url(${imageUrl})` }}
-      />
+      <div className='absolute inset-0 z-0'>
+        <Image
+          src={imageUrl}
+          alt={title}
+          fill
+          sizes='100vw'
+          className='object-cover object-center'
+          priority={index === 0}
+        />
+      </div>
 
-      <div className='from-dark/90 via-dark/60 to-dark/30 absolute inset-0 bg-gradient-to-t' />
+      <div className='from-dark/90 via-dark/60 to-dark/30 absolute inset-0 bg-linear-to-t' />
       <div className='bg-dark/20 absolute inset-0' />
 
       <div className='relative z-10 flex h-full flex-col items-center justify-center p-8 md:p-16'>

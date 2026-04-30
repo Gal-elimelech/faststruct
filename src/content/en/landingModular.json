@@ -1,5 +1,5 @@
 {
-  "metadataImage": "/assets/crane-building-image-desktop.png",
+  "metadataImage": "/assets/crane-building-image-desktop.jpg",
   "heroSection": {
     "title": "Custom Modular Homes Built in the Bay Area | As Fast As 90 Days",
     "subtitle": "Steel construction, premium finishes, factory precision, and quick move-in dates.",
@@ -27,7 +27,7 @@
       "What does your dream home look like? We'll build it."
     ],
     "image": {
-      "src": "/assets/crane-building-image-desktop.png",
+      "src": "/assets/crane-building-image-desktop.jpg",
       "alt": "Modular home installation using a crane at a Bay Area build site"
     },
     "features": {

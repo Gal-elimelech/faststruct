@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: 'Fast Struct | Modular & Panelized Homes CA',
     description:
       'Fast Struct builds modular and panelized steel homes in California with factory precision and faster timelines.',
-    image: '/assets/hero-image.png',
+    image: '/assets/hero-image.jpg',
     url: '/',
   }),
 };
