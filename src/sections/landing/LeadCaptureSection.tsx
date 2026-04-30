@@ -26,7 +26,7 @@ const defaultValues: LeadCaptureFormInput = {
   name: '',
   phone: '',
   email: '',
-  serviceType: 'ADU Construction',
+  serviceType: 'Modular Homes',
   message: '',
   recaptchaToken: '',
 };
