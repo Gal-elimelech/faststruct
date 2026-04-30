@@ -22,7 +22,7 @@
     "title": "Your Home. Your Design. Built Smarter.",
     "texts": [
       "At Fast Struct, we don't hand you a catalog and ask you to pick a box. We hand you a blank canvas.",
-      "Whether you're envisioning an open-concept family home, a modern live-work space, or a compact retreat, our team designs your home around your life, your lot, and your budget. Every layout, room size, finish, and configuration is tailored from the ground up.",
+      "Whether you're envisioning an open-concept family home, a modern live-work space, or a compact retreat - our team designs your home around your life, your lot, and your budget. Every layout, room size, finish, and configuration is tailored from the ground up.",
       "What does your dream home look like? We'll build it."
     ],
     "features": {
@@ -87,8 +87,10 @@
   "companyOverview": {
     "title": "Fast Struct: California's Premier Modular Home Builder",
     "texts": [
-      "Fast Struct began with a simple idea: remove the friction from building your dream home in California. Traditional construction is slow, unpredictable, and overwhelming, so we built a smarter way.",
+      "Fast Struct began with a simple idea: remove the friction from building your dream home in California. Traditional construction is slow, unpredictable, and overwhelming - so we built a smarter way.",
+
       "As a licensed California contractor with a state-approved manufacturing facility in Santa Clara, we deliver complete A-Z solutions for modular homes, ADUs, and panelized structures across the Bay Area and beyond. By moving production off-site and into our facility, we bring together speed, flexibility, and quality that traditional builders simply can't match.",
+
       "From your first discovery call to the day we hand you the keys, your dedicated project manager handles everything: permits, design, fabrication, and delivery. We're not just a modular home builder near you. We're your partner in precision."
     ],
     "items": [
@@ -116,7 +118,7 @@
   },
   "servicesOverview": {
     "title": "What We Build",
-    "subtitle": "From compact ADUs to full custom family homes, every Fast Struct project is engineered to your site, your design, and your timeline.",
+    "subtitle": "From compact ADUs to full custom family homes - every Fast Struct project is engineered to your site, your design, and your timeline.",
     "items": [
       {
         "title": "Custom Modular Homes",
@@ -146,7 +148,7 @@
   },
   "constructionMethods": {
     "title": "Two Paths. One Standard of Excellence.",
-    "subtitle": "We don't force you into a box. Fast Struct recommends the construction method that fits your site, your design, and your timeline. No upsells, no guesswork.",
+    "subtitle": "We don't force you into a box. Fast Struct recommends the construction method that fits your site, your design, and your timeline - no upsells, no guesswork.",
     "paths": [
       {
         "title": "The Modular Route - Ideal for Rapid Deployment",
