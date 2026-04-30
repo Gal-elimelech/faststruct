@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import SortSelect from './SortSelect';
 import { useFilterDrawer } from '@/hooks/useFilterDrawer';
 import { useFilterHandlers } from '@/hooks/useFilterHandlers';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface FilterBarProps {
   filters: IFilters;
@@ -50,12 +51,11 @@ const FilterBar = ({
                 {activeFilterCount}
               </span>
             )}
-            <i
-              className={clsx(
-                'fa-solid transition-transform duration-200',
-                isOpen ? 'fa-chevron-up' : 'fa-chevron-down'
-              )}
-              aria-hidden='true'></i>
+            {isOpen ? (
+              <ChevronUp className='h-4 w-4' aria-hidden='true' />
+            ) : (
+              <ChevronDown className='h-4 w-4' aria-hidden='true' />
+            )}
           </button>
           {activeFilterCount > 0 && (
             <button

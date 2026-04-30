@@ -2,6 +2,7 @@
 
 import { HTMLMotionProps, motion, Variants } from 'motion/react';
 import Image from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
 
 import { useIsMobile } from '@/hooks/useIsMobile';
 import NavLink from '@/components/navigation/NavLink';
@@ -61,7 +62,7 @@ export const ModuleCard = ({
           viewport={{ once: true, amount: 0.8 }}
           {...motionContainerProps}
           className='bg-light group relative z-0 flex cursor-pointer flex-col gap-4'>
-          <div className='relative aspect-[4/3] w-full overflow-hidden'>
+          <div className='relative aspect-4/3 w-full overflow-hidden'>
             <motion.div variants={imageVariants} className='h-full w-full'>
               <Image
                 fill
@@ -94,7 +95,7 @@ const ModulesTitle = ({
       className='bg-light absolute right-0 bottom-0 z-10 flex items-center justify-between gap-4 rounded-tl-xl p-4'>
       <h4 className='text-h4 font-bebas text-dark uppercase'>{title}</h4>
       <div className='bg-dark flex h-10 w-10 items-center justify-center rounded-lg p-2 text-white'>
-        <i className='fa-solid fa-arrow-up-right-from-square'></i>
+        <ArrowUpRight className='h-5 w-5' />
       </div>
     </motion.div>
   );

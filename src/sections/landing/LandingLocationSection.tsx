@@ -4,6 +4,7 @@ import { Section } from '@/components/Section';
 import GoogleMapEmbed from '@/components/GoogleMapEmbed';
 import { ILocation } from '@/types/landing';
 import { motion } from 'motion/react';
+import { MapPin, Phone } from 'lucide-react';
 
 const LandingLocationSection: React.FC<ILocation> = ({
   title,
@@ -41,7 +42,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
             <div className='rounded-sm border border-white/10 bg-white/2 p-6 md:p-8'>
               <div className='flex gap-4'>
                 <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10'>
-                  <i className='fa-solid fa-location-dot text-xl text-accent' />
+                  <MapPin className='h-5 w-5 text-accent' />
                 </div>
                 <div className='min-w-0'>
                   <p className='font-bebas text-3xl leading-[0.95] text-light uppercase sm:text-4xl md:text-5xl'>
@@ -58,7 +59,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
               href={`tel:${phone.tel}`}
               className='group flex items-center gap-4 rounded-sm border border-white/5 bg-white/2 p-4 transition-colors hover:border-accent/30'>
               <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-colors group-hover:bg-accent'>
-                <i className='fa-solid fa-phone text-accent transition-colors group-hover:text-dark' />
+                <Phone className='h-5 w-5 text-accent transition-colors group-hover:text-dark' />
               </div>
               <span className='font-bebas text-lg tracking-wider text-light/90 uppercase'>{phone.display}</span>
             </a>

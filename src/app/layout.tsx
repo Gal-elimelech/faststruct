@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins, Bebas_Neue } from 'next/font/google';
 import './globals.css';
-import Script from 'next/script';
 import { ReactLenis } from 'lenis/react';
 import AppNavigationProvider from '@/contexts/AppNavigationProvider';
 import { generateSocialMetadata } from '@/lib/metadata';
@@ -37,25 +36,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <head>
-        <link
-          rel='preconnect'
-          href='https://kit.fontawesome.com'
-          crossOrigin='anonymous'
-        />
-        <link
-          rel='preconnect'
-          href='https://ka-f.fontawesome.com'
-          crossOrigin='anonymous'
-        />
-        <link rel='dns-prefetch' href='https://kit.fontawesome.com' />
-        <link rel='dns-prefetch' href='https://ka-f.fontawesome.com' />
-      </head>
       <body className={`${fontPoppins.variable} ${fontBebasNeue.variable}`}>
-        <Script
-          src='https://kit.fontawesome.com/42dfb7600e.js'
-          crossOrigin='anonymous'
-        />
         <ReactLenis
           root
           options={{

@@ -11,25 +11,25 @@
   },
   "features": [
     {
-      "iconClass": "fas fa-bolt",
+      "icon": "bolt",
       "title": "Speed",
       "text": "3-5 months from permit approval to completion.",
       "imageUrl": "/assets/features-image-1.jpg"
     },
     {
-      "iconClass": "fas fa-award",
+      "icon": "award",
       "title": "Quality",
       "text": "Premium materials, rigorous inspections.",
       "imageUrl": "/assets/features-image-2.jpg"
     },
     {
-      "iconClass": "fas fa-infinity",
+      "icon": "infinity",
       "title": "End-to-End",
       "text": "Complete A-Z solutions: Permits, design, construction, and handover.",
       "imageUrl": "/assets/features-image-3.jpg"
     },
     {
-      "iconClass": "fas fa-palette",
+      "icon": "palette",
       "title": "Customization",
       "text": "Tailored to your lifestyle, taste, and budget.",
       "imageUrl": "/assets/features-image-4.jpg"

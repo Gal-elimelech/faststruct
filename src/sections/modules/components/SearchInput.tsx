@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ISearch } from '@/types/modulesPage';
 import clsx from 'clsx';
+import { Search, X } from 'lucide-react';
 
 interface SearchInputProps {
   search: ISearch;
@@ -45,9 +46,10 @@ const SearchInput = ({
         {search.label}
       </label>
       <div className='relative'>
-        <i
-          className='fa-solid fa-magnifying-glass text-light/60 absolute top-1/2 left-4 -translate-y-1/2'
-          aria-hidden='true'></i>
+        <Search
+          className='text-light/60 absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2'
+          aria-hidden='true'
+        />
         <input
           id='search-input'
           type='text'
@@ -74,7 +76,7 @@ const SearchInput = ({
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.2 }}
               className='text-light/60 hover:text-light focus:ring-accent focus:ring-offset-dark absolute top-1/2 right-4 -translate-y-1/2 rounded transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none'>
-              <i className='fa-solid fa-xmark' aria-hidden='true'></i>
+              <X className='h-4 w-4' aria-hidden='true' />
             </motion.button>
           )}
         </AnimatePresence>

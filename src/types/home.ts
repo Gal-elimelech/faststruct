@@ -13,7 +13,7 @@ export interface IIntro {
 export interface IFeatureItem {
   title: string;
   text: string;
-  iconClass: string;
+  icon: 'bolt' | 'award' | 'infinity' | 'palette';
   imageUrl: string;
 }
 

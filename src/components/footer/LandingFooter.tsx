@@ -4,6 +4,7 @@ import { IFooter } from '@/types/landing';
 import FastructLogo from '../FastructLogo';
 import Link from 'next/link';
 import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
+import { MapPin } from 'lucide-react';
 
 const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phoneCta, address }) => {
   const currentYear = new Date().getFullYear();
@@ -35,7 +36,7 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
             <div className='flex flex-col gap-6'>
               <p className='text-accent font-bebas text-xl uppercase tracking-widest'>Office & Factory</p>
               <div className='flex items-start gap-3'>
-                <i className='fa-solid fa-map-marker-alt text-accent mt-1'></i>
+                <MapPin className='text-accent mt-1 h-4 w-4' />
                 <address className='text-light/80 not-italic text-lg leading-tight'>
                   {address}
                 </address>

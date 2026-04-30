@@ -10,6 +10,7 @@ import {
 } from 'motion/react';
 import { useState } from 'react';
 import Image from 'next/image';
+import { Award, Infinity, Palette, Zap } from 'lucide-react';
 
 interface FeatureSlideProps {
   feature: IFeatureItem;
@@ -18,8 +19,17 @@ interface FeatureSlideProps {
 }
 
 const FeatureSlide = ({ feature, index, progress }: FeatureSlideProps) => {
-  const { iconClass, title, text, imageUrl } = feature;
+  const { icon, title, text, imageUrl } = feature;
   const [runTextAnimation, setRunTextAnimation] = useState(false);
+
+  const IconComponent =
+    icon === 'bolt'
+      ? Zap
+      : icon === 'award'
+        ? Award
+        : icon === 'infinity'
+          ? Infinity
+          : Palette;
 
   // Swap horizontal logic to vertical:
   // We'll use "y" instead of "x", use vh instead of vw, and adjust "gaps" to stack vertically from the bottom.
@@ -71,8 +81,7 @@ const FeatureSlide = ({ feature, index, progress }: FeatureSlideProps) => {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className='mb-6 flex justify-center'>
             <div className='bg-accent/20 border-accent/30 rounded-full border-2 p-6 backdrop-blur-sm md:p-8'>
-              <i
-                className={`${iconClass} text-h1 text-accent md:text-[4rem]`}></i>
+              <IconComponent className='text-h1 text-accent md:text-[4rem]' />
             </div>
           </motion.div>
 

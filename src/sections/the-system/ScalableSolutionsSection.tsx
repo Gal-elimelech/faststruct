@@ -5,6 +5,7 @@ import AnimatedHeading from '@/components/text-animation/AnimatedHeading';
 import FadeInParagraph from '@/components/text-animation/FadeInParagraph';
 import { IScalableSolutions } from '@/types/theSystem';
 import { motion } from 'motion/react';
+import { Box, Circle, House, Layers3 } from 'lucide-react';
 
 interface ScalableSolutionsSectionProps {
   scalableSolutions: IScalableSolutions;
@@ -16,13 +17,13 @@ const ScalableSolutionsSection = ({
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'box-arrow-up':
-        return 'fa-box';
+        return Box;
       case 'house':
-        return 'fa-house';
+        return House;
       case 'stack-boxes':
-        return 'fa-layer-group';
+        return Layers3;
       default:
-        return 'fa-circle';
+        return Circle;
     }
   };
 
@@ -51,8 +52,10 @@ const ScalableSolutionsSection = ({
               transition={{ duration: 0.6, delay: index * 0.1 }}>
               <div className='mb-6 flex justify-center'>
                 <div className='border-accent/30 bg-accent/20 flex aspect-square h-20 w-20 items-center justify-center overflow-hidden rounded-full border-2'>
-                  <i
-                    className={`fa-solid ${getIcon(solution.icon)} text-accent text-2xl`}></i>
+                  {(() => {
+                    const Icon = getIcon(solution.icon);
+                    return <Icon className='text-accent text-2xl' />;
+                  })()}
                 </div>
               </div>
               <h4 className='text-h4 font-bebas text-center text-white'>

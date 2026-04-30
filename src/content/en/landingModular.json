@@ -101,19 +101,19 @@
     ],
     "items": [
       {
-        "icon": "fas fa-certificate",
+        "icon": "certificate",
         "title": "Licensed CA Contractor"
       },
       {
-        "icon": "fas fa-award",
+        "icon": "award",
         "title": "State-Approved Manufacturing Facility"
       },
       {
-        "icon": "fas fa-project-diagram",
+        "icon": "project-diagram",
         "title": "Complete A-Z Project Management"
       },
       {
-        "icon": "fas fa-building",
+        "icon": "building",
         "title": "Steel Construction - Built to Last"
       }
     ],
