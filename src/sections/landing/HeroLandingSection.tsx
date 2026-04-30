@@ -13,6 +13,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
   phoneCta,
   googleReviewBadge,
   backgroundImage,
+  backgroundImageAlt,
 }) => {
   return (
     <section className='relative w-full min-h-[110vh] bg-dark flex items-center justify-center py-20'>
@@ -20,7 +21,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
       <div className='absolute inset-0 z-0'>
         <Image
           src={backgroundImage}
-          alt={title}
+          alt={backgroundImageAlt}
           fill
           priority
           sizes='100vw'

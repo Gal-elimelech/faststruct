@@ -3,6 +3,11 @@ export interface ICTA {
   link: string;
 }
 
+export interface ILandingImage {
+  src: string;
+  alt: string;
+}
+
 export interface ILandingHero {
   title: string;
   subtitle: string;
@@ -11,6 +16,7 @@ export interface ILandingHero {
   phoneCta: ICTA;
   googleReviewBadge: string;
   backgroundImage: string;
+  backgroundImageAlt: string;
 }
 
 export interface IValuePropItem {
@@ -21,6 +27,7 @@ export interface IValuePropItem {
 export interface IValueProp {
   title: string;
   texts: string[];
+  image: ILandingImage;
   features: {
     title: string;
     items: IValuePropItem[];
@@ -102,10 +109,7 @@ export interface IDifferentiators {
   cta: ICTA;
 }
 
-export interface IGalleryItem {
-  url: string;
-  alt: string;
-}
+export type IGalleryItem = ILandingImage;
 
 export interface ILocationMainAddress {
   label: string;

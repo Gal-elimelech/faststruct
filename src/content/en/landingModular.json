@@ -1,5 +1,5 @@
 {
-  "metadataImage": "/assets/modules-images/module-1/out-1.jpg",
+  "metadataImage": "/assets/crane-building-image-desktop.png",
   "heroSection": {
     "title": "Custom Modular Homes Built in the Bay Area | As Fast As 90 Days",
     "subtitle": "Steel construction, premium finishes, factory precision, and quick move-in dates.",
@@ -16,7 +16,8 @@
       "link": "tel:+14087029012"
     },
     "googleReviewBadge": "/assets/logo/google-review-badge.png",
-    "backgroundImage": "/assets/modules-images/module-5/out-2.jpg"
+    "backgroundImage": "/assets/modules-images/module-5/out-2.jpg",
+    "backgroundImageAlt": "Modern custom modular home exterior in a Bay Area residential setting"
   },
   "valueProp": {
     "title": "Your Home. Your Design. Built Smarter.",
@@ -25,6 +26,10 @@
       "Whether you're envisioning an open-concept family home, a modern live-work space, or a compact retreat - our team designs your home around your life, your lot, and your budget. Every layout, room size, finish, and configuration is tailored from the ground up.",
       "What does your dream home look like? We'll build it."
     ],
+    "image": {
+      "src": "/assets/crane-building-image-desktop.png",
+      "alt": "Modular home installation using a crane at a Bay Area build site"
+    },
     "features": {
       "title": "Feature Callouts",
       "items": [
@@ -267,23 +272,23 @@
   ],
   "gallery": [
     {
-      "url": "/assets/modules-images/module-1/out-1.jpg",
+      "src": "/assets/modules-images/module-1/out-1.jpg",
       "alt": "Custom modular home exterior"
     },
     {
-      "url": "/assets/modules-images/all-modules-in-1.jpg",
+      "src": "/assets/modules-images/all-modules-in-1.jpg",
       "alt": "Modular home interior"
     },
     {
-      "url": "/assets/modules-images/all-modules-in-2.jpg",
+      "src": "/assets/modules-images/all-modules-in-2.jpg",
       "alt": "Open-concept modular home interior"
     },
     {
-      "url": "/assets/modules-images/module-4/out-1.jpg",
+      "src": "/assets/modules-images/module-4/out-1.jpg",
       "alt": "Modern modular facade"
     },
     {
-      "url": "/assets/modules-images/module-5/out-2.jpg",
+      "src": "/assets/modules-images/module-5/out-2.jpg",
       "alt": "Premium modular home interior"
     }
   ],

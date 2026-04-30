@@ -99,7 +99,7 @@ const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
               }}>
               {trackItems.map((item, idx) => (
                 <div
-                  key={`${item.url}-${idx}`}
+                  key={`${item.src}-${idx}`}
                   data-gallery-item='true'
                   className='shrink-0 basis-[clamp(300px,30%,500px)]'>
                   <LandingGalleryCard item={item} index={idx} />

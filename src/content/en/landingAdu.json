@@ -16,7 +16,8 @@
       "link": "tel:+14087029012"
     },
     "googleReviewBadge": "/assets/logo/google-review-badge.png",
-    "backgroundImage": "/assets/modules-images/module-5/out-2.jpg"
+    "backgroundImage": "/assets/modules-images/module-5/out-2.jpg",
+    "backgroundImageAlt": "Completed custom ADU exterior with modern finishes in the Bay Area"
   },
   "valueProp": {
     "title": "Your ADU. Your Design. Built Smarter.",
@@ -25,6 +26,10 @@
       "Whether you're envisioning a private backyard retreat, a rental income unit, or a spacious live-work studio - our team designs your ADU around your property, your lifestyle, and your budget. Every layout, room size, finish, and configuration is tailored from the ground up.",
       "What does your perfect ADU look like? We'll build it."
     ],
+    "image": {
+      "src": "/assets/modules-images/module-1/out-1.jpg",
+      "alt": "Custom ADU exterior designed for a Bay Area backyard lot"
+    },
     "features": {
       "title": "Feature Callouts",
       "items": [
@@ -265,23 +270,23 @@
   ],
   "gallery": [
     {
-      "url": "/assets/modules-images/module-1/out-1.jpg",
+      "src": "/assets/modules-images/module-1/out-1.jpg",
       "alt": "Modern Module 1 Exterior"
     },
     {
-      "url": "/assets/modules-images/all-modules-in-1.jpg",
+      "src": "/assets/modules-images/all-modules-in-1.jpg",
       "alt": "Modern Module Interior"
     },
     {
-      "url": "/assets/modules-images/all-modules-in-2.jpg",
+      "src": "/assets/modules-images/all-modules-in-2.jpg",
       "alt": "Modern Module Interior"
     },
     {
-      "url": "/assets/modules-images/module-4/out-1.jpg",
+      "src": "/assets/modules-images/module-4/out-1.jpg",
       "alt": "Modern Module 4 Exterior"
     },
     {
-      "url": "/assets/modules-images/module-5/out-2.jpg",
+      "src": "/assets/modules-images/module-5/out-2.jpg",
       "alt": "Modern Module 4 Interior"
     }
   ],
