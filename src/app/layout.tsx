@@ -5,6 +5,7 @@ import { ReactLenis } from 'lenis/react';
 import AppNavigationProvider from '@/contexts/AppNavigationProvider';
 import { generateSocialMetadata } from '@/lib/metadata';
 import { validatedEnv } from '@/lib/env';
+import Script from 'next/script';
 
 const fontPoppins = Poppins({
   subsets: ['latin'],
