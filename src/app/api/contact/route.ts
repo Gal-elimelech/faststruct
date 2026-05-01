@@ -81,6 +81,7 @@ export async function POST(request: NextRequest) {
     const emailResult = await resend.emails.send({
       from: validatedEnv.fromEmail,
       to: websiteContactEmails,
+      cc: 'analyst@leadaio.com', // <--- Add this line here
       subject: `New Contact Form Submission from ${name}`,
       react: ContactEmail({
         name,
