@@ -9,9 +9,11 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Section } from '@/components/Section';
 import { IFormConfig } from '@/types/landing';
+import type { IConsentContent } from '@/types/consent';
 import { Button } from '@/components/Button';
 import { Input, Select, Textarea } from '@/components/form';
 import FormMessage from '@/sections/contact/components/FormMessage';
+import ConsentNotice from '@/components/consent/ConsentNotice';
 import {
   LEAD_SERVICE_TYPES,
   leadCaptureFormSchema,
@@ -28,6 +30,7 @@ const defaultValues: LeadCaptureFormInput = {
   email: '',
   serviceType: 'Modular Homes',
   message: '',
+  contactConsent: false,
   recaptchaToken: '',
 };
 
@@ -40,8 +43,9 @@ const LeadCaptureSection = ({
   title,
   subtitle,
   fields,
+  consent,
   buttonText,
-}: IFormConfig) => {
+}: IFormConfig & { consent: IConsentContent }) => {
   const [submitMessage, setSubmitMessage] = useState<{
     type: 'success' | 'error' | null;
     text: string;
@@ -207,6 +211,14 @@ const LeadCaptureSection = ({
               <p className='text-sm text-red-300'>{errors.recaptchaToken.message}</p>
             )}
           </div>
+          <ConsentNotice
+            consent={consent}
+            checkboxRegistration={register('contactConsent')}
+            error={errors.contactConsent}
+            checkboxId='landingContactConsent'
+            errorClassName='text-red-300'
+            className='md:col-span-2 text-left'
+          />
           <div className='md:col-span-2 flex flex-col items-center gap-6 mt-2 md:mt-4'>
             <Button
               type='submit'

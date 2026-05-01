@@ -1,0 +1,19 @@
+{
+  "label": "By submitting this form, I agree to be contacted by Fast Struct regarding your project, including via SMS.",
+  "privacyPolicyLabel": "Privacy Policy",
+  "privacyPolicyHref": "/privacy-policy",
+  "disclaimer": "We do not sell or share your phone number with third parties for marketing purposes. Your information is used solely to provide and improve our services.",
+  "readMoreLabel": "Read more",
+  "readMoreIntro": "These messages may include, but are not limited to:",
+  "readMoreItems": [
+    "Responses to inquiries",
+    "Project updates and status notifications",
+    "Scheduling confirmations and reminders",
+    "Service-related communications"
+  ],
+  "readMoreFrequency": "Messaging frequency may vary based on your interaction with us.",
+  "readMoreRates": "Message and data rates may apply depending on your mobile carrier plan.",
+  "readMoreOptOut": "You may opt out of receiving SMS messages at any time by replying STOP to any message.",
+  "readMoreHelp": "For assistance, reply HELP.",
+  "readMorePrivacyText": "For more information on how we collect and use your data, please review our"
+}

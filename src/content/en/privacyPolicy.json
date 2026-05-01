@@ -1,0 +1,85 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "May 1, 2026",
+  "intro": "",
+  "sections": [
+    {
+      "title": "Information We Collect",
+      "paragraphs": [
+        "Fast Struct collects information that you voluntarily provide through our website, including your name, phone number, email address, and project details. This information is collected when you submit a contact form, request information, or communicate with us."
+      ]
+    },
+    {
+      "title": "How We Use Your Information",
+      "paragraphs": [
+        "We use the information collected to:",
+        "We do not sell or rent your personal information to third parties."
+      ],
+      "listItems": [
+        "Respond to your inquiries",
+        "Provide project-related information and services",
+        "Communicate updates regarding your request",
+        "Improve our website and customer experience"
+      ]
+    },
+    {
+      "title": "SMS Communications and Consent",
+      "paragraphs": [
+        "By providing your phone number through our website or other communication channels, you consent to receive SMS (text) messages from Fast Struct. These messages may include responses to inquiries, project updates, scheduling, reminders, and relevant service communications.",
+        "You can opt out of receiving SMS messages at any time by replying STOP to any message.",
+        "For assistance, reply HELP or contact us through our website.",
+        "Consent is not a condition of purchase."
+      ],
+      "listItems": [
+        "Message frequency: varies based on your interaction with us",
+        "Message and data rates: may apply based on your mobile carrier plan"
+      ]
+    },
+    {
+      "title": "No Sharing for Marketing",
+      "paragraphs": [
+        "Fast Struct does not share, sell, rent, or disclose your phone number or SMS consent information to third parties or affiliates for marketing or promotional purposes."
+      ]
+    },
+    {
+      "title": "Third-Party Service Providers",
+      "paragraphs": [
+        "We may use third-party service providers to support our communications and operations, including cloud-based phone and messaging platforms such as AT&T Office@Hand.",
+        "These providers process information only as necessary to deliver messages and services on our behalf and are not authorized to use your information for their own marketing purposes."
+      ]
+    },
+    {
+      "title": "Data Security",
+      "paragraphs": [
+        "We take reasonable administrative, technical, and organizational measures to protect your personal information from unauthorized access, use, or disclosure."
+      ]
+    },
+    {
+      "title": "Data Retention",
+      "paragraphs": [
+        "We retain your information only for as long as necessary to fulfill the purposes described in this policy or as required by applicable laws."
+      ]
+    },
+    {
+      "title": "Your Rights and Choices",
+      "paragraphs": [
+        "You may request to access, update, or delete your personal information by contacting us directly. You may also opt out of communications at any time, including SMS as described above."
+      ]
+    },
+    {
+      "title": "Updates to This Policy",
+      "paragraphs": [
+        "We may update this Privacy Policy from time to time. Updates will be posted on this page with the revised effective date."
+      ]
+    },
+    {
+      "title": "Contact Information",
+      "paragraphs": [
+        "If you have questions about this Privacy Policy or our communications practices, please contact us through:",
+        "3395 Edward Ave Santa Clara, CA 95054",
+        "Info@faststruct.com",
+        "(408) 702-9012"
+      ]
+    }
+  ]
+}

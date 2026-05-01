@@ -14,7 +14,7 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
       <div className='container-padding max-w-[1400px] mx-auto'>
         <div className='flex flex-col md:flex-row justify-between gap-20'>
           <div className='flex flex-col gap-10 max-w-xl'>
-            <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-6 items-start'>
               <FastructLogo color='light' className='h-10 w-auto' />
               <h2 className='text-h3 font-bebas uppercase leading-none text-light'>{title}</h2>
               <p className='text-light/60 font-poppins text-lg leading-relaxed'>
@@ -44,7 +44,7 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
             </div>
 
             <div className='flex flex-col gap-6'>
-              <p className='text-accent font-bebas text-xl uppercase tracking-widest'>Licensing</p>
+              <p className='text-accent font-bebas text-xl uppercase tracking-widest'>Licenses</p>
               <div className='flex flex-col gap-3'>
                 {licenses.map((lic, idx) => (
                   <p key={idx} className='text-light/50 text-sm tracking-widest uppercase'>
@@ -57,7 +57,16 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
         </div>
 
         <div className='mt-20 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-light/30 uppercase tracking-[0.2em]'>
-          <p>© {currentYear} Fast Struct Inc. All Rights Reserved.</p>
+          <p>
+            © {currentYear} Fast Struct Inc. All Rights Reserved.{' '}
+            <Link
+              href='/privacy-policy'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='underline underline-offset-4 hover:text-accent transition-colors'>
+              Privacy Policy
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

@@ -7,6 +7,8 @@ import { IModulesPageContent } from './modulesPage';
 import { IProcess } from './process';
 import { ITheSystemContent } from './theSystem';
 import { ILandingContent } from './landing';
+import { IPrivacyPolicyContent } from './privacyPolicy';
+import { IConsentContent } from './consent';
 
 export interface IContentMap {
   home: IHomeContent;
@@ -19,6 +21,8 @@ export interface IContentMap {
   theSystem: ITheSystemContent;
   landingAdu: ILandingContent;
   landingModular: ILandingContent;
+  privacyPolicy: IPrivacyPolicyContent;
+  consent: IConsentContent;
 }
 
 export type ContentKey = keyof IContentMap;

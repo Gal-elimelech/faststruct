@@ -10,6 +10,7 @@ const validPayload = {
   phone: '1234567890',
   address: '123 Main St, City',
   message: 'This is a test message with enough characters.',
+  contactConsent: true,
   recaptchaToken: 'recaptcha-token',
   source: 'contact' as const,
 };
@@ -20,6 +21,7 @@ const validLeadPayload = {
   phone: '1234567890',
   address: '',
   message: 'This is a test message with enough characters.',
+  contactConsent: true,
   recaptchaToken: 'recaptcha-token',
   serviceType: 'ADU Construction' as const,
   source: 'landing' as const,
@@ -149,6 +151,7 @@ describe('POST /api/contact', () => {
       phone: '1234567890',
       address: '',
       message: 'This is a test message with enough characters.',
+      contactConsent: true,
       recaptchaToken: 'recaptcha-token',
       source: 'landing',
     });
@@ -163,6 +166,22 @@ describe('POST /api/contact', () => {
       phone: '1234567890',
       address: '1234',
       message: 'This is a test message with enough characters.',
+      contactConsent: true,
+      recaptchaToken: 'recaptcha-token',
+      source: 'contact',
+    });
+    const response = await POST(request);
+    expect(response.status).toBe(422);
+  });
+
+  it('returns 422 when source is contact but consent is not granted', async () => {
+    const request = createRequest({
+      name: 'John Doe',
+      email: 'john@example.com',
+      phone: '1234567890',
+      address: '123 Main St, City',
+      message: 'This is a test message with enough characters.',
+      contactConsent: false,
       recaptchaToken: 'recaptcha-token',
       source: 'contact',
     });

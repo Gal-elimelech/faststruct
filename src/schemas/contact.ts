@@ -32,6 +32,11 @@ const recaptchaTokenField = z
   .string()
   .min(1, 'Please verify you are human')
   .trim();
+const contactConsentField = z
+  .boolean()
+  .refine((value) => value, {
+    message: 'You must agree to be contacted before submitting.',
+  });
 const requiredAddressField = z
   .string()
   .trim()
@@ -51,6 +56,7 @@ const contactCommonFieldsSchema = z.object({
   phone: phoneField,
   message: messageField,
   recaptchaToken: recaptchaTokenField,
+  contactConsent: contactConsentField,
 });
 
 /** Contact page form schema (frontend fields only). */
@@ -108,7 +114,7 @@ export function toLandingSubmission(
 
 /**
  * Keys allowed on `leadCapture.fields[].fieldKey` in CMS JSON — the visible
- * inputs only (matches `leadCaptureFormSchema` minus `recaptchaToken`).
+ * inputs only (matches `leadCaptureFormSchema` minus hidden/system fields).
  */
 export const LEAD_CAPTURE_FORM_FIELD_KEYS = [
   'name',
@@ -118,7 +124,7 @@ export const LEAD_CAPTURE_FORM_FIELD_KEYS = [
   'message',
 ] as const satisfies readonly Exclude<
   keyof LeadCaptureFormInput,
-  'recaptchaToken'
+  'recaptchaToken' | 'contactConsent'
 >[];
 
 export type LeadCaptureFormFieldKey =

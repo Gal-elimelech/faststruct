@@ -36,6 +36,7 @@ const LandingPage = async () => {
   }
 
   const content = await getContent('landingAdu', 'en');
+  const consent = await getContent('consent', 'en');
   const siteUrl = validatedEnv.siteUrl;
   const landingSchema = {
     '@context': 'https://schema.org',
@@ -63,6 +64,7 @@ const LandingPage = async () => {
       <section id="lead-capture" className='scroll-mt-24'>
         <LeadCaptureSection
           {...content.leadCapture}
+          consent={consent}
         />
       </section>
 
