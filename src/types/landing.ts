@@ -112,6 +112,12 @@ export interface IDifferentiators {
 
 export type IGalleryItem = ILandingImage;
 
+export interface IGallerySection {
+  title: string;
+  subtitle: string;
+  items: IGalleryItem[];
+}
+
 export interface ILocationMainAddress {
   label: string;
   street: string;
@@ -156,7 +162,7 @@ export interface ILandingContent {
     location: string;
     rating: number;
   }[];
-  gallery: IGalleryItem[];
+  gallery: IGallerySection;
   location: ILocation;
   footer: IFooter;
 }
