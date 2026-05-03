@@ -272,28 +272,32 @@
       "rating": 5
     }
   ],
-  "gallery": [
-    {
-      "src": "/assets/modules-images/module-1/out-1.jpg",
-      "alt": "Custom modular home exterior"
-    },
-    {
-      "src": "/assets/modules-images/all-modules-in-1.jpg",
-      "alt": "Modular home interior"
-    },
-    {
-      "src": "/assets/modules-images/all-modules-in-2.jpg",
-      "alt": "Open-concept modular home interior"
-    },
-    {
-      "src": "/assets/modules-images/module-4/out-1.jpg",
-      "alt": "Modern modular facade"
-    },
-    {
-      "src": "/assets/modules-images/module-5/out-2.jpg",
-      "alt": "Premium modular home interior"
-    }
-  ],
+  "gallery": {
+    "title": "Completed Projects",
+    "subtitle": "Experience the quality and craftsmanship of our recent custom modular homes.",
+    "items": [
+      {
+        "src": "/assets/modules-images/module-1/out-1.jpg",
+        "alt": "Custom modular home exterior"
+      },
+      {
+        "src": "/assets/modules-images/all-modules-in-1.jpg",
+        "alt": "Modular home interior"
+      },
+      {
+        "src": "/assets/modules-images/all-modules-in-2.jpg",
+        "alt": "Open-concept modular home interior"
+      },
+      {
+        "src": "/assets/modules-images/module-4/out-1.jpg",
+        "alt": "Modern modular facade"
+      },
+      {
+        "src": "/assets/modules-images/module-5/out-2.jpg",
+        "alt": "Premium modular home interior"
+      }
+    ]
+  },
   "location": {
     "title": "Locally Built. Serving the Bay Area and Beyond.",
     "mainAddress": {

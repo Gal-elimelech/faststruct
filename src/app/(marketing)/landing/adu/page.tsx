@@ -96,7 +96,7 @@ const LandingPage = async () => {
       </section>
 
       <section id="gallery">
-        <LandingGallerySection gallery={content.gallery} />
+        <LandingGallerySection {...content.gallery} />
       </section>
 
       <section id="location">

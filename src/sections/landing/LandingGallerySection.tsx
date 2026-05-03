@@ -2,17 +2,15 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Section } from '@/components/Section';
-import { IGalleryItem } from '@/types/landing';
+import { IGallerySection } from '@/types/landing';
 import { useLandingGalleryCarousel } from '@/hooks/useLandingGalleryCarousel';
 import LandingGalleryCard from './components/LandingGalleryCard';
 import LandingGalleryArrows from './components/LandingGalleryArrows';
 
-interface LandingGallerySectionProps {
-  gallery: IGalleryItem[];
-}
-
-const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
-  gallery,
+const LandingGallerySection: React.FC<IGallerySection> = ({
+  title,
+  subtitle,
+  items,
 }) => {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [itemSpanPx, setItemSpanPx] = useState(0);
@@ -29,7 +27,7 @@ const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
     handleTouchStart,
     handleTouchEnd,
     handleTouchCancel,
-  } = useLandingGalleryCarousel({ gallery, visibleCount: 3, autoPlayInterval: 3500 });
+  } = useLandingGalleryCarousel({ gallery: items, visibleCount: 3, autoPlayInterval: 3500 });
 
   useEffect(() => {
     const track = trackRef.current;
@@ -66,12 +64,8 @@ const LandingGallerySection: React.FC<LandingGallerySectionProps> = ({
     <Section bgColor='white' textColor='dark' className='border-y border-dark/10'>
       <div className='flex flex-col gap-16 md:gap-20'>
         <div className='text-center max-w-4xl mx-auto'>
-          <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85]'>
-            Completed Projects
-          </h2>
-          <p className='text-h6 md:text-xl font-poppins mt-2 max-w-2xl mx-auto'>
-            Experience the quality and craftsmanship of our recent custom ADUs.
-          </p>
+          <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85]'>{title}</h2>
+          <p className='text-h6 md:text-xl font-poppins mt-2 max-w-2xl mx-auto'>{subtitle}</p>
         </div>
 
         <div
