@@ -65,6 +65,7 @@ export default function ConsentNotice({
           <p>
             {consent.readMorePrivacyText}{' '}
             <Link
+              target='_blank'
               href={consent.privacyPolicyHref}
               className='underline underline-offset-4 hover:text-accent transition-colors'>
               {consent.privacyPolicyLabel}
