@@ -5,7 +5,8 @@
     "subtitle": "Steel construction, premium finishes, factory precision, and a backyard unit you can actually count on.",
     "licenses": [
       { "label": "CSLB", "number": "1147858" },
-      { "label": "CA HCD", "number": "1632336" }
+      { "label": "CA HCD", "number": "1632336" },
+      { "label": "Manufactured Home", "number": "MF1634008" }
     ],
     "cta": {
       "text": "Get Your Free Estimate",
@@ -17,6 +18,7 @@
     },
     "googleReviewBadge": "/assets/logo/google-review-badge.png",
     "backgroundImage": "/assets/modules-images/module-5/out-2.jpg",
+    "mobileBackgroundImage": "/assets/modules-images/module-5/mobile-hero.png",
     "backgroundImageAlt": "Completed custom ADU exterior with modern finishes in the Bay Area"
   },
   "valueProp": {
@@ -98,19 +100,19 @@
     ],
     "items": [
       {
-        "icon": "fas fa-certificate",
+        "icon": "certificate",
         "title": "Licensed CA Contractor"
       },
       {
-        "icon": "fas fa-award",
+        "icon": "award",
         "title": "State-Approved Manufacturing Facility"
       },
       {
-        "icon": "fas fa-project-diagram",
+        "icon": "project-diagram",
         "title": "Complete A-Z Project Management"
       },
       {
-        "icon": "fas fa-building",
+        "icon": "building",
         "title": "Steel Construction - Built to Last"
       }
     ],
@@ -315,7 +317,8 @@
     "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
     "licenses": [
       { "label": "CSLB", "number": "1147858" },
-      { "label": "CA HCD", "number": "1632336" }
+      { "label": "CA HCD", "number": "1632336" },
+      { "label": "Manufactured Home", "number": "MF1634008" }
     ],
     "cta": {
       "text": "Design Your ADU",

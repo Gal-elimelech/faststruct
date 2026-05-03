@@ -35,7 +35,7 @@ yarn-error.log*
 
 # generated Lighthouse artifacts
 lh-*.json
-lighthouse-*.json
+lighthouse-*
 
 # vercel
 .vercel

@@ -4,6 +4,7 @@ import FadeInParagraph from '@/components/text-animation/FadeInParagraph';
 import ContactInfoItem from './ContactInfoItem';
 import { IContactForm, IContactInfo } from '@/types/contact';
 import GoogleMapEmbed from '@/components/GoogleMapEmbed';
+import { BadgeCheck, Mail, MapPin, Phone } from 'lucide-react';
 
 interface ContactInfoSectionProps {
   form: IContactForm;
@@ -34,7 +35,7 @@ const ContactInfoSection = ({
       </div>
 
       <div className='flex flex-col gap-6'>
-        <ContactInfoItem icon='fa-solid fa-location-dot' title='Address'>
+        <ContactInfoItem icon={<MapPin />} title='Address'>
           <p className='text-h6 text-light/80'>
             {info.address.street}
             <br />
@@ -42,7 +43,7 @@ const ContactInfoSection = ({
           </p>
         </ContactInfoItem>
 
-        <ContactInfoItem icon='fa-solid fa-envelope' title='Email'>
+        <ContactInfoItem icon={<Mail />} title='Email'>
           <a
             href={`mailto:${info.email}`}
             className='text-h6 text-light/80 hover:text-accent transition-colors'>
@@ -50,7 +51,7 @@ const ContactInfoSection = ({
           </a>
         </ContactInfoItem>
 
-        <ContactInfoItem icon='fa-solid fa-phone' title='Phone'>
+        <ContactInfoItem icon={<Phone />} title='Phone'>
           <a
             href={`tel:${info.phone.link}`}
             className='text-h6 text-light/80 hover:text-accent transition-colors'>
@@ -58,7 +59,7 @@ const ContactInfoSection = ({
           </a>
         </ContactInfoItem>
 
-        <ContactInfoItem icon='fa-solid fa-certificate' title='License'>
+        <ContactInfoItem icon={<BadgeCheck />} title='License'>
           <div className='flex flex-col gap-1'>
             {info.license.map((license, index) => (
               <p

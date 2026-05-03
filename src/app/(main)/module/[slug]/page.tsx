@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: ModulePageProps) {
         title: 'Module Not Found | Fast Struct',
         description:
           'The requested module page is unavailable. Explore our available modular home models in California.',
-        image: '/assets/hero-image.png',
+        image: '/assets/hero-image.jpg',
         url: '/modules',
       }),
       robots: {

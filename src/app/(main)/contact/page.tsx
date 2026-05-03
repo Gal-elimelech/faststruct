@@ -20,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Contact() {
   const content = await getContent('contact', 'en');
+  const consent = await getContent('consent', 'en');
   const siteUrl = validatedEnv.siteUrl;
   const contactSchema = {
     '@context': 'https://schema.org',
@@ -45,7 +46,7 @@ export default async function Contact() {
       <JsonLd data={contactSchema} />
       <h1 className='sr-only'>Contact Fast Struct</h1>
       <HeroContactSection hero={content.hero} />
-      <ContactFormSection form={content.form} info={content.info} />
+      <ContactFormSection form={content.form} consent={consent} info={content.info} />
     </Page>
   );
 }

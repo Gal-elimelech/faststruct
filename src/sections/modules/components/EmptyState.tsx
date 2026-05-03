@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import { IEmptyState } from '@/types/modulesPage';
+import { House } from 'lucide-react';
 
 interface EmptyStateProps {
   emptyState: IEmptyState;
@@ -15,9 +16,10 @@ const EmptyState = ({ emptyState }: EmptyStateProps) => {
       transition={{ duration: 0.5 }}
       className='flex flex-col items-center justify-center py-16 text-center'>
       <div className='bg-light/10 mb-4 flex h-16 w-16 items-center justify-center rounded-full'>
-        <i
-          className='fa-solid fa-house text-light/60 text-2xl'
-          aria-hidden='true'></i>
+        <House
+          className='text-light/60 h-7 w-7'
+          aria-hidden='true'
+        />
       </div>
       <h3 className='text-h4 font-bebas text-light mb-2 uppercase'>
         {emptyState.title}

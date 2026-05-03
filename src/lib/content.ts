@@ -8,6 +8,8 @@ import type { IProcess } from '@/types/process';
 import type { ITheSystemContent } from '@/types/theSystem';
 import type { IProductContent } from '@/types/product';
 import type { ILandingContent } from '@/types/landing';
+import type { IPrivacyPolicyContent } from '@/types/privacyPolicy';
+import type { IConsentContent } from '@/types/consent';
 
 // Static imports of all content JSON files
 import homeContentEn from '@/content/en/home.json';
@@ -19,6 +21,8 @@ import processContentEn from '@/content/en/process.json';
 import theSystemContentEn from '@/content/en/theSystem.json';
 import landingAduContentEn from '@/content/en/landingAdu.json';
 import landingModularContentEn from '@/content/en/landingModular.json';
+import privacyPolicyContentEn from '@/content/en/privacyPolicy.json';
+import consentContentEn from '@/content/en/consent.json';
 
 // Content map: maps [language][page] to content
 // Note: 'product' is included in IContentMap but not used in the codebase.
@@ -35,6 +39,8 @@ const contentMap: Record<Language, IContentMap> = {
     theSystem: theSystemContentEn as ITheSystemContent,
     landingAdu: landingAduContentEn as ILandingContent,
     landingModular: landingModularContentEn as ILandingContent,
+    privacyPolicy: privacyPolicyContentEn as IPrivacyPolicyContent,
+    consent: consentContentEn as IConsentContent,
   },
 };
 

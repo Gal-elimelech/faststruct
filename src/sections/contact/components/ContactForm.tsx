@@ -4,8 +4,10 @@ import { motion } from 'motion/react';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { Button } from '@/components/Button';
 import { Input, Textarea } from '@/components/form';
+import ConsentNotice from '@/components/consent/ConsentNotice';
 import FormMessage from './FormMessage';
 import { IContactForm } from '@/types/contact';
+import type { IConsentContent } from '@/types/consent';
 import type { ContactPageFormInput } from '@/schemas/contact';
 import Recaptcha from 'react-google-recaptcha';
 import { publicEnv } from '@/lib/env-public';
@@ -13,6 +15,7 @@ import type ReCAPTCHA from 'react-google-recaptcha';
 
 interface ContactFormProps {
   form: IContactForm;
+  consent: IConsentContent;
   register: UseFormRegister<ContactPageFormInput>;
   errors: FieldErrors<ContactPageFormInput>;
   isSubmitting: boolean;
@@ -28,6 +31,7 @@ interface ContactFormProps {
 
 const ContactForm = ({
   form,
+  consent,
   register,
   errors,
   isSubmitting,
@@ -105,6 +109,13 @@ const ContactForm = ({
             rows={6}
           />
         </div>
+
+        <ConsentNotice
+          consent={consent}
+          checkboxRegistration={register('contactConsent')}
+          error={errors.contactConsent}
+          checkboxId='contactConsent'
+        />
 
         <div className='flex flex-col gap-2'>
           <Recaptcha

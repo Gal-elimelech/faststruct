@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import clsx from 'clsx';
+import { Phone } from 'lucide-react';
 
 export type LandingCtaSurface = 'hero' | 'dark';
 
@@ -87,7 +88,7 @@ export function LandingCtaLink({
         >
           {isCall ? (
             <span className='inline-flex items-center justify-center gap-2'>
-              <i className='fa-solid fa-phone' aria-hidden />
+              <Phone size={16} aria-hidden />
               <span className='text-nowrap'>{children}</span>
             </span>
           ) : (

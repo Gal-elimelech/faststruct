@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ITestimonial } from '@/types/home';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ITestimonialCarouselProps {
   testimonials: ITestimonial[];
@@ -107,13 +108,13 @@ const TestimonialCarousel = ({
             onClick={goToPrevious}
             className='bg-accent/20 hover:bg-accent/40 text-light absolute top-1/2 left-2 z-10 -translate-y-1/2 rounded-full p-2.5 backdrop-blur-sm transition-all duration-300 hover:scale-110 active:scale-95 md:left-4 md:p-3.5'
             aria-label='Previous testimonial'>
-            <i className='fa-solid fa-chevron-left text-base md:text-lg'></i>
+            <ChevronLeft className='h-4 w-4 md:h-[18px] md:w-[18px]' />
           </button>
           <button
             onClick={goToNext}
             className='bg-accent/20 hover:bg-accent/40 text-light absolute top-1/2 right-2 z-10 -translate-y-1/2 rounded-full p-2.5 backdrop-blur-sm transition-all duration-300 hover:scale-110 active:scale-95 md:right-4 md:p-3.5'
             aria-label='Next testimonial'>
-            <i className='fa-solid fa-chevron-right text-base md:text-lg'></i>
+            <ChevronRight className='h-4 w-4 md:h-[18px] md:w-[18px]' />
           </button>
         </>
       )}

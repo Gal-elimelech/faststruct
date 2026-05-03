@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     title: 'Fast Struct Updates | Coming Soon',
     description:
       'Fast Struct is preparing new updates. Check back soon for additional modular and panelized construction resources.',
-    image: '/assets/hero-image.png',
+    image: '/assets/hero-image.jpg',
     url: '/coming-soon',
   }),
   robots: {

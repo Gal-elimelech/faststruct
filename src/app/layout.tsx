@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Poppins, Bebas_Neue } from 'next/font/google';
 import './globals.css';
-import Script from 'next/script';
 import { ReactLenis } from 'lenis/react';
 import AppNavigationProvider from '@/contexts/AppNavigationProvider';
 import { generateSocialMetadata } from '@/lib/metadata';
 import { validatedEnv } from '@/lib/env';
+import Script from 'next/script';
 
 const fontPoppins = Poppins({
   subsets: ['latin'],
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: 'Fast Struct | Modular & Panelized Homes CA',
     description:
       'Fast Struct builds modular and panelized steel homes in California with factory precision and faster timelines.',
-    image: '/assets/hero-image.png',
+    image: '/assets/hero-image.jpg',
     url: '/',
   }),
 };
@@ -60,11 +60,6 @@ export default async function RootLayout({
           />
         </noscript>
 
-        <Script
-          src='https://kit.fontawesome.com/42dfb7600e.js'
-          crossOrigin='anonymous'
-        />
-
         <ReactLenis
           root
           options={{
@@ -77,7 +72,7 @@ export default async function RootLayout({
             {children}
           </AppNavigationProvider>
         </ReactLenis>
-      </body>
-    </html>
+      </body >
+    </html >
   );
 }

@@ -36,6 +36,7 @@ const LandingModularPage = async () => {
   }
 
   const content = await getContent('landingModular', 'en');
+  const consent = await getContent('consent', 'en');
   const siteUrl = validatedEnv.siteUrl;
   const landingSchema = {
     '@context': 'https://schema.org',
@@ -61,7 +62,7 @@ const LandingModularPage = async () => {
       </section>
 
       <section id='lead-capture' className='scroll-mt-24'>
-        <LeadCaptureSection {...content.leadCapture} />
+        <LeadCaptureSection {...content.leadCapture} consent={consent} />
       </section>
 
       <section id='companyOverview'>
@@ -87,7 +88,7 @@ const LandingModularPage = async () => {
       <section id='testimonials'>
         <TestimonialsSection
           testimonials={content.testimonials}
-          backgroundImage='/assets/testimonials.png'
+          backgroundImage='/assets/testimonials.jpg'
         />
       </section>
 

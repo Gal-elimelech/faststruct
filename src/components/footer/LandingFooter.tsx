@@ -4,6 +4,7 @@ import { IFooter } from '@/types/landing';
 import FastructLogo from '../FastructLogo';
 import Link from 'next/link';
 import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
+import { MapPin } from 'lucide-react';
 
 const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phoneCta, address }) => {
   const currentYear = new Date().getFullYear();
@@ -13,7 +14,7 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
       <div className='container-padding max-w-[1400px] mx-auto'>
         <div className='flex flex-col md:flex-row justify-between gap-20'>
           <div className='flex flex-col gap-10 max-w-xl'>
-            <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-6 items-start'>
               <FastructLogo color='light' className='h-10 w-auto' />
               <h2 className='text-h3 font-bebas uppercase leading-none text-light'>{title}</h2>
               <p className='text-light/60 font-poppins text-lg leading-relaxed'>
@@ -35,7 +36,7 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
             <div className='flex flex-col gap-6'>
               <p className='text-accent font-bebas text-xl uppercase tracking-widest'>Office & Factory</p>
               <div className='flex items-start gap-3'>
-                <i className='fa-solid fa-map-marker-alt text-accent mt-1'></i>
+                <MapPin className='text-accent mt-1 h-4 w-4' />
                 <address className='text-light/80 not-italic text-lg leading-tight'>
                   {address}
                 </address>
@@ -43,7 +44,7 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
             </div>
 
             <div className='flex flex-col gap-6'>
-              <p className='text-accent font-bebas text-xl uppercase tracking-widest'>Licensing</p>
+              <p className='text-accent font-bebas text-xl uppercase tracking-widest'>Licenses</p>
               <div className='flex flex-col gap-3'>
                 {licenses.map((lic, idx) => (
                   <p key={idx} className='text-light/50 text-sm tracking-widest uppercase'>
@@ -56,7 +57,16 @@ const LandingFooter: React.FC<IFooter> = ({ title, subtitle, licenses, cta, phon
         </div>
 
         <div className='mt-20 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-light/30 uppercase tracking-[0.2em]'>
-          <p>© {currentYear} Fast Struct Inc. All Rights Reserved.</p>
+          <p>
+            © {currentYear} Fast Struct Inc. All Rights Reserved.{' '}
+            <Link
+              href='/privacy-policy'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='underline underline-offset-4 hover:text-accent transition-colors'>
+              Privacy Policy
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

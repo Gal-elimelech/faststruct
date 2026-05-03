@@ -8,6 +8,7 @@ import { Section } from '@/components/Section';
 import ContactInfoSection from './components/ContactInfoSection';
 import ContactForm from './components/ContactForm';
 import { IContactForm, IContactInfo } from '@/types/contact';
+import type { IConsentContent } from '@/types/consent';
 import {
   contactPageFormSchema,
   type ContactPageFormInput,
@@ -17,6 +18,7 @@ import { useRecaptchaField } from '@/hooks/useRecaptchaField';
 
 interface ContactFormSectionProps {
   form: IContactForm;
+  consent: IConsentContent;
   info: IContactInfo;
 }
 
@@ -26,10 +28,11 @@ const defaultValues: ContactPageFormInput = {
   phone: '',
   address: '',
   message: '',
+  contactConsent: false,
   recaptchaToken: '',
 };
 
-const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
+const ContactFormSection = ({ form, consent, info }: ContactFormSectionProps) => {
   const [submitMessage, setSubmitMessage] = useState<{
     type: 'success' | 'error' | null;
     text: string;
@@ -112,6 +115,7 @@ const ContactFormSection = ({ form, info }: ContactFormSectionProps) => {
           <ContactInfoSection form={form} info={info} isInView={isFormInView} />
           <ContactForm
             form={form}
+            consent={consent}
             register={register}
             errors={errors}
             isSubmitting={isSubmitting}

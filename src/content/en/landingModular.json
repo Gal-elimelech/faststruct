@@ -1,11 +1,12 @@
 {
-  "metadataImage": "/assets/crane-building-image-desktop.png",
+  "metadataImage": "/assets/crane-building-image-desktop.jpg",
   "heroSection": {
     "title": "Custom Modular Homes Built in the Bay Area | As Fast As 90 Days",
     "subtitle": "Steel construction, premium finishes, factory precision, and quick move-in dates.",
     "licenses": [
       { "label": "CSLB", "number": "1147858" },
-      { "label": "CA HCD", "number": "1632336" }
+      { "label": "CA HCD", "number": "1632336" },
+      { "label": "Manufactured Home", "number": "MF1634008" }
     ],
     "cta": {
       "text": "Design Your Home",
@@ -17,6 +18,7 @@
     },
     "googleReviewBadge": "/assets/logo/google-review-badge.png",
     "backgroundImage": "/assets/modules-images/module-5/out-2.jpg",
+    "mobileBackgroundImage": "/assets/modules-images/module-5/mobile-hero.png",
     "backgroundImageAlt": "Modern custom modular home exterior in a Bay Area residential setting"
   },
   "valueProp": {
@@ -27,7 +29,7 @@
       "What does your dream home look like? We'll build it."
     ],
     "image": {
-      "src": "/assets/crane-building-image-desktop.png",
+      "src": "/assets/crane-building-image-desktop.jpg",
       "alt": "Modular home installation using a crane at a Bay Area build site"
     },
     "features": {
@@ -100,19 +102,19 @@
     ],
     "items": [
       {
-        "icon": "fas fa-certificate",
+        "icon": "certificate",
         "title": "Licensed CA Contractor"
       },
       {
-        "icon": "fas fa-award",
+        "icon": "award",
         "title": "State-Approved Manufacturing Facility"
       },
       {
-        "icon": "fas fa-project-diagram",
+        "icon": "project-diagram",
         "title": "Complete A-Z Project Management"
       },
       {
-        "icon": "fas fa-building",
+        "icon": "building",
         "title": "Steel Construction - Built to Last"
       }
     ],
@@ -317,7 +319,8 @@
     "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
     "licenses": [
       { "label": "CSLB", "number": "1147858" },
-      { "label": "CA HCD", "number": "1632336" }
+      { "label": "CA HCD", "number": "1632336" },
+      { "label": "Manufactured Home", "number": "MF1634008" }
     ],
     "cta": {
       "text": "Get Your Free Estimate",

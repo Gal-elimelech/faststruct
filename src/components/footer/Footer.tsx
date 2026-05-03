@@ -1,6 +1,7 @@
 'use client';
 import FastructLogo from '../FastructLogo';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import {
   FooterLinksAndContact,
   LetsBuildTogetherCTA,
@@ -24,7 +25,16 @@ const Footer = ({ contactInfo, contactSocial }: FooterProps) => {
           <FooterLinksAndContact info={contactInfo} social={contactSocial} />
         </div>
         <div className='border-cream/20 mt-12 border-t pt-8 text-center text-sm opacity-70'>
-          <p>© {new Date().getFullYear()} Fast Struct. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Fast Struct. All rights reserved.{' '}
+            <Link
+              href='/privacy-policy'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='underline underline-offset-4 hover:text-accent transition-colors'>
+              Privacy Policy
+            </Link>
+          </p>
           <div className='mt-2 flex flex-col gap-1'>
             {contactInfo.license.map((license, index) => (
               <p key={index}>{license}</p>
