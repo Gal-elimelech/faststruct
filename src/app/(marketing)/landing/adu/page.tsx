@@ -19,6 +19,8 @@ import { notFound } from 'next/navigation';
 import JsonLd from '@/components/seo/JsonLd';
 import { validatedEnv } from '@/lib/env';
 
+const PAGE_PATH = '/landing/adu';
+
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('landingAdu', 'en');
   return generateSocialMetadata({
@@ -26,12 +28,12 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Design and build custom ADUs in the Bay Area with steel construction, factory precision, and faster project timelines.',
     image: content.metadataImage,
-    url: '/landing',
+    url: PAGE_PATH,
   });
 }
 
 const LandingPage = async () => {
-  if (!isPageEnabled('/landing')) {
+  if (!isPageEnabled(PAGE_PATH)) {
     notFound();
   }
 
@@ -42,7 +44,7 @@ const LandingPage = async () => {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'Fast Struct ADU Services',
-    url: `${siteUrl}/landing`,
+    url: `${siteUrl}${PAGE_PATH}`,
     description: content.heroSection.subtitle,
     image: `${siteUrl}${content.metadataImage}`,
     areaServed: 'Bay Area, California',

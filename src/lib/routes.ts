@@ -1,6 +1,11 @@
-import { isPageEnabled } from './page-config';
+import { isPageEnabled, PagePath } from './page-config';
 
-export const ROUTES = [
+export type Route = {
+  href: PagePath;
+  title: string;
+  isButton?: boolean;
+};
+export const ROUTES: Route[] = [
   { href: '/', title: 'Home' },
   { href: '/modules', title: 'Modules' },
   { href: '/about', title: 'About' },

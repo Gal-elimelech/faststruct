@@ -19,6 +19,7 @@ import { notFound } from 'next/navigation';
 import JsonLd from '@/components/seo/JsonLd';
 import { validatedEnv } from '@/lib/env';
 
+const PAGE_PATH = '/landing/modular';
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('landingModular', 'en');
   return generateSocialMetadata({
@@ -26,12 +27,12 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Design and build custom modular homes in the Bay Area with steel construction, factory precision, and fast project timelines.',
     image: content.metadataImage,
-    url: '/landing/modular',
+    url: PAGE_PATH,
   });
 }
 
 const LandingModularPage = async () => {
-  if (!isPageEnabled('/landing/modular')) {
+  if (!isPageEnabled(PAGE_PATH)) {
     notFound();
   }
 
@@ -42,7 +43,7 @@ const LandingModularPage = async () => {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'Fast Struct Modular Home Services',
-    url: `${siteUrl}/landing/modular`,
+    url: `${siteUrl}${PAGE_PATH}`,
     description: content.heroSection.subtitle,
     image: `${siteUrl}${content.metadataImage}`,
     areaServed: 'Bay Area, California',
