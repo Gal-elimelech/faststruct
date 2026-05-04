@@ -7,17 +7,11 @@ export type ChangeFrequency =
   | 'yearly'
   | 'never';
 
-export interface PageConfig {
-  path: string;
-  changeFrequency: ChangeFrequency;
-  priority: number;
-}
-
 /**
  * Central configuration for all pages in the site.
  * This is the single source of truth for page settings.
  */
-export const PAGES_CONFIG: PageConfig[] = [
+export const PAGES_CONFIG = [
   { path: '/', changeFrequency: 'weekly', priority: 1 },
   { path: '/modules', changeFrequency: 'weekly', priority: 0.9 },
   { path: '/about', changeFrequency: 'monthly', priority: 0.8 },
@@ -26,36 +20,40 @@ export const PAGES_CONFIG: PageConfig[] = [
   { path: '/module', changeFrequency: 'monthly', priority: 0.8 }, // Dynamic route prefix
   { path: '/landing/adu', changeFrequency: 'weekly', priority: 0.9 },
   { path: '/landing/modular', changeFrequency: 'weekly', priority: 0.9 },
-];
+] as const;
+
+export type PageConfig = (typeof PAGES_CONFIG)[number];
+export type PagePath = PageConfig['path'];
 
 /**
  * List of enabled pages that are accessible to clients.
  * Simply add or remove page paths to toggle pages on/off.
  */
-const ENABLED_PAGES = [
+const ENABLED_PAGES: PagePath[] = [
   '/',
   '/contact',
   '/about',
   '/module',
   '/modules',
   '/the-system',
-  '/landing',
+  '/landing/adu',
   '/landing/modular',
 ];
 
 /**
  * Check if a page path is enabled
  */
-export function isPageEnabled(path: string): boolean {
+export function isPageEnabled(path: PagePath): boolean {
   // Normalize path (remove trailing slashes except for root)
-  const normalizedPath = path === '/' ? '/' : path.replace(/\/$/, '');
+  const normalizedPath =
+    path === '/' ? '/' : (path.replace(/\/$/, '') as PagePath);
   return ENABLED_PAGES.includes(normalizedPath);
 }
 
 /**
  * Get page configuration for sitemap
  */
-export function getPageConfig(path: string): PageConfig | undefined {
+export function getPageConfig(path: PagePath): PageConfig | undefined {
   return PAGES_CONFIG.find((page) => page.path === path);
 }
 
