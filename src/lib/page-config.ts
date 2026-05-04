@@ -18,7 +18,7 @@ export const PAGES_CONFIG = [
   { path: '/the-system', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/contact', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/module', changeFrequency: 'monthly', priority: 0.8 }, // Dynamic route prefix
-  { path: '/landing', changeFrequency: 'weekly', priority: 0.9 },
+  { path: '/landing/adu', changeFrequency: 'weekly', priority: 0.9 },
   { path: '/landing/modular', changeFrequency: 'weekly', priority: 0.9 },
 ] as const;
 
@@ -36,7 +36,7 @@ const ENABLED_PAGES: PagePath[] = [
   '/module',
   '/modules',
   '/the-system',
-  '/landing',
+  '/landing/adu',
   '/landing/modular',
 ];
 
