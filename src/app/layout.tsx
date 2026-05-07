@@ -50,6 +50,14 @@ export default async function RootLayout({
             })(window,document,'script','dataLayer','GTM-P458M4JF');
           `}
         </Script>
+        <Script id='whatconverts-bootstrap' strategy='afterInteractive'>
+          {`var $wc_load=function(a){return JSON.parse(JSON.stringify(a))},$wc_leads=$wc_leads||{doc:{url:$wc_load(document.URL),ref:$wc_load(document.referrer),search:$wc_load(location.search),hash:$wc_load(location.hash)}};`}
+        </Script>
+        <Script
+          id='whatconverts-loader'
+          src='//s.ksrndkehqnwntyxlhgto.com/159443.js'
+          strategy='afterInteractive'
+        />
 
         <noscript>
           <iframe
