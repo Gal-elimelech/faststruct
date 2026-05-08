@@ -54,7 +54,7 @@ const ContactInfoSection = ({
         <ContactInfoItem icon={<Phone />} title='Phone'>
           <a
             href={`tel:${info.phone.link}`}
-            className='text-h6 text-light/80 hover:text-accent transition-colors'>
+            className='no-swap text-h6 text-light/80 hover:text-accent transition-colors'>
             {info.phone.display}
           </a>
         </ContactInfoItem>

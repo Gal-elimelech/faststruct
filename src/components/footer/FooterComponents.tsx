@@ -95,7 +95,7 @@ const FooterLinksAndContact = ({
           <li>
             <a
               href={`tel:${info.phone.link}`}
-              className='hover:text-accent transition-colors'>
+              className='no-swap hover:text-accent transition-colors'>
               {info.phone.display}
             </a>
           </li>
