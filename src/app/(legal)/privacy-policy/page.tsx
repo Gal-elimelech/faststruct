@@ -27,7 +27,7 @@ export default async function PrivacyPolicyPage() {
     if (/^[()\d\s-]+$/.test(trimmedLine)) {
       const telValue = trimmedLine.replace(/[^\d+]/g, '');
       return (
-        <a className='underline underline-offset-4 hover:text-light' href={`tel:${telValue}`}>
+        <a className='no-swap underline underline-offset-4 hover:text-light' href={`tel:${telValue}`}>
           {trimmedLine}
         </a>
       );
