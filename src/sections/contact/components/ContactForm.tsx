@@ -44,8 +44,8 @@ const ContactForm = ({
   return (
     <div className='sticky top-0 h-min w-full'>
       <motion.form
-        id='gform_1'
-        name='gform_1'
+        id='direct'
+        name='direct'
         data-form-type='contact'
         onSubmit={onSubmit}
         initial={{ opacity: 0, x: 30 }}
