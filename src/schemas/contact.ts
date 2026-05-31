@@ -50,35 +50,38 @@ export const LEAD_SERVICE_TYPES = [
   'Panelized Construction',
 ] as const;
 
-const contactCommonFieldsSchema = z.object({
+const contactFormFieldsSchema = z.object({
   name: nameField,
   email: emailField,
   phone: phoneField,
   message: messageField,
-  recaptchaToken: recaptchaTokenField,
   contactConsent: contactConsentField,
 });
 
+const contactApiFieldsSchema = contactFormFieldsSchema.extend({
+  recaptchaToken: recaptchaTokenField,
+});
+
 /** Contact page form schema (frontend fields only). */
-export const contactPageFormSchema = contactCommonFieldsSchema.extend({
+export const contactPageFormSchema = contactFormFieldsSchema.extend({
   address: requiredAddressField,
 });
 
 /** Landing lead form schema (frontend fields only). */
-export const leadCaptureFormSchema = contactCommonFieldsSchema.extend({
+export const leadCaptureFormSchema = contactFormFieldsSchema.extend({
   serviceType: z.enum(LEAD_SERVICE_TYPES),
 });
 
 export type ContactPageFormInput = z.output<typeof contactPageFormSchema>;
 export type LeadCaptureFormInput = z.output<typeof leadCaptureFormSchema>;
 
-const contactSubmissionSchema = contactCommonFieldsSchema.extend({
+const contactSubmissionSchema = contactApiFieldsSchema.extend({
   source: z.literal('contact'),
   address: requiredAddressField,
   serviceType: z.undefined().optional(),
 });
 
-const landingSubmissionSchema = contactCommonFieldsSchema.extend({
+const landingSubmissionSchema = contactApiFieldsSchema.extend({
   source: z.literal('landing'),
   address: optionalAddressField,
   serviceType: z.enum(LEAD_SERVICE_TYPES),
@@ -93,19 +96,17 @@ export const contactSubmissionUnionSchema = z.discriminatedUnion('source', [
 /** Parsed POST body / sheets row (output after defaults). */
 export type ContactFormData = z.output<typeof contactSubmissionUnionSchema>;
 
-export function toContactSubmission(
-  values: ContactPageFormInput
-): z.input<typeof contactSubmissionUnionSchema> {
+export function toContactSubmission(values: ContactPageFormInput) {
   return {
     ...values,
-    source: 'contact',
+    source: 'contact' as const,
   };
 }
 
 export function toLandingSubmission(
   values: LeadCaptureFormInput,
   source: LandingFormSource = 'landing'
-): z.input<typeof contactSubmissionUnionSchema> {
+) {
   return {
     ...values,
     source,

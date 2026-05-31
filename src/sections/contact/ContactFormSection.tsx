@@ -14,7 +14,7 @@ import {
   type ContactPageFormInput,
   toContactSubmission,
 } from '@/schemas/contact';
-import { useRecaptchaField } from '@/hooks/useRecaptchaField';
+import { useRecaptchaEnterprise } from '@/hooks/useRecaptchaEnterprise';
 
 interface ContactFormSectionProps {
   form: IContactForm;
@@ -29,7 +29,6 @@ const defaultValues: ContactPageFormInput = {
   address: '',
   message: '',
   contactConsent: false,
-  recaptchaToken: '',
 };
 
 const ContactFormSection = ({ form, consent, info }: ContactFormSectionProps) => {
@@ -40,7 +39,7 @@ const ContactFormSection = ({ form, consent, info }: ContactFormSectionProps) =>
   const sectionRef = useRef<HTMLFormElement>(null);
   const isFormInView = useInView(sectionRef, { once: true });
 
-  const { register, handleSubmit, reset, setError, clearErrors, setValue, formState } = useForm<
+  const { register, handleSubmit, reset, setError, formState } = useForm<
     ContactPageFormInput,
     undefined,
     ContactPageFormInput
@@ -50,19 +49,18 @@ const ContactFormSection = ({ form, consent, info }: ContactFormSectionProps) =>
   });
 
   const { errors, isSubmitting } = formState;
-
-  const { recaptchaRef, onTokenChange, resetRecaptcha } = useRecaptchaField({
-    fieldName: 'recaptchaToken',
-    setValue,
-    setError,
-    clearErrors,
-  });
+  const { getRecaptchaToken } = useRecaptchaEnterprise();
 
   const onValid: SubmitHandler<ContactPageFormInput> = async (values) => {
     setSubmitMessage({ type: null, text: '' });
-    const payload = toContactSubmission(values);
 
     try {
+      const recaptchaToken = await getRecaptchaToken('contact');
+      const payload = {
+        ...toContactSubmission(values),
+        recaptchaToken,
+      };
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -99,11 +97,10 @@ const ContactFormSection = ({ form, consent, info }: ContactFormSectionProps) =>
       });
 
       reset(defaultValues);
-      resetRecaptcha();
     } catch {
       setSubmitMessage({
         type: 'error',
-        text: 'Network error. Please try again.',
+        text: 'Unable to verify submission. Please try again.',
       });
     }
   };
@@ -122,8 +119,6 @@ const ContactFormSection = ({ form, consent, info }: ContactFormSectionProps) =>
             submitMessage={submitMessage}
             isInView={isFormInView}
             onSubmit={handleSubmit(onValid)}
-            recaptchaRef={recaptchaRef}
-            onRecaptchaChange={onTokenChange}
           />
         </div>
       </div>

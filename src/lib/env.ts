@@ -38,6 +38,14 @@ function parseContactEmails(rawValue: string): string[] {
   return contactEmails;
 }
 
+function parseRecaptchaMinScore(rawValue: string | undefined): number {
+  const parsed = rawValue ? Number.parseFloat(rawValue) : 0.5;
+  if (Number.isNaN(parsed) || parsed < 0 || parsed > 1) {
+    return 0.5;
+  }
+  return parsed;
+}
+
 const env = {
   resendApiKey: process.env.RESEND_API_KEY ?? '',
   fromEmail: process.env.FROM_EMAIL ?? 'onboarding@resend.dev',
@@ -48,6 +56,7 @@ const env = {
   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? '',
   recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY ?? '',
   recaptchaSiteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? '',
+  recaptchaMinScore: parseRecaptchaMinScore(process.env.RECAPTCHA_MIN_SCORE),
   googleCloudProjectId: process.env.GOOGLE_CLOUD_PROJECT_ID ?? '',
   googleCloudProjectNumber: process.env.GOOGLE_CLOUD_PROJECT_NUMBER ?? '',
   googleCloudApiKey: process.env.GOOGLE_CLOUD_API_KEY ?? '',

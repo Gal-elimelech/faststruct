@@ -20,9 +20,7 @@ import {
   type LeadCaptureFormInput,
   toLandingSubmission,
 } from '@/schemas/contact';
-import Recaptcha from 'react-google-recaptcha';
-import { publicEnv } from '@/lib/env-public';
-import { useRecaptchaField } from '@/hooks/useRecaptchaField';
+import { useRecaptchaEnterprise } from '@/hooks/useRecaptchaEnterprise';
 
 const defaultValues: LeadCaptureFormInput = {
   name: '',
@@ -31,7 +29,6 @@ const defaultValues: LeadCaptureFormInput = {
   serviceType: 'Modular Homes',
   message: '',
   contactConsent: false,
-  recaptchaToken: '',
 };
 
 const serviceOptions = LEAD_SERVICE_TYPES.map((value) => ({
@@ -58,8 +55,6 @@ const LeadCaptureSection = ({
     control,
     handleSubmit,
     setError,
-    clearErrors,
-    setValue,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<LeadCaptureFormInput>({
@@ -67,18 +62,18 @@ const LeadCaptureSection = ({
     defaultValues,
   });
 
-  const { recaptchaRef, onTokenChange, resetRecaptcha } = useRecaptchaField({
-    fieldName: 'recaptchaToken',
-    setValue,
-    setError,
-    clearErrors,
-  });
+  const { getRecaptchaToken } = useRecaptchaEnterprise();
 
   const onValid: SubmitHandler<LeadCaptureFormInput> = async (values) => {
     setSubmitMessage({ type: null, text: '' });
-    const payload = toLandingSubmission(values);
 
     try {
+      const recaptchaToken = await getRecaptchaToken('contact');
+      const payload = {
+        ...toLandingSubmission(values),
+        recaptchaToken,
+      };
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -115,18 +110,16 @@ const LeadCaptureSection = ({
       });
 
       reset(defaultValues);
-      resetRecaptcha();
     } catch {
       setSubmitMessage({
         type: 'error',
-        text: 'Network error. Please try again.',
+        text: 'Unable to verify submission. Please try again.',
       });
     }
   };
 
   return (
     <Section
-
       ref={sectionRef}
       bgColor='dark'
       textColor='light'
@@ -200,17 +193,6 @@ const LeadCaptureSection = ({
               </div>
             );
           })}
-          <div className='md:col-span-2 flex flex-col items-center gap-2'>
-            <Recaptcha
-              ref={recaptchaRef}
-              sitekey={publicEnv.recaptchaSiteKey}
-              onChange={onTokenChange}
-              onExpired={() => onTokenChange(null)}
-            />
-            {errors.recaptchaToken?.message && (
-              <p className='text-sm text-red-300'>{errors.recaptchaToken.message}</p>
-            )}
-          </div>
           <ConsentNotice
             consent={consent}
             checkboxRegistration={register('contactConsent')}
