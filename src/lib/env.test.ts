@@ -1,19 +1,27 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { validateContactEnv } from './env';
 
+const REQUIRED_TEST_ENV = {
+  RESEND_API_KEY: 're_test',
+  CONTACT_EMAIL: 'test@example.com',
+  NEXT_PUBLIC_SITE_URL: 'https://example.com',
+  NEXT_PUBLIC_RECAPTCHA_SITE_KEY: 'test-site-key',
+  GOOGLE_CLOUD_PROJECT_ID: 'test-project',
+  GOOGLE_CLOUD_PROJECT_NUMBER: '123456789',
+  GOOGLE_CLOUD_API_KEY: 'test-api-key',
+} as const;
+
 describe('validateContactEnv', () => {
   const originalEnv = { ...process.env };
 
   beforeEach(() => {
-    process.env.RESEND_API_KEY = 're_test';
-    process.env.CONTACT_EMAIL = 'test@example.com';
-    process.env.NEXT_PUBLIC_SITE_URL = 'https://example.com';
+    for (const [key, value] of Object.entries(REQUIRED_TEST_ENV)) {
+      process.env[key] = value;
+    }
   });
 
   afterEach(() => {
-    process.env.RESEND_API_KEY = originalEnv.RESEND_API_KEY;
-    process.env.CONTACT_EMAIL = originalEnv.CONTACT_EMAIL;
-    process.env.NEXT_PUBLIC_SITE_URL = originalEnv.NEXT_PUBLIC_SITE_URL;
+    process.env = { ...originalEnv };
   });
 
   it('throws when RESEND_API_KEY is missing', () => {

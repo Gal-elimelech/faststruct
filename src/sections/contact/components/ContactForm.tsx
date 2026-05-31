@@ -9,9 +9,6 @@ import FormMessage from './FormMessage';
 import { IContactForm } from '@/types/contact';
 import type { IConsentContent } from '@/types/consent';
 import type { ContactPageFormInput } from '@/schemas/contact';
-import Recaptcha from 'react-google-recaptcha';
-import { publicEnv } from '@/lib/env-public';
-import type ReCAPTCHA from 'react-google-recaptcha';
 
 interface ContactFormProps {
   form: IContactForm;
@@ -25,8 +22,6 @@ interface ContactFormProps {
   };
   isInView: boolean;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
-  recaptchaRef: React.RefObject<ReCAPTCHA | null>;
-  onRecaptchaChange: (token: string | null) => void;
 }
 
 const ContactForm = ({
@@ -38,8 +33,6 @@ const ContactForm = ({
   submitMessage,
   isInView,
   onSubmit,
-  recaptchaRef,
-  onRecaptchaChange,
 }: ContactFormProps) => {
   return (
     <div className='sticky top-0 h-min w-full'>
@@ -119,18 +112,6 @@ const ContactForm = ({
           error={errors.contactConsent}
           checkboxId='contactConsent'
         />
-
-        <div className='flex flex-col gap-2'>
-          <Recaptcha
-            ref={recaptchaRef}
-            sitekey={publicEnv.recaptchaSiteKey}
-            onChange={onRecaptchaChange}
-            onExpired={() => onRecaptchaChange(null)}
-          />
-          {errors.recaptchaToken?.message && (
-            <p className='text-sm text-red-500'>{errors.recaptchaToken.message}</p>
-          )}
-        </div>
 
         <Button
           type='submit'

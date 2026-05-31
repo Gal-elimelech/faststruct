@@ -53,6 +53,7 @@ const { testEnv } = vi.hoisted(() => ({
     googleMapsApiKey: '',
     recaptchaSecretKey: '',
     recaptchaSiteKey: 'test-site-key',
+    recaptchaMinScore: 0.5,
     googleCloudProjectId: 'test-project',
     googleCloudProjectNumber: '123456789',
     googleCloudApiKey: 'test-api-key',
@@ -216,6 +217,34 @@ describe('POST /api/contact', () => {
 
   it('returns 422 when recaptcha verification fails', async () => {
     vi.mocked(createAssessment).mockResolvedValue(null);
+
+    const request = createRequest(validPayload);
+    const response = await POST(request);
+    expect(response.status).toBe(422);
+    const data = await response.json();
+    expect(data.error).toBe('reCAPTCHA verification failed');
+  });
+
+  it('returns 422 when recaptcha score is below threshold', async () => {
+    vi.mocked(createAssessment).mockResolvedValue({
+      score: 0.2,
+      reasons: [],
+      action: 'contact',
+    });
+
+    const request = createRequest(validPayload);
+    const response = await POST(request);
+    expect(response.status).toBe(422);
+    const data = await response.json();
+    expect(data.error).toBe('reCAPTCHA verification failed');
+  });
+
+  it('returns 422 when recaptcha action does not match', async () => {
+    vi.mocked(createAssessment).mockResolvedValue({
+      score: 0.9,
+      reasons: [],
+      action: 'login',
+    });
 
     const request = createRequest(validPayload);
     const response = await POST(request);

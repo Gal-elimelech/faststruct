@@ -8,6 +8,21 @@ import { addToGoogleSheets } from '@/lib/google-sheets';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { createAssessment } from '@/lib/recaptcha';
 
+function recaptchaRejectedResponse() {
+  return NextResponse.json(
+    {
+      error: 'reCAPTCHA verification failed',
+      details: [
+        {
+          field: 'recaptchaToken',
+          message: 'Please complete reCAPTCHA verification',
+        },
+      ],
+    },
+    { status: 422 }
+  );
+}
+
 export async function POST(request: NextRequest) {
   const rateLimitResult = checkRateLimit(request);
   if (!rateLimitResult.success) {
@@ -60,18 +75,23 @@ export async function POST(request: NextRequest) {
     });
 
     if (!recaptchaAssessment) {
-      return NextResponse.json(
-        {
-          error: 'reCAPTCHA verification failed',
-          details: [
-            {
-              field: 'recaptchaToken',
-              message: 'Please complete reCAPTCHA verification',
-            },
-          ],
-        },
-        { status: 422 }
+      return recaptchaRejectedResponse();
+    }
+
+    if (recaptchaAssessment.score < validatedEnv.recaptchaMinScore) {
+      console.log(
+        '[Contact API] reCAPTCHA score below threshold:',
+        recaptchaAssessment.score
       );
+      return recaptchaRejectedResponse();
+    }
+
+    if (recaptchaAssessment.action !== 'contact') {
+      console.log(
+        '[Contact API] reCAPTCHA action mismatch:',
+        recaptchaAssessment.action
+      );
+      return recaptchaRejectedResponse();
     }
 
     const resend = new Resend(validatedEnv.resendApiKey);

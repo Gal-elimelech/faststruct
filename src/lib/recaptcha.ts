@@ -58,7 +58,7 @@ export async function createAssessment({
   }
 
   const tokenAction = response.tokenProperties.action ?? '';
-  if (recaptchaAction && tokenAction && tokenAction !== recaptchaAction) {
+  if (recaptchaAction && tokenAction !== recaptchaAction) {
     console.log(
       'The action attribute in your reCAPTCHA tag ' +
         'does not match the action you are expecting to score'
