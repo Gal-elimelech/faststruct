@@ -12,9 +12,9 @@ import JsonLd from '@/components/seo/JsonLd';
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('modulesPage', 'en');
   return generateSocialMetadata({
-    title: 'Modular Home Models in California | Fast Struct',
+    title: 'Find Modern Modular Homes in California | Fast Struct',
     description:
-      'Browse Fast Struct modular home and ADU models in California, from compact studios to spacious family-ready layouts.',
+      'Explore our wide range of modern modular housing in California. Whether you need a small ADU or a large family space, we have a layout just for you.',
     image: content.metadataImage,
     url: '/modules',
   });
