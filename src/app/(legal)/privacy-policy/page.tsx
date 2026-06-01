@@ -4,9 +4,9 @@ import { getContent } from '@/lib/content';
 import { generateSocialMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = generateSocialMetadata({
-  title: 'Privacy Policy | Fast Struct',
+  title: 'Fast Struct Privacy Policy | How We Handle Your Information',
   description:
-    'Read Fast Struct privacy practices, including how we use contact information and SMS consent details.',
+    'Read our privacy policy to learn how we protect your personal data. We clearly explain how we collect, use, and keep your information safe. Learn more.',
   image: '/assets/hero-image.jpg',
   url: '/privacy-policy',
 });
