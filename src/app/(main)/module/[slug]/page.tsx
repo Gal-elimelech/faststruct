@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: ModulePageProps) {
   }
 
   return generateSocialMetadata({
-    title: `${module.title} Modular Home | Fast Struct`,
+    title: `${module.title} | Fast Struct`,
     description: module.summary,
     image: module.mainImage,
     url: `/module/${slug}`,
