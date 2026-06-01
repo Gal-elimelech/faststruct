@@ -18,9 +18,9 @@ import JsonLd from '@/components/seo/JsonLd';
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('home', 'en');
   return generateSocialMetadata({
-    title: 'Modular & Panelized Homes California | Fast Struct',
+    title: 'Fast Struct: Modular & Panelized Home Builders in California',
     description:
-      'Fast Struct builds modular and panelized steel homes in California with factory precision and streamlined delivery.',
+      'Fast Struct is a Silicon Valley factory that specializes in manufacturing modular and panelized homes. Get your dream steel home today with our help. Call now!',
     image: content.metadataImage,
     url: '/',
   });
