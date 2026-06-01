@@ -10,9 +10,9 @@ import JsonLd from '@/components/seo/JsonLd';
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('contact', 'en');
   return generateSocialMetadata({
-    title: 'Contact Fast Struct | Modular Construction CA',
+    title: 'Contact Us | Modular Home Design & Construction | California',
     description:
-      'Contact Fast Struct to plan your modular or panelized build in California, from consultation through project delivery.',
+      'Reach out to Fast Struct today to discuss your modular house design and construction in California. Our friendly team is ready to answer your questions.',
     image: content.metadataImage,
     url: '/contact',
   });
