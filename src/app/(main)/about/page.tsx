@@ -14,9 +14,9 @@ import JsonLd from '@/components/seo/JsonLd';
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('about', 'en');
   return generateSocialMetadata({
-    title: 'About Fast Struct | California Modular Experts',
+    title: 'About Fast Struct | Trusted Silicon Valley Home Builders',
     description:
-      'Learn how Fast Struct delivers precision modular and panelized construction across California with speed, quality, and trust.',
+      'As a house builder in Silicon Valley, we offer speed and flexibility. We provide complete solutions for your ADUs and panelized structures. Partner with us!',
     image: content.hero.backgroundImage,
     url: '/about',
   });
