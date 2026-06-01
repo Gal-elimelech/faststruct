@@ -16,9 +16,9 @@ import JsonLd from '@/components/seo/JsonLd';
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('theSystem', 'en');
   return generateSocialMetadata({
-    title: 'How Fast Struct Works | Modular Build System',
+    title: 'The System | California Construction Solutions & Process',
     description:
-      'See Fast Struct modular and panelized build system, from factory production to efficient onsite installation in California.',
+      'See how our lab-based construction solutions in California work. Moving production off-site means less chaos and a fast finish for your brand new home.',
     image: content.hero.backgroundImageDesktop,
     url: '/the-system',
   });
