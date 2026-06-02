@@ -32,7 +32,7 @@ const HomePage = async () => {
   const modulesData = await getModules();
   const siteUrl = validatedEnv.siteUrl;
 
-  // Tanging ang WebSite at HomeAndConstructionBusiness schema lang ang nandito:
+  // Dito sa loob ng array magkakasama na silang tatlo: WebSite, Business, at FAQs
   const homeSchema = [
     {
       '@context': 'https://schema.org',
@@ -61,6 +61,52 @@ const HomePage = async () => {
         latitude: 37.386003,
         longitude: -121.940657,
       },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Is modular or panelized construction in California more expensive than traditional building?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Not necessarily. Our modular and panelized construction methods in California offer faster timelines and efficient processes that often lower overall costs with complete transparency from the start.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Will my home look like a “prefab box”?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No - every project is fully customizable in layout and finishes.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How long does it take to build?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Typically 3-5 months from permit approval to completion.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Do you handle permits and approvals?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes - our team manages the entire process.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is modular/panelized construction durable?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Absolutely - built with light-gauge steel and high-performance materials for strength and longevity.',
+          },
+        },
+      ],
     },
   ];
 
