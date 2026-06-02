@@ -64,6 +64,28 @@ const FooterLinksAndContact = ({
   const footerLinks = ENABLED_ROUTES.filter((route) => !route.isButton);
   return (
     <div className='flex w-full flex-col gap-4 md:w-auto md:flex-row'>
+     
+      <FooterSection title='Services'>
+        <FooterList>
+          <li>
+            <a 
+              href='https://www.faststruct.com/landing/adu' 
+              className='hover:text-accent transition-colors'
+            >
+              ADU Builder Bay Area
+            </a>
+          </li>
+          <li>
+            <a 
+              href='https://www.faststruct.com/landing/modular' 
+              className='hover:text-accent transition-colors'
+            >
+              Modular Homes Bay Area
+            </a>
+          </li>
+        </FooterList>
+      </FooterSection>
+
       <FooterSection title='Company'>
         <FooterList>
           {footerLinks.map((route) => (
