@@ -18,9 +18,9 @@ import JsonLd from '@/components/seo/JsonLd';
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('home', 'en');
   return generateSocialMetadata({
-    title: 'Fast Struct: Modular & Panelized Home Builders in California',
+    title: 'Modular & Panelized Homes California | Fast Struct',
     description:
-      'Fast Struct is a Silicon Valley factory that specializes in manufacturing modular and panelized homes. Get your dream steel home today with our help. Call now!',
+      'Fast Struct builds modular and panelized steel homes in California with factory precision and streamlined delivery.',
     image: content.metadataImage,
     url: '/',
   });
@@ -31,8 +31,8 @@ const HomePage = async () => {
   const processContent = await getContent('process', 'en');
   const modulesData = await getModules();
   const siteUrl = validatedEnv.siteUrl;
-  const organizationId = `${siteUrl}/#organization`;
 
+  // Tanging ang WebSite at HomeAndConstructionBusiness schema lang ang nandito:
   const homeSchema = [
     {
       '@context': 'https://schema.org',
@@ -44,15 +44,23 @@ const HomePage = async () => {
     },
     {
       '@context': 'https://schema.org',
-      '@type': 'ProfessionalService',
-      '@id': organizationId,
+      '@type': 'HomeAndConstructionBusiness',
       name: 'Fast Struct',
-      url: siteUrl,
-      image: `${siteUrl}${content.metadataImage}`,
-      description:
-        'Modular and panelized steel home construction services across California.',
-      areaServed: 'California',
-      serviceType: ['Modular Construction', 'Panelized Construction'],
+      url: 'https://www.faststruct.com/',
+      telephone: '(408) 702-9012',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '3395 Edward Ave',
+        addressLocality: 'Santa Clara',
+        addressRegion: 'CA',
+        postalCode: '95054',
+        addressCountry: 'US',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 37.386003,
+        longitude: -121.940657,
+      },
     },
   ];
 
