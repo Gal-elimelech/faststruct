@@ -65,7 +65,7 @@ const FooterLinksAndContact = ({
   return (
     <div className='flex w-full flex-col gap-4 md:w-auto md:flex-row'>
      
-      <FooterSection title='Services'>
+      <FooterSection title='Quick Links'>
         <FooterList>
           <li>
             <a 
@@ -83,6 +83,18 @@ const FooterLinksAndContact = ({
               Modular Homes Bay Area
             </a>
           </li>
+
+          <li>
+            <a 
+              href='blog.faststruct.com' 
+              className='hover:text-accent transition-colors'
+            >
+              Blog
+            </a>
+          </li>
+
+          
+          
         </FooterList>
       </FooterSection>
 
