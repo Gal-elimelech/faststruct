@@ -86,7 +86,7 @@ const FooterLinksAndContact = ({
 
           <li>
             <a 
-              href='blog.faststruct.com' 
+              href='https://blog.faststruct.com' 
               className='hover:text-accent transition-colors'
             >
               Blog
