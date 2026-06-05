@@ -35,9 +35,15 @@ export interface IContactPhone {
 }
 
 export interface IContactInfo {
-  address: IContactAddress;
-  email: string;
-  phone: IContactPhone;
+  address: {
+    street: string;
+    city: string;
+  };
+  email: string[];
+  phone: {
+    display: string;
+    link: string;
+  };
   license: string[];
 }
 
