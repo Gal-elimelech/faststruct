@@ -62,9 +62,13 @@ const FooterLinksAndContact = ({
   social,
 }: FooterLinksAndContactProps) => {
   const footerLinks = ENABLED_ROUTES.filter((route) => !route.isButton);
+  
+  // Tinitingnan kung may laman ang social links para malaman kung ano ang huling column
+  const hasSocial = social && social.links && social.links.length > 0;
+
   return (
     <div className='flex w-full flex-col gap-4 md:w-auto md:flex-row'>
-     
+      
       <FooterSection title='Quick Links'>
         <FooterList>
           <li>
@@ -83,7 +87,6 @@ const FooterLinksAndContact = ({
               Modular Homes Bay Area
             </a>
           </li>
-
           <li>
             <a 
               href='https://blog.faststruct.com' 
@@ -92,9 +95,6 @@ const FooterLinksAndContact = ({
               Blog
             </a>
           </li>
-
-          
-          
         </FooterList>
       </FooterSection>
 
@@ -110,7 +110,8 @@ const FooterLinksAndContact = ({
         </FooterList>
       </FooterSection>
 
-      <FooterSection title='Contact'>
+      {/* Kung walang social links, ang Contact section ang magiging 'isLast' para mawala ang kanang border */}
+      <FooterSection title='Contact' isLast={!hasSocial}>
         <FooterList>
           <li>
             <address className='not-italic'>
@@ -120,10 +121,11 @@ const FooterLinksAndContact = ({
             </address>
           </li>
           <li>
+            {/* Binago: Ginamit ang info.email[0] dahil array ang "email" sa iyong JSON data */}
             <a
-              href={`mailto:${info.email}`}
+              href={`mailto:${info.email[0]}`}
               className='hover:text-accent transition-colors'>
-              {info.email}
+              {info.email[0]}
             </a>
           </li>
           <li>
@@ -136,7 +138,7 @@ const FooterLinksAndContact = ({
         </FooterList>
       </FooterSection>
 
-      {social.links.length > 0 && (
+      {hasSocial && (
         <FooterSection title={social.title} isLast={true}>
           <FooterList>
             {social.links.map((link) => (
