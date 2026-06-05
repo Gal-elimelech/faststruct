@@ -71,6 +71,14 @@ const FooterLinksAndContact = ({
       
       <FooterSection title='Quick Links'>
         <FooterList>
+           <li>
+            <a 
+              href='https://blog.faststruct.com' 
+              className='hover:text-accent transition-colors'
+            >
+              Blog
+            </a>
+          </li>
           <li>
             <a 
               href='https://www.faststruct.com/landing/adu' 
@@ -85,14 +93,6 @@ const FooterLinksAndContact = ({
               className='hover:text-accent transition-colors'
             >
               Modular Homes Bay Area
-            </a>
-          </li>
-          <li>
-            <a 
-              href='https://blog.faststruct.com' 
-              className='hover:text-accent transition-colors'
-            >
-              Blog
             </a>
           </li>
         </FooterList>
