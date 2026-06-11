@@ -66,6 +66,12 @@ const FooterLinksAndContact = ({
   // Tinitingnan kung may laman ang social links para malaman kung ano ang huling column
   const hasSocial = social && social.links && social.links.length > 0;
 
+  // UPGRADED OPTION 1: Ginagawang string ang email data at gagamitan ng Regex
+  // para hiwain at kunin LANG ang pinakaunang email address.
+  const emailDataString = Array.isArray(info?.email) ? info.email.join('') : String(info?.email || '');
+  const emailMatch = emailDataString.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/);
+  const firstEmail = emailMatch ? emailMatch[0] : '';
+
   return (
     <div className='flex w-full flex-col gap-4 md:w-auto md:flex-row'>
       
@@ -121,12 +127,13 @@ const FooterLinksAndContact = ({
             </address>
           </li>
           <li>
-            {/* Binago: Ginamit ang info.email[0] dahil array ang "email" sa iyong JSON data */}
-            <a
-              href={`mailto:${info.email[0]}`}
-              className='hover:text-accent transition-colors'>
-              {info.email[0]}
-            </a>
+            {firstEmail && (
+              <a
+                href={`mailto:${firstEmail}`}
+                className='hover:text-accent transition-colors'>
+                {firstEmail}
+              </a>
+            )}
           </li>
           <li>
             <a
