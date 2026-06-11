@@ -17,6 +17,11 @@ const ContactInfoSection = ({
   info,
   isInView,
 }: ContactInfoSectionProps) => {
+  // Inayos ang regex: Ginawang pilit na '.com' para hindi madamay ang kasunod na titik 'a'
+  const emailDataString = Array.isArray(info?.email) ? info.email.join('') : String(info?.email || '');
+  const emailMatch = emailDataString.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com/i);
+  const firstEmail = emailMatch ? emailMatch[0] : '';
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -30 }}
@@ -44,11 +49,13 @@ const ContactInfoSection = ({
         </ContactInfoItem>
 
         <ContactInfoItem icon={<Mail />} title='Email'>
-          <a
-            href={`mailto:${info.email}`}
-            className='text-h6 text-light/80 hover:text-accent transition-colors'>
-            {info.email}
-          </a>
+          {firstEmail && (
+            <a
+              href={`mailto:${firstEmail}`}
+              className='text-h6 text-light/80 hover:text-accent transition-colors'>
+              {firstEmail}
+            </a>
+          )}
         </ContactInfoItem>
 
         <ContactInfoItem icon={<Phone />} title='Phone'>
@@ -84,4 +91,3 @@ const ContactInfoSection = ({
 };
 
 export default ContactInfoSection;
-
