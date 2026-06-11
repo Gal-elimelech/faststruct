@@ -1,93 +1,129 @@
-import { motion } from 'motion/react';
-import AnimatedHeading from '@/components/text-animation/AnimatedHeading';
-import FadeInParagraph from '@/components/text-animation/FadeInParagraph';
-import ContactInfoItem from './ContactInfoItem';
-import { IContactForm, IContactInfo } from '@/types/contact';
-import GoogleMapEmbed from '@/components/GoogleMapEmbed';
-import { BadgeCheck, Mail, MapPin, Phone } from 'lucide-react';
+'use client';
 
-interface ContactInfoSectionProps {
+import { useRef, useState } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useInView } from 'motion/react';
+import { Section } from '@/components/Section';
+import ContactInfoSection from './components/ContactInfoSection';
+import ContactForm from './components/ContactForm';
+import { IContactForm, IContactInfo } from '@/types/contact';
+import type { IConsentContent } from '@/types/consent';
+import {
+  contactPageFormSchema,
+  type ContactPageFormInput,
+  toContactSubmission,
+} from '@/schemas/contact';
+import { useRecaptchaEnterprise } from '@/hooks/useRecaptchaEnterprise';
+
+interface ContactFormSectionProps {
   form: IContactForm;
+  consent: IConsentContent;
   info: IContactInfo;
-  isInView: boolean;
 }
 
-const ContactInfoSection = ({
-  form,
-  info,
-  isInView,
-}: ContactInfoSectionProps) => {
-  // Inayos ang regex: Ginawang pilit na '.com' para hindi madamay ang kasunod na titik 'a'
-  const emailDataString = Array.isArray(info?.email) ? info.email.join('') : String(info?.email || '');
-  const emailMatch = emailDataString.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com/i);
-  const firstEmail = emailMatch ? emailMatch[0] : '';
+const defaultValues: ContactPageFormInput = {
+  name: '',
+  email: '',
+  phone: '',
+  address: '',
+  message: '',
+  contactConsent: false,
+};
+
+const ContactFormSection = ({ form, consent, info }: ContactFormSectionProps) => {
+  const [submitMessage, setSubmitMessage] = useState<{
+    type: 'success' | 'error' | null;
+    text: string;
+  }>({ type: null, text: '' });
+  const sectionRef = useRef<HTMLFormElement>(null);
+  const isFormInView = useInView(sectionRef, { once: true });
+
+  const { register, handleSubmit, reset, setError, formState } = useForm<
+    ContactPageFormInput,
+    undefined,
+    ContactPageFormInput
+  >({
+    resolver: zodResolver(contactPageFormSchema),
+    defaultValues,
+  });
+
+  const { errors, isSubmitting } = formState;
+  const { getRecaptchaToken } = useRecaptchaEnterprise();
+
+  const onValid: SubmitHandler<ContactPageFormInput> = async (values) => {
+    setSubmitMessage({ type: null, text: '' });
+
+    try {
+      const recaptchaToken = await getRecaptchaToken('contact');
+      const payload = {
+        ...toContactSubmission(values),
+        recaptchaToken,
+      };
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        if (result.details && Array.isArray(result.details)) {
+          for (const detail of result.details as {
+            field: string;
+            message: string;
+          }[]) {
+            const key = detail.field as keyof ContactPageFormInput;
+            if (key in defaultValues) {
+              setError(key, { message: detail.message });
+            }
+          }
+        }
+
+        setSubmitMessage({
+          type: 'error',
+          text: result.error || 'Failed to send message',
+        });
+        return;
+      }
+
+      setSubmitMessage({
+        type: 'success',
+        text: result.message || 'Message sent successfully!',
+      });
+
+      reset(defaultValues);
+    } catch {
+      setSubmitMessage({
+        type: 'error',
+        text: 'Unable to verify submission. Please try again.',
+      });
+    }
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-      transition={{ duration: 0.8 }}
-      className='flex flex-col gap-8'>
-      <div>
-        <AnimatedHeading
-          text={form.title}
-          className='text-h2 font-bebas text-light'
-          revealColor='dark'
-        />
-        <FadeInParagraph className='text-h6 text-light/80 mt-4'>
-          {form.description}
-        </FadeInParagraph>
-      </div>
-
-      <div className='flex flex-col gap-6'>
-        <ContactInfoItem icon={<MapPin />} title='Address'>
-          <p className='text-h6 text-light/80'>
-            {info.address.street}
-            <br />
-            {info.address.city}
-          </p>
-        </ContactInfoItem>
-
-        <ContactInfoItem icon={<Mail />} title='Email'>
-          {firstEmail && (
-            <a
-              href={`mailto:${firstEmail}`}
-              className='text-h6 text-light/80 hover:text-accent transition-colors'>
-              {firstEmail}
-            </a>
-          )}
-        </ContactInfoItem>
-
-        <ContactInfoItem icon={<Phone />} title='Phone'>
-          <a
-            href={`tel:${info.phone.link}`}
-            className='no-swap text-h6 text-light/80 hover:text-accent transition-colors'>
-            {info.phone.display}
-          </a>
-        </ContactInfoItem>
-
-        <ContactInfoItem icon={<BadgeCheck />} title='License'>
-          <div className='flex flex-col gap-1'>
-            {info.license.map((license, index) => (
-              <p
-                key={index}
-                className='text-h6 text-light/80 whitespace-nowrap'>
-                {license}
-              </p>
-            ))}
-          </div>
-        </ContactInfoItem>
-      </div>
-
-      {/* Google Maps Embed */}
-      <div className='mt-6'>
-        <h4 className='text-h5 font-bebas text-light mb-4'>Location</h4>
-        <div className='border-accent/20 h-[300px] w-full overflow-hidden rounded-lg border'>
-          <GoogleMapEmbed address={info.address.street} city={info.address.city} />
+    <Section ref={sectionRef} bgColor='dark' textColor='light' className='-my-10'>
+      <div className='container mx-auto'>
+        <div className='grid gap-12 md:grid-cols-2 md:gap-16'>
+          <ContactInfoSection form={form} info={info} isInView={isFormInView} />
+          <ContactForm
+            form={form}
+            consent={consent}
+            register={register}
+            errors={errors}
+            isSubmitting={isSubmitting}
+            submitMessage={submitMessage}
+            isInView={isFormInView}
+            onSubmit={handleSubmit(onValid)}
+          />
         </div>
       </div>
-    </motion.div>
+    </Section>
   );
 };
 
-export default ContactInfoSection;
+export default ContactFormSection;
