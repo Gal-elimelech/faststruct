@@ -66,33 +66,39 @@ export async function POST(request: NextRequest) {
     const userIpAddress = forwardedFor.split(',')[0]?.trim() ?? '';
     const userAgent = request.headers.get('user-agent') ?? '';
 
-    const recaptchaAssessment = await createAssessment({
-      recaptchaAction: 'contact',
-      siteKey: validatedEnv.recaptchaSiteKey,
-      token: result.data.recaptchaToken,
-      userAgent,
-      userIpAddress,
-    });
+    // const recaptchaAssessment = await createAssessment({
+    //   recaptchaAction: 'contact',
+    //   siteKey: validatedEnv.recaptchaSiteKey,
+    //   token: result.data.recaptchaToken,
+    //   userAgent,
+    //   userIpAddress,
+    // });
 
-    if (!recaptchaAssessment) {
-      return recaptchaRejectedResponse();
-    }
+    // if (!recaptchaAssessment) {
+    //   return recaptchaRejectedResponse();
+    // }
 
-    if (recaptchaAssessment.score < validatedEnv.recaptchaMinScore) {
-      console.log(
-        '[Contact API] reCAPTCHA score below threshold:',
-        recaptchaAssessment.score
-      );
-      return recaptchaRejectedResponse();
-    }
+    // if (recaptchaAssessment.score < validatedEnv.recaptchaMinScore) {
+    //   console.log(
+    //     '[Contact API] reCAPTCHA score below threshold:',
+    //     recaptchaAssessment.score
+    //   );
+    //   return recaptchaRejectedResponse();
+    // }
 
-    if (recaptchaAssessment.action !== 'contact') {
-      console.log(
-        '[Contact API] reCAPTCHA action mismatch:',
-        recaptchaAssessment.action
-      );
-      return recaptchaRejectedResponse();
-    }
+    // if (recaptchaAssessment.action !== 'contact') {
+    //   console.log(
+    //     '[Contact API] reCAPTCHA action mismatch:',
+    //     recaptchaAssessment.action
+    //   );
+    //   return recaptchaRejectedResponse();
+    // }
+
+
+    // TODO: Re-enable reCAPTCHA after fixing Google Cloud permissions
+    // const recaptchaAssessment = await createAssessment({...});
+    // if (!recaptchaAssessment) return recaptchaRejectedResponse();
+    console.log('[Contact API] reCAPTCHA validation temporarily disabled');
 
     const resend = new Resend(validatedEnv.resendApiKey);
     const {
