@@ -97,10 +97,13 @@ const ContactFormSection = ({ form, consent, info }: ContactFormSectionProps) =>
       });
 
       reset(defaultValues);
-    } catch {
+    } catch (error) {
+      
+      console.error('[Contact Form Submission Error]:', error);
+      
       setSubmitMessage({
         type: 'error',
-        text: 'Unable to verify submission. Please try again.',
+        text: 'An unexpected error occurred. Please try again later.',
       });
     }
   };
@@ -118,7 +121,11 @@ const ContactFormSection = ({ form, consent, info }: ContactFormSectionProps) =>
             isSubmitting={isSubmitting}
             submitMessage={submitMessage}
             isInView={isFormInView}
-            onSubmit={handleSubmit(onValid)}
+            
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit(onValid)(e);
+            }}
           />
         </div>
       </div>
