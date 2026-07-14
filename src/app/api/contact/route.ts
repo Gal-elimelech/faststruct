@@ -129,12 +129,16 @@ export async function POST(request: NextRequest) {
     });
 
     if (emailResult.error) {
-      console.error('[Contact API] Resend error:', emailResult.error);
-      return NextResponse.json(
-        { error: 'Failed to send email' },
-        { status: 500 }
-      );
-    }
+  console.error('[Contact API] Resend error:', emailResult.error);
+
+  return NextResponse.json(
+    {
+      error: 'Failed to send email',
+      resendError: emailResult.error,
+    },
+    { status: 500 }
+  );
+}
 
     console.log(
       '[Contact API] Email sent successfully to business owner:',
