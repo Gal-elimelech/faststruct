@@ -112,8 +112,11 @@ export async function POST(request: NextRequest) {
       contactConsent,
     } = result.data;
 
+    const websiteFromEmail =
+  'Fast Struct Website <website@faststruct.com>';
+
     const emailResult = await resend.emails.send({
-      from: validatedEnv.fromEmail,
+      from: websiteFromEmail,
       to: websiteContactEmails,
       subject: `New Contact Form Submission from ${name}`,
       react: ContactEmail({
@@ -176,13 +179,13 @@ export async function POST(request: NextRequest) {
     if (shouldSendConfirmation) {
       try {
         const confirmationResult = await resend.emails.send({
-          from: validatedEnv.fromEmail,
+          from: websiteFromEmail,
           to: [email],
           subject: 'Thank you for contacting Fast Struct',
           react: ContactConfirmationEmail({
             name,
           }),
-          replyTo: validatedEnv.fromEmail,
+          replyTo: 'info@faststruct.com',
         });
 
         if (confirmationResult.error) {
