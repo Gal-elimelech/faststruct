@@ -146,10 +146,10 @@ const HomePage = async () => {
         backgroundImage={content.testimonialsBackgroundImage}
       />
 
+      {content.midCta2 && <LandingCtaBand {...content.midCta2} />}
+
       {/* FAQ Section */}
       <FAQSection {...content.faq} />
-
-      {content.midCta2 && <LandingCtaBand {...content.midCta2} />}
     </Page>
   );
 };

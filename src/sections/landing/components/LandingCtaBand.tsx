@@ -7,7 +7,7 @@ import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
  */
 const LandingCtaBand = ({ title, highlight, cta, phoneCta }: ISectionCtaBand) => {
   return (
-    <div className='bg-dark border-y border-white/10'>
+    <div className='bg-dark border-y border-white/10 relative z-10'>
       <div className='container-padding mx-auto py-12 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8'>
         <p className='font-bebas text-3xl md:text-4xl text-light uppercase tracking-widest text-center md:text-left'>
           {title} <span className='text-accent'>{highlight}</span>
