@@ -63,7 +63,11 @@ const LandingModularPage = async () => {
       </section>
 
       <section id='lead-capture' className='scroll-mt-24'>
-        <LeadCaptureSection {...content.leadCapture} consent={consent} />
+        <LeadCaptureSection
+          {...content.leadCapture}
+          consent={consent}
+          defaultServiceType='Modular Homes'
+        />
       </section>
 
       <section id='companyOverview'>

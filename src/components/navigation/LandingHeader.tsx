@@ -1,52 +1,45 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import FastructLogo from '../FastructLogo';
-import { motion } from 'motion/react';
 import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 interface LandingHeaderProps {
   phone: string;
+  phoneLink: string;
   ctaLink: string;
+  ctaText: string;
 }
 
-export default function LandingHeader({ phone, ctaLink }: LandingHeaderProps) {
-  const [showNavbar, setShowNavbar] = useState(true);
-  const previousScrollY = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const directionDown = currentScrollY > previousScrollY.current;
-
-      if (currentScrollY < 100) {
-        setShowNavbar(true);
-      } else {
-        setShowNavbar(!directionDown);
-      }
-
-      previousScrollY.current = currentScrollY;
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+export default function LandingHeader({
+  phone,
+  phoneLink,
+  ctaLink,
+  ctaText,
+}: LandingHeaderProps) {
   return (
-    <motion.header
-      initial={{ y: 0 }}
-      animate={{ y: showNavbar ? 0 : -100 }}
-      transition={{ duration: 0.3 }}
-      className='fixed top-0 z-50 w-full bg-dark'
-    >
-      <div className='container-padding  mx-auto py-4 flex items-center justify-between gap-4'>
-        <Link href='/'>
+    <header className='fixed top-0 z-50 w-full bg-dark border-b border-white/10'>
+      <div className='container-padding mx-auto py-3 md:py-4 flex items-center justify-between gap-3'>
+        <Link href='/' className='shrink-0'>
           <FastructLogo
             color='light'
             className='h-[25px] md:h-[35px] lg:h-[40px]'
           />
         </Link>
+
+        <div className='flex items-center gap-2 md:gap-3'>
+          <LandingCtaLink href={phoneLink} surface='dark' size='sm'>
+            <span className='hidden sm:inline'>{phone}</span>
+            <span className='sm:hidden'>Call</span>
+          </LandingCtaLink>
+
+          <div className='hidden md:block'>
+            <LandingCtaLink href={ctaLink} surface='dark' size='sm'>
+              {ctaText}
+            </LandingCtaLink>
+          </div>
+        </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

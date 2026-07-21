@@ -13,7 +13,9 @@ export default async function LandingAduLayout({
     <>
       <LandingHeader
         phone={content.heroSection.phoneCta.text}
+        phoneLink={content.heroSection.phoneCta.link}
         ctaLink={content.heroSection.cta.link}
+        ctaText={content.heroSection.cta.text}
       />
       <main className='relative z-0'>{children}</main>
       <LandingFooter {...content.footer} />
