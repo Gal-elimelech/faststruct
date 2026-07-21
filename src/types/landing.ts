@@ -110,6 +110,14 @@ export interface IDifferentiators {
   cta: ICTA;
 }
 
+/** Compact conversion band rendered between major sections. */
+export interface ISectionCtaBand {
+  title: string;
+  highlight: string;
+  cta: ICTA;
+  phoneCta: ICTA;
+}
+
 export type IGalleryItem = ILandingImage;
 
 export interface IGallerySection {
@@ -155,6 +163,7 @@ export interface ILandingContent {
   servicesOverview: IServicesOverview;
   constructionMethods: IConstructionMethods;
   processTimeline: IProcessTimeline;
+  processCta?: ISectionCtaBand;
   differentiators: IDifferentiators;
   testimonials: {
     quote: string;
@@ -163,6 +172,7 @@ export interface ILandingContent {
     rating: number;
   }[];
   gallery: IGallerySection;
+  galleryCta?: ISectionCtaBand;
   location: ILocation;
   footer: IFooter;
 }

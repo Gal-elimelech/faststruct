@@ -89,7 +89,7 @@
         "type": "textarea"
       }
     ],
-    "buttonText": "Submit Request"
+    "buttonText": "Get Your Free Estimate"
   },
   "companyOverview": {
     "title": "Fast Struct: California's Premier ADU Builder",
@@ -209,6 +209,18 @@
       }
     ]
   },
+  "processCta": {
+    "title": "Ready to build your ADU?",
+    "highlight": "Get started today.",
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
+  },
   "differentiators": {
     "title": "Why Bay Area Homeowners Choose Fast Struct for Their ADU",
     "items": [
@@ -295,6 +307,18 @@
         "alt": "Modern Module 4 Interior"
       }
     ]
+  },
+  "galleryCta": {
+    "title": "Love what you see?",
+    "highlight": "Let's design yours.",
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
   },
   "location": {
     "title": "Locally Built. Serving the Bay Area and Beyond.",

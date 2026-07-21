@@ -14,6 +14,7 @@ import TestimonialsSection from '@/sections/home/TestimonialsSection';
 import LandingProcessSection from '@/sections/landing/LandingProcessSection';
 import LandingLocationSection from '@/sections/landing/LandingLocationSection';
 import StickyCTA from '@/sections/landing/components/StickyCTA';
+import LandingCtaBand from '@/sections/landing/components/LandingCtaBand';
 import { isPageEnabled } from '@/lib/page-config';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/seo/JsonLd';
@@ -86,6 +87,8 @@ const LandingModularPage = async () => {
         <LandingProcessSection {...content.processTimeline} />
       </section>
 
+      {content.processCta && <LandingCtaBand {...content.processCta} />}
+
       <section id='differentiators'>
         <DifferentiatorsSection {...content.differentiators} />
       </section>
@@ -100,6 +103,8 @@ const LandingModularPage = async () => {
       <section id='gallery'>
         <LandingGallerySection {...content.gallery} />
       </section>
+
+      {content.galleryCta && <LandingCtaBand {...content.galleryCta} />}
 
       <section id='location'>
         <LandingLocationSection {...content.location} />
