@@ -22,14 +22,27 @@ import {
 } from '@/schemas/contact';
 import { useRecaptchaEnterprise } from '@/hooks/useRecaptchaEnterprise';
 
-const defaultValues: LeadCaptureFormInput = {
+type LeadServiceType = (typeof LEAD_SERVICE_TYPES)[number];
+
+const FORM_FIELD_KEYS: ReadonlyArray<keyof LeadCaptureFormInput> = [
+  'name',
+  'phone',
+  'email',
+  'serviceType',
+  'message',
+  'contactConsent',
+];
+
+const buildDefaultValues = (
+  serviceType: LeadServiceType
+): LeadCaptureFormInput => ({
   name: '',
   phone: '',
   email: '',
-  serviceType: 'Modular Homes',
+  serviceType,
   message: '',
   contactConsent: false,
-};
+});
 
 const serviceOptions = LEAD_SERVICE_TYPES.map((value) => ({
   label: value,
@@ -42,7 +55,12 @@ const LeadCaptureSection = ({
   fields,
   consent,
   buttonText,
-}: IFormConfig & { consent: IConsentContent }) => {
+  defaultServiceType = 'Modular Homes',
+}: IFormConfig & {
+  consent: IConsentContent;
+  defaultServiceType?: LeadServiceType;
+}) => {
+  const defaultValues = buildDefaultValues(defaultServiceType);
   const [submitMessage, setSubmitMessage] = useState<{
     type: 'success' | 'error' | null;
     text: string;
@@ -91,7 +109,7 @@ const LeadCaptureSection = ({
             message: string;
           }[]) {
             const key = detail.field as keyof LeadCaptureFormInput;
-            if (key in defaultValues) {
+            if (FORM_FIELD_KEYS.includes(key)) {
               setError(key, { message: detail.message });
             }
           }

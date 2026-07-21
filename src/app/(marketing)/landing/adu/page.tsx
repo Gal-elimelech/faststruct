@@ -67,6 +67,7 @@ const LandingPage = async () => {
         <LeadCaptureSection
           {...content.leadCapture}
           consent={consent}
+          defaultServiceType='ADU Construction'
         />
       </section>
 
