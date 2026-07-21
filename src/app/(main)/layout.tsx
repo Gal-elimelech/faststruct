@@ -24,7 +24,6 @@ export default async function MainLayout({
           phone={contactContent.info.phone.display}
           estimateHref='/contact'
           estimateText='Get Estimate'
-          className='md:hidden'
         />
       </WebsiteLoader>
     </>

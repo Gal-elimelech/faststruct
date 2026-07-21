@@ -14,6 +14,8 @@ interface INavLinkProps {
   button?: boolean;
   style?: boolean;
   className?: string;
+  /** Extra classes for the inner Button when `button` is true (e.g. w-full). */
+  buttonClassName?: string;
 }
 
 const NavLink = ({
@@ -23,6 +25,7 @@ const NavLink = ({
   button = false,
   style = true,
   className = '',
+  buttonClassName,
 }: INavLinkProps) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { startTransition } = useAppNavigation();
@@ -52,7 +55,11 @@ const NavLink = ({
   return (
     <Link href={href} className={classes} onClick={handleClick}>
       {button ? (
-        <Button variant='primary' size='lg' hoverTransition='lift'>
+        <Button
+          variant='primary'
+          size='lg'
+          hoverTransition='lift'
+          className={buttonClassName}>
           {children}
         </Button>
       ) : (

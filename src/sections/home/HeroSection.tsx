@@ -61,7 +61,12 @@ const HeroSection: React.FC<IHeroSection> = ({
         {(cta || phoneCta) && (
           <div className='mt-6 flex flex-col gap-3 px-6 sm:flex-row md:mt-8 md:px-[12%]'>
             {cta && (
-              <NavLink button href={cta.link} style={false} className='w-full sm:w-auto'>
+              <NavLink
+                button
+                href={cta.link}
+                style={false}
+                className='w-full sm:w-auto'
+                buttonClassName='w-full sm:w-auto'>
                 {cta.text}
               </NavLink>
             )}
