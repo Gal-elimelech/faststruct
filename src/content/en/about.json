@@ -65,5 +65,17 @@
         "imageUrl": "/assets/team-member-4.jpg"
       }
     ]
+  },
+  "bottomCta": {
+    "title": "Like how we work?",
+    "highlight": "Let's build together.",
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "/contact"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
   }
 }

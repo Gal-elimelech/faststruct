@@ -1,30 +1,24 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useIsTablet } from '@/hooks/useIsTablet';
 import { useToggle } from '@/hooks/useToggle';
 import DesktopNavbar from './DesktopNavbar';
 import MobileNavbar from './MobileNavbar';
-import { AnimatePresence, motion, Variants } from 'motion/react';
+import { AnimatePresence } from 'motion/react';
 import FastructLogo from '../FastructLogo';
 import HamburgerButton from './HamburgerButton';
 import { useMounted } from '@/hooks/useMounted';
 import NavLink from './NavLink';
+import { Phone } from 'lucide-react';
 
-const variants: Variants = {
-  hidden: {
-    y: '-100%',
-  },
-  visible: {
-    y: '0%',
-  },
-};
+interface NavbarProps {
+  phone?: { display: string; link: string };
+}
 
-export default function Navbar() {
+export default function Navbar({ phone }: NavbarProps) {
   const [isMobileMenuOpen, toggleIsMobileMenuOpen] = useToggle(false);
-  const [showNavbar, setShowNavbar] = useState(true);
   const isTablet = useIsTablet();
-  const previousScrollY = useRef(0);
   const menuRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const hasMounted = useMounted();
@@ -34,22 +28,6 @@ export default function Navbar() {
       toggleIsMobileMenuOpen();
     }
   }, [isMobileMenuOpen, toggleIsMobileMenuOpen]);
-
-  useEffect(() => {
-    if (isTablet) return;
-
-    const handleScroll = () => {
-      const directionDown = window.scrollY > previousScrollY.current;
-
-      previousScrollY.current = window.scrollY;
-      setShowNavbar(!directionDown);
-    };
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isTablet]);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -78,13 +56,7 @@ export default function Navbar() {
   if (!hasMounted) return null;
 
   return (
-    <motion.header
-      ref={headerRef}
-      variants={variants}
-      initial={{ y: '0%' }}
-      animate={showNavbar ? { y: '0%' } : { y: '-100%' }}
-      transition={{ duration: 0.3 }}
-      className='fixed top-0 z-20 w-full'>
+    <header ref={headerRef} className='fixed top-0 z-20 w-full'>
       <div className='bg-dark absolute z-10 h-full w-full'></div>
 
       <div className='container-padding relative z-20 flex items-center justify-between border-b py-4'>
@@ -95,12 +67,23 @@ export default function Navbar() {
           />
         </NavLink>
         {!isTablet ? (
-          <DesktopNavbar />
+          <DesktopNavbar phone={phone} />
         ) : (
-          <HamburgerButton
-            isOpen={isMobileMenuOpen}
-            toggleMenu={toggleIsMobileMenuOpen}
-          />
+          <div className='flex items-center gap-3'>
+            {phone && (
+              <a
+                href={`tel:${phone.link}`}
+                aria-label={`Call Fast Struct at ${phone.display}`}
+                className='btn btn-outline-call-dark btn-sm gap-2'>
+                <Phone size={14} aria-hidden />
+                Call
+              </a>
+            )}
+            <HamburgerButton
+              isOpen={isMobileMenuOpen}
+              toggleMenu={toggleIsMobileMenuOpen}
+            />
+          </div>
         )}
       </div>
       {isTablet && (
@@ -114,6 +97,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       )}
-    </motion.header>
+    </header>
   );
 }

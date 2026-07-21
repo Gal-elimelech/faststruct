@@ -2,7 +2,7 @@
   "hero": {
     "title": "Build Smarter. Live Better",
     "subtitle": "We've decoded the construction process in California. By moving production off-site and into the lab, Fast Struct delivers precision-engineered modular and panelized homes without the chaos of traditional building",
-    "backgroundImageDesktop": "/assets/system-hero-image.jpg",
+    "backgroundImageDesktop": "/assets/system-hero-image.webp",
     "backgroundImageMobile": "/assets/system-hero-image-mobile.jpg"
   },
   "twoPaths": {
@@ -11,7 +11,7 @@
     "modular": {
       "title": "The Modular Route",
       "description": "Ideal for rapid deployment. We manufacture fully finished 3D volumes-including structure, electricity, and finishes-in our factory. They arrive on your site ready to connect",
-      "imageUrl": "/assets/system-modular.jpg",
+      "imageUrl": "/assets/system-modular.webp",
       "bulletPoints": [
         "Instant delivery & quick turnaround",
         "Maximum noise reduction on-site",
@@ -21,7 +21,7 @@
     "panelized": {
       "title": "The Panelized Route",
       "description": "Ideal for design freedom. We manufacture precision-engineered 'Smart Walls' that pack flat and assemble rapidly on-site. This allows for wider spaces and access to difficult lots",
-      "imageUrl": "/assets/system-panelized.jpg",
+      "imageUrl": "/assets/system-panelized.webp",
       "bulletPoints": [
         "Complex architectural designs & open layouts",
         "Sites with limited access (narrow roads/cranes)",
@@ -69,7 +69,7 @@
       {
         "title": "The Envelope",
         "description": "Select roof styles, cladding textures, and window profiles",
-        "imageUrl": "/assets/system-custom-closeup.jpg"
+        "imageUrl": "/assets/system-custom-closeup.webp"
       },
       {
         "title": "The Infrastructure",
@@ -79,8 +79,20 @@
       {
         "title": "The Interior",
         "description": "Choose flooring, lighting, and finishes that reflect your taste",
-        "imageUrl": "/assets/system-custom-metirials.jpg"
+        "imageUrl": "/assets/system-custom-metirials.webp"
       }
     ]
+  },
+  "bottomCta": {
+    "title": "Ready to build smarter?",
+    "highlight": "Get started today.",
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "/contact"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
   }
 }

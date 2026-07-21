@@ -14,6 +14,7 @@ import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
 import { validatedEnv } from '@/lib/env';
 import JsonLd from '@/components/seo/JsonLd';
+import LandingCtaBand from '@/sections/landing/components/LandingCtaBand';
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('home', 'en');
@@ -134,6 +135,8 @@ const HomePage = async () => {
       {/* Why Modular & Panelized Section */}
       <WhyModularPanelizedSection {...content.whyModularPanelized} />
 
+      {content.midCta1 && <LandingCtaBand {...content.midCta1} />}
+
       {/* Our Process Section */}
       <OurProcessSection {...processContent} />
 
@@ -145,6 +148,8 @@ const HomePage = async () => {
 
       {/* FAQ Section */}
       <FAQSection {...content.faq} />
+
+      {content.midCta2 && <LandingCtaBand {...content.midCta2} />}
     </Page>
   );
 };

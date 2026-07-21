@@ -1,3 +1,4 @@
+import type { ISectionCtaBand } from './landing';
 export interface IHeroSystem {
   title: string;
   subtitle: string;
@@ -50,6 +51,7 @@ export interface ICustomization {
 }
 
 export interface ITheSystemContent {
+  bottomCta?: ISectionCtaBand;
   hero: IHeroSystem;
   twoPaths: ITwoPaths;
   nineCoreSystem: INineCoreSystem;

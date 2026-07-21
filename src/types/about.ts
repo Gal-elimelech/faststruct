@@ -1,3 +1,4 @@
+import type { ISectionCtaBand } from './landing';
 export interface IHeroAbout {
   title: string;
   subtitle: string;
@@ -38,6 +39,7 @@ export interface ITeam {
 }
 
 export interface IAboutContent {
+  bottomCta?: ISectionCtaBand;
   hero: IHeroAbout;
   about: IAbout;
   imageText: IImageText;

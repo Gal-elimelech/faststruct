@@ -1,3 +1,4 @@
+import type { ISectionCtaBand } from './landing';
 export interface IHero {
   title: string;
   subtitle: string;
@@ -58,6 +59,7 @@ export interface IClearFilters {
 }
 
 export interface IModulesPageContent {
+  bottomCta?: ISectionCtaBand;
   hero: IHero;
   filters: IFilters;
   sort: ISort;

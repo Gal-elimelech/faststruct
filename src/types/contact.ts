@@ -57,7 +57,14 @@ export interface IContactSocial {
   links: ISocialLink[];
 }
 
+export interface IContactTrust {
+  responseTime: string;
+  noCommitment: string;
+  licensed: string;
+}
+
 export interface IContactContent {
+  trust?: IContactTrust;
   hero: IContactHero;
   form: IContactForm;
   info: IContactInfo;
