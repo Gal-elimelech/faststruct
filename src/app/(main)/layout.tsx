@@ -20,6 +20,8 @@ export default async function MainLayout({
           contactInfo={contactContent.info}
           contactSocial={contactContent.social}
         />
+        {/* Scroll clearance so the fixed bottom CTA bar never covers footer content */}
+        <div aria-hidden className='h-20 bg-dark' />
         <StickyCTA
           phone={contactContent.info.phone.display}
           estimateHref='/contact'
