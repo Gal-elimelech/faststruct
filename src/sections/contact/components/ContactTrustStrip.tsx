@@ -15,7 +15,7 @@ const ContactTrustStrip = ({ trust }: ContactTrustStripProps) => {
   ];
 
   return (
-    <div className='container-padding mx-auto flex flex-col items-center gap-6 pb-4'>
+    <div className='container-padding relative z-10 mx-auto flex flex-col items-center gap-6 pb-4'>
       <div className='flex flex-wrap items-center justify-center gap-3'>
         {items.map(({ icon: Icon, text }, idx) => (
           <span
