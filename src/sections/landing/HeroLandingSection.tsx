@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { ILandingHero } from '@/types/landing';
 import { motion } from 'motion/react';
 import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
+import GoogleReviewBadge from '@/sections/landing/components/GoogleReviewBadge';
 import ArtDirectedHeroImage from '@/components/ArtDirectedHeroImage';
 
 const HeroLandingSection: React.FC<ILandingHero> = ({
@@ -12,7 +12,6 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
   licenses,
   cta,
   phoneCta,
-  googleReviewBadge,
   backgroundImage,
   mobileBackgroundImage,
   backgroundImageAlt,
@@ -93,15 +92,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
           >
-            <div className='relative w-full'>
-              <Image
-                src={googleReviewBadge}
-                alt='Google review rating badge for Fast Struct'
-                width={52 * 5}
-                height={52 * 5}
-                className='object-contain'
-              />
-            </div>
+            <GoogleReviewBadge />
           </motion.div>
         </motion.div>
       </div>

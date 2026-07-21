@@ -78,7 +78,7 @@
       },
       {
         "fieldKey": "serviceType",
-        "label": "Which Service?",
+        "label": "Service Type",
         "placeholder": "Modular Homes",
         "type": "text"
       },
@@ -211,6 +211,18 @@
       }
     ]
   },
+  "processCta": {
+    "title": "Ready to build your dream home?",
+    "highlight": "Get started today.",
+    "cta": {
+      "text": "Design Your Home",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
+  },
   "differentiators": {
     "title": "Why California Homebuyers Choose Fast Struct",
     "items": [
@@ -297,6 +309,18 @@
         "alt": "Premium modular home interior"
       }
     ]
+  },
+  "galleryCta": {
+    "title": "Love what you see?",
+    "highlight": "Let's design yours.",
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
   },
   "location": {
     "title": "Locally Built. Serving the Bay Area and Beyond.",
