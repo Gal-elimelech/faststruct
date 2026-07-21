@@ -1,4 +1,5 @@
 import { getContent } from '@/lib/content';
+import LandingCtaBand from '@/sections/landing/components/LandingCtaBand';
 import HeroAboutSection from '@/sections/about/HeroAboutSection';
 import AboutIntroSection from '@/sections/about/AboutIntroSection';
 import ImageTextSection from '@/sections/about/ImageTextSection';
@@ -50,6 +51,7 @@ const AboutPage = async () => {
       <AboutIntroSection {...content.about} />
       <ImageTextSection {...content.imageText} />
       <FeaturesGridSection {...content.featuresGrid} />
+      {content.bottomCta && <LandingCtaBand {...content.bottomCta} />}
     </Page>
   );
 };

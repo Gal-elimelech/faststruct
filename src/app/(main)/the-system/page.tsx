@@ -3,6 +3,7 @@ import { isPageEnabled } from '@/lib/page-config';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Page from '@/components/Page';
+import LandingCtaBand from '@/sections/landing/components/LandingCtaBand';
 import HeroSystemSection from '@/sections/the-system/HeroSystemSection';
 import TwoPathsSection from '@/sections/the-system/TwoPathsSection';
 import NineCoreSystemSection from '@/sections/the-system/NineCoreSystemSection';
@@ -57,6 +58,7 @@ const TheSystemPage = async () => {
       <ScalableSolutionsSection scalableSolutions={content.scalableSolutions} />
       <CustomizationSection customization={content.customization} />
       <OurProcessSection {...processContent} />
+      {content.bottomCta && <LandingCtaBand {...content.bottomCta} />}
     </Page>
   );
 };

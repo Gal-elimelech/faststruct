@@ -39,7 +39,7 @@ const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, sub
               <div className='lg:basis-1/2 w-full'>
                 <div className='relative aspect-16/10 overflow-hidden rounded-sm border border-white/5 group'>
                   <Image
-                    src={idx === 0 ? "/assets/system-modular.jpg" : "/assets/system-panelized.jpg"}
+                    src={idx === 0 ? "/assets/system-modular.webp" : "/assets/system-panelized.webp"}
                     alt={path.title}
                     fill
                     sizes='(min-width: 1024px) 50vw, 100vw'

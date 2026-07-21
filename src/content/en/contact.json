@@ -43,11 +43,19 @@
       "display": "(408) 702-9012",
       "link": "+14087029012"
     },
-    "license": ["CSLB #1147858", "CA HCD 1632336"]
+    "license": [
+      "CSLB #1147858",
+      "CA HCD 1632336"
+    ]
   },
   "social": {
     "title": "Follow Us",
     "links": []
   },
-  "metadataImage": "/assets/hero-image.jpg"
+  "metadataImage": "/assets/hero-image.jpg",
+  "trust": {
+    "responseTime": "We respond within one business day",
+    "noCommitment": "Free consultation - no commitment required",
+    "licensed": "Licensed, bonded & insured CA contractor"
+  }
 }

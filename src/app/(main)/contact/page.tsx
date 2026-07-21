@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getContent } from '@/lib/content';
 import HeroContactSection from '@/sections/contact/HeroContactSection';
 import ContactFormSection from '@/sections/contact/ContactFormSection';
+import ContactTrustStrip from '@/sections/contact/components/ContactTrustStrip';
 import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
 import { validatedEnv } from '@/lib/env';
@@ -46,6 +47,7 @@ export default async function Contact() {
       <JsonLd data={contactSchema} />
       <h1 className='sr-only'>Contact Fast Struct</h1>
       <HeroContactSection hero={content.hero} />
+      {content.trust && <ContactTrustStrip trust={content.trust} />}
       <ContactFormSection form={content.form} consent={consent} info={content.info} />
     </Page>
   );

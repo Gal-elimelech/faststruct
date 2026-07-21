@@ -7,12 +7,16 @@ import Parallax from '@/components/Parallax';
 import { UseScrollOptions } from 'motion/react';
 import FadeInParagraph from '@/components/text-animation/FadeInParagraph';
 import { IHeroSection } from '@/types/home';
+import NavLink from '@/components/navigation/NavLink';
+import { Phone } from 'lucide-react';
 
 const HeroSection: React.FC<IHeroSection> = ({
   title,
   animatedWords,
   subtitle,
   heroImage,
+  cta,
+  phoneCta,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const offset: UseScrollOptions['offset'] = ['center center', 'end start'];
@@ -52,6 +56,25 @@ const HeroSection: React.FC<IHeroSection> = ({
             {subtitle}
           </FadeInParagraph>
         </div>
+
+        {/* Above-the-fold conversion actions */}
+        {(cta || phoneCta) && (
+          <div className='mt-6 flex flex-col gap-3 px-6 sm:flex-row md:mt-8 md:px-[12%]'>
+            {cta && (
+              <NavLink button href={cta.link} style={false} className='w-full sm:w-auto'>
+                {cta.text}
+              </NavLink>
+            )}
+            {phoneCta && (
+              <a
+                href={phoneCta.link}
+                className='btn btn-outline btn-lg btn-icon btn-hover-lift w-full sm:w-auto'>
+                <Phone size={18} aria-hidden />
+                <span className='text-nowrap'>{phoneCta.text}</span>
+              </a>
+            )}
+          </div>
+        )}
       </Parallax>
 
       {/* Image container */}

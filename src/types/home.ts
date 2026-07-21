@@ -1,8 +1,12 @@
+import type { ISectionCtaBand } from './landing';
+
 export interface IHeroSection {
   title: string;
   animatedWords: string[];
   subtitle: string;
   heroImage: string;
+  cta?: { text: string; link: string };
+  phoneCta?: { text: string; link: string };
 }
 
 export interface IIntro {
@@ -67,6 +71,8 @@ export interface IHomeContent {
   experienceMetrics: IExperienceMetric[];
   faq: IFAQ;
   cta: ICTA;
+  midCta1?: ISectionCtaBand;
+  midCta2?: ISectionCtaBand;
   testimonials: ITestimonial[];
   testimonialsBackgroundImage: string;
   metadataImage: string;

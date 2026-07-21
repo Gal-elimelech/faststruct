@@ -4,11 +4,22 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
+import clsx from 'clsx';
+
 interface StickyCTAProps {
   phone: string;
+  /** Where the estimate button points; landing pages default to the on-page form. */
+  estimateHref?: string;
+  estimateText?: string;
+  className?: string;
 }
 
-const StickyCTA = ({ phone }: StickyCTAProps) => {
+const StickyCTA = ({
+  phone,
+  estimateHref = '#lead-capture',
+  estimateText = 'Free Estimate',
+  className,
+}: StickyCTAProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -33,7 +44,10 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
           animate={{ y: 0 }}
           exit={{ y: 100 }}
           transition={{ ease: 'easeInOut' }}
-          className='fixed bottom-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-md border-t border-white/10 shadow-2xl p-4 md:px-12 flex justify-between items-center'
+          className={clsx(
+            'fixed bottom-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-md border-t border-white/10 shadow-2xl p-4 md:px-12 flex justify-between items-center',
+            className
+          )}
         >
           <div className='hidden md:block'>
             <p className='font-bebas text-2xl text-light uppercase tracking-widest'>
@@ -53,12 +67,12 @@ const StickyCTA = ({ phone }: StickyCTAProps) => {
             </LandingCtaLink>
 
             <LandingCtaLink
-              href='#lead-capture'
+              href={estimateHref}
               size='md' linkClassName='grow basis-1/2'
               buttonClassName='text-nowrap'
               fullWidth
             >
-              Free Estimate
+              {estimateText}
             </LandingCtaLink>
           </div>
         </motion.div>
