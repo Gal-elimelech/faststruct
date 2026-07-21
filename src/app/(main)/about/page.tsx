@@ -50,8 +50,8 @@ const AboutPage = async () => {
       <HeroAboutSection {...content.hero} />
       <AboutIntroSection {...content.about} />
       <ImageTextSection {...content.imageText} />
-      <FeaturesGridSection {...content.featuresGrid} />
       {content.bottomCta && <LandingCtaBand {...content.bottomCta} />}
+      <FeaturesGridSection {...content.featuresGrid} />
     </Page>
   );
 };

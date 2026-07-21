@@ -57,8 +57,8 @@ const TheSystemPage = async () => {
       {/* <NineCoreSystemSection nineCoreSystem={content.nineCoreSystem} /> */}
       <ScalableSolutionsSection scalableSolutions={content.scalableSolutions} />
       <CustomizationSection customization={content.customization} />
-      <OurProcessSection {...processContent} />
       {content.bottomCta && <LandingCtaBand {...content.bottomCta} />}
+      <OurProcessSection {...processContent} />
     </Page>
   );
 };

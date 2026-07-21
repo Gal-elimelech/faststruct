@@ -19,6 +19,8 @@ export default async function LandingModularLayout({
       />
       <main className='relative z-0'>{children}</main>
       <LandingFooter {...content.footer} />
+      {/* Scroll clearance so the fixed bottom CTA bar never covers footer content */}
+      <div aria-hidden className='h-20 bg-dark' />
     </>
   );
 }

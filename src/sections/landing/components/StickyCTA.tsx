@@ -24,7 +24,7 @@ const StickyCTA = ({
       animate={{ y: 0 }}
       transition={{ ease: 'easeInOut' }}
       className={clsx(
-        'fixed bottom-0 left-0 right-0 z-50 bg-dark/95 backdrop-blur-md border-t border-white/10 shadow-2xl p-4 md:px-12 flex justify-between items-center',
+        'fixed bottom-0 left-0 right-0 z-30 bg-dark/95 backdrop-blur-md border-t border-white/10 shadow-2xl p-4 md:px-12 flex justify-between items-center',
         className
       )}
     >

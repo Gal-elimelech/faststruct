@@ -90,17 +90,5 @@
     "label": "Clear all filters",
     "ariaLabel": "Clear all active filters"
   },
-  "metadataImage": "/assets/features-image-1.jpg",
-  "bottomCta": {
-    "title": "Found your future home?",
-    "highlight": "Let's make it real.",
-    "cta": {
-      "text": "Get Your Free Estimate",
-      "link": "/contact"
-    },
-    "phoneCta": {
-      "text": "(408) 702-9012",
-      "link": "tel:+14087029012"
-    }
-  }
+  "metadataImage": "/assets/features-image-1.jpg"
 }
