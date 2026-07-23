@@ -7,7 +7,7 @@ import type { IModulesPageContent } from '@/types/modulesPage';
 import type { IProcess } from '@/types/process';
 import type { ITheSystemContent } from '@/types/theSystem';
 import type { IProductContent } from '@/types/product';
-import type { ILandingContent } from '@/types/landing';
+import type { ILandingContent, ILandingFireContent } from '@/types/landing';
 import type { IPrivacyPolicyContent } from '@/types/privacyPolicy';
 import type { IConsentContent } from '@/types/consent';
 
@@ -21,6 +21,7 @@ import processContentEn from '@/content/en/process.json';
 import theSystemContentEn from '@/content/en/theSystem.json';
 import landingAduContentEn from '@/content/en/landingAdu.json';
 import landingModularContentEn from '@/content/en/landingModular.json';
+import landingNonCombustibleContentEn from '@/content/en/landingNonCombustible.json';
 import privacyPolicyContentEn from '@/content/en/privacyPolicy.json';
 import consentContentEn from '@/content/en/consent.json';
 
@@ -38,6 +39,8 @@ const contentMap: Record<Language, IContentMap> = {
     process: processContentEn as IProcess,
     theSystem: theSystemContentEn as ITheSystemContent,
     landingAdu: landingAduContentEn as ILandingContent,
+    landingNonCombustible:
+      landingNonCombustibleContentEn as unknown as ILandingFireContent,
     landingModular: landingModularContentEn as ILandingContent,
     privacyPolicy: privacyPolicyContentEn as IPrivacyPolicyContent,
     consent: consentContentEn as IConsentContent,

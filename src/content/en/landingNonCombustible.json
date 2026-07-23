@@ -1,0 +1,384 @@
+{
+  "metadataImage": "/assets/modules-images/module-5/out-2.jpg",
+  "heroSection": {
+    "title": "Steel Doesn't Burn. Neither Should Your Home.",
+    "subtitle": "Custom non-combustible homes with 100% steel framing - factory-built in Santa Clara and installed on your lot in as fast as 90 days.",
+    "licenses": [
+      { "label": "CSLB", "number": "1147858" },
+      { "label": "CA HCD", "number": "1632336" },
+      { "label": "Manufactured Home", "number": "MF1634008" }
+    ],
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    },
+    "googleReviewBadge": "/assets/logo/google-review-badge.png",
+    "backgroundImage": "/assets/modules-images/module-5/out-2.jpg",
+    "mobileBackgroundImage": "/assets/modules-images/module-5/mobile-hero.webp",
+    "backgroundImageAlt": "Steel-framed non-combustible custom home built by Fast Struct in California"
+  },
+  "fireFacts": {
+    "items": [
+      {
+        "value": "≈ 570°F",
+        "tone": "ember",
+        "text": "The temperature at which wood framing can ignite in a fire."
+      },
+      {
+        "value": "Non-Combustible",
+        "tone": "accent",
+        "text": "Steel framing doesn't ignite - it can't feed a fire the way wood does."
+      },
+      {
+        "value": "100% Steel",
+        "tone": "light",
+        "text": "Every Fast Struct home is framed entirely in steel. No wood structure. Ever."
+      }
+    ],
+    "note": "Material properties shown for general reference. Every project is engineered to site conditions and applicable California building codes."
+  },
+  "valueProp": {
+    "title": "Built From a Material That Won't Feed a Fire.",
+    "texts": [
+      "Most homes in California are framed in wood - the same material fires consume. Fast Struct builds differently. Every wall, floor, and roof structure we manufacture is cold-formed steel: non-combustible, dimensionally stable, and precision-cut to millimeter tolerances in our state-approved Santa Clara facility.",
+      "For homeowners in the wildland-urban interface, that isn't a spec-sheet detail. It's the difference between a structure that participates in a fire and one that doesn't.",
+      "Your lot, your design, your finishes - engineered for fire country."
+    ],
+    "image": {
+      "src": "/assets/system-panelized.webp",
+      "alt": "Precision steel Smart Wall panels manufactured in Fast Struct's Santa Clara facility"
+    },
+    "features": {
+      "title": "Feature Callouts",
+      "items": [
+        {
+          "title": "100% Steel Frame",
+          "text": "Non-combustible structure, engineered for California code."
+        },
+        {
+          "title": "Fire-Smart Exterior Options",
+          "text": "Non-combustible cladding, roofing, glazing, and ember-resistant detailing configured to your site."
+        },
+        {
+          "title": "No Rot, No Termites, No Warping",
+          "text": "Steel stays true for decades - fire safety is just the start."
+        },
+        {
+          "title": "Factory Precision",
+          "text": "Built to millimeter tolerances in a controlled facility, not job-site guesswork."
+        }
+      ]
+    }
+  },
+  "leadCapture": {
+    "title": "Get Your Fire-Smart Build Assessment",
+    "subtitle": "Tell us about your property and a Fast Struct specialist will walk you through design options, fire-smart specifications, and a realistic timeline for your lot. No commitment required.",
+    "fields": [
+      {
+        "fieldKey": "name",
+        "label": "Full Name",
+        "placeholder": "Your name",
+        "type": "text"
+      },
+      {
+        "fieldKey": "phone",
+        "label": "Phone Number",
+        "placeholder": "(123) 456-7890",
+        "type": "text"
+      },
+      {
+        "fieldKey": "email",
+        "label": "Email Address",
+        "placeholder": "your.email@example.com",
+        "type": "email"
+      },
+      {
+        "fieldKey": "serviceType",
+        "label": "Service Type",
+        "placeholder": "Non-Combustible Home",
+        "type": "text"
+      },
+      {
+        "fieldKey": "message",
+        "label": "Message",
+        "placeholder": "Tell us about your property and project...",
+        "type": "textarea"
+      }
+    ],
+    "buttonText": "Get Your Free Estimate"
+  },
+  "comparison": {
+    "title": "Wood Frame vs. Steel Frame",
+    "subtitle": "In fire country, the material your home is built from is the single biggest decision you'll make.",
+    "wood": {
+      "title": "Typical Wood-Framed Home",
+      "rows": [
+        "Combustible structure - framing can ignite and carry fire",
+        "Vulnerable to rot, termites, and moisture over time",
+        "Job-site framing tolerances vary crew to crew",
+        "Months of on-site construction, noise, and disruption"
+      ]
+    },
+    "steel": {
+      "title": "Fast Struct Steel Home",
+      "rows": [
+        "Non-combustible steel structure - it doesn't ignite or feed a fire",
+        "Immune to rot and termites; holds millimeter-level tolerances",
+        "Factory-controlled quality in a state-approved facility",
+        "Arrives up to 95% complete - installed in as fast as 90 days"
+      ]
+    }
+  },
+  "companyOverview": {
+    "title": "Fast Struct: Steel Construction for California's Fire Country",
+    "texts": [
+      "Fast Struct was built on a simple conviction: California homes should be faster to build and harder to destroy. So we moved construction into a state-approved factory in Santa Clara and switched the structure to steel.",
+      "As a licensed California contractor, we deliver complete A-Z solutions - design, permits, fabrication, and delivery - for custom homes and ADUs across the Bay Area and beyond, including parcels in designated fire hazard severity zones.",
+      "From your first call to the day you get your keys, one dedicated project manager handles everything. We're not just a builder. We're your partner in building something that lasts."
+    ],
+    "panelTitle": "Built on four commitments",
+    "items": [
+      {
+        "icon": "certificate",
+        "title": "Licensed CA Contractor",
+        "text": "Fully licensed, bonded, and insured - every build compliant and warrantied."
+      },
+      {
+        "icon": "award",
+        "title": "State-Approved Facility",
+        "text": "Our Santa Clara factory routes plans through state approval for faster permits."
+      },
+      {
+        "icon": "project-diagram",
+        "title": "Complete A-Z Management",
+        "text": "One dedicated project manager handles permits, design, fabrication, and delivery."
+      },
+      {
+        "icon": "building",
+        "title": "Steel - Built to Last",
+        "text": "Non-combustible steel structure that resists rot, termites, and time itself."
+      }
+    ],
+    "cta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
+  },
+  "processTimeline": {
+    "title": "From First Call to Keys - As Fast As 90 Days.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Site & Risk Review",
+        "description": "We assess your lot, access, exposure, and goals - and recommend the right construction method for your parcel."
+      },
+      {
+        "step": "02",
+        "title": "Design & Permits",
+        "description": "Your floor plan, your finishes. As a state-approved factory, our plans route through state approval - permits in days, not months. Homes in fire hazard zones are engineered to the requirements that apply to your parcel."
+      },
+      {
+        "step": "03",
+        "title": "Factory Build",
+        "description": "Your home is precision-built in steel in our Santa Clara facility while your foundation is prepared on-site. Parallel, not sequential - that's how the timeline compresses."
+      },
+      {
+        "step": "04",
+        "title": "One-Day Install",
+        "description": "Modules arrive up to 95% complete and are craned into place - rapid, clean, and quiet for your neighbors."
+      },
+      {
+        "step": "05",
+        "title": "Handover",
+        "description": "Walk into a finished, non-combustible home. Keys in hand - not a punch list."
+      }
+    ]
+  },
+  "processCta": {
+    "title": "Building in a fire zone?",
+    "highlight": "Get answers today.",
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
+  },
+  "rebuild": {
+    "eyebrow": "Rebuilding After a Loss",
+    "title": "If You've Lost a Home, Time Matters.",
+    "texts": [
+      "Rebuilding shouldn't take years. Because your Fast Struct home is manufactured off-site while your lot is cleared and the foundation is prepared, the timeline compresses dramatically - and a dedicated project manager handles permits, approvals, and logistics from the first call to move-in."
+    ],
+    "bulletPoints": [
+      {
+        "title": "Factory-built off-site",
+        "text": "Your home takes shape in our facility while your property is being cleared."
+      },
+      {
+        "title": "One dedicated project manager",
+        "text": "Permits, design, fabrication, and delivery - handled end to end."
+      },
+      {
+        "title": "Fully custom design",
+        "text": "Rebuild the home you want, not a catalog box."
+      },
+      {
+        "title": "Rebuilt in steel",
+        "text": "So you never have to make this call twice."
+      }
+    ],
+    "image": {
+      "src": "/assets/crane-building-image-desktop.jpg",
+      "alt": "Fast Struct modular home being craned into place on install day"
+    },
+    "imageTag": "Install day - one crane, one day",
+    "cta": {
+      "text": "Talk to a Rebuild Specialist",
+      "link": "#lead-capture"
+    }
+  },
+  "differentiators": {
+    "title": "Why Fire-Country Homeowners Choose Fast Struct",
+    "items": [
+      {
+        "title": "Steel Construction - Not Wood",
+        "text": "Every Fast Struct home is built with a steel frame. Steel is non-combustible, doesn't rot, and holds millimeter-level tolerances. It's a fundamentally better building material - and one that 90% of our competitors simply can't offer."
+      },
+      {
+        "title": "As Fast As 90 Days",
+        "text": "Off-site factory production runs in parallel with your on-site foundation work, compressing timelines no traditional builder can match."
+      },
+      {
+        "title": "State-Approved Facility = Faster Permits",
+        "text": "As a state-certified modular factory, our plans go through the state approval route - permits in days, not months."
+      },
+      {
+        "title": "Fire-Smart Envelope Options",
+        "text": "Non-combustible cladding, metal roofing, tempered dual-pane glazing, and ember-resistant detailing - configured to your parcel and code requirements."
+      },
+      {
+        "title": "Arrives 95% Complete",
+        "text": "Your home is craned onto your property nearly finished. Installation takes a day, not months."
+      },
+      {
+        "title": "Complete A-Z Solutions",
+        "text": "Permits, design, fabrication, and delivery all handled by one team. One point of contact, zero coordination stress."
+      },
+      {
+        "title": "Dedicated Project Manager",
+        "text": "One person guides you personally from the first call to the day you're handed the keys."
+      },
+      {
+        "title": "Licensed CA Contractor + Certified Facility",
+        "text": "Fully licensed, bonded, and compliant. Every build is warrantied and certified."
+      }
+    ],
+    "cta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
+  },
+  "testimonials": [
+    {
+      "quote": "Fast Struct delivered our dream home in under 90 days. The quality is unreal. The steel construction feels so much more solid than wood.",
+      "author": "Sarah M.",
+      "location": "Los Angeles, CA",
+      "rating": 5
+    },
+    {
+      "quote": "The whole process was seamless. One project manager, clear steps, no surprises. They handled our tight driveway with their panelized system.",
+      "author": "Jason T.",
+      "location": "Sacramento, CA",
+      "rating": 5
+    },
+    {
+      "quote": "Our ADU was craned into place in a single day. The neighbors couldn't believe it. Highly professional and efficient team.",
+      "author": "Linda R.",
+      "location": "San Diego, CA",
+      "rating": 5
+    }
+  ],
+  "gallery": {
+    "title": "Built in Steel. Finished Like a Custom Home.",
+    "subtitle": "Non-combustible construction doesn't mean compromising on design. Explore recent Fast Struct builds.",
+    "items": [
+      {
+        "src": "/assets/modules-images/module-1/out-1.jpg",
+        "alt": "Completed steel-framed home exterior"
+      },
+      {
+        "src": "/assets/modules-images/all-modules-in-1.jpg",
+        "alt": "Premium interior finishes in a Fast Struct home"
+      },
+      {
+        "src": "/assets/modules-images/all-modules-in-2.jpg",
+        "alt": "Open-concept interior of a steel-framed home"
+      },
+      {
+        "src": "/assets/modules-images/module-4/out-1.jpg",
+        "alt": "Modern steel-framed home facade"
+      },
+      {
+        "src": "/assets/modules-images/module-6/out-1.webp",
+        "alt": "Contemporary Fast Struct home exterior"
+      }
+    ]
+  },
+  "galleryCta": {
+    "title": "Love what you see?",
+    "highlight": "Let's design yours.",
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    }
+  },
+  "location": {
+    "title": "Locally Built. Serving Fire Country.",
+    "mainAddress": {
+      "label": "Headquarters & Factory",
+      "street": "3395 Edward Ave",
+      "cityStateZip": "Santa Clara, CA 95054",
+      "mapQuery": "3395 Edward Ave, Santa Clara, CA 95054"
+    },
+    "phone": {
+      "display": "(408) 702-9012",
+      "tel": "+14087029012"
+    },
+    "serviceAreas": [
+      "Santa Clara County",
+      "San Mateo County",
+      "Alameda County",
+      "Contra Costa County",
+      "Santa Cruz County"
+    ]
+  },
+  "footer": {
+    "title": "Get Your Free Estimate",
+    "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
+    "licenses": [
+      { "label": "CSLB", "number": "1147858" },
+      { "label": "CA HCD", "number": "1632336" },
+      { "label": "Manufactured Home", "number": "MF1634008" }
+    ],
+    "cta": {
+      "text": "Design Your Home",
+      "link": "#lead-capture"
+    },
+    "phoneCta": {
+      "text": "(408) 702-9012",
+      "link": "tel:+14087029012"
+    },
+    "address": "3395 Edward Ave Santa Clara, CA 95054"
+  }
+}
