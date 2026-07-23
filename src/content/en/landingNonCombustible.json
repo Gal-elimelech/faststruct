@@ -2,7 +2,7 @@
   "metadataImage": "/assets/modules-images/module-5/out-2.jpg",
   "heroSection": {
     "title": "Steel Doesn't Burn. Neither Should Your Home.",
-    "subtitle": "Custom non-combustible homes with 100% steel framing - factory-built in Santa Clara and installed on your lot in as fast as 90 days.",
+    "subtitle": "Custom homes and ADUs built with light-gauge steel framing, fire-resistant stucco, and Class A roofing - engineered for Southern California's wildfire country and installed in as fast as 90 days.",
     "licenses": [
       { "label": "CSLB", "number": "1147858" },
       { "label": "CA HCD", "number": "1632336" },
@@ -19,53 +19,53 @@
     "googleReviewBadge": "/assets/logo/google-review-badge.png",
     "backgroundImage": "/assets/modules-images/module-5/out-2.jpg",
     "mobileBackgroundImage": "/assets/modules-images/module-5/mobile-hero.webp",
-    "backgroundImageAlt": "Steel-framed non-combustible custom home built by Fast Struct in California"
+    "backgroundImageAlt": "Fire-resistant steel-framed custom home built by Fast Struct for California wildfire country"
   },
   "fireFacts": {
     "items": [
       {
         "value": "≈ 570°F",
         "tone": "ember",
-        "text": "The temperature at which wood framing can ignite in a fire."
+        "text": "The temperature at which wood framing can ignite in a wildfire."
       },
       {
         "value": "Non-Combustible",
         "tone": "accent",
-        "text": "Steel framing doesn't ignite - it can't feed a fire the way wood does."
+        "text": "Light-gauge steel framing doesn't ignite - it can't feed a fire the way wood does."
       },
       {
-        "value": "100% Steel",
-        "tone": "light",
-        "text": "Every Fast Struct home is framed entirely in steel. No wood structure. Ever."
+        "value": "Class A",
+        "tone": "ember",
+        "text": "The highest fire rating a roof can carry - the standard we spec for fire-country builds."
       }
     ],
-    "note": "Material properties shown for general reference. Every project is engineered to site conditions and applicable California building codes."
+    "note": "Material properties shown for general reference. Every project is engineered to site conditions and applicable California building codes, including Chapter 7A WUI requirements where they apply."
   },
   "valueProp": {
-    "title": "Built From a Material That Won't Feed a Fire.",
+    "title": "Built From Materials That Won't Feed a Fire.",
     "texts": [
-      "Most homes in California are framed in wood - the same material fires consume. Fast Struct builds differently. Every wall, floor, and roof structure we manufacture is cold-formed steel: non-combustible, dimensionally stable, and precision-cut to millimeter tolerances in our state-approved Santa Clara facility.",
-      "For homeowners in the wildland-urban interface, that isn't a spec-sheet detail. It's the difference between a structure that participates in a fire and one that doesn't.",
-      "Your lot, your design, your finishes - engineered for fire country."
+      "Most homes in Southern California's wildfire zones are framed in wood - the same material fires consume. Fast Struct builds differently. Whether you're building a new home from the ground up or adding an ADU, the structure is light-gauge steel: non-combustible, dimensionally stable, and precision-cut to millimeter tolerances in our state-approved California facility.",
+      "Around that steel skeleton we build a fire-resistant envelope: a fire-resistant stucco exterior and Class A roofing - the materials fire-country building science calls for, engineered as one system.",
+      "Your lot, your design, your finishes - built for wildfire country."
     ],
     "image": {
       "src": "/assets/system-panelized.webp",
-      "alt": "Precision steel Smart Wall panels manufactured in Fast Struct's Santa Clara facility"
+      "alt": "Light-gauge steel Smart Wall panels manufactured in Fast Struct's California facility"
     },
     "features": {
       "title": "Feature Callouts",
       "items": [
         {
-          "title": "100% Steel Frame",
-          "text": "Non-combustible structure, engineered for California code."
+          "title": "Light-Gauge Steel Frame",
+          "text": "Our specialty: a non-combustible structure, engineered for California code."
         },
         {
-          "title": "Fire-Smart Exterior Options",
-          "text": "Non-combustible cladding, roofing, glazing, and ember-resistant detailing configured to your site."
+          "title": "Fire-Resistant Stucco",
+          "text": "A stucco exterior system that wraps your home in a fire-resistant shell."
         },
         {
-          "title": "No Rot, No Termites, No Warping",
-          "text": "Steel stays true for decades - fire safety is just the start."
+          "title": "Class A Roofing",
+          "text": "The highest roof fire rating - built to shed the embers that ignite most homes."
         },
         {
           "title": "Factory Precision",
@@ -76,7 +76,7 @@
   },
   "leadCapture": {
     "title": "Get Your Fire-Smart Build Assessment",
-    "subtitle": "Tell us about your property and a Fast Struct specialist will walk you through design options, fire-smart specifications, and a realistic timeline for your lot. No commitment required.",
+    "subtitle": "Tell us about your lot and a Fast Struct specialist will walk you through design options, fire-resistant material specifications, and a realistic timeline - whether you're building a new home or adding an ADU. No commitment required.",
     "fields": [
       {
         "fieldKey": "name",
@@ -99,13 +99,13 @@
       {
         "fieldKey": "serviceType",
         "label": "Service Type",
-        "placeholder": "Non-Combustible Home",
+        "placeholder": "New Home Construction",
         "type": "text"
       },
       {
         "fieldKey": "message",
         "label": "Message",
-        "placeholder": "Tell us about your property and project...",
+        "placeholder": "Tell us about your lot and project...",
         "type": "textarea"
       }
     ],
@@ -113,22 +113,22 @@
   },
   "comparison": {
     "title": "Wood Frame vs. Steel Frame",
-    "subtitle": "In fire country, the material your home is built from is the single biggest decision you'll make.",
+    "subtitle": "In wildfire country, the materials your home is built from are the single biggest decision you'll make.",
     "wood": {
       "title": "Typical Wood-Framed Home",
       "rows": [
         "Combustible structure - framing can ignite and carry fire",
+        "Standard siding and roofing can ignite from wind-blown embers",
         "Vulnerable to rot, termites, and moisture over time",
-        "Job-site framing tolerances vary crew to crew",
         "Months of on-site construction, noise, and disruption"
       ]
     },
     "steel": {
       "title": "Fast Struct Steel Home",
       "rows": [
-        "Non-combustible steel structure - it doesn't ignite or feed a fire",
+        "Non-combustible light-gauge steel structure - it doesn't ignite or feed a fire",
+        "Fire-resistant stucco exterior and Class A roofing, engineered to resist ember attack",
         "Immune to rot and termites; holds millimeter-level tolerances",
-        "Factory-controlled quality in a state-approved facility",
         "Arrives up to 95% complete - installed in as fast as 90 days"
       ]
     }
@@ -136,8 +136,8 @@
   "companyOverview": {
     "title": "Fast Struct: Steel Construction for California's Fire Country",
     "texts": [
-      "Fast Struct was built on a simple conviction: California homes should be faster to build and harder to destroy. So we moved construction into a state-approved factory in Santa Clara and switched the structure to steel.",
-      "As a licensed California contractor, we deliver complete A-Z solutions - design, permits, fabrication, and delivery - for custom homes and ADUs across the Bay Area and beyond, including parcels in designated fire hazard severity zones.",
+      "Fast Struct was built on a simple conviction: California homes should be faster to build and harder to destroy. So we moved construction into a state-approved factory and switched the structure to light-gauge steel.",
+      "As a licensed California contractor, we deliver complete A-Z solutions - design, permits, fabrication, and delivery - for custom homes and ADUs across the state, including Southern California's wildfire-prone communities and designated fire hazard severity zones.",
       "From your first call to the day you get your keys, one dedicated project manager handles everything. We're not just a builder. We're your partner in building something that lasts."
     ],
     "panelTitle": "Built on four commitments",
@@ -150,7 +150,7 @@
       {
         "icon": "award",
         "title": "State-Approved Facility",
-        "text": "Our Santa Clara factory routes plans through state approval for faster permits."
+        "text": "Our California factory routes plans through state approval for faster permits."
       },
       {
         "icon": "project-diagram",
@@ -160,7 +160,7 @@
       {
         "icon": "building",
         "title": "Steel - Built to Last",
-        "text": "Non-combustible steel structure that resists rot, termites, and time itself."
+        "text": "Non-combustible light-gauge steel that resists rot, termites, and time itself."
       }
     ],
     "cta": {
@@ -173,18 +173,18 @@
     "steps": [
       {
         "step": "01",
-        "title": "Site & Risk Review",
-        "description": "We assess your lot, access, exposure, and goals - and recommend the right construction method for your parcel."
+        "title": "Lot & Risk Review",
+        "description": "We assess your lot, access, wildfire exposure, and goals - and recommend the right construction method for your parcel, whether it's a full home or an ADU."
       },
       {
         "step": "02",
         "title": "Design & Permits",
-        "description": "Your floor plan, your finishes. As a state-approved factory, our plans route through state approval - permits in days, not months. Homes in fire hazard zones are engineered to the requirements that apply to your parcel."
+        "description": "Your floor plan, your finishes. As a state-approved factory, our plans route through state approval - permits in days, not months. Builds in fire hazard zones are engineered to the Chapter 7A WUI requirements that apply to your parcel."
       },
       {
         "step": "03",
         "title": "Factory Build",
-        "description": "Your home is precision-built in steel in our Santa Clara facility while your foundation is prepared on-site. Parallel, not sequential - that's how the timeline compresses."
+        "description": "Your home is precision-built in light-gauge steel in our California facility while your foundation is prepared on-site. Parallel, not sequential - that's how the timeline compresses."
       },
       {
         "step": "04",
@@ -194,7 +194,7 @@
       {
         "step": "05",
         "title": "Handover",
-        "description": "Walk into a finished, non-combustible home. Keys in hand - not a punch list."
+        "description": "Walk into a finished home built from non-combustible materials. Keys in hand - not a punch list."
       }
     ]
   },
@@ -214,7 +214,7 @@
     "eyebrow": "Rebuilding After a Loss",
     "title": "If You've Lost a Home, Time Matters.",
     "texts": [
-      "Rebuilding shouldn't take years. Because your Fast Struct home is manufactured off-site while your lot is cleared and the foundation is prepared, the timeline compresses dramatically - and a dedicated project manager handles permits, approvals, and logistics from the first call to move-in."
+      "Too many Southern California families have learned how long a conventional rebuild takes. Because your Fast Struct home is manufactured off-site while your lot is cleared and the foundation is prepared, the timeline compresses dramatically - and a dedicated project manager handles permits, approvals, and logistics from the first call to move-in."
     ],
     "bulletPoints": [
       {
@@ -230,8 +230,8 @@
         "text": "Rebuild the home you want, not a catalog box."
       },
       {
-        "title": "Rebuilt in steel",
-        "text": "So you never have to make this call twice."
+        "title": "Rebuilt in non-combustible materials",
+        "text": "Steel frame, fire-resistant stucco, Class A roof - so you never have to make this call twice."
       }
     ],
     "image": {
@@ -248,8 +248,12 @@
     "title": "Why Fire-Country Homeowners Choose Fast Struct",
     "items": [
       {
-        "title": "Steel Construction - Not Wood",
-        "text": "Every Fast Struct home is built with a steel frame. Steel is non-combustible, doesn't rot, and holds millimeter-level tolerances. It's a fundamentally better building material - and one that 90% of our competitors simply can't offer."
+        "title": "Light-Gauge Steel - Not Wood",
+        "text": "Every Fast Struct home is framed in light-gauge steel - our specialty. Steel is non-combustible, doesn't rot, and holds millimeter-level tolerances. It's a fundamentally better building material - and one that 90% of our competitors simply can't offer."
+      },
+      {
+        "title": "Fire-Resistant Stucco + Class A Roof",
+        "text": "The envelope matters as much as the frame: a fire-resistant stucco exterior system and Class A roofing, engineered to resist the ember attack that ignites most homes in a wildfire."
       },
       {
         "title": "As Fast As 90 Days",
@@ -260,16 +264,12 @@
         "text": "As a state-certified modular factory, our plans go through the state approval route - permits in days, not months."
       },
       {
-        "title": "Fire-Smart Envelope Options",
-        "text": "Non-combustible cladding, metal roofing, tempered dual-pane glazing, and ember-resistant detailing - configured to your parcel and code requirements."
+        "title": "Homes and ADUs",
+        "text": "From a full custom home on your lot to a backyard ADU, every project gets the same fire-smart materials and factory precision."
       },
       {
         "title": "Arrives 95% Complete",
         "text": "Your home is craned onto your property nearly finished. Installation takes a day, not months."
-      },
-      {
-        "title": "Complete A-Z Solutions",
-        "text": "Permits, design, fabrication, and delivery all handled by one team. One point of contact, zero coordination stress."
       },
       {
         "title": "Dedicated Project Manager",
@@ -307,11 +307,11 @@
   ],
   "gallery": {
     "title": "Built in Steel. Finished Like a Custom Home.",
-    "subtitle": "Non-combustible construction doesn't mean compromising on design. Explore recent Fast Struct builds.",
+    "subtitle": "Fire-resistant construction doesn't mean compromising on design. Explore Fast Struct designs and builds.",
     "items": [
       {
         "src": "/assets/modules-images/module-1/out-1.jpg",
-        "alt": "Completed steel-framed home exterior"
+        "alt": "Steel-framed home design by Fast Struct"
       },
       {
         "src": "/assets/modules-images/all-modules-in-1.jpg",
@@ -327,7 +327,7 @@
       },
       {
         "src": "/assets/modules-images/module-6/out-1.webp",
-        "alt": "Contemporary Fast Struct home exterior"
+        "alt": "Contemporary Fast Struct home design"
       }
     ]
   },
@@ -344,7 +344,7 @@
     }
   },
   "location": {
-    "title": "Locally Built. Serving Fire Country.",
+    "title": "Serving Southern California's Fire Country.",
     "mainAddress": {
       "label": "Headquarters & Factory",
       "street": "3395 Edward Ave",
@@ -356,16 +356,17 @@
       "tel": "+14087029012"
     },
     "serviceAreas": [
-      "Santa Clara County",
-      "San Mateo County",
-      "Alameda County",
-      "Contra Costa County",
-      "Santa Cruz County"
+      "Los Angeles County",
+      "Orange County",
+      "San Diego County",
+      "Ventura County",
+      "Riverside County",
+      "San Bernardino County"
     ]
   },
   "footer": {
     "title": "Get Your Free Estimate",
-    "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
+    "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through fire-resistant design options, and outline your build timeline. No commitment required.",
     "licenses": [
       { "label": "CSLB", "number": "1147858" },
       { "label": "CA HCD", "number": "1632336" },
