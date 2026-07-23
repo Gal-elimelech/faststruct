@@ -1,6 +1,5 @@
 'use client';
 
-import { Section } from '@/components/Section';
 import AnimatedHeading from '@/components/text-animation/AnimatedHeading';
 import { IRebuildSection } from '@/types/landing';
 import { motion } from 'motion/react';
@@ -18,7 +17,7 @@ const RebuildSection: React.FC<IRebuildSection> = ({
   cta,
 }) => {
   return (
-    <Section bgColor='dark' textColor='light' className='border-t border-white/5'>
+    <section className='relative bg-dark text-light px-4 md:px-8 lg:px-16 py-14 md:py-20 lg:py-24 border-t border-white/5'>
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center'>
         <div className='relative w-full rounded-sm overflow-hidden order-1 lg:order-none min-h-[300px] lg:min-h-[460px]'>
           <Image
@@ -85,7 +84,7 @@ const RebuildSection: React.FC<IRebuildSection> = ({
           </div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 };
 

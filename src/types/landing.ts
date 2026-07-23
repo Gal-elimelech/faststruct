@@ -211,9 +211,27 @@ export interface ILandingContent {
   footer: IFooter;
 }
 
+export interface IFireCredential {
+  icon: string;
+  title: string;
+  text: string;
+}
+
+export interface IFireCompanyOverview {
+  title: string;
+  texts: string[];
+  panelTitle: string;
+  items: IFireCredential[];
+  cta: ICTA;
+}
+
 /** Fire-country landing variant: swaps services/methods sections for fire-specific ones. */
 export interface ILandingFireContent
-  extends Omit<ILandingContent, 'servicesOverview' | 'constructionMethods'> {
+  extends Omit<
+    ILandingContent,
+    'servicesOverview' | 'constructionMethods' | 'companyOverview'
+  > {
+  companyOverview: IFireCompanyOverview;
   fireFacts: IFireFactsSection;
   comparison: IComparisonSection;
   rebuild: IRebuildSection;

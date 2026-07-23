@@ -140,22 +140,27 @@
       "As a licensed California contractor, we deliver complete A-Z solutions - design, permits, fabrication, and delivery - for custom homes and ADUs across the Bay Area and beyond, including parcels in designated fire hazard severity zones.",
       "From your first call to the day you get your keys, one dedicated project manager handles everything. We're not just a builder. We're your partner in building something that lasts."
     ],
+    "panelTitle": "Built on four commitments",
     "items": [
       {
         "icon": "certificate",
-        "title": "Licensed CA Contractor"
+        "title": "Licensed CA Contractor",
+        "text": "Fully licensed, bonded, and insured - every build compliant and warrantied."
       },
       {
         "icon": "award",
-        "title": "State-Approved Manufacturing Facility"
+        "title": "State-Approved Facility",
+        "text": "Our Santa Clara factory routes plans through state approval for faster permits."
       },
       {
         "icon": "project-diagram",
-        "title": "Complete A-Z Project Management"
+        "title": "Complete A-Z Management",
+        "text": "One dedicated project manager handles permits, design, fabrication, and delivery."
       },
       {
         "icon": "building",
-        "title": "Steel Construction - Built to Last"
+        "title": "Steel - Built to Last",
+        "text": "Non-combustible steel structure that resists rot, termites, and time itself."
       }
     ],
     "cta": {

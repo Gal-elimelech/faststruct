@@ -4,14 +4,14 @@ import Page from '@/components/Page';
 import { generateSocialMetadata } from '@/lib/metadata';
 import HeroLandingSection from '@/sections/landing/HeroLandingSection';
 import FireFactsSection from '@/sections/landing/FireFactsSection';
-import ValuePropSection from '@/sections/landing/ValuePropSection';
+import FireValuePropSection from '@/sections/landing/non-combustible/FireValuePropSection';
 import LeadCaptureSection from '@/sections/landing/LeadCaptureSection';
 import ComparisonSection from '@/sections/landing/ComparisonSection';
-import CompanyOverviewSection from '@/sections/landing/CompanyOverviewSection';
-import LandingProcessSection from '@/sections/landing/LandingProcessSection';
+import FireCompanyOverviewSection from '@/sections/landing/non-combustible/FireCompanyOverviewSection';
+import FireProcessSection from '@/sections/landing/non-combustible/FireProcessSection';
 import LandingCtaBand from '@/sections/landing/components/LandingCtaBand';
 import RebuildSection from '@/sections/landing/RebuildSection';
-import DifferentiatorsSection from '@/sections/landing/DifferentiatorsSection';
+import FireDifferentiatorsSection from '@/sections/landing/non-combustible/FireDifferentiatorsSection';
 import TestimonialsSection from '@/sections/home/TestimonialsSection';
 import LandingGallerySection from '@/sections/landing/LandingGallerySection';
 import LandingLocationSection from '@/sections/landing/LandingLocationSection';
@@ -48,7 +48,7 @@ const LandingNonCombustiblePage = async () => {
       </section>
 
       <section id='valueProp' className='z-10'>
-        <ValuePropSection {...content.valueProp} />
+        <FireValuePropSection {...content.valueProp} />
       </section>
 
       <section id='lead-capture' className='scroll-mt-24'>
@@ -64,11 +64,11 @@ const LandingNonCombustiblePage = async () => {
       </section>
 
       <section id='companyOverview'>
-        <CompanyOverviewSection {...content.companyOverview} />
+        <FireCompanyOverviewSection {...content.companyOverview} />
       </section>
 
       <section id='processTimeline'>
-        <LandingProcessSection {...content.processTimeline} />
+        <FireProcessSection {...content.processTimeline} />
       </section>
 
       {content.processCta && <LandingCtaBand {...content.processCta} />}
@@ -78,7 +78,7 @@ const LandingNonCombustiblePage = async () => {
       </section>
 
       <section id='differentiators'>
-        <DifferentiatorsSection {...content.differentiators} />
+        <FireDifferentiatorsSection {...content.differentiators} />
       </section>
 
       <section id='testimonials'>

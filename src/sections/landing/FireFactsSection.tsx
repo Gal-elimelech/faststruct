@@ -1,6 +1,5 @@
 'use client';
 
-import { Section } from '@/components/Section';
 import { IFireFactsSection } from '@/types/landing';
 import { motion } from 'motion/react';
 
@@ -12,7 +11,7 @@ const toneClass: Record<string, string> = {
 
 const FireFactsSection: React.FC<IFireFactsSection> = ({ items, note }) => {
   return (
-    <Section bgColor='dark' textColor='light' className='border-y border-white/10'>
+    <section className='relative bg-dark text-light px-4 md:px-8 lg:px-16 py-12 md:py-16 lg:py-20 border-y border-white/10'>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10 overflow-hidden'>
         {items.map((item, idx) => (
           <motion.div
@@ -41,7 +40,7 @@ const FireFactsSection: React.FC<IFireFactsSection> = ({ items, note }) => {
         ))}
       </div>
       <p className='text-light/40 font-poppins text-xs mt-6 max-w-4xl'>{note}</p>
-    </Section>
+    </section>
   );
 };
 

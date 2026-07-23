@@ -1,6 +1,5 @@
 'use client';
 
-import { Section } from '@/components/Section';
 import AnimatedHeading from '@/components/text-animation/AnimatedHeading';
 import { IComparisonSection } from '@/types/landing';
 import { motion } from 'motion/react';
@@ -13,7 +12,7 @@ const ComparisonSection: React.FC<IComparisonSection> = ({
   steel,
 }) => {
   return (
-    <Section bgColor='white' textColor='dark'>
+    <section className='relative bg-white text-dark px-4 md:px-8 lg:px-16 py-14 md:py-20 lg:py-24'>
       <div className='flex flex-col gap-12'>
         <div className='max-w-3xl flex flex-col gap-4'>
           <AnimatedHeading
@@ -83,7 +82,7 @@ const ComparisonSection: React.FC<IComparisonSection> = ({
           </motion.div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 };
 
