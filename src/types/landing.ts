@@ -154,6 +154,40 @@ export interface IFooter {
   address: string;
 }
 
+export interface IFireFact {
+  value: string;
+  /** 'ember' renders the value in the warning tone, 'accent' in brand bronze. */
+  tone: 'ember' | 'accent' | 'light';
+  text: string;
+}
+
+export interface IFireFactsSection {
+  items: IFireFact[];
+  note: string;
+}
+
+export interface IComparisonColumn {
+  title: string;
+  rows: string[];
+}
+
+export interface IComparisonSection {
+  title: string;
+  subtitle: string;
+  wood: IComparisonColumn;
+  steel: IComparisonColumn;
+}
+
+export interface IRebuildSection {
+  eyebrow: string;
+  title: string;
+  texts: string[];
+  bulletPoints: { title: string; text: string }[];
+  image: ILandingImage;
+  imageTag: string;
+  cta: ICTA;
+}
+
 export interface ILandingContent {
   metadataImage: string;
   heroSection: ILandingHero;
@@ -175,4 +209,12 @@ export interface ILandingContent {
   galleryCta?: ISectionCtaBand;
   location: ILocation;
   footer: IFooter;
+}
+
+/** Fire-country landing variant: swaps services/methods sections for fire-specific ones. */
+export interface ILandingFireContent
+  extends Omit<ILandingContent, 'servicesOverview' | 'constructionMethods'> {
+  fireFacts: IFireFactsSection;
+  comparison: IComparisonSection;
+  rebuild: IRebuildSection;
 }
