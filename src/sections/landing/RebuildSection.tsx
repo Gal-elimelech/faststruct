@@ -33,7 +33,7 @@ const RebuildSection: React.FC<IRebuildSection> = ({
         </div>
 
         <div className='flex flex-col gap-6'>
-          <span className='text-[10px] text-accent font-bold tracking-[0.28em] uppercase font-poppins'>
+          <span className='text-[10px] text-[#d97a52] font-bold tracking-[0.28em] uppercase font-poppins'>
             {eyebrow}
           </span>
           <AnimatedHeading
@@ -66,8 +66,8 @@ const RebuildSection: React.FC<IRebuildSection> = ({
                 viewport={{ once: true }}
                 className='flex items-start gap-3'
               >
-                <span className='w-6 h-6 rounded-sm bg-accent/15 flex items-center justify-center shrink-0 mt-0.5'>
-                  <Check size={14} className='text-accent' aria-hidden />
+                <span className='w-6 h-6 rounded-sm bg-[#c4502e]/15 flex items-center justify-center shrink-0 mt-0.5'>
+                  <Check size={14} className='text-[#d97a52]' aria-hidden />
                 </span>
                 <p className='font-poppins text-sm md:text-base text-light/85'>
                   <span className='font-semibold text-light'>{point.title}</span>{' '}

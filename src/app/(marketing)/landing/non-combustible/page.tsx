@@ -16,15 +16,17 @@ import TestimonialsSection from '@/sections/home/TestimonialsSection';
 import LandingGallerySection from '@/sections/landing/LandingGallerySection';
 import LandingLocationSection from '@/sections/landing/LandingLocationSection';
 import StickyCTA from '@/sections/landing/components/StickyCTA';
+import JsonLd from '@/components/seo/JsonLd';
+import { validatedEnv } from '@/lib/env';
 
 const PAGE_PATH = '/landing/non-combustible';
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('landingNonCombustible', 'en');
   return generateSocialMetadata({
-    title: 'Non-Combustible Steel Homes in California | Fast Struct',
+    title: 'Non-Combustible Homes & ADUs in Southern California | Fast Struct',
     description:
-      'Custom non-combustible homes with 100% steel framing, built for California fire country with factory precision and fast timelines.',
+      'Fire-resistant custom homes and ADUs for Southern California wildfire country: light-gauge steel framing, fire-resistant stucco, and Class A roofing, built with factory precision in as fast as 90 days.',
     image: content.metadataImage,
     url: PAGE_PATH,
   });
@@ -33,9 +35,26 @@ export async function generateMetadata(): Promise<Metadata> {
 const LandingNonCombustiblePage = async () => {
   const content = await getContent('landingNonCombustible', 'en');
   const consent = await getContent('consent', 'en');
+  const siteUrl = validatedEnv.siteUrl;
+  const landingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Fast Struct Non-Combustible Home Services',
+    url: `${siteUrl}${PAGE_PATH}`,
+    description: content.heroSection.subtitle,
+    image: `${siteUrl}${content.metadataImage}`,
+    areaServed: 'Southern California',
+    serviceType: [
+      'Non-Combustible Home Construction',
+      'Fire-Resistant ADU Construction',
+      'Light-Gauge Steel Framing',
+    ],
+    telephone: content.heroSection.phoneCta.text,
+  };
 
   return (
     <Page className='bg-dark text-light relative'>
+      <JsonLd data={landingSchema} />
       <section id='heroSection' className='z-20'>
         <HeroLandingSection {...content.heroSection} />
       </section>
