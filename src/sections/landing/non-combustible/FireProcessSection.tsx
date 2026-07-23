@@ -3,11 +3,7 @@
 import { IProcessTimeline } from '@/types/landing';
 import { motion } from 'motion/react';
 
-/**
- * Page-specific process timeline: equal-height cards with a fixed-height title
- * block so descriptions align across steps regardless of title length, and
- * tighter section padding than the shared component.
- */
+// Fixed title height keeps step descriptions aligned across the row.
 const FireProcessSection: React.FC<IProcessTimeline> = ({ title, steps }) => {
   return (
     <section className='relative bg-white text-dark px-4 md:px-8 lg:px-16 py-14 md:py-20 lg:py-24 overflow-hidden'>

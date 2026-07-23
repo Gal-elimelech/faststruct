@@ -13,11 +13,7 @@ const iconMap = {
   building: Building2,
 } as const;
 
-/**
- * Page-specific company overview: the shared version leaves the right column
- * sparse. Here the credentials render as a filled 2x2 card panel that stretches
- * to match the copy column, so the section reads balanced.
- */
+// Credentials as a filled 2x2 panel so the right column isn't sparse.
 const FireCompanyOverviewSection: React.FC<IFireCompanyOverview> = ({
   title,
   texts,

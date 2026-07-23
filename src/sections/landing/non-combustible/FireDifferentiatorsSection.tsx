@@ -5,10 +5,7 @@ import { IDifferentiators } from '@/types/landing';
 import { motion } from 'motion/react';
 import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
-/**
- * Page-specific differentiators: identical to the shared version except the
- * header CTA stacks full-width on mobile instead of floating to the right edge.
- */
+// Header CTA stacks full-width on mobile instead of floating right.
 const FireDifferentiatorsSection: React.FC<IDifferentiators> = ({
   title,
   items,

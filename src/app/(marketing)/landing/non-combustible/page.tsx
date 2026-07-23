@@ -19,18 +19,15 @@ import StickyCTA from '@/sections/landing/components/StickyCTA';
 
 const PAGE_PATH = '/landing/non-combustible';
 
-// Unlisted preview page: reachable by direct URL only, kept out of search
-// engines until it is approved for launch.
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent('landingNonCombustible', 'en');
-  const meta = generateSocialMetadata({
+  return generateSocialMetadata({
     title: 'Non-Combustible Steel Homes in California | Fast Struct',
     description:
       'Custom non-combustible homes with 100% steel framing, built for California fire country with factory precision and fast timelines.',
     image: content.metadataImage,
     url: PAGE_PATH,
   });
-  return { ...meta, robots: { index: false, follow: false } };
 }
 
 const LandingNonCombustiblePage = async () => {

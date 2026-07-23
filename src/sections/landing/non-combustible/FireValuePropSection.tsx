@@ -5,11 +5,7 @@ import { IValueProp } from '@/types/landing';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 
-/**
- * Page-specific value-prop for the non-combustible landing page: light ground
- * for contrast against the surrounding dark sections, and equal-height feature
- * cards so titles/descriptions line up regardless of copy length.
- */
+// Light background + equal-height cards so titles/descriptions line up.
 const FireValuePropSection: React.FC<IValueProp> = ({
   title,
   texts,
