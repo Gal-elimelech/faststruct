@@ -9,7 +9,7 @@ import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 const ValuePropSection: React.FC<IValueProp> = ({ title, texts, cta, image, features }) => {
   return (
-    <Section bgColor='dark' textColor='light'>
+    <Section bgColor='dark' textColor='light' className='pb-12! md:pb-14! lg:pb-16!'>
       <div className='flex flex-col gap-12'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch'>
           <div className='flex flex-col gap-4 lg:pr-4'>

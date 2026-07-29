@@ -15,7 +15,7 @@ const FireValuePropSection: React.FC<IValueProp> = ({
   features,
 }) => {
   return (
-    <section className='relative bg-white text-dark px-4 md:px-8 lg:px-16 py-14 md:py-20 lg:py-24'>
+    <section className='relative bg-white text-dark px-4 md:px-8 lg:px-16 pt-14 md:pt-20 lg:pt-24 pb-10 md:pb-12 lg:pb-14'>
       <div className='flex flex-col gap-12'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center'>
           <div className='flex flex-col gap-5'>
