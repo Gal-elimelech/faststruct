@@ -98,7 +98,7 @@
 
   /* Button Variants */
   .btn-primary {
-    @apply bg-accent text-dark hover:bg-accent/90 active:bg-accent/80 focus:ring-accent/50;
+    @apply bg-accent text-white hover:bg-accent/90 active:bg-accent/80 focus:ring-accent/50;
   }
 
   .btn-secondary {
@@ -111,7 +111,7 @@
 
   /* Outline call-to-action on dark page backgrounds (accent ring) */
   .btn-outline-call-dark {
-    @apply text-accent outline-accent hover:bg-accent/10 active:bg-accent/20 focus:ring-accent/50 bg-transparent outline-2 outline-solid;
+    @apply text-white outline-accent hover:bg-accent/10 active:bg-accent/20 focus:ring-accent/50 bg-transparent outline-2 outline-solid;
   }
 
   /* Outline call-to-action on hero glass card (white ring) */

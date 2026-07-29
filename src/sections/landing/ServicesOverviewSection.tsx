@@ -9,12 +9,12 @@ const ServicesOverviewSection: React.FC<IServicesOverview> = ({ title, subtitle,
     <Section bgColor='white' textColor='dark' className='relative'>
       <div className='flex flex-col gap-10'>
 
-        <div className='max-w-4xl flex flex-col gap-4'>
-          <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85]'>
+        <div className='max-w-4xl mx-auto flex flex-col items-center gap-4 text-center'>
+          <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85] text-balance'>
             {title}
           </h2>
           {subtitle && (
-            <p className='text-h6 md:text-xl text-dark/70 font-poppins leading-relaxed max-w-2xl'>
+            <p className='text-h6 md:text-xl text-dark/70 font-poppins leading-relaxed max-w-3xl text-balance'>
               {subtitle}
             </p>
           )}

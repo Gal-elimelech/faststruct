@@ -4,11 +4,13 @@ import AnimatedHeading from '@/components/text-animation/AnimatedHeading';
 import { IValueProp } from '@/types/landing';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
 // Light background + equal-height cards so titles/descriptions line up.
 const FireValuePropSection: React.FC<IValueProp> = ({
   title,
   texts,
+  cta,
   image,
   features,
 }) => {
@@ -19,7 +21,7 @@ const FireValuePropSection: React.FC<IValueProp> = ({
           <div className='flex flex-col gap-5'>
             <AnimatedHeading
               text={title}
-              className='text-h2 font-bebas text-dark uppercase leading-[0.9]'
+              className='text-h2 font-bebas text-dark uppercase leading-[0.9] text-balance'
             />
             <div className='flex flex-col gap-3'>
               {texts.map((t, i) => (
@@ -31,6 +33,14 @@ const FireValuePropSection: React.FC<IValueProp> = ({
                 </p>
               ))}
             </div>
+
+            {cta && (
+              <div className='mt-1'>
+                <LandingCtaLink href={cta.link} linkClassName='inline-block w-full sm:w-auto'>
+                  {cta.text}
+                </LandingCtaLink>
+              </div>
+            )}
           </div>
 
           <div className='relative w-full overflow-hidden rounded-sm border border-dark/10 min-h-[280px] sm:min-h-[340px] lg:min-h-[420px]'>

@@ -15,7 +15,7 @@ interface StickyCTAProps {
 const StickyCTA = ({
   phone,
   estimateHref = '#lead-capture',
-  estimateText = 'Free Estimate',
+  estimateText = 'Get Your Free Estimate',
   className,
 }: StickyCTAProps) => {
   return (
@@ -42,7 +42,8 @@ const StickyCTA = ({
               buttonClassName='size-full'
               fullWidth
             >
-              Call Us
+              <span className='hidden sm:inline'>{phone}</span>
+              <span className='sm:hidden'>Call Us</span>
             </LandingCtaLink>
 
             <LandingCtaLink

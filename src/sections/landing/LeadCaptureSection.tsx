@@ -141,12 +141,12 @@ const LeadCaptureSection = ({
       ref={sectionRef}
       bgColor='dark'
       textColor='light'
-      className='relative overflow-hidden'>
+      className='relative overflow-hidden pt-8! md:pt-12! lg:pt-14!'>
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 blur-[150px] pointer-events-none' />
 
       <div className='max-w-5xl mx-auto relative z-10'>
-        <div className='text-center mb-16 max-w-3xl mx-auto'>
-          <h2 className='text-h2 font-bebas text-light uppercase'>
+        <div className='text-center mb-10 md:mb-12 max-w-3xl mx-auto'>
+          <h2 className='text-h2 font-bebas text-light uppercase text-balance'>
             {title}
           </h2>
           <p className='text-light/80 font-poppins'>

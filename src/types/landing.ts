@@ -28,6 +28,7 @@ export interface IValuePropItem {
 export interface IValueProp {
   title: string;
   texts: string[];
+  cta?: ICTA;
   image: ILandingImage;
   features: {
     title: string;
@@ -55,11 +56,13 @@ export interface IFormConfig {
 export interface ICompanyOverviewItem {
   icon: string;
   title: string;
+  text: string;
 }
 
 export interface ICompanyOverview {
   title: string;
   texts: string[];
+  panelTitle: string;
   items: ICompanyOverviewItem[];
   cta: ICTA;
 }

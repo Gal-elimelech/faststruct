@@ -11,7 +11,7 @@ const LandingProcessSection: React.FC<IProcessTimeline> = ({ title, steps }) => 
 
       <div className='relative z-10 flex flex-col gap-10'>
         <div className='max-w-4xl flex flex-col gap-4'>
-          <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85]'>
+          <h2 className='text-h2 font-bebas text-dark uppercase leading-[0.85] text-balance'>
             {title}
           </h2>
         </div>

@@ -38,7 +38,7 @@ const RebuildSection: React.FC<IRebuildSection> = ({
           </span>
           <AnimatedHeading
             text={title}
-            className='text-h2 font-bebas text-light uppercase leading-[0.9]'
+            className='text-h2 font-bebas text-light uppercase leading-[0.9] text-balance'
             revealColor='dark'
           />
           <div className='flex flex-col gap-3'>

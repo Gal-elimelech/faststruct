@@ -17,7 +17,7 @@ const ComparisonSection: React.FC<IComparisonSection> = ({
         <div className='max-w-3xl flex flex-col gap-4'>
           <AnimatedHeading
             text={title}
-            className='text-h2 font-bebas text-dark uppercase leading-[0.85]'
+            className='text-h2 font-bebas text-dark uppercase leading-[0.85] text-balance'
           />
           <p className='text-h6 md:text-xl text-dark/70 font-poppins leading-relaxed'>
             {subtitle}

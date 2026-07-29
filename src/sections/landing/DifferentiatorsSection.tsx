@@ -11,7 +11,7 @@ const DifferentiatorsSection: React.FC<IDifferentiators> = ({ title, items, cta 
       <div className='flex flex-col gap-14 md:gap-18'>
         <div className='flex flex-col md:flex-row justify-between items-end gap-8'>
           <div className='max-w-4xl'>
-            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.85]'>
+            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.85] text-balance'>
               {title}
             </h2>
           </div>

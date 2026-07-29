@@ -28,13 +28,13 @@ export default function LandingHeader({
         </Link>
 
         <div className='flex items-center gap-2 md:gap-3'>
-          <LandingCtaLink href={phoneLink} surface='dark' size='sm'>
+          <LandingCtaLink href={phoneLink} surface='dark' size='md'>
             <span className='hidden sm:inline'>{phone}</span>
-            <span className='sm:hidden'>Call</span>
+            <span className='sm:hidden'>Call Us</span>
           </LandingCtaLink>
 
           <div className='hidden md:block'>
-            <LandingCtaLink href={ctaLink} surface='dark' size='sm'>
+            <LandingCtaLink href={ctaLink} surface='dark' size='md'>
               {ctaText}
             </LandingCtaLink>
           </div>
