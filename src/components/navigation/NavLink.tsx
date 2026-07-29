@@ -16,6 +16,7 @@ interface INavLinkProps {
   className?: string;
   /** Extra classes for the inner Button when `button` is true (e.g. w-full). */
   buttonClassName?: string;
+  buttonSize?: 'sm' | 'md' | 'lg';
 }
 
 const NavLink = ({
@@ -26,6 +27,7 @@ const NavLink = ({
   style = true,
   className = '',
   buttonClassName,
+  buttonSize = 'lg',
 }: INavLinkProps) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { startTransition } = useAppNavigation();
@@ -57,7 +59,7 @@ const NavLink = ({
       {button ? (
         <Button
           variant='primary'
-          size='lg'
+          size={buttonSize}
           hoverTransition='lift'
           className={buttonClassName}>
           {children}

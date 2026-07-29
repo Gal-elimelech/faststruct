@@ -37,6 +37,7 @@ const StickyCTA = ({
           <div className='flex gap-4 w-full md:w-auto'>
             <LandingCtaLink
               href={`tel:${phone.replace(/\D/g, '')}`}
+              surface='white'
               size='md'
               linkClassName='grow basis-1/2'
               buttonClassName='size-full'
