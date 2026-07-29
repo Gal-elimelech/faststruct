@@ -15,7 +15,7 @@ const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, sub
       <div className='flex flex-col gap-16 md:gap-20 relative z-10'>
         <div className='flex flex-col md:flex-row justify-between items-end gap-10'>
           <div className='max-w-4xl flex flex-col gap-4'>
-            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.85]'>
+            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.85] text-balance'>
               {title}
             </h2>
             <p className='text-h6 text-light/70 font-poppins leading-relaxed max-w-2xl'>
@@ -73,7 +73,7 @@ const ConstructionMethodsSection: React.FC<IConstructionMethods> = ({ title, sub
                   ))}
                 </ul>
                 <LandingCtaLink href='#lead-capture'>
-                  Learn More About This Route
+                  Get Your Free Estimate
                 </LandingCtaLink>
               </div>
             </motion.div>

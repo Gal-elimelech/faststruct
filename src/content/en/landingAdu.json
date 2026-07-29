@@ -4,9 +4,18 @@
     "title": "Custom ADUs Built in the Bay Area. As Fast As 90 Days.",
     "subtitle": "Steel construction, premium finishes, factory precision, and a backyard unit you can actually count on.",
     "licenses": [
-      { "label": "CSLB", "number": "1147858" },
-      { "label": "CA HCD", "number": "1632336" },
-      { "label": "Manufactured Home", "number": "MF1634008" }
+      {
+        "label": "CSLB",
+        "number": "1147858"
+      },
+      {
+        "label": "CA HCD",
+        "number": "1632336"
+      },
+      {
+        "label": "Manufactured Home",
+        "number": "MF1634008"
+      }
     ],
     "cta": {
       "text": "Get Your Free Estimate",
@@ -28,6 +37,10 @@
       "Whether you're envisioning a private backyard retreat, a rental income unit, or a spacious live-work studio - our team designs your ADU around your property, your lifestyle, and your budget. Every layout, room size, finish, and configuration is tailored from the ground up.",
       "What does your perfect ADU look like? We'll build it."
     ],
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "#lead-capture"
+    },
     "image": {
       "src": "/assets/modules-images/module-1/out-1.jpg",
       "alt": "Custom ADU exterior designed for a Bay Area backyard lot"
@@ -101,25 +114,30 @@
     "items": [
       {
         "icon": "certificate",
-        "title": "Licensed CA Contractor"
+        "title": "Licensed CA Contractor",
+        "text": "Fully licensed, bonded, and insured - every build compliant and warrantied."
       },
       {
         "icon": "award",
-        "title": "State-Approved Manufacturing Facility"
+        "title": "State-Approved Manufacturing Facility",
+        "text": "Our Santa Clara factory routes plans through state approval for faster permits."
       },
       {
         "icon": "project-diagram",
-        "title": "Complete A-Z Project Management"
+        "title": "Complete A-Z Project Management",
+        "text": "One dedicated project manager handles permits, design, fabrication, and delivery."
       },
       {
         "icon": "building",
-        "title": "Steel Construction - Built to Last"
+        "title": "Steel Construction - Built to Last",
+        "text": "Non-combustible steel structure that resists rot, termites, and time itself."
       }
     ],
     "cta": {
       "text": "(408) 702-9012",
       "link": "tel:+14087029012"
-    }
+    },
+    "panelTitle": "Built on four commitments"
   },
   "servicesOverview": {
     "title": "What We Build",
@@ -344,9 +362,18 @@
     "title": "Get Your Free Estimate",
     "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through your design options, and outline your build timeline. No commitment required.",
     "licenses": [
-      { "label": "CSLB", "number": "1147858" },
-      { "label": "CA HCD", "number": "1632336" },
-      { "label": "Manufactured Home", "number": "MF1634008" }
+      {
+        "label": "CSLB",
+        "number": "1147858"
+      },
+      {
+        "label": "CA HCD",
+        "number": "1632336"
+      },
+      {
+        "label": "Manufactured Home",
+        "number": "MF1634008"
+      }
     ],
     "cta": {
       "text": "Design Your ADU",

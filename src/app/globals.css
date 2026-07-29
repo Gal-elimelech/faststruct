@@ -114,6 +114,16 @@
     @apply text-accent outline-accent hover:bg-accent/10 active:bg-accent/20 focus:ring-accent/50 bg-transparent outline-2 outline-solid;
   }
 
+  /* Landing pages only: white CTA text. Applied via the landing-cta wrapper
+     class on the landing layouts so the rest of the site keeps its colors. */
+  .landing-cta .btn-primary {
+    @apply text-white;
+  }
+
+  .landing-cta .btn-outline-call-dark {
+    @apply text-white;
+  }
+
   /* Outline call-to-action on hero glass card (white ring) */
   .btn-outline-call-hero {
     @apply bg-transparent text-white outline-2 outline-white outline-solid hover:bg-white/10 focus:ring-white/50 active:bg-white/15;

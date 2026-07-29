@@ -21,8 +21,8 @@ const LandingLocationSection: React.FC<ILocation> = ({
 
       <div className='relative z-10 flex flex-col gap-12 lg:gap-16'>
         <div className='flex flex-col items-end justify-between gap-8 md:flex-row'>
-          <div className='max-w-4xl'>
-            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.9]'>
+          <div>
+            <h2 className='text-h2 font-bebas text-light uppercase leading-[0.9] text-balance'>
               {title}
             </h2>
           </div>

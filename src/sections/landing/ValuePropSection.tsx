@@ -5,16 +5,17 @@ import AnimatedHeading from '@/components/text-animation/AnimatedHeading';
 import { IValueProp } from '@/types/landing';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import { LandingCtaLink } from '@/sections/landing/components/LandingCtaLink';
 
-const ValuePropSection: React.FC<IValueProp> = ({ title, texts, image, features }) => {
+const ValuePropSection: React.FC<IValueProp> = ({ title, texts, cta, image, features }) => {
   return (
-    <Section bgColor='dark' textColor='light'>
+    <Section bgColor='dark' textColor='light' className='pb-12! md:pb-14! lg:pb-16!'>
       <div className='flex flex-col gap-12'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch'>
           <div className='flex flex-col gap-4 lg:pr-4'>
             <AnimatedHeading
               text={title}
-              className='text-h2 font-bebas text-light uppercase leading-[0.9]'
+              className='text-h2 font-bebas text-light uppercase leading-[0.9] text-balance'
               revealColor='dark'
             />
             <div className='flex flex-col gap-3'>
@@ -24,6 +25,14 @@ const ValuePropSection: React.FC<IValueProp> = ({ title, texts, image, features 
                 </p>
               ))}
             </div>
+
+            {cta && (
+              <div className='mt-2'>
+                <LandingCtaLink href={cta.link} linkClassName='inline-block w-full sm:w-auto'>
+                  {cta.text}
+                </LandingCtaLink>
+              </div>
+            )}
           </div>
 
           <div className='w-full overflow-hidden rounded-sm border border-white/10 bg-white/5'>
@@ -53,7 +62,7 @@ const ValuePropSection: React.FC<IValueProp> = ({ title, texts, image, features 
               className='flex flex-col gap-8 bg-white/2 border border-white/5 p-10 rounded-sm hover:border-accent/30 hover:bg-white/4 group relative overflow-hidden'
             >
               {/* Index Number */}
-              <span className='font-bebas text-5xl text-white/3 absolute top-4 right-6 group-hover:text-accent/10 transition-colors'>
+              <span className='font-bebas text-5xl text-accent/40 absolute top-4 right-6 group-hover:text-accent/70 transition-colors'>
                 0{idx + 1}
               </span>
 

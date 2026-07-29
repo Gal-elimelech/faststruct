@@ -10,7 +10,7 @@ export default async function LandingModularLayout({
   const content = await getContent('landingModular', 'en');
 
   return (
-    <>
+    <div className='landing-cta'>
       <LandingHeader
         phone={content.heroSection.phoneCta.text}
         phoneLink={content.heroSection.phoneCta.link}
@@ -21,6 +21,6 @@ export default async function LandingModularLayout({
       <LandingFooter {...content.footer} />
       {/* Scroll clearance so the fixed bottom CTA bar never covers footer content */}
       <div aria-hidden className='h-20 bg-dark' />
-    </>
+    </div>
   );
 }

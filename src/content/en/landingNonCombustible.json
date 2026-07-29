@@ -4,9 +4,18 @@
     "title": "Steel Doesn't Burn. Neither Should Your Home.",
     "subtitle": "Custom homes and ADUs built with light-gauge steel framing, fire-resistant stucco, and Class A roofing - engineered for Southern California's wildfire country and installed in as fast as 90 days.",
     "licenses": [
-      { "label": "CSLB", "number": "1147858" },
-      { "label": "CA HCD", "number": "1632336" },
-      { "label": "Manufactured Home", "number": "MF1634008" }
+      {
+        "label": "CSLB",
+        "number": "1147858"
+      },
+      {
+        "label": "CA HCD",
+        "number": "1632336"
+      },
+      {
+        "label": "Manufactured Home",
+        "number": "MF1634008"
+      }
     ],
     "cta": {
       "text": "Get Your Free Estimate",
@@ -48,6 +57,10 @@
       "Around that steel skeleton we build a fire-resistant envelope: a fire-resistant stucco exterior and Class A roofing - the materials fire-country building science calls for, engineered as one system.",
       "Your lot, your design, your finishes - built for wildfire country."
     ],
+    "cta": {
+      "text": "Get Your Free Estimate",
+      "link": "#lead-capture"
+    },
     "image": {
       "src": "/assets/system-panelized.webp",
       "alt": "Light-gauge steel Smart Wall panels manufactured in Fast Struct's California facility"
@@ -368,9 +381,18 @@
     "title": "Get Your Free Estimate",
     "subtitle": "Fill out the form and a Fast Struct specialist will reach out to discuss your project, walk you through fire-resistant design options, and outline your build timeline. No commitment required.",
     "licenses": [
-      { "label": "CSLB", "number": "1147858" },
-      { "label": "CA HCD", "number": "1632336" },
-      { "label": "Manufactured Home", "number": "MF1634008" }
+      {
+        "label": "CSLB",
+        "number": "1147858"
+      },
+      {
+        "label": "CA HCD",
+        "number": "1632336"
+      },
+      {
+        "label": "Manufactured Home",
+        "number": "MF1634008"
+      }
     ],
     "cta": {
       "text": "Design Your Home",

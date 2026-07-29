@@ -27,7 +27,7 @@ const FireCompanyOverviewSection: React.FC<IFireCompanyOverview> = ({
         <div className='lg:w-[46%] flex flex-col gap-7'>
           <AnimatedHeading
             text={title}
-            className='text-h2 font-bebas text-light uppercase leading-[0.9]'
+            className='text-h2 font-bebas text-light uppercase leading-[0.9] text-balance'
             revealColor='dark'
           />
           <div className='flex flex-col gap-3'>
