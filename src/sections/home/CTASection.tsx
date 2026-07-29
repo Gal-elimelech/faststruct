@@ -9,7 +9,7 @@ import NavLink from '@/components/navigation/NavLink';
 
 const CTASection: React.FC<ICTA> = ({ title, subtitle }) => {
   return (
-    <Section>
+    <Section className='pb-14! md:pb-16! lg:pb-20!'>
       <div className='flex flex-col items-center gap-6 text-center'>
         <AnimatedHeading
           className='text-h2 font-bebas text-light'
@@ -24,7 +24,7 @@ const CTASection: React.FC<ICTA> = ({ title, subtitle }) => {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           viewport={{ amount: 0.5, once: true }}>
           <NavLink button={true} href='/contact'>
-            Book Your Free Consultation
+            Book Your Consultation
           </NavLink>
         </motion.div>
       </div>

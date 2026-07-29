@@ -17,12 +17,12 @@ const DesktopNavbar = ({ phone }: DesktopNavbarProps) => {
           {route.isButton && phone && (
             <a
               href={`tel:${phone.link}`}
-              className='btn btn-outline-call-dark btn-lg gap-2 text-nowrap'>
+              className='btn btn-outline-call-white btn-md gap-2 text-nowrap'>
               <Phone size={14} aria-hidden />
               {phone.display}
             </a>
           )}
-          <NavLink button={route.isButton} href={route.href}>
+          <NavLink button={route.isButton} buttonSize='md' href={route.href}>
             {route.title}
           </NavLink>
         </Fragment>

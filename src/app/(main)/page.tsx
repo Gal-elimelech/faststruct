@@ -130,7 +130,10 @@ const HomePage = async () => {
       <CTASection {...content.cta} />
 
       {/* Explore Homes Section */}
-      <ExploreHomesSection featuredModules={modulesData} />
+      <ExploreHomesSection
+        featuredModules={modulesData}
+        className='pt-10! md:pt-12! lg:pt-14!'
+      />
 
       {/* Why Modular & Panelized Section */}
       <WhyModularPanelizedSection {...content.whyModularPanelized} />

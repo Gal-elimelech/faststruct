@@ -4,7 +4,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { Phone } from 'lucide-react';
 
-export type LandingCtaSurface = 'hero' | 'dark';
+export type LandingCtaSurface = 'hero' | 'dark' | 'white';
 
 export interface LandingCtaLinkProps {
   href: string;
@@ -43,7 +43,9 @@ export function LandingCtaLink({
   const toneClass = isCall
     ? surface === 'hero'
       ? 'btn-outline-call-hero'
-      : 'btn-outline-call-dark'
+      : surface === 'white'
+        ? 'btn-outline-call-white'
+        : 'btn-outline-call-dark'
     : 'btn-primary';
   const sizeClass =
     size === 'sm' ? 'btn-sm' : size === 'md' ? 'btn-md' : 'btn-lg';

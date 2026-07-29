@@ -12,11 +12,13 @@ import { motion } from 'motion/react';
 interface IExploreHomesSectionProps {
   featuredModules: IModule[];
   exploreContent?: IExplore;
+  className?: string;
 }
 
 const ExploreHomesSection = ({
   featuredModules,
   exploreContent,
+  className,
 }: IExploreHomesSectionProps) => {
   const title = exploreContent?.title || 'Explore Our Homes';
   const subtitle =
@@ -24,7 +26,7 @@ const ExploreHomesSection = ({
     'Explore our range of models, each designed for flexibility and comfort';
 
   return (
-    <Section bgColor='dark' textColor='light'>
+    <Section bgColor='dark' textColor='light' className={className}>
       <div className='flex flex-col gap-8'>
         <div className='text-center'>
           <AnimatedHeading
