@@ -14,17 +14,23 @@ const DesktopNavbar = ({ phone }: DesktopNavbarProps) => {
     <nav className='flex items-center gap-6'>
       {ENABLED_ROUTES.map((route) => (
         <Fragment key={route.href}>
-          {route.isButton && phone && (
-            <a
-              href={`tel:${phone.link}`}
-              className='btn btn-outline-call-white btn-md gap-2 text-nowrap'>
-              <Phone size={14} aria-hidden />
-              {phone.display}
-            </a>
+          {route.isButton && phone ? (
+            <span className='flex items-center gap-4'>
+              <a
+                href={`tel:${phone.link}`}
+                className='btn btn-outline-call-white btn-md gap-2 text-nowrap'>
+                <Phone size={14} aria-hidden />
+                {phone.display}
+              </a>
+              <NavLink button={route.isButton} buttonSize='md' href={route.href}>
+                {route.title}
+              </NavLink>
+            </span>
+          ) : (
+            <NavLink button={route.isButton} buttonSize='md' href={route.href}>
+              {route.title}
+            </NavLink>
           )}
-          <NavLink button={route.isButton} buttonSize='md' href={route.href}>
-            {route.title}
-          </NavLink>
         </Fragment>
       ))}
     </nav>

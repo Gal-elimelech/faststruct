@@ -59,7 +59,7 @@ export default function Navbar({ phone }: NavbarProps) {
     <header ref={headerRef} className='fixed top-0 z-20 w-full'>
       <div className='bg-dark absolute z-10 h-full w-full'></div>
 
-      <div className='container-padding relative z-20 flex items-center justify-between border-b py-2.5 md:py-3'>
+      <div className='container-padding lg:pr-12! relative z-20 flex items-center justify-between border-b py-2.5 md:py-3'>
         <NavLink href='/'>
           <FastructLogo
             color='light'
