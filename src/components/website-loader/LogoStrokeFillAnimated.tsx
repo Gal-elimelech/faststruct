@@ -28,7 +28,7 @@ const LogoStrokeFillAnimated = ({
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -54,7 +54,7 @@ const LogoStrokeFillAnimated = ({
       opacity: 1,
       transition: {
         delay: textAnimationDelay,
-        staggerChildren: 0.1,
+        staggerChildren: 0.03,
         delayChildren: textAnimationDelay,
       },
     },
@@ -71,7 +71,7 @@ const LogoStrokeFillAnimated = ({
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.25,
         ease: [0.25, 0.1, 0.25, 1],
       },
     },

@@ -24,7 +24,7 @@ const CTASection: React.FC<ICTA> = ({ title, subtitle }) => {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           viewport={{ amount: 0.5, once: true }}>
           <NavLink button={true} href='/contact'>
-            Book Your Consultation
+            Get Your Free Estimate
           </NavLink>
         </motion.div>
       </div>
