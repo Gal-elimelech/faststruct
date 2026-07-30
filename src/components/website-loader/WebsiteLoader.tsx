@@ -9,10 +9,10 @@ interface IWebsiteLoaderProps {
   children: ReactNode;
 }
 
-const LOGO_ANIMATION_DURATION = 3; // seconds
-const FRAME_ANIMATION_DURATION = 1.2; // seconds
-// Text animation: delay (0.45 + 3) + (9 letters * 0.1s stagger) + last letter duration (0.5s) = 4.75s
-const TEXT_ANIMATION_COMPLETE_TIME = 4.75; // seconds
+const LOGO_ANIMATION_DURATION = 0.6; // seconds
+const FRAME_ANIMATION_DURATION = 0.5; // seconds
+// Text animation: delay (0.35 + 0.6) + (9 stagger steps * 0.03s) + last letter duration (0.25s) = ~1.45s
+const TEXT_ANIMATION_COMPLETE_TIME = 1.45; // seconds
 
 const WebsiteLoader = ({ children }: IWebsiteLoaderProps) => {
   const lenis = useLenis();
