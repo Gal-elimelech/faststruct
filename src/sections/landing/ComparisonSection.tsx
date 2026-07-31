@@ -36,13 +36,13 @@ const ComparisonSection: React.FC<IComparisonSection> = ({
             <h3 className='font-bebas text-h3 text-dark/50 uppercase leading-none'>
               {wood.title}
             </h3>
-            <div className='flex flex-col'>
+            <div className='flex grow flex-col'>
               {wood.rows.map((row, idx) => (
                 <div
                   key={idx}
-                  className='flex items-start gap-3 py-4 border-t border-dark/10 text-dark/75 font-poppins text-sm md:text-base'
+                  className='flex grow basis-0 items-center gap-3 py-4 border-t border-dark/10 text-dark/75 font-poppins text-sm md:text-base'
                 >
-                  <span className='w-5 h-5 rounded-full bg-[#c4502e]/15 flex items-center justify-center shrink-0 mt-0.5'>
+                  <span className='w-5 h-5 rounded-full bg-[#c4502e]/15 flex items-center justify-center shrink-0'>
                     <X size={13} className='text-[#c4502e]' aria-hidden />
                   </span>
                   {row}
@@ -66,14 +66,14 @@ const ComparisonSection: React.FC<IComparisonSection> = ({
             <h3 className='font-bebas text-h3 text-accent uppercase leading-none'>
               {steel.title}
             </h3>
-            <div className='flex flex-col'>
+            <div className='flex grow flex-col'>
               {steel.rows.map((row, idx) => (
                 <div
                   key={idx}
-                  className='flex items-start gap-3 py-4 border-t border-white/10 text-light/90 font-poppins text-sm md:text-base'
+                  className='flex grow basis-0 items-center gap-3 py-4 border-t border-white/10 text-light/90 font-poppins text-sm md:text-base'
                 >
-                  <span className='w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center shrink-0 mt-0.5'>
-                    <Check size={13} className='text-accent' aria-hidden />
+                  <span className='w-5 h-5 rounded-full bg-green-400/15 flex items-center justify-center shrink-0'>
+                    <Check size={13} className='text-green-400' aria-hidden />
                   </span>
                   {row}
                 </div>
