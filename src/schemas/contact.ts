@@ -50,11 +50,26 @@ export const LEAD_SERVICE_TYPES = [
   'Panelized Construction',
 ] as const;
 
+/** Optional "How did you hear about us?" choices, shared by all forms. */
+export const REFERRAL_SOURCES = [
+  'AI Search (ChatGPT, Gemini, etc.)',
+  'Google / Search Engine',
+  'Facebook / Instagram Ad',
+  'Google Ad',
+  'Referral',
+  'Other',
+] as const;
+
+const referralSourceField = z
+  .union([z.enum(REFERRAL_SOURCES), z.literal('')])
+  .optional();
+
 const contactFormFieldsSchema = z.object({
   name: nameField,
   email: emailField,
   phone: phoneField,
   message: messageField,
+  referralSource: referralSourceField,
   contactConsent: contactConsentField,
 });
 
@@ -125,7 +140,7 @@ export const LEAD_CAPTURE_FORM_FIELD_KEYS = [
   'message',
 ] as const satisfies readonly Exclude<
   keyof LeadCaptureFormInput,
-  'recaptchaToken' | 'contactConsent'
+  'recaptchaToken' | 'contactConsent' | 'referralSource'
 >[];
 
 export type LeadCaptureFormFieldKey =

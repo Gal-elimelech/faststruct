@@ -25,6 +25,7 @@ interface ContactEmailProps {
   address: string;
   message: string;
   serviceType?: string;
+  referralSource?: string;
   source: ContactFormSource;
 }
 
@@ -35,6 +36,7 @@ export default function ContactEmail({
   address,
   message,
   serviceType,
+  referralSource,
   source,
 }: ContactEmailProps) {
   return (
@@ -101,6 +103,13 @@ export default function ContactEmail({
             <Section style={section}>
               <Text style={label}>Address:</Text>
               <Text style={value}>{address}</Text>
+            </Section>
+          ) : null}
+
+          {referralSource ? (
+            <Section style={section}>
+              <Text style={label}>How they found us:</Text>
+              <Text style={value}>{referralSource}</Text>
             </Section>
           ) : null}
 

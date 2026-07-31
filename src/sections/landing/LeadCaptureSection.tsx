@@ -16,6 +16,7 @@ import FormMessage from '@/sections/contact/components/FormMessage';
 import ConsentNotice from '@/components/consent/ConsentNotice';
 import {
   LEAD_SERVICE_TYPES,
+  REFERRAL_SOURCES,
   leadCaptureFormSchema,
   type LeadCaptureFormInput,
   toLandingSubmission,
@@ -30,6 +31,7 @@ const FORM_FIELD_KEYS: ReadonlyArray<keyof LeadCaptureFormInput> = [
   'email',
   'serviceType',
   'message',
+  'referralSource',
   'contactConsent',
 ];
 
@@ -41,6 +43,7 @@ const buildDefaultValues = (
   email: '',
   serviceType,
   message: '',
+  referralSource: '',
   contactConsent: false,
 });
 
@@ -48,6 +51,11 @@ const serviceOptions = LEAD_SERVICE_TYPES.map((value) => ({
   label: value,
   value,
 }));
+
+const referralSourceOptions = [
+  { label: 'Select an option', value: '' },
+  ...REFERRAL_SOURCES.map((value) => ({ label: value, value })),
+];
 
 const LeadCaptureSection = ({
   title,
@@ -211,6 +219,16 @@ const LeadCaptureSection = ({
               </div>
             );
           })}
+          <div className='md:col-span-2'>
+            <Select
+              id='referralSource'
+              name='referralSource'
+              label='How did you hear about us? (optional)'
+              registration={register('referralSource')}
+              options={referralSourceOptions}
+              error={errors.referralSource?.message}
+            />
+          </div>
           <ConsentNotice
             consent={consent}
             checkboxRegistration={register('contactConsent')}

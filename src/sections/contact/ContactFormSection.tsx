@@ -28,6 +28,7 @@ const defaultValues: ContactPageFormInput = {
   phone: '',
   address: '',
   message: '',
+  referralSource: '',
   contactConsent: false,
 };
 
