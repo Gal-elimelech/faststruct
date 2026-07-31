@@ -108,6 +108,7 @@ export async function POST(request: NextRequest) {
       address,
       message,
       serviceType,
+      referralSource,
       source,
       contactConsent,
     } = result.data;
@@ -126,6 +127,7 @@ export async function POST(request: NextRequest) {
         address,
         message,
         serviceType,
+        referralSource,
         source,
       }),
       replyTo: email,
@@ -157,6 +159,7 @@ export async function POST(request: NextRequest) {
         address,
         message,
         serviceType,
+        referralSource,
         source,
         status: 'Pending',
         contactConsent,

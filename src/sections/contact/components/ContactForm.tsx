@@ -3,12 +3,18 @@
 import { motion } from 'motion/react';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { Button } from '@/components/Button';
-import { Input, Textarea } from '@/components/form';
+import { Input, Select, Textarea } from '@/components/form';
+import { REFERRAL_SOURCES } from '@/schemas/contact';
 import ConsentNotice from '@/components/consent/ConsentNotice';
 import FormMessage from './FormMessage';
 import { IContactForm } from '@/types/contact';
 import type { IConsentContent } from '@/types/consent';
 import type { ContactPageFormInput } from '@/schemas/contact';
+
+const referralSourceOptions = [
+  { label: 'Select an option', value: '' },
+  ...REFERRAL_SOURCES.map((value) => ({ label: value, value })),
+];
 
 interface ContactFormProps {
   form: IContactForm;
@@ -92,6 +98,15 @@ const ContactForm = ({
             error={errors.address?.message}
             required
             autoComplete='street-address'
+          />
+
+          <Select
+            id='referralSource'
+            name='referralSource'
+            label='How did you hear about us? (optional)'
+            registration={register('referralSource')}
+            options={referralSourceOptions}
+            error={errors.referralSource?.message}
           />
 
           <Textarea
