@@ -75,7 +75,7 @@ export function LandingCtaLink({
   };
 
   return (
-    <Link href={href} className={linkClassName} onClick={handleHashClick}>
+    <Link href={href} className={clsx(isCall && 'no-swap', linkClassName)} onClick={handleHashClick}>
       <span
         className={clsx(fullWidth ? 'w-full' : 'w-full sm:w-auto', buttonClassName)}
       >

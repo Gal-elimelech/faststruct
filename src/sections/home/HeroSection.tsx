@@ -73,7 +73,7 @@ const HeroSection: React.FC<IHeroSection> = ({
             {phoneCta && (
               <a
                 href={phoneCta.link}
-                className='btn btn-outline btn-lg btn-icon btn-hover-lift w-full sm:w-auto'>
+                className='no-swap btn btn-outline btn-lg btn-icon btn-hover-lift w-full sm:w-auto'>
                 <Phone size={18} aria-hidden />
                 <span className='text-nowrap'>{phoneCta.text}</span>
               </a>

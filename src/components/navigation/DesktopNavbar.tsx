@@ -18,7 +18,7 @@ const DesktopNavbar = ({ phone }: DesktopNavbarProps) => {
             <span className='flex items-center gap-4'>
               <a
                 href={`tel:${phone.link}`}
-                className='btn btn-outline-call-white btn-md gap-2 text-nowrap'>
+                className='no-swap btn btn-outline-call-white btn-md gap-2 text-nowrap'>
                 <Phone size={14} aria-hidden />
                 {phone.display}
               </a>
