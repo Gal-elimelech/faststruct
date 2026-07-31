@@ -74,7 +74,7 @@ export default function Navbar({ phone }: NavbarProps) {
               <a
                 href={`tel:${phone.link}`}
                 aria-label={`Call Fast Struct at ${phone.display}`}
-                className='btn btn-outline-call-white btn-md gap-2'>
+                className='no-swap btn btn-outline-call-white btn-md gap-2'>
                 <Phone size={14} aria-hidden />
                 Call
               </a>

@@ -57,7 +57,7 @@ const LandingLocationSection: React.FC<ILocation> = ({
 
             <a
               href={`tel:${phone.tel}`}
-              className='group flex items-center gap-4 rounded-sm border border-white/5 bg-white/2 p-4 transition-colors hover:border-accent/30'>
+              className='no-swap group flex items-center gap-4 rounded-sm border border-white/5 bg-white/2 p-4 transition-colors hover:border-accent/30'>
               <div className='flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-colors group-hover:bg-accent'>
                 <Phone className='h-5 w-5 text-accent transition-colors group-hover:text-dark' />
               </div>

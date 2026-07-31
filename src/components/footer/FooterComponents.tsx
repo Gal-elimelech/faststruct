@@ -94,11 +94,19 @@ const FooterLinksAndContact = ({
             </a>
           </li>
           <li>
-            <a 
-              href='https://www.faststruct.com/landing/modular' 
+            <a
+              href='https://www.faststruct.com/landing/modular'
               className='hover:text-accent transition-colors'
             >
               Modular Homes Bay Area
+            </a>
+          </li>
+          <li>
+            <a
+              href='https://www.faststruct.com/landing/non-combustible'
+              className='hover:text-accent transition-colors'
+            >
+              Non-Combustible Homes SoCal
             </a>
           </li>
         </FooterList>
