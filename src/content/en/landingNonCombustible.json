@@ -62,8 +62,8 @@
       "link": "#lead-capture"
     },
     "image": {
-      "src": "/assets/system-panelized.webp",
-      "alt": "Light-gauge steel Smart Wall panels manufactured in Fast Struct's California facility"
+      "src": "/assets/landing/non-combustible/nc-materials-home.webp",
+      "alt": "Modern single-story home with fire-resistant stucco walls and standing-seam metal roof in Southern California foothills"
     },
     "features": {
       "title": "Feature Callouts",
@@ -323,24 +323,24 @@
     "subtitle": "Fire-resistant construction doesn't mean compromising on design. Explore Fast Struct designs and builds.",
     "items": [
       {
-        "src": "/assets/modules-images/module-1/out-1.jpg",
-        "alt": "Steel-framed home design by Fast Struct"
+        "src": "/assets/landing/non-combustible/nc-gallery-1.webp",
+        "alt": "Two-story fire-resistant stucco home with metal roof on a Southern California hillside at dusk"
       },
       {
-        "src": "/assets/modules-images/all-modules-in-1.jpg",
-        "alt": "Premium interior finishes in a Fast Struct home"
+        "src": "/assets/landing/non-combustible/nc-gallery-2.webp",
+        "alt": "Backyard ADU with fire-resistant stucco exterior and standing-seam metal roof"
       },
       {
-        "src": "/assets/modules-images/all-modules-in-2.jpg",
-        "alt": "Open-concept interior of a steel-framed home"
+        "src": "/assets/landing/non-combustible/nc-gallery-3.webp",
+        "alt": "Single-story stucco home with metal roof and defensible-space landscaping near a canyon"
       },
       {
-        "src": "/assets/modules-images/module-4/out-1.jpg",
-        "alt": "Modern steel-framed home facade"
+        "src": "/assets/landing/non-combustible/nc-gallery-4.webp",
+        "alt": "Open-concept interior of a steel-framed home with exposed steel beams and canyon views"
       },
       {
-        "src": "/assets/modules-images/module-6/out-1.webp",
-        "alt": "Contemporary Fast Struct home design"
+        "src": "/assets/landing/non-combustible/nc-gallery-5.webp",
+        "alt": "Courtyard home in fire country with stucco walls and metal roof at twilight"
       }
     ]
   },
