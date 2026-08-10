@@ -26,9 +26,9 @@
       "link": "tel:+14087029012"
     },
     "googleReviewBadge": "/assets/logo/google-review-badge.png",
-    "backgroundImage": "/assets/modules-images/module-5/out-2.jpg",
-    "mobileBackgroundImage": "/assets/modules-images/module-5/mobile-hero.webp",
-    "backgroundImageAlt": "Completed custom ADU exterior with modern finishes in the Bay Area"
+    "backgroundImage": "/assets/landing/adu/adu-hero.webp",
+    "mobileBackgroundImage": "/assets/landing/adu/adu-hero-mobile.webp",
+    "backgroundImageAlt": "Completed backyard ADU with stucco exterior and standing-seam metal roof in a Bay Area backyard"
   },
   "valueProp": {
     "title": "Your ADU. Your Design. Built Smarter.",

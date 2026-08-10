@@ -26,9 +26,9 @@
       "link": "tel:+14087029012"
     },
     "googleReviewBadge": "/assets/logo/google-review-badge.png",
-    "backgroundImage": "/assets/modules-images/module-5/out-2.jpg",
-    "mobileBackgroundImage": "/assets/modules-images/module-5/mobile-hero.webp",
-    "backgroundImageAlt": "Modern custom modular home exterior in a Bay Area residential setting"
+    "backgroundImage": "/assets/landing/modular/modular-hero.webp",
+    "mobileBackgroundImage": "/assets/landing/modular/modular-hero-mobile.webp",
+    "backgroundImageAlt": "Completed modular home with stucco exterior and metal roof on a California residential street"
   },
   "valueProp": {
     "title": "Your Home. Your Design. Built Smarter.",
