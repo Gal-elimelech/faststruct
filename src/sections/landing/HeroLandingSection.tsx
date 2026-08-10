@@ -17,7 +17,7 @@ const HeroLandingSection: React.FC<ILandingHero> = ({
   backgroundImageAlt,
 }) => {
   return (
-    <section className='relative w-full min-h-[110vh] bg-dark flex items-center justify-center py-20'>
+    <section className='relative w-full min-h-svh bg-dark flex items-center justify-center py-20'>
       {/* Background Image */}
       <div className='absolute inset-0 z-0'>
         <ArtDirectedHeroImage
