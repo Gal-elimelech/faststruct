@@ -90,7 +90,7 @@ const FooterLinksAndContact = ({
               href='https://www.faststruct.com/landing/adu' 
               className='hover:text-accent transition-colors'
             >
-              ADU Builder Bay Area
+              ADU Builder
             </a>
           </li>
           <li>
@@ -98,7 +98,7 @@ const FooterLinksAndContact = ({
               href='https://www.faststruct.com/landing/modular'
               className='hover:text-accent transition-colors'
             >
-              Modular Homes Bay Area
+              Modular Homes
             </a>
           </li>
           <li>
@@ -106,7 +106,7 @@ const FooterLinksAndContact = ({
               href='https://www.faststruct.com/landing/non-combustible'
               className='hover:text-accent transition-colors'
             >
-              Non-Combustible Homes SoCal
+              Non-Combustible Homes
             </a>
           </li>
         </FooterList>
