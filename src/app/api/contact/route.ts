@@ -184,7 +184,7 @@ export async function POST(request: NextRequest) {
         const confirmationResult = await resend.emails.send({
           from: websiteFromEmail,
           to: [email],
-          subject: 'Thank you for contacting Fast Struct',
+          subject: 'We received your Fast Struct inquiry',
           react: ContactConfirmationEmail({
             name,
           }),
