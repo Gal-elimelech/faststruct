@@ -151,5 +151,135 @@
       "/assets/modules-images/module-6/in-8.webp"
     ],
     "sketchPlans": ["/assets/modules-images/module-6/floor-plan-6.webp"]
+  },
+  {
+    "slug": "essential-two-bedroom",
+    "title": "Essential Two-Bedroom Modular Home",
+    "summary": "Two bedrooms, a full bathroom, and an open kitchen and living area in 800 sq.ft. The Essential Two-Bedroom is a smart first home or backyard ADU.",
+    "marketingDescription": "The Essential Two-Bedroom makes every square foot count. **Two private bedrooms** sit away from an **open kitchen, dining, and living area** anchored by a kitchen island, with a full bathroom in between. Built from **two factory-made modules**, it is a practical choice for a first home, a couple planning ahead, or a generous backyard ADU in California. Shown here in two exterior styles.",
+    "specs": {
+      "areaSqft": 800,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "modulesCount": 2
+    },
+    "mainImage": "/assets/modules-images/module-7/out-1.webp",
+    "mobileImage": "/assets/modules-images/module-7/mobile-hero.webp",
+    "images": [
+      "/assets/modules-images/module-7/out-2.webp",
+      "/assets/modules-images/module-7/out-1.webp",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.webp",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.webp",
+      "/assets/modules-images/all-modules-in-6.webp"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-7/floor-plan-7.webp"]
+  },
+  {
+    "slug": "family-three-bedroom",
+    "title": "Family Three-Bedroom Modular Home",
+    "summary": "Three bedrooms, two bathrooms, and an open kitchen with an island in 1,000 sq.ft. The Family Three-Bedroom is built for everyday family life.",
+    "marketingDescription": "The Family Three-Bedroom gives everyone in the household a space of their own. **Three bedrooms and two full bathrooms** are arranged around a bright, **open-plan living and dining area** with a kitchen island at its heart. Delivered as **two precision-built modules**, it offers an efficient path to a full-size family home in California. Shown here in several exterior styles.",
+    "specs": {
+      "areaSqft": 1000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "modulesCount": 2
+    },
+    "mainImage": "/assets/modules-images/module-8/out-1.webp",
+    "mobileImage": "/assets/modules-images/module-8/mobile-hero.webp",
+    "images": [
+      "/assets/modules-images/module-8/out-2.webp",
+      "/assets/modules-images/module-8/out-1.webp",
+      "/assets/modules-images/module-8/out-3.webp",
+      "/assets/modules-images/module-8/out-4.webp",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.webp",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.webp",
+      "/assets/modules-images/all-modules-in-6.webp"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-8/floor-plan-8.webp"]
+  },
+  {
+    "slug": "spacious-three-bedroom",
+    "title": "Spacious Three-Bedroom Modular Home",
+    "summary": "Room to breathe: 1,200 sq.ft. with three bedrooms, two bathrooms, and a long kitchen island. The Spacious Three-Bedroom suits families who love to host.",
+    "marketingDescription": "The Spacious Three-Bedroom pairs **1,200 sq.ft. of living space** with a layout that keeps busy households running smoothly. A **long kitchen island** opens onto the dining and living areas, while **three bedrooms and two full bathrooms** give everyone privacy. Built from **two modules**, it delivers the comfort of a traditional home with the efficiency of modular construction. Shown here in several exterior styles.",
+    "specs": {
+      "areaSqft": 1200,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "modulesCount": 2
+    },
+    "mainImage": "/assets/modules-images/module-9/out-1.webp",
+    "mobileImage": "/assets/modules-images/module-9/mobile-hero.webp",
+    "images": [
+      "/assets/modules-images/module-9/out-2.webp",
+      "/assets/modules-images/module-9/out-1.webp",
+      "/assets/modules-images/module-9/out-3.webp",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.webp",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.webp",
+      "/assets/modules-images/all-modules-in-6.webp"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-9/floor-plan-9.webp"]
+  },
+  {
+    "slug": "premier-three-bedroom",
+    "title": "Premier Three-Bedroom Modular Home",
+    "summary": "Three bedrooms and three full bathrooms across 1,500 sq.ft. The Premier Three-Bedroom's L-shaped layout keeps living and sleeping areas apart.",
+    "marketingDescription": "The Premier Three-Bedroom is designed for families who value both togetherness and privacy. Its **L-shaped layout** separates an **open kitchen, dining, and living area** from the sleeping wing, where **three bedrooms are served by three full bathrooms**, so busy mornings run smoothly. Assembled from **three modules**, it is one of our most generous floor plans. Shown here in several exterior styles.",
+    "specs": {
+      "areaSqft": 1500,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "modulesCount": 3
+    },
+    "mainImage": "/assets/modules-images/module-10/out-1.webp",
+    "mobileImage": "/assets/modules-images/module-10/mobile-hero.webp",
+    "images": [
+      "/assets/modules-images/module-10/out-2.webp",
+      "/assets/modules-images/module-10/out-1.webp",
+      "/assets/modules-images/module-10/out-3.webp",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.webp",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.webp",
+      "/assets/modules-images/all-modules-in-6.webp"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-10/floor-plan-10.webp"]
+  },
+  {
+    "slug": "grand-four-bedroom",
+    "title": "Grand Four-Bedroom Modular Home",
+    "summary": "Our largest layout: 1,800 sq.ft. with four bedrooms, two bathrooms, and a wide-open kitchen and living area. Space for the whole family to grow.",
+    "marketingDescription": "The Grand Four-Bedroom is our **largest modular home**, built for big families and busy households. **Four bedrooms** give everyone a room of their own, while a **wide-open kitchen, dining, and living area** with a long island becomes the natural gathering place. Delivered as **three modules**, it brings **1,800 sq.ft.** of comfortable living to your lot with the speed and precision of modular construction. Shown here in several exterior styles.",
+    "specs": {
+      "areaSqft": 1800,
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "modulesCount": 3
+    },
+    "mainImage": "/assets/modules-images/module-11/out-1.webp",
+    "mobileImage": "/assets/modules-images/module-11/mobile-hero.webp",
+    "images": [
+      "/assets/modules-images/module-11/out-2.webp",
+      "/assets/modules-images/module-11/out-1.webp",
+      "/assets/modules-images/module-11/out-3.webp",
+      "/assets/modules-images/all-modules-in-1.jpg",
+      "/assets/modules-images/all-modules-in-2.jpg",
+      "/assets/modules-images/all-modules-in-3.webp",
+      "/assets/modules-images/all-modules-in-4.jpg",
+      "/assets/modules-images/all-modules-in-5.webp",
+      "/assets/modules-images/all-modules-in-6.webp"
+    ],
+    "sketchPlans": ["/assets/modules-images/module-11/floor-plan-11.webp"]
   }
 ]

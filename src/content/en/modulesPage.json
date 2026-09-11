@@ -30,18 +30,23 @@
           "max": 9999
         },
         {
-          "label": "Under 500 sqft",
+          "label": "Under 600 sqft",
           "min": 0,
-          "max": 500
+          "max": 599
         },
         {
-          "label": "500-600 sqft",
-          "min": 500,
-          "max": 600
-        },
-        {
-          "label": "600+ sqft",
+          "label": "600-999 sqft",
           "min": 600,
+          "max": 999
+        },
+        {
+          "label": "1,000-1,499 sqft",
+          "min": 1000,
+          "max": 1499
+        },
+        {
+          "label": "1,500+ sqft",
+          "min": 1500,
           "max": 9999
         }
       ]
