@@ -1,4 +1,4 @@
-import { Html, Head, Body, Text } from '@react-email/components';
+import { Html, Head, Body, Heading, Text } from '@react-email/components';
 
 interface ContactConfirmationEmailProps {
   name: string;
@@ -11,6 +11,9 @@ export default function ContactConfirmationEmail({
     <Html lang='en'>
       <Head />
       <Body style={{ fontFamily: 'Arial, sans-serif', color: '#222222' }}>
+        <Heading as='h1' style={{ fontSize: '20px', lineHeight: '28px' }}>
+          We received your Fast Struct inquiry
+        </Heading>
         <Text>Hi {name},</Text>
         <Text>
           Thank you for contacting Fast Struct. We received your inquiry and a
