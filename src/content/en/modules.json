@@ -34,7 +34,7 @@
       "areaSqft": 520,
       "bedrooms": 1,
       "bathrooms": 1,
-      "modulesCount": 1
+      "modulesCount": 2
     },
     "mainImage": "/assets/modules-images/module-2/out-2.webp",
     "mobileImage": "/assets/modules-images/module-2/mobile-hero.webp",
@@ -59,7 +59,7 @@
       "areaSqft": 1200,
       "bedrooms": 2,
       "bathrooms": 2,
-      "modulesCount": 1
+      "modulesCount": 2
     },
     "mainImage": "/assets/modules-images/module-3/out-2.webp",
     "mobileImage": "/assets/modules-images/module-3/mobile-hero.webp",
@@ -84,7 +84,7 @@
       "areaSqft": 660,
       "bedrooms": 2,
       "bathrooms": 1,
-      "modulesCount": 1
+      "modulesCount": 2
     },
     "mainImage": "/assets/modules-images/module-4/out-2.webp",
     "mobileImage": "/assets/modules-images/module-4/mobile-hero.webp",
@@ -134,7 +134,7 @@
       "areaSqft": 1080,
       "bedrooms": 2,
       "bathrooms": 2,
-      "modulesCount": 1
+      "modulesCount": 2
     },
     "mainImage": "/assets/modules-images/module-6/out-2.webp",
     "mobileImage": "/assets/modules-images/module-6/mobile-hero.webp",
