@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
     } = result.data;
 
     const websiteFromEmail =
-  'Fast Struct Website <website@faststruct.com>';
+  'Fast Struct Website <website@mail.faststruct.com>';
 
     const emailResult = await resend.emails.send({
       from: websiteFromEmail,
