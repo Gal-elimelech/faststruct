@@ -2,6 +2,8 @@
 
 This is the official business website for Fast sruct, a modern construction company specializing in modular and panelized building methods.
 
+<!-- Preview deployment trigger for Contact Us -> Leads Tracker validation. -->
+
 ## About the Project
 
 This project is a [Next.js](https://nextjs.org/) application built with [TypeScript](https://www.typescriptlang.org/) and styled with [Tailwind CSS](https://tailwindcss.com/). It showcases Fast sruct's services, projects, and company information.
