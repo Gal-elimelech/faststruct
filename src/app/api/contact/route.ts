@@ -7,6 +7,7 @@ import { validatedEnv } from '@/lib/env';
 import { addToGoogleSheets } from '@/lib/google-sheets';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { createAssessment } from '@/lib/recaptcha';
+import { saveWebsiteContactLead } from '@/lib/supabase-leads';
 
 function recaptchaRejectedResponse() {
   return NextResponse.json(
@@ -94,11 +95,25 @@ export async function POST(request: NextRequest) {
     //   return recaptchaRejectedResponse();
     // }
 
-
     // TODO: Re-enable reCAPTCHA after fixing Google Cloud permissions
     // const recaptchaAssessment = await createAssessment({...});
     // if (!recaptchaAssessment) return recaptchaRejectedResponse();
     console.log('[Contact API] reCAPTCHA validation temporarily disabled');
+
+    // Save Contact Us submissions to the Leads Tracker before sending side effects.
+    // A same-day retry of an identical submission is ignored by Supabase and we
+    // return success without sending duplicate emails or Google Sheets rows.
+    if (result.data.source === 'contact') {
+      const leadSaveResult = await saveWebsiteContactLead(result.data);
+      if (leadSaveResult === 'duplicate') {
+        console.log('[Contact API] Duplicate website lead ignored');
+        return NextResponse.json(
+          { success: true, message: 'Message sent successfully!' },
+          { status: 200 }
+        );
+      }
+      console.log('[Contact API] Successfully added lead to Supabase');
+    }
 
     const resend = new Resend(validatedEnv.resendApiKey);
     const {
@@ -114,7 +129,7 @@ export async function POST(request: NextRequest) {
     } = result.data;
 
     const websiteFromEmail =
-  'Fast Struct Website <website@mail.faststruct.com>';
+      'Fast Struct Website <website@mail.faststruct.com>';
 
     const emailResult = await resend.emails.send({
       from: websiteFromEmail,
@@ -134,16 +149,16 @@ export async function POST(request: NextRequest) {
     });
 
     if (emailResult.error) {
-  console.error('[Contact API] Resend error:', emailResult.error);
+      console.error('[Contact API] Resend error:', emailResult.error);
 
-  return NextResponse.json(
-    {
-      error: 'Failed to send email',
-      resendError: emailResult.error,
-    },
-    { status: 500 }
-  );
-}
+      return NextResponse.json(
+        {
+          error: 'Failed to send email',
+          resendError: emailResult.error,
+        },
+        { status: 500 }
+      );
+    }
 
     console.log(
       '[Contact API] Email sent successfully to business owner:',
