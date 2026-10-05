@@ -100,19 +100,19 @@ export async function POST(request: NextRequest) {
     // if (!recaptchaAssessment) return recaptchaRejectedResponse();
     console.log('[Contact API] reCAPTCHA validation temporarily disabled');
 
-    // Save Contact Us submissions to the Leads Tracker before sending side effects.
-    // A same-day retry of an identical submission is ignored by Supabase and we
-    // return success without sending duplicate emails or Google Sheets rows.
+    // Persist before email and Sheets so an email outage cannot lose the lead.
+    // Duplicate database inserts are ignored, but notification retries still run.
     if (result.data.source === 'contact') {
-      const leadSaveResult = await saveWebsiteContactLead(result.data);
-      if (leadSaveResult === 'duplicate') {
-        console.log('[Contact API] Duplicate website lead ignored');
+      try {
+        const leadSaveResult = await saveWebsiteContactLead(result.data);
+        console.log('[Contact API] Leads Tracker save:', leadSaveResult);
+      } catch (error) {
+        console.error('[Contact API] Leads Tracker save failed:', error);
         return NextResponse.json(
-          { success: true, message: 'Message sent successfully!' },
-          { status: 200 }
+          { error: 'Unable to save your inquiry. Please try again shortly.' },
+          { status: 503 }
         );
       }
-      console.log('[Contact API] Successfully added lead to Supabase');
     }
 
     const resend = new Resend(validatedEnv.resendApiKey);
