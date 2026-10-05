@@ -66,6 +66,7 @@ export async function saveWebsiteContactLead(
     `${url}/rest/v1/leads?on_conflict=website_submission_id`,
     {
       method: 'POST',
+      signal: AbortSignal.timeout(10_000),
       headers,
       body: JSON.stringify({
         website_submission_id: websiteSubmissionId,
