@@ -4,6 +4,7 @@ import { POST } from './route';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { createAssessment } from '@/lib/recaptcha';
 import { saveWebsiteContactLead } from '@/lib/supabase-leads';
+import { addToGoogleSheets } from '@/lib/google-sheets';
 
 const validPayload = {
   name: 'John Doe',
@@ -160,7 +161,7 @@ describe('POST /api/contact', () => {
     expect(saveWebsiteContactLead).not.toHaveBeenCalled();
   });
 
-  it('returns success for a duplicate Contact Us submission', async () => {
+  it('continues notifications for a duplicate so failed deliveries can be retried', async () => {
     vi.mocked(saveWebsiteContactLead).mockResolvedValueOnce('duplicate');
 
     const request = createRequest(validPayload);
@@ -168,6 +169,14 @@ describe('POST /api/contact', () => {
     expect(response.status).toBe(200);
     const data = await response.json();
     expect(data.success).toBe(true);
+    expect(addToGoogleSheets).toHaveBeenCalledTimes(1);
+  });
+
+  it('returns 503 when the Leads Tracker cannot save the inquiry', async () => {
+    vi.mocked(saveWebsiteContactLead).mockRejectedValueOnce(new Error('Database unavailable'));
+    const response = await POST(createRequest(validPayload));
+    expect(response.status).toBe(503);
+    expect(addToGoogleSheets).not.toHaveBeenCalled();
   });
 
   it('returns 422 when source is landing but serviceType is missing', async () => {
