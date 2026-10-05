@@ -3,6 +3,8 @@ import { NextRequest } from 'next/server';
 import { POST } from './route';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { createAssessment } from '@/lib/recaptcha';
+import { saveWebsiteContactLead } from '@/lib/supabase-leads';
+import { addToGoogleSheets } from '@/lib/google-sheets';
 
 const validPayload = {
   name: 'John Doe',
@@ -95,6 +97,10 @@ vi.mock('@/lib/recaptcha', () => ({
   }),
 }));
 
+vi.mock('@/lib/supabase-leads', () => ({
+  saveWebsiteContactLead: vi.fn().mockResolvedValue('created'),
+}));
+
 describe('POST /api/contact', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -108,6 +114,7 @@ describe('POST /api/contact', () => {
       reasons: [],
       action: 'contact',
     });
+    vi.mocked(saveWebsiteContactLead).mockResolvedValue('created');
   });
 
   it('returns 422 for invalid payload', async () => {
@@ -128,21 +135,48 @@ describe('POST /api/contact', () => {
     expect(Array.isArray(data.details)).toBe(true);
   });
 
-  it('returns 200 for valid payload', async () => {
+  it('returns 200 for valid payload and saves it to the Leads Tracker', async () => {
     const request = createRequest(validPayload);
     const response = await POST(request);
     expect(response.status).toBe(200);
     const data = await response.json();
     expect(data.success).toBe(true);
     expect(data.message).toContain('successfully');
+    expect(saveWebsiteContactLead).toHaveBeenCalledTimes(1);
+    expect(saveWebsiteContactLead).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: 'John Doe',
+        email: 'john@example.com',
+        source: 'contact',
+      })
+    );
   });
 
-  it('returns 200 for valid landing lead payload (serviceType, empty address)', async () => {
+  it('does not send landing-page submissions to the Contact Us lead writer', async () => {
     const request = createRequest(validLeadPayload);
     const response = await POST(request);
     expect(response.status).toBe(200);
     const data = await response.json();
     expect(data.success).toBe(true);
+    expect(saveWebsiteContactLead).not.toHaveBeenCalled();
+  });
+
+  it('continues notifications for a duplicate so failed deliveries can be retried', async () => {
+    vi.mocked(saveWebsiteContactLead).mockResolvedValueOnce('duplicate');
+
+    const request = createRequest(validPayload);
+    const response = await POST(request);
+    expect(response.status).toBe(200);
+    const data = await response.json();
+    expect(data.success).toBe(true);
+    expect(addToGoogleSheets).toHaveBeenCalledTimes(1);
+  });
+
+  it('returns 503 when the Leads Tracker cannot save the inquiry', async () => {
+    vi.mocked(saveWebsiteContactLead).mockRejectedValueOnce(new Error('Database unavailable'));
+    const response = await POST(createRequest(validPayload));
+    expect(response.status).toBe(503);
+    expect(addToGoogleSheets).not.toHaveBeenCalled();
   });
 
   it('returns 422 when source is landing but serviceType is missing', async () => {

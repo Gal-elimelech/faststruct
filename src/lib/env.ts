@@ -1,12 +1,6 @@
 const REQUIRED_CONTACT_ENV = [
   'RESEND_API_KEY',
   'CONTACT_EMAIL',
-  'FROM_EMAIL',  // <-- add this
-  'NEXT_PUBLIC_SITE_URL',
-  'NEXT_PUBLIC_RECAPTCHA_SITE_KEY',
-  'GOOGLE_CLOUD_PROJECT_ID',
-  'GOOGLE_CLOUD_PROJECT_NUMBER',
-  'GOOGLE_CLOUD_API_KEY',
 ] as const;
 
 export type Env = typeof env & {
@@ -64,9 +58,9 @@ const env = {
 } as const;
 
 /**
- * Validates that required env vars for the contact API are set.
- * Call at runtime when handling contact form submissions.
- * @throws Error with missing var names if any required var is empty
+ * Validates only the variables required by the currently active contact flow.
+ * reCAPTCHA / Google Cloud settings remain optional while that validation is
+ * intentionally disabled in the contact route.
  */
 export function validateContactEnv(): void {
   const missing = REQUIRED_CONTACT_ENV.filter(
@@ -80,10 +74,6 @@ export function validateContactEnv(): void {
   }
 }
 
-/**
- * Returns env object after validating required contact vars.
- * Use in contact API route before sending emails.
- */
 export function getValidatedContactEnv(): Env {
   validateContactEnv();
   return {
