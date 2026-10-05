@@ -8,6 +8,7 @@ import { addToGoogleSheets } from '@/lib/google-sheets';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { createAssessment } from '@/lib/recaptcha';
 import { saveWebsiteContactLead } from '@/lib/supabase-leads';
+import { checkSharedContactLimit, consumeContactLimit, emailIdempotencyKey } from '@/lib/contact-protection';
 
 function recaptchaRejectedResponse() {
   return NextResponse.json(
@@ -39,9 +40,17 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Bound untrusted input before parsing or contacting external services.
+  if (Number(request.headers.get('content-length') || 0) > 16384) {
+    return NextResponse.json({ error: 'Request too large' }, { status: 413 });
+  }
   let body;
   try {
-    body = await request.json();
+    const text = await request.text();
+    if (Buffer.byteLength(text, 'utf8') > 16384) {
+      return NextResponse.json({ error: 'Request too large' }, { status: 413 });
+    }
+    body = JSON.parse(text);
   } catch {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
@@ -67,38 +76,32 @@ export async function POST(request: NextRequest) {
     const userIpAddress = forwardedFor.split(',')[0]?.trim() ?? '';
     const userAgent = request.headers.get('user-agent') ?? '';
 
-    // const recaptchaAssessment = await createAssessment({
-    //   recaptchaAction: 'contact',
-    //   siteKey: validatedEnv.recaptchaSiteKey,
-    //   token: result.data.recaptchaToken,
-    //   userAgent,
-    //   userIpAddress,
-    // });
+    let sharedLimit;
+    try {
+      sharedLimit = await checkSharedContactLimit(request);
+    } catch {
+      return NextResponse.json({ error: 'Unable to process your inquiry. Please try again shortly.' }, { status: 503 });
+    }
+    if (!sharedLimit.success) {
+      return NextResponse.json({ error: 'Too many requests. Please try again later.' }, {
+        status: 429, headers: { 'Retry-After': String(sharedLimit.retryAfterSeconds) },
+      });
+    }
 
-    // if (!recaptchaAssessment) {
-    //   return recaptchaRejectedResponse();
-    // }
-
-    // if (recaptchaAssessment.score < validatedEnv.recaptchaMinScore) {
-    //   console.log(
-    //     '[Contact API] reCAPTCHA score below threshold:',
-    //     recaptchaAssessment.score
-    //   );
-    //   return recaptchaRejectedResponse();
-    // }
-
-    // if (recaptchaAssessment.action !== 'contact') {
-    //   console.log(
-    //     '[Contact API] reCAPTCHA action mismatch:',
-    //     recaptchaAssessment.action
-    //   );
-    //   return recaptchaRejectedResponse();
-    // }
-
-    // TODO: Re-enable reCAPTCHA after fixing Google Cloud permissions
-    // const recaptchaAssessment = await createAssessment({...});
-    // if (!recaptchaAssessment) return recaptchaRejectedResponse();
-    console.log('[Contact API] reCAPTCHA validation temporarily disabled');
+    let verifiedHuman = false;
+    try {
+      const assessment = await createAssessment({
+        recaptchaAction: 'contact', siteKey: validatedEnv.recaptchaSiteKey,
+        token: result.data.recaptchaToken, userIpAddress, userAgent,
+      });
+      if (!assessment || assessment.score < validatedEnv.recaptchaMinScore || assessment.action !== 'contact') {
+        return recaptchaRejectedResponse();
+      }
+      verifiedHuman = true;
+    } catch {
+      // An unavailable verifier must not lose a customer inquiry or send to an unverified recipient.
+      console.warn('[Contact API] Human verification unavailable; confirmation email suppressed');
+    }
 
     // Persist before email and Sheets so an email outage cannot lose the lead.
     // Duplicate database inserts are ignored, but notification retries still run.
@@ -115,6 +118,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    const notificationKey = emailIdempotencyKey(result.data);
     const resend = new Resend(validatedEnv.resendApiKey);
     const {
       name,
@@ -146,7 +150,7 @@ export async function POST(request: NextRequest) {
         source,
       }),
       replyTo: email,
-    });
+    }, { idempotencyKey: notificationKey });
 
     if (emailResult.error) {
       console.error('[Contact API] Resend error:', emailResult.error);
@@ -190,12 +194,20 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to user only if it's not the same inbox
     // as the business recipient (prevents perceived duplicate delivery).
-    const shouldSendConfirmation = !websiteContactEmails.some(
+    const shouldSendConfirmation = verifiedHuman && !websiteContactEmails.some(
       (websiteContactEmail) =>
         websiteContactEmail.trim().toLowerCase() === email.trim().toLowerCase()
     );
     if (shouldSendConfirmation) {
       try {
+        const confirmationLimit = await consumeContactLimit('confirmation', email.trim().toLowerCase(), 1, 3600);
+        if (!confirmationLimit.success) {
+          return NextResponse.json({ success: true, message: 'Message sent successfully!' });
+        }
+        const globalConfirmationLimit = await consumeContactLimit('confirmation-global', 'website', 50, 3600);
+        if (!globalConfirmationLimit.success) {
+          return NextResponse.json({ success: true, message: 'Message sent successfully!' });
+        }
         const confirmationResult = await resend.emails.send({
           from: websiteFromEmail,
           to: [email],
@@ -204,7 +216,7 @@ export async function POST(request: NextRequest) {
             name,
           }),
           replyTo: 'info@faststruct.com',
-        });
+        }, { idempotencyKey: notificationKey + ':confirmation' });
 
         if (confirmationResult.error) {
           console.error(

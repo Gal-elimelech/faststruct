@@ -4,6 +4,7 @@ import { POST } from './route';
 import { checkRateLimit } from '@/lib/rate-limit';
 import { createAssessment } from '@/lib/recaptcha';
 import { saveWebsiteContactLead } from '@/lib/supabase-leads';
+import { checkSharedContactLimit, consumeContactLimit } from '@/lib/contact-protection';
 import { addToGoogleSheets } from '@/lib/google-sheets';
 
 const validPayload = {
@@ -44,7 +45,8 @@ function createRequest(
   });
 }
 
-const { testEnv } = vi.hoisted(() => ({
+const { testEnv, sendEmail } = vi.hoisted(() => ({
+  sendEmail: vi.fn().mockResolvedValue({ data: { id: 'test-id' }, error: null }),
   testEnv: {
     siteUrl: 'https://example.com',
     resendApiKey: 're_test',
@@ -72,7 +74,7 @@ vi.mock('@/lib/env', () => ({
 vi.mock('resend', () => ({
   Resend: class MockResend {
     emails = {
-      send: vi.fn().mockResolvedValue({ data: { id: 'test-id' }, error: null }),
+      send: sendEmail,
     };
   },
 }));
@@ -101,9 +103,17 @@ vi.mock('@/lib/supabase-leads', () => ({
   saveWebsiteContactLead: vi.fn().mockResolvedValue('created'),
 }));
 
+vi.mock('@/lib/contact-protection', () => ({
+  checkSharedContactLimit: vi.fn().mockResolvedValue({ success: true, remaining: 2, retryAfterSeconds: 60 }),
+  consumeContactLimit: vi.fn().mockResolvedValue({ success: true, remaining: 0, retryAfterSeconds: 3600 }),
+  emailIdempotencyKey: vi.fn().mockReturnValue('test-idempotency'),
+}));
+
 describe('POST /api/contact', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.mocked(checkSharedContactLimit).mockResolvedValue({ success: true, remaining: 2, retryAfterSeconds: 60 });
+    vi.mocked(consumeContactLimit).mockResolvedValue({ success: true, remaining: 0, retryAfterSeconds: 3600 });
     vi.mocked(checkRateLimit).mockReturnValue({
       success: true,
       remaining: 4,
@@ -287,16 +297,46 @@ describe('POST /api/contact', () => {
     expect(data.error).toBe('reCAPTCHA verification failed');
   });
 
-  it('returns 500 when an unexpected error occurs during processing', async () => {
+  it('preserves an inquiry but suppresses external confirmation when verification is unavailable', async () => {
     vi.mocked(createAssessment).mockRejectedValueOnce(
       new Error('Temporary reCAPTCHA service error')
     );
 
     const request = createRequest(validPayload);
     const response = await POST(request);
-    expect(response.status).toBe(500);
-    const data = await response.json();
-    expect(data.error).toBe('Failed to process request');
+    expect(response.status).toBe(200);
+    expect(saveWebsiteContactLead).toHaveBeenCalledTimes(1);
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    expect(consumeContactLimit).not.toHaveBeenCalled();
+  });
+
+  it('rejects shared rate-limit exhaustion before saving or sending', async () => {
+    vi.mocked(checkSharedContactLimit).mockResolvedValueOnce({ success: false, remaining: 0, retryAfterSeconds: 42 });
+    const response = await POST(createRequest(validPayload));
+    expect(response.status).toBe(429);
+    expect(response.headers.get('Retry-After')).toBe('42');
+    expect(sendEmail).not.toHaveBeenCalled();
+    expect(saveWebsiteContactLead).not.toHaveBeenCalled();
+  });
+
+  it('fails safely if shared protection is unavailable', async () => {
+    vi.mocked(checkSharedContactLimit).mockRejectedValueOnce(new Error('unavailable'));
+    expect((await POST(createRequest(validPayload))).status).toBe(503);
+    expect(sendEmail).not.toHaveBeenCalled();
+  });
+
+  it('suppresses repeated recipient confirmations while preserving the lead and business notification', async () => {
+    vi.mocked(consumeContactLimit).mockResolvedValueOnce({ success: false, remaining: 0, retryAfterSeconds: 3600 });
+    expect((await POST(createRequest(validPayload))).status).toBe(200);
+    expect(saveWebsiteContactLead).toHaveBeenCalledTimes(1);
+    expect(addToGoogleSheets).toHaveBeenCalledTimes(1);
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    expect(sendEmail.mock.calls[0][1]).toEqual({ idempotencyKey: 'test-idempotency' });
+  });
+
+  it('rejects oversized bodies before side effects', async () => {
+    expect((await POST(createRequest({ ...validPayload, message: 'a'.repeat(17000) }))).status).toBe(413);
+    expect(sendEmail).not.toHaveBeenCalled();
   });
 
   it('returns 400 for invalid JSON', async () => {

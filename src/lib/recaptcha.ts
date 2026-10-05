@@ -41,7 +41,7 @@ export async function createAssessment({
       parent: projectPath,
     };
 
-  const [response] = await client.createAssessment(request);
+  const [response] = await client.createAssessment(request, { timeout: 5000 });
 
   if (!response.tokenProperties) {
     console.log('The CreateAssessment call failed.', response);
@@ -70,6 +70,10 @@ export async function createAssessment({
     console.log('The risk analysis is null.', response);
     return null;
   }
+
+  const expectedHostname = new URL(validatedEnv.siteUrl).hostname.replace(/^www\./, '');
+  const tokenHostname = (response.tokenProperties.hostname ?? '').replace(/^www\./, '');
+  if (tokenHostname !== expectedHostname) return null;
 
   const score = response.riskAnalysis.score ?? 0;
   const reasons = response.riskAnalysis.reasons ?? [];
