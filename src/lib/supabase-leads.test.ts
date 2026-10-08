@@ -75,6 +75,26 @@ describe('Supabase website lead persistence', () => {
     expect(payload.raw.message).toBe('I am interested in an ADU project.');
   });
 
+  it.each(['adu', 'modular', 'non-combustible'])('persists landing metadata for %s without requiring an address', async (page) => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify([{ id: 'landing-lead' }]), { status: 201 })
+    );
+    const landing = {
+      ...submission, source: 'landing' as const, address: '',
+      serviceType: 'ADU Construction' as const,
+      sourceUrl: `https://faststruct.com/landing/${page}`,
+    };
+    await expect(saveWebsiteContactLead(landing)).resolves.toBe('created');
+    const payload = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
+    expect(payload.lead_source).toBe('Website Landing Page');
+    expect(payload.lead_status).toBe('new');
+    expect(payload.raw.sourceUrl).toBe(landing.sourceUrl);
+    expect(payload.raw.serviceType).toBe('ADU Construction');
+    expect(payload.website_submission_id).toMatch(/^website-landing:/);
+    expect(createWebsiteSubmissionId(landing)).toBe(createWebsiteSubmissionId(landing));
+    expect(createWebsiteSubmissionId(landing)).not.toBe(createWebsiteSubmissionId({ ...landing, sourceUrl: landing.sourceUrl + '/other' }));
+  });
+
   it('reports a duplicate when Supabase ignores the conflicting insert', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(
       new Response(JSON.stringify([]), {

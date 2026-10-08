@@ -162,13 +162,17 @@ describe('POST /api/contact', () => {
     );
   });
 
-  it('does not send landing-page submissions to the Contact Us lead writer', async () => {
-    const request = createRequest(validLeadPayload);
+  it('saves landing-page submissions with their origin and still sends email and Sheets', async () => {
+    const request = createRequest({ ...validLeadPayload, sourceUrl: 'https://faststruct.com/landing/adu' });
     const response = await POST(request);
     expect(response.status).toBe(200);
     const data = await response.json();
     expect(data.success).toBe(true);
-    expect(saveWebsiteContactLead).not.toHaveBeenCalled();
+    expect(saveWebsiteContactLead).toHaveBeenCalledWith(expect.objectContaining({
+      source: 'landing', sourceUrl: 'https://faststruct.com/landing/adu', serviceType: 'ADU Construction',
+    }));
+    expect(sendEmail).toHaveBeenCalled();
+    expect(addToGoogleSheets).toHaveBeenCalledTimes(1);
   });
 
   it('continues notifications for a duplicate so failed deliveries can be retried', async () => {
@@ -182,9 +186,9 @@ describe('POST /api/contact', () => {
     expect(addToGoogleSheets).toHaveBeenCalledTimes(1);
   });
 
-  it('returns 503 when the Leads Tracker cannot save the inquiry', async () => {
+  it.each([validPayload, validLeadPayload])('returns 503 when the Leads Tracker cannot save the inquiry (%o)', async (payload) => {
     vi.mocked(saveWebsiteContactLead).mockRejectedValueOnce(new Error('Database unavailable'));
-    const response = await POST(createRequest(validPayload));
+    const response = await POST(createRequest(payload));
     expect(response.status).toBe(503);
     expect(addToGoogleSheets).not.toHaveBeenCalled();
   });
