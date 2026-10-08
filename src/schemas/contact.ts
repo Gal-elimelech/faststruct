@@ -98,6 +98,7 @@ const contactSubmissionSchema = contactApiFieldsSchema.extend({
 
 const landingSubmissionSchema = contactApiFieldsSchema.extend({
   source: z.literal('landing'),
+  sourceUrl: z.url().max(2048).optional(),
   address: optionalAddressField,
   serviceType: z.enum(LEAD_SERVICE_TYPES),
 });

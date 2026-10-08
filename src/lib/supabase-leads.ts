@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { ContactFormData } from '@/schemas/contact';
 
-type WebsiteContactSubmission = Extract<ContactFormData, { source: 'contact' }>;
+type WebsiteContactSubmission = ContactFormData;
 
 export type WebsiteLeadSaveResult = 'created' | 'duplicate';
 
@@ -35,11 +35,15 @@ export function createWebsiteSubmissionId(
     referralSource: data.referralSource ?? '',
     contactConsent: data.contactConsent,
   });
+  // Keep existing Contact Us identifiers stable across deployment and retries.
+  const landingIdentity = data.source === 'landing'
+    ? JSON.stringify({ sourceUrl: data.sourceUrl ?? '', serviceType: data.serviceType })
+    : '';
   const digest = createHash('sha256')
-    .update(canonicalSubmission)
+    .update(canonicalSubmission + landingIdentity)
     .digest('hex');
 
-  return `website-contact:${day}:${digest}`;
+  return `website-${data.source}:${day}:${digest}`;
 }
 
 export async function saveWebsiteContactLead(
@@ -48,6 +52,7 @@ export async function saveWebsiteContactLead(
 ): Promise<WebsiteLeadSaveResult> {
   const { url, secretKey } = getSupabaseConfig();
   const submittedAt = now.toISOString();
+  const leadSource = data.source === 'landing' ? 'Website Landing Page' : 'Website Contact Us';
   const websiteSubmissionId = createWebsiteSubmissionId(data, now);
 
   const headers: Record<string, string> = {
@@ -73,7 +78,7 @@ export async function saveWebsiteContactLead(
         contact_name: data.name,
         contact_email: data.email,
         contact_phone: data.phone,
-        lead_source: 'Website Contact Us',
+        lead_source: leadSource,
         lead_medium: 'website',
         lead_type: 'contact_form',
         lead_status: 'new',
@@ -83,8 +88,9 @@ export async function saveWebsiteContactLead(
         internal_notes: data.message,
         raw: {
           provider: 'website',
-          source: 'Website Contact Us',
+          source: leadSource,
           formSource: data.source,
+          ...(data.source === 'landing' ? { sourceUrl: data.sourceUrl ?? '', serviceType: data.serviceType } : {}),
           address: data.address,
           message: data.message,
           referralSource: data.referralSource ?? '',

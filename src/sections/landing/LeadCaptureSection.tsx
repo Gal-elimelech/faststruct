@@ -97,6 +97,7 @@ const LeadCaptureSection = ({
       const recaptchaToken = await getRecaptchaToken('contact');
       const payload = {
         ...toLandingSubmission(values),
+        sourceUrl: window.location.origin + window.location.pathname,
         recaptchaToken,
       };
 

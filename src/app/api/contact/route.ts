@@ -105,17 +105,15 @@ export async function POST(request: NextRequest) {
 
     // Persist before email and Sheets so an email outage cannot lose the lead.
     // Duplicate database inserts are ignored, but notification retries still run.
-    if (result.data.source === 'contact') {
-      try {
-        const leadSaveResult = await saveWebsiteContactLead(result.data);
-        console.log('[Contact API] Leads Tracker save:', leadSaveResult);
-      } catch (error) {
-        console.error('[Contact API] Leads Tracker save failed:', error);
-        return NextResponse.json(
-          { error: 'Unable to save your inquiry. Please try again shortly.' },
-          { status: 503 }
-        );
-      }
+    try {
+      const leadSaveResult = await saveWebsiteContactLead(result.data);
+      console.log('[Contact API] Leads Tracker save:', leadSaveResult);
+    } catch (error) {
+      console.error('[Contact API] Leads Tracker save failed:', error);
+      return NextResponse.json(
+        { error: 'Unable to save your inquiry. Please try again shortly.' },
+        { status: 503 }
+      );
     }
 
     const notificationKey = emailIdempotencyKey(result.data);
