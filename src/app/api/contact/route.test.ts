@@ -301,16 +301,18 @@ describe('POST /api/contact', () => {
     expect(data.error).toBe('reCAPTCHA verification failed');
   });
 
-  it('preserves an inquiry but suppresses external confirmation when verification is unavailable', async () => {
+  it('rejects inquiries without side effects when verification is unavailable', async () => {
     vi.mocked(createAssessment).mockRejectedValueOnce(
       new Error('Temporary reCAPTCHA service error')
     );
 
     const request = createRequest(validPayload);
     const response = await POST(request);
-    expect(response.status).toBe(200);
-    expect(saveWebsiteContactLead).toHaveBeenCalledTimes(1);
-    expect(sendEmail).toHaveBeenCalledTimes(1);
+    expect(response.status).toBe(503);
+    expect(response.headers.get('Retry-After')).toBe('30');
+    expect(saveWebsiteContactLead).not.toHaveBeenCalled();
+    expect(sendEmail).not.toHaveBeenCalled();
+    expect(addToGoogleSheets).not.toHaveBeenCalled();
     expect(consumeContactLimit).not.toHaveBeenCalled();
   });
 
