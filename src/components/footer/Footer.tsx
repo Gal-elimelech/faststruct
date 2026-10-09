@@ -20,7 +20,7 @@ const Footer = ({ contactInfo, contactSocial }: FooterProps) => {
     <footer className='bg-dark section-padding-top relative z-0 flex flex-col gap-6 pb-10 text-white'>
       {!isContactPage && <LetsBuildTogetherCTA />}
       <div className='container-padding section-padding-top'>
-        <div className='flex flex-col items-start justify-between gap-8 md:flex-row md:justify-between'>
+        <div className='flex flex-col items-start justify-between gap-8 xl:flex-row xl:justify-between'>
           <FastructLogo color='white' className='h-[40px]' />
           <FooterLinksAndContact info={contactInfo} social={contactSocial} />
         </div>
@@ -31,7 +31,8 @@ const Footer = ({ contactInfo, contactSocial }: FooterProps) => {
               href='/privacy-policy'
               target='_blank'
               rel='noopener noreferrer'
-              className='underline underline-offset-4 hover:text-accent transition-colors'>
+              className='hover:text-accent underline underline-offset-4 transition-colors'
+            >
               Privacy Policy
             </Link>
           </p>

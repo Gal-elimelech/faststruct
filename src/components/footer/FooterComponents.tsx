@@ -1,3 +1,5 @@
+import { guideLinks } from '@/content/build-guide/content';
+import Link from 'next/link';
 import AnimatedHeading from '../text-animation/AnimatedHeading';
 import { ENABLED_ROUTES } from '@/lib/routes';
 import { IContactInfo, IContactSocial } from '@/types/contact';
@@ -37,7 +39,8 @@ const FooterSection = ({
 }: FooterSectionProps) => {
   return (
     <div
-      className={`border-light flex flex-col gap-1 border-b-2 pb-4 ${!isLast ? 'md:border-r-2 md:pr-4' : ''} md:border-b-0 ${className}`}>
+      className={`border-light flex flex-col gap-1 border-b-2 pb-4 ${!isLast ? 'md:border-r-2 md:pr-4' : ''} md:border-b-0 ${className}`}
+    >
       <h3 className='font-semibold'>{title}</h3>
       {children}
     </div>
@@ -62,32 +65,35 @@ const FooterLinksAndContact = ({
   social,
 }: FooterLinksAndContactProps) => {
   const footerLinks = ENABLED_ROUTES.filter((route) => !route.isButton);
-  
+
   // Tinitingnan kung may laman ang social links para malaman kung ano ang huling column
   const hasSocial = social && social.links && social.links.length > 0;
 
   // UPGRADED OPTION 1: Ginagawang string ang email data at gagamitan ng Regex
   // para hiwain at kunin LANG ang pinakaunang email address.
-  const emailDataString = Array.isArray(info?.email) ? info.email.join('') : String(info?.email || '');
-  const emailMatch = emailDataString.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/);
+  const emailDataString = Array.isArray(info?.email)
+    ? info.email.join('')
+    : String(info?.email || '');
+  const emailMatch = emailDataString.match(
+    /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/
+  );
   const firstEmail = emailMatch ? emailMatch[0] : '';
 
   return (
-    <div className='flex w-full flex-col gap-4 md:w-auto md:flex-row'>
-      
+    <div className='grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:w-auto xl:grid-cols-4'>
       <FooterSection title='Quick Links'>
         <FooterList>
-           <li>
-            <a 
-              href='https://blog.faststruct.com' 
+          <li>
+            <a
+              href='https://blog.faststruct.com'
               className='hover:text-accent transition-colors'
             >
               Blog
             </a>
           </li>
           <li>
-            <a 
-              href='https://www.faststruct.com/landing/adu' 
+            <a
+              href='https://www.faststruct.com/landing/adu'
               className='hover:text-accent transition-colors'
             >
               ADU Builder
@@ -109,6 +115,21 @@ const FooterLinksAndContact = ({
               Non-Combustible Homes
             </a>
           </li>
+        </FooterList>
+      </FooterSection>
+
+      <FooterSection title='Build With Us'>
+        <FooterList>
+          {guideLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className='hover:text-accent transition-colors'
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </FooterList>
       </FooterSection>
 
@@ -138,7 +159,8 @@ const FooterLinksAndContact = ({
             {firstEmail && (
               <a
                 href={`mailto:${firstEmail}`}
-                className='hover:text-accent transition-colors'>
+                className='hover:text-accent transition-colors'
+              >
                 {firstEmail}
               </a>
             )}
@@ -146,7 +168,8 @@ const FooterLinksAndContact = ({
           <li>
             <a
               href={`tel:${info.phone.link}`}
-              className='no-swap hover:text-accent transition-colors'>
+              className='no-swap hover:text-accent transition-colors'
+            >
               {info.phone.display}
             </a>
           </li>
@@ -160,7 +183,8 @@ const FooterLinksAndContact = ({
               <li key={link.name}>
                 <a
                   href={link.url}
-                  className='hover:text-accent transition-colors'>
+                  className='hover:text-accent transition-colors'
+                >
                   {link.name}
                 </a>
               </li>
