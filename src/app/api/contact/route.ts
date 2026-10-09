@@ -99,8 +99,12 @@ export async function POST(request: NextRequest) {
       }
       verifiedHuman = true;
     } catch {
-      // An unavailable verifier must not lose a customer inquiry or send to an unverified recipient.
-      console.warn('[Contact API] Human verification unavailable; confirmation email suppressed');
+      // Require successful human verification before saving or sending any inquiry.
+      console.warn('[Contact API] Human verification unavailable; inquiry rejected');
+      return NextResponse.json(
+        { error: 'Unable to verify your submission. Please try again shortly.' },
+        { status: 503, headers: { 'Retry-After': '30' } }
+      );
     }
 
     // Persist before email and Sheets so an email outage cannot lose the lead.
