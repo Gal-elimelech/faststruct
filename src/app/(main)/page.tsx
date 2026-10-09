@@ -1,3 +1,4 @@
+import { HomeGuideTeaser } from '@/components/build-guide/Guide';
 import TestimonialsSection from '@/sections/home/TestimonialsSection';
 import HeroSection from '@/sections/home/HeroSection';
 import IntroSection from '@/sections/home/IntroSection';
@@ -139,6 +140,8 @@ const HomePage = async () => {
       <WhyModularPanelizedSection {...content.whyModularPanelized} />
 
       {content.midCta1 && <LandingCtaBand {...content.midCta1} />}
+
+      <HomeGuideTeaser />
 
       {/* Our Process Section */}
       <OurProcessSection {...processContent} />
