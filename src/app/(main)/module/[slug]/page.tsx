@@ -1,3 +1,4 @@
+import ModelPlanning from '@/components/build-guide/ModelPlanning';
 import { getModules } from '@/lib/content';
 import { notFound } from 'next/navigation';
 import { isModulePageEnabled } from '@/lib/page-config';
@@ -144,6 +145,7 @@ const ModulePage = async ({ params }: ModulePageProps) => {
       <HeroProductSection {...heroData} />
       <SpecificationsSection {...specificationsData} />
       <ProductDescriptionSection {...descriptionData} />
+      <ModelPlanning />
       <StackedImagesSection {...stackedImagesData} />
       <ExploreHomesSection
         featuredModules={otherModules}

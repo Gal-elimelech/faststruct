@@ -70,7 +70,8 @@ const SpecItem = ({
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className='border-dark/80 flex items-center justify-between gap-2 border-b-2 last:border-b-0'>
+      className='border-dark/80 flex items-center justify-between gap-2 border-b-2 last:border-b-0'
+    >
       <span className='text-h6 text-dark/70 tracking-wider uppercase'>
         {label}
       </span>
@@ -105,8 +106,15 @@ const SpecificationsSection = ({
               isFloorPlanInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
             }
             transition={{ duration: 0.8 }}
-            className='flex flex-col gap-4'>
-            <div className='relative aspect-square w-full overflow-hidden rounded-xl'>
+            className='flex flex-col gap-4'
+          >
+            <a
+              href={floorPlanImage}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Open full-size floor plan in a new tab'
+              className='focus-visible:outline-accent relative block aspect-square w-full overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4'
+            >
               <Image
                 src={floorPlanImage}
                 alt={floorPlanLabel}
@@ -114,12 +122,24 @@ const SpecificationsSection = ({
                 sizes='(max-width: 768px) 100vw, 50vw'
                 className='object-contain object-center'
               />
-            </div>
+            </a>
             <div className='flex flex-col gap-1'>
               <span className='text-h5 font-bebas text-dark uppercase'>
                 {floorPlanLabel}
               </span>
               <span className='text-body text-dark/70'>{area}</span>
+              <a
+                href={floorPlanImage}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-dark mt-2 text-sm underline underline-offset-4'
+              >
+                View full-size floor plan (opens new tab)
+              </a>
+              <p className='text-dark/70 mt-2 text-xs leading-relaxed'>
+                Concept layout. Confirm dimensions and specifications in your
+                project plans.
+              </p>
             </div>
           </motion.div>
 

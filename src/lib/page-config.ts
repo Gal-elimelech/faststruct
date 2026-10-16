@@ -16,11 +16,20 @@ export const PAGES_CONFIG = [
   { path: '/modules', changeFrequency: 'weekly', priority: 0.9 },
   { path: '/about', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/the-system', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/build-with-us', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/projects-in-progress', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/pricing', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/process', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/faq', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/contact', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/module', changeFrequency: 'monthly', priority: 0.8 }, // Dynamic route prefix
   { path: '/landing/adu', changeFrequency: 'weekly', priority: 0.9 },
   { path: '/landing/modular', changeFrequency: 'weekly', priority: 0.9 },
-  { path: '/landing/non-combustible', changeFrequency: 'weekly', priority: 0.9 },
+  {
+    path: '/landing/non-combustible',
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  },
 ] as const;
 
 export type PageConfig = (typeof PAGES_CONFIG)[number];
@@ -33,6 +42,11 @@ export type PagePath = PageConfig['path'];
 const ENABLED_PAGES: PagePath[] = [
   '/',
   '/contact',
+  '/build-with-us',
+  '/projects-in-progress',
+  '/pricing',
+  '/process',
+  '/faq',
   '/about',
   '/module',
   '/modules',

@@ -1,3 +1,4 @@
+import { GuideSection, GuideCards } from '@/components/build-guide/Guide';
 import { getContent } from '@/lib/content';
 import type { Metadata } from 'next';
 import Page from '@/components/Page';

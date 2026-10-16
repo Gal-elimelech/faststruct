@@ -1,3 +1,4 @@
+import { GuideSection, GuideCards } from '@/components/build-guide/Guide';
 import { getContent } from '@/lib/content';
 import type { Metadata } from 'next';
 import Page from '@/components/Page';
@@ -56,15 +57,15 @@ const LandingPage = async () => {
   return (
     <Page className='bg-dark text-light relative'>
       <JsonLd data={landingSchema} />
-      <section id="heroSection" className='z-20'>
+      <section id='heroSection' className='z-20'>
         <HeroLandingSection {...content.heroSection} />
       </section>
 
-      <section id="valueProp" className='z-10'>
+      <section id='valueProp' className='z-10'>
         <ValuePropSection {...content.valueProp} />
       </section>
 
-      <section id="lead-capture" className='scroll-mt-24'>
+      <section id='lead-capture' className='scroll-mt-24'>
         <LeadCaptureSection
           {...content.leadCapture}
           consent={consent}
@@ -72,42 +73,50 @@ const LandingPage = async () => {
         />
       </section>
 
-      <section id="companyOverview">
+      <GuideSection
+        eyebrow='Before you build'
+        title='Plan your ADU with a clear scope.'
+        intro='Start with the intended use, the location on your property and the connection to existing utilities. Review the budget and approval path before choosing a layout.'
+      >
+        <GuideCards />
+      </GuideSection>
+
+      <section id='companyOverview'>
         <CompanyOverviewSection {...content.companyOverview} />
       </section>
 
-      <section id="servicesOverview">
+      <section id='servicesOverview'>
         <ServicesOverviewSection {...content.servicesOverview} />
       </section>
 
-      <section id="constructionMethods">
+      <section id='constructionMethods'>
         <ConstructionMethodsSection {...content.constructionMethods} />
       </section>
 
-      <section id="processTimeline">
+      <section id='processTimeline'>
         <LandingProcessSection {...content.processTimeline} />
       </section>
 
       {content.processCta && <LandingCtaBand {...content.processCta} />}
 
-      <section id="differentiators">
+      <section id='differentiators'>
         <DifferentiatorsSection {...content.differentiators} />
       </section>
 
-      <section id="testimonials">
+      <section id='testimonials'>
         <TestimonialsSection
           testimonials={content.testimonials}
           backgroundImage='/assets/testimonials.jpg'
         />
       </section>
 
-      <section id="gallery">
+      <section id='gallery'>
         <LandingGallerySection {...content.gallery} />
       </section>
 
       {content.galleryCta && <LandingCtaBand {...content.galleryCta} />}
 
-      <section id="location">
+      <section id='location'>
         <LandingLocationSection {...content.location} />
       </section>
 
