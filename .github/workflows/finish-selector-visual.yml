@@ -1,0 +1,34 @@
+name: Finish Selector 1.0V visual checks
+
+on:
+  push:
+    branches:
+      - finish-selector-1.0V
+    paths:
+      - 'finish-selector/**'
+      - '.github/workflows/finish-selector-visual.yml'
+  workflow_dispatch:
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - name: Serve site
+        run: |
+          python3 -m http.server 4173 --directory finish-selector > /tmp/finish-selector-server.log 2>&1 &
+          sleep 3
+      - name: Check mobile tablet laptop desktop
+        run: node finish-selector/tests/visual-check.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: finish-selector-1.0V-screenshots
+          path: finish-selector/test-results/
+          retention-days: 7
