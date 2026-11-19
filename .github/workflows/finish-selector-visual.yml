@@ -18,8 +18,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --no-save playwright
-      - run: npx playwright install --with-deps chromium firefox webkit
+      - name: Install isolated visual test dependencies
+        run: |
+          cd finish-selector/tests
+          npm init -y
+          npm install playwright --no-audit --no-fund
+      - name: Install browsers
+        run: |
+          cd finish-selector/tests
+          npx playwright install --with-deps chromium firefox webkit
       - name: Serve site
         run: |
           python3 -m http.server 4173 --directory finish-selector > /tmp/finish-selector-server.log 2>&1 &
