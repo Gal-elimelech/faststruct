@@ -9,7 +9,7 @@ export type Route = {
 
 export const ROUTES: Route[] = [
   { href: '/', title: 'Home' },
-  { href: '/modules', title: 'Modules' },
+  { href: '/modules', title: 'Models' },
   { href: '/about', title: 'About' },
   { href: '/the-system', title: 'The System' },
   // Added the external Blog link here
